@@ -1,0 +1,888 @@
+﻿{
+    "key": "MultyProductsWithCategories",
+    "templateType": "MultyProducts",
+    "category": "SalesOfGoods",
+    "sortOrder": 230,
+    "name": "Admin.Dashboard.CreateFunnel.MultyProductsWithCategories.Name",
+    "description": "Admin.Dashboard.CreateFunnel.MultyProductsWithCategories.Description",
+    "picture": "//cs71.advantshop.net/adv-static/templates/FnlMultyProductsWCategories/i/main_v1.jpg",
+    "video": "https://www.youtube.com/watch?v=t8W8es4G2xU",
+    "scheme": "//cs71.advantshop.net/adv-static/templates/FnlMultyProductsWCategories/i/scheme_v2.jpg",
+    "siteCategory": "ProductSinglePages",
+    "demoLink": "http://demo-funnel.on-advantshop.net/lp/multitovarnyi-s-kategoriyami",
+    //Если выходит новая картинка, пишем _v2 и т.д.
+    "screens": [
+        {
+            "title": "Admin.Dashboard.CreateFunnel.MultyProductsWithCategories.Title.OffersPage",
+            "url": "//cs71.advantshop.net/adv-static/templates/FnlMultyProductsWCategories/i/scr1_v1.jpg"
+        },
+        {
+            "title": "Admin.Dashboard.CreateFunnel.MultyProductsWithCategories.Title.PlacingOrder",
+            "url": "//cs71.advantshop.net/adv-static/templates/FnlMultyProductsWCategories/i/scr2_v1.jpg"
+        },
+        {
+            "title": "Admin.Dashboard.CreateFunnel.MultyProductsWithCategories.Title.Upsell",
+            "url": "//cs71.advantshop.net/adv-static/templates/FnlMultyProductsWCategories/i/scr4_v1.jpg"
+        },
+        {
+            "title": "Admin.Dashboard.CreateFunnel.MultyProductsWithCategories.Title.Downsell",
+            "url": "//cs71.advantshop.net/adv-static/templates/FnlMultyProductsWCategories/i/scr5_v1.jpg"
+        },
+        {
+            "title": "Admin.Dashboard.CreateFunnel.MultyProductsWithCategories.Title.ThankPage",
+            "url": "//cs71.advantshop.net/adv-static/templates/FnlMultyProductsWCategories/i/scr3_v1.jpg"
+        }
+    ],
+    "blockLists": [],
+    "siteSettings": {
+        "SeoSettings.FontMain": "Roboto",
+        "SeoSettings.LineHeight": "1.2",
+        "SeoSettings.ColorSchemes": "[{\"LpId\":0,\"LpBlockId\":0,\"Name\":\"CreateFunnel.MultyProductsWithCategories.ColorSchemes.Light\",\"Class\":\"color-scheme--light\",\"BackgroundColor\":\"rgb(255, 255, 255)\",\"BackgroundColorAlt\":\"rgba(242, 242, 242, 0.9)\",\"TitleColor\":\"rgb(0, 0, 0)\",\"TitleBold\":\"700\",\"SubTitleColor\":\"rgb(96, 96, 96)\",\"SubTitleBold\":\"400\",\"TextColor\":\"rgb(0, 0, 0)\",\"TextColorAlt\":\"rgb(0, 0, 0)\",\"TextBold\":\"400\",\"LinkColor\":\"rgb(23, 121, 250)\",\"LinkColorHover\":\"rgb(4, 89, 200)\",\"LinkColorActive\":\"rgb(23, 121, 250)\",\"ButtonTextColor\":\"rgb(255, 255, 255)\",\"ButtonTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonBorderColor\":\"rgb(23, 121, 250)\",\"ButtonBorderWidth\":\"1px\",\"ButtonBorderRadius\":\"4px\",\"ButtonTextBold\":\"400\",\"ButtonBackgroundColor\":\"rgb(23, 121, 250)\",\"ButtonBackgroundColorHover\":\"rgb(55, 140, 251)\",\"ButtonBackgroundColorActive\":\"rgb(23, 121, 250)\",\"ButtonSecondaryTextColor\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorHover\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorActive\":\"rgb(0, 0, 0)\",\"ButtonSecondaryBorderColor\":\"rgb(218, 218, 218)\",\"ButtonSecondaryBorderWidth\":\"1px\",\"ButtonSecondaryBorderRadius\":\"4px\",\"ButtonSecondaryTextBold\":\"400\",\"ButtonSecondaryBackgroundColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBackgroundColorHover\":\"rgba(0, 0, 0, 0.1)\",\"ButtonSecondaryBackgroundColorActive\":\"rgba(0, 0, 0, 0.2)\",\"DelimiterColor\":\"rgb(226, 226, 226)\"},{\"LpId\":0,\"LpBlockId\":0,\"Name\":\"CreateFunnel.MultyProductsWithCategories.ColorSchemes.Medium\",\"Class\":\"color-scheme--medium\",\"BackgroundColor\":\"rgb(248, 248, 248)\",\"BackgroundColorAlt\":\"rgb(255, 255, 255)\",\"TitleColor\":\"rgb(0, 0, 0)\",\"TitleBold\":\"700\",\"SubTitleColor\":\"rgb(96, 96, 96)\",\"SubTitleBold\":\"400\",\"TextColor\":\"rgb(0, 0, 0)\",\"TextColorAlt\":\"rgb(0, 0, 0)\",\"TextBold\":\"400\",\"LinkColor\":\"rgb(23, 121, 250)\",\"LinkColorHover\":\"rgb(4, 89, 200)\",\"LinkColorActive\":\"rgb(23, 121, 250)\",\"ButtonTextColor\":\"rgb(255, 255, 255)\",\"ButtonTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonBorderColor\":\"rgb(23, 121, 250)\",\"ButtonBorderWidth\":\"1px\",\"ButtonBorderRadius\":\"4px\",\"ButtonTextBold\":\"400\",\"ButtonBackgroundColor\":\"rgb(23, 121, 250)\",\"ButtonBackgroundColorHover\":\"rgb(55, 140, 251)\",\"ButtonBackgroundColorActive\":\"rgb(23, 121, 250)\",\"ButtonSecondaryTextColor\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorHover\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorActive\":\"rgb(0, 0, 0)\",\"ButtonSecondaryBorderColor\":\"rgb(218, 218, 218)\",\"ButtonSecondaryBorderWidth\":\"1px\",\"ButtonSecondaryBorderRadius\":\"4px\",\"ButtonSecondaryTextBold\":\"400\",\"ButtonSecondaryBackgroundColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBackgroundColorHover\":\"rgba(0, 0, 0, 0.1)\",\"ButtonSecondaryBackgroundColorActive\":\"rgba(0, 0, 0, 0.2)\",\"DelimiterColor\":\"rgb(205, 205, 205)\"},{\"LpId\":0,\"LpBlockId\":0,\"Name\":\"CreateFunnel.MultyProductsWithCategories.ColorSchemes.Dark\",\"Class\":\"color-scheme--dark\",\"BackgroundColor\":\"rgb(0, 0, 0)\",\"BackgroundColorAlt\":\"rgba(60, 60, 60, 1)\",\"TitleColor\":\"rgb(255, 255, 255)\",\"TitleBold\":\"700\",\"SubTitleColor\":\"rgb(232, 232, 232)\",\"SubTitleBold\":\"400\",\"TextColor\":\"rgb(255, 255, 255)\",\"TextColorAlt\":\"rgb(255, 255, 255)\",\"TextBold\":\"400\",\"LinkColor\":\"rgb(255, 255, 255)\",\"LinkColorHover\":\"rgb(204, 204, 204)\",\"LinkColorActive\":\"rgb(255, 255, 255)\",\"ButtonTextColor\":\"rgb(255, 255, 255)\",\"ButtonTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonBorderColor\":\"rgb(23, 121, 250)\",\"ButtonBorderWidth\":\"1px\",\"ButtonBorderRadius\":\"4px\",\"ButtonTextBold\":\"400\",\"ButtonBackgroundColor\":\"rgb(23, 121, 250)\",\"ButtonBackgroundColorHover\":\"rgb(55, 140, 251)\",\"ButtonBackgroundColorActive\":\"rgb(23, 121, 250)\",\"ButtonSecondaryTextColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonSecondaryTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBorderColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBorderWidth\":\"1px\",\"ButtonSecondaryBorderRadius\":\"4px\",\"ButtonSecondaryTextBold\":\"400\",\"ButtonSecondaryBackgroundColor\":\"rgba(255, 255, 255, 0)\",\"ButtonSecondaryBackgroundColorHover\":\"rgba(255, 255, 255, 0.2)\",\"ButtonSecondaryBackgroundColorActive\":\"rgba(255, 255, 255, 0.3)\",\"DelimiterColor\":\"rgb(255, 255, 255)\"}]"
+    },
+    "pages": [
+        {
+            "name": "CreateFunnel.MultyProductsWithCategories.Main",
+            "pageType": "Main",
+            "lpPageSettings": {
+                "SeoSettings.PageTitle": "CreateFunnel.MultyProductsWithCategories.Main.PageTitle",
+                "SeoSettings.ShowShoppingCart": "True",
+                "SeoSettings.IgnoreActionParams": "True"
+            },
+            "blocks": [
+                {
+                    "name": "headerCenterSimple",
+                    "settings": {
+                        "classes": ["lp-block-header-center", "color-scheme--light", "block-padding-top--65", "block-padding-bottom--65"],
+                        "color_scheme": "color-scheme--light",
+                        "show_logo": true,
+                        "show_button": false,
+                        "show_phone": false,
+                        "show_email": false,
+                        "show_menu": false,
+                        "vk_enabled": false,
+                        "fb_enabled": false,
+                        "youtube_enabled": false,
+                        "twitter_enabled": false,
+                        "instagram_enabled": false,
+                        "whatsapp_enabled": false,
+                        "telegram_enabled": false,
+                        "odnoklassniki_enabled": false,
+                        "menu_items": [],
+                        "darken": 0,
+                        "padding_top": 65,
+                        "padding_bottom": 65,
+                        "style": { "background-attachment": "scroll" },
+                        "show_button2": false,
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "show_on_all_landing_pages_top": false,
+                        "show_on_all_landing_pages_bottom": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "logo",
+                            "type": "logo",
+                            "settings": {
+                                "src": "./areas/landing/templates/MultyProductsWithCategories/images/logo.png"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "productsByCategories",
+                    "settings": {
+                        "show_title": false,
+                        "show_subtitle": false,
+                        "color_scheme": "color-scheme--light",
+                        "classes": ["lp-block-products-by-categories", "color-scheme--light", "block-padding-bottom--45", "block-padding-top--0"],
+                        "show_price": true,
+                        "show_description": false,
+                        "show_buybutton": false,
+                        "show_button_quickview": true,
+                        "quickview": true,
+                        "quickview_description": "briefDescription",
+                        "show_filter": false,
+                        "descriptionOptions": [
+                            {
+                                "value": "none",
+                                "name": "CreateFunnel.MultyProductsWithCategories.Main.ProductsByCategories.DescriptionOptions.First.Name",
+                                "$$hashKey": "object:68"
+                            },
+                            {
+                                "value": "briefDescription",
+                                "name": "CreateFunnel.MultyProductsWithCategories.Main.ProductsByCategories.DescriptionOptions.Second.Name",
+                                "$$hashKey": "object:69"
+                            },
+                            {
+                                "value": "fullDescription",
+                                "name": "CreateFunnel.MultyProductsWithCategories.Main.ProductsByCategories.DescriptionOptions.Third.Name",
+                                "$$hashKey": "object:70"
+                            }
+                        ],
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "number_products_in_row": 3,
+                        "darken": 0,
+                        "padding_top": 0,
+                        "padding_bottom": 45,
+                        "button": {
+                            "text": "CreateFunnel.MultyProductsWithCategories.Main.ProductsByCategories.Button.Text",
+                            "action": "CheckoutUpsell",
+                            "action_upsell_lp_id": "#ACTION_UPSELL_1_LP_ID#"
+                        },
+                        "products_count": 12,
+                        "no_cache": true,
+                        "categories": "#CATEGORIES_IN_ProductsByCategories#",
+                        "view_mode_categories": "links",
+                        "view_mode_categories_options": [
+                            {
+                                "value": "buttons",
+                                "name": "CreateFunnel.MultyProductsWithCategories.Main.ProductsByCategories.ViewModeCategoriesOptions.First.Name",
+                                "$$hashKey": "object:205"
+                            },
+                            {
+                                "value": "links",
+                                "name": "CreateFunnel.MultyProductsWithCategories.Main.ProductsByCategories.ViewModeCategoriesOptions.Second.Name",
+                                "$$hashKey": "object:206"
+                            }
+                        ],
+                        "hover_animation": "zoom-animation",
+                        "hover_animation_options": [
+                            {
+                                "value": "none",
+                                "name": "CreateFunnel.MultyProductsWithCategories.Main.ProductsByCategories.HoverAnimationOptions.First.Name",
+                                "$$hashKey": "object:207"
+                            },
+                            {
+                                "value": "zoom-animation",
+                                "name": "CreateFunnel.MultyProductsWithCategories.Main.ProductsByCategories.HoverAnimationOptions.Second.Name",
+                                "$$hashKey": "object:208"
+                            },
+                            {
+                                "value": "next-image-animation",
+                                "name": "CreateFunnel.MultyProductsWithCategories.Main.ProductsByCategories.HoverAnimationOptions.Third.Name",
+                                "$$hashKey": "object:209"
+                            },
+                            {
+                                "value": "photo-view-list",
+                                "name": "CreateFunnel.MultyProductsWithCategories.Main.ProductsByCategories.HoverAnimationOptions.Fourth.Name",
+                                "$$hashKey": "object:210"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "contactsCenterSimple",
+                    "settings": {
+                        "classes": ["lp-block-contacts-center-simple", "block-padding-top--55", "block-padding-bottom--55", "color-scheme--dark"],
+                        "color_scheme": "color-scheme--dark",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "vk_enabled": true,
+                        "fb_enabled": true,
+                        "youtube_enabled": false,
+                        "twitter_enabled": false,
+                        "instagram_enabled": true,
+                        "whatsapp_enabled": false,
+                        "telegram_enabled": false,
+                        "odnoklassniki_enabled": false,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 55,
+                        "padding_bottom": 55,
+                        "style": {
+                            "background-color": null,
+                            "color": null
+                        },
+                        "mobile_hidden": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Main.ContactsCenterSimple.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Main.ContactsCenterSimple.Text.Placeholder"
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "name": "Upsell",
+            "pageType": "UpsellFirst",
+            "lpPageSettings": {
+                "SeoSettings.PageTitle": "CreateFunnel.MultyProductsWithCategories.Upsell.PageTitle"
+            },
+            "blocks": [
+                {
+                    "name": "progressbar",
+                    "settings": {
+                        "color_scheme": "color-scheme--medium",
+                        "classes": ["block-progressbar", "block-padding-top--30", "block-padding-bottom--30", "color-scheme--medium"],
+                        "padding_top": 30,
+                        "padding_bottom": 30,
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "width_in_columns": 10,
+                        "background_color_passed": "rgb(23, 121, 250)",
+                        "percent_passed": 66
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Upsell.Progressbar.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Upsell.Progressbar.Text.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "productDetails",
+                    "settings": {
+                        "color_scheme": "color-scheme--light",
+                        "classes": ["product-details", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "items": "#PRODUCT_SCHEME_PHOTOS#",
+                        "multiSelect": false,
+                        "show_price": true,
+                        "show_buybutton": true,
+                        "show_button": true,
+                        "button": {
+                            "is_default_style": true,
+                            "text": "CreateFunnel.MultyProductsWithCategories.Upsell.ProductDetails.Button.Text",
+                            "size": "xsmall",
+                            "action": "CheckoutUpsell",
+                            "action_url": "",
+                            "action_form": "",
+                            "action_section": "",
+                            "use_many_offers": true,
+                            "action_offer_items": "#ACTION_OFFER_IDS#",
+                            "action_upsell_lp_id": "#ACTION_THANKYOUPAGE_LP_ID#",
+                            "show_options": false
+                        },
+                        "show_button2": true,
+                        "button2": {
+                            "is_default_style": true,
+                            "action": "Url",
+                            "action_form": "",
+                            "action_url_lp_id": "#ACTION_DOWNSELL_LP_ID#",
+                            "action_url": "#ACTION_DOWNSELL_LP_URL#",
+                            "text": "CreateFunnel.MultyProductsWithCategories.Upsell.ProductDetails.ButtonTwo.Text",
+                            "size": "xsmall",
+                            "type": "Secondary"
+                        },
+                        "form": {
+                            "is_hidden": true
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "carouselOptionsFor": {
+                            "slidesToShow": 1,
+                            "centerMode": true,
+                            "centerPadding": "'0px'",
+                            "slidesToScroll": 1,
+                            "arrows": false,
+                            "asNavFor": ".product-details__carousel-nav"
+                        },
+                        "carouselOptionsNav": {
+                            "slidesToShow": 1,
+                            "slidesToScroll": 1,
+                            "asNavFor": ".product-details__carousel-for",
+                            "dots": false,
+                            "arrows": true,
+                            "adaptiveHeight": true,
+                            "mobileFirst": true,
+                            "focusOnSelect": true,
+                            "responsive": [
+                                {
+                                    "breakpoint": 1024,
+                                    "settings": {
+                                        "slidesToShow": 3,
+                                        "slidesToScroll": 1
+                                    }
+                                }
+                            ]
+                        },
+                        "style": {
+                            "background-attachment": "scroll"
+                        }
+                    },
+                    "subblocks": [
+                        {
+                            "name": "video",
+                            "type": "video",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Upsell.ProductDetails.Video.Placeholder",
+                            "settings": {
+                                "urlVideo": "#PRODUCT_VIDEO#",
+                                "show_video": "#SHOW_PRODUCT_VIDEO#",
+                                "inModal": true,
+                                "alignButton": "center-xs"
+                            }
+                        },
+                        {
+                            "name": "product_name",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Upsell.ProductDetails.ProductName.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Upsell.ProductDetails.Text.Placeholder"
+                        },
+                        {
+                            "name": "old_price",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Upsell.ProductDetails.OldPrice.Placeholder"
+                        },
+                        {
+                            "name": "discount",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Upsell.ProductDetails.Discount.Placeholder"
+                        },
+                        {
+                            "name": "price",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Upsell.ProductDetails.Price.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "delimiterLineHorizontal"
+                },
+                {
+                    "name": "textFullWidth",
+                    "settings": {
+                        "classes": ["lp-block-text-slim-single-left", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "background_color": null,
+                        "background_fixed": false,
+                        "min_height": null,
+                        "parallax": false,
+                        "padding_top": 45,
+                        "padding_bottom": 45
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Upsell.TextFullWidth.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Upsell.TextFullWidth.Text.Placeholder"
+                        }
+                    ]
+                },
+
+                {
+                    "name": "reviewsColumnsWithStars",
+                    "settings": {
+                        "items": [
+                            {
+                                "author": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Items.First.Author",
+                                "rating": 4,
+                                "text": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Items.First.Text"
+                            },
+                            {
+                                "author": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Items.Second.Author",
+                                "rating": 4,
+                                "text": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Items.Second.Text"
+                            },
+                            {
+                                "author": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Items.Third.Author",
+                                "rating": 4,
+                                "text": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Items.Third.Text"
+                            },
+                            {
+                                "author": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Items.Fourth.Author",
+                                "rating": 4,
+                                "text": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Items.Fourth.Text"
+                            },
+                            {
+                                "author": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Items.Fifth.Author",
+                                "rating": 4,
+                                "text": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Items.Fifth.Text"
+                            },
+                            {
+                                "author": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Items.Sixth.Author",
+                                "rating": 4,
+                                "text": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Items.Sixth.Text"
+                            }
+                        ],
+                        "color_scheme": "color-scheme--light",
+                        "classes": [
+                            "lp-block-reviews",
+                            "reviews-columns-with-stars",
+                            "block-padding-top--45",
+                            "block-padding-bottom--45",
+                            "color-scheme--light"
+                        ],
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "darken": 0,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "style": {
+                            "background-attachment": "scroll",
+                            "background-position": "center center",
+                            "box-shadow": "200vh 200vw 0 rgba(0,0,0, 0) inset",
+                            "background-color": null,
+                            "color": null
+                        },
+                        "mobile_hidden": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Upsell.ReviewsColumnsWithStars.Title.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "countdownSimple",
+                    "settings": {
+                        "color_scheme": "color-scheme--medium",
+                        "classes": ["countdown-simple", "block-padding-top--30", "block-padding-bottom--30", "color-scheme--medium"],
+                        "date": {
+                            "end_date": 30,
+                            "types": [
+                                {
+                                    "id": 1,
+                                    "value": "default",
+                                    "name": "CreateFunnel.MultyProductsWithCategories.Upsell.CountdownSimple.Date.Types.First.Name"
+                                },
+                                {
+                                    "id": 2,
+                                    "value": "loop",
+                                    "name": "CreateFunnel.MultyProductsWithCategories.Upsell.CountdownSimple.Date.Types.Second.Name"
+                                }
+                            ],
+                            "selectType": {
+                                "id": 2,
+                                "value": "loop",
+                                "name": "CreateFunnel.MultyProductsWithCategories.Upsell.CountdownSimple.Date.SelectType.Name"
+                            }
+                        },
+                        "padding_top": 30,
+                        "padding_bottom": 30,
+                        "textColor": "#c3c3c3",
+                        "titleColor": "#fff",
+                        "show_title": true,
+                        "show_subtitle": false
+                    }
+                },
+                {
+                    "name": "formTextAndButton",
+                    "settings": {
+                        "color_scheme": "color-scheme--light",
+                        "classes": ["lp-block-form-text-and-button", "block-padding-top--85", "block-padding-bottom--30", "color-scheme--light"],
+                        "padding_top": 90,
+                        "padding_bottom": 30,
+                        "show_title": false,
+                        "show_subtitle": false,
+                        "button": {
+                            "text": "CreateFunnel.MultyProductsWithCategories.Upsell.FormTextAndButton.Button.Text",
+                            "action": "CheckoutUpsell",
+                            "action_url": "",
+                            "action_section": "",
+                            "action_form": null,
+                            "use_many_offers": true,
+                            "action_offer_items": "#ACTION_OFFER_IDS#",
+                            "action_upsell_lp_id": "#ACTION_THANKYOUPAGE_LP_ID#",
+                            "is_default_style": true
+                        },
+                        "show_button": true
+                    },
+                    "subblocks": [
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Upsell.FormTextAndButton.Text.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "formTwoButtons",
+                    "settings": {
+                        "color_scheme": "color-scheme--light",
+                        "classes": ["lp-block-form", "color-scheme--light", "block-padding-top--0", "block-padding-bottom--0"],
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "show_title": false,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "show_button2": true,
+                        "button2": {
+                            "is_default_style": true,
+                            "action": "Url",
+                            "action_url_lp_id": "#ACTION_DOWNSELL_LP_ID#",
+                            "action_url": "#ACTION_DOWNSELL_LP_URL#",
+                            "action_form": "",
+                            "action_section": "",
+                            "text": "CreateFunnel.MultyProductsWithCategories.Upsell.FormTwoButtons.ButtonTwo.Text",
+                            "type": "Secondary"
+                        }
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "Downsell",
+            "pageType": "Downsell",
+            "lpPageSettings": {
+                "SeoSettings.PageTitle": "CreateFunnel.MultyProductsWithCategories.Downsell.PageTitle"
+            },
+            "blocks": [
+                {
+                    "name": "progressbar",
+                    "settings": {
+                        "color_scheme": "color-scheme--medium",
+                        "classes": ["block-progressbar", "block-padding-top--30", "block-padding-bottom--30", "color-scheme--medium"],
+                        "padding_top": 30,
+                        "padding_bottom": 30,
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "width_in_columns": 10,
+                        "background_color_passed": "rgb(23, 121, 250)",
+                        "percent_passed": 66
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Downsell.Progressbar.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Downsell.Progressbar.Text.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "productDetails",
+                    "settings": {
+                        "color_scheme": "color-scheme--light",
+                        "classes": ["product-details", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "items": "#PRODUCT_SCHEME_PHOTOS#",
+                        "multiSelect": false,
+                        "show_price": true,
+                        "show_buybutton": true,
+                        "show_button": true,
+                        "button": {
+                            "is_default_style": true,
+                            "text": "CreateFunnel.MultyProductsWithCategories.Downsell.ProductDetails.Button.Text",
+                            "size": "xsmall",
+                            "action": "CheckoutUpsell",
+                            "action_url": "",
+                            "action_form": "",
+                            "action_section": "",
+                            "use_many_offers": true,
+                            "action_offer_items": "#ACTION_OFFER_IDS#",
+                            "action_upsell_lp_id": "#ACTION_THANKYOUPAGE_LP_ID#",
+                            "show_options": false
+                        },
+                        "show_button2": true,
+                        "button2": {
+                            "is_default_style": true,
+                            "action": "Url",
+                            "action_form": "",
+                            "action_url": "checkout/success",
+                            "text": "CreateFunnel.MultyProductsWithCategories.Downsell.ProductDetails.ButtonTwo.Text",
+                            "size": "xsmall",
+                            "type": "Secondary"
+                        },
+                        "form": {
+                            "is_hidden": true
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "carouselOptionsFor": {
+                            "slidesToShow": 1,
+                            "centerMode": true,
+                            "centerPadding": "'0px'",
+                            "slidesToScroll": 1,
+                            "arrows": false,
+                            "asNavFor": ".product-details__carousel-nav"
+                        },
+                        "carouselOptionsNav": {
+                            "slidesToShow": 1,
+                            "slidesToScroll": 1,
+                            "asNavFor": ".product-details__carousel-for",
+                            "dots": false,
+                            "arrows": true,
+                            "adaptiveHeight": true,
+                            "mobileFirst": true,
+                            "focusOnSelect": true,
+                            "responsive": [
+                                {
+                                    "breakpoint": 1024,
+                                    "settings": {
+                                        "slidesToShow": 3,
+                                        "slidesToScroll": 1
+                                    }
+                                }
+                            ]
+                        },
+                        "style": {
+                            "background-attachment": "scroll"
+                        }
+                    },
+                    "subblocks": [
+                        {
+                            "name": "video",
+                            "type": "video",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Downsell.ProductDetails.Video.Placeholder",
+                            "settings": {
+                                "urlVideo": "#PRODUCT_VIDEO#",
+                                "show_video": "#SHOW_PRODUCT_VIDEO#",
+                                "inModal": true,
+                                "alignButton": "center-xs"
+                            }
+                        },
+                        {
+                            "name": "product_name",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Downsell.ProductDetails.ProductName.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Downsell.ProductDetails.Text.Placeholder"
+                        },
+                        {
+                            "name": "old_price",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Downsell.ProductDetails.OldPrice.Placeholder"
+                        },
+                        {
+                            "name": "discount",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Downsell.ProductDetails.Discount.Placeholder"
+                        },
+                        {
+                            "name": "price",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Downsell.ProductDetails.Price.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "delimiterLineHorizontal"
+                },
+
+                {
+                    "name": "textFullWidth",
+                    "settings": {
+                        "classes": ["lp-block-text-slim-single-left", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "background_color": null,
+                        "background_fixed": false,
+                        "min_height": null,
+                        "parallax": false,
+                        "padding_top": 45,
+                        "padding_bottom": 45
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Downsell.TextFullWidth.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Downsell.TextFullWidth.Text.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "countdownSimple",
+                    "settings": {
+                        "color_scheme": "color-scheme--medium",
+                        "classes": ["countdown-simple", "block-padding-top--30", "block-padding-bottom--30", "color-scheme--medium"],
+                        "date": {
+                            "end_date": 30,
+                            "types": [
+                                {
+                                    "id": 1,
+                                    "value": "default",
+                                    "name": "CreateFunnel.MultyProductsWithCategories.Downsell.CountdownSimple.Date.Types.First.Name"
+                                },
+                                {
+                                    "id": 2,
+                                    "value": "loop",
+                                    "name": "CreateFunnel.MultyProductsWithCategories.Downsell.CountdownSimple.Date.Types.Second.Name"
+                                }
+                            ],
+                            "selectType": {
+                                "id": 2,
+                                "value": "loop",
+                                "name": "CreateFunnel.MultyProductsWithCategories.Downsell.CountdownSimple.Date.SelectType.Name"
+                            }
+                        },
+                        "padding_top": 30,
+                        "padding_bottom": 30,
+                        "textColor": "#c3c3c3",
+                        "titleColor": "#fff",
+                        "show_title": true,
+                        "show_subtitle": false
+                    }
+                },
+                {
+                    "name": "reviewsColumnsWithStars",
+                    "settings": {
+                        "items": [
+                            {
+                                "author": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Items.First.Author",
+                                "rating": 4,
+                                "text": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Items.First.Text"
+                            },
+                            {
+                                "author": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Items.Second.Author",
+                                "rating": 4,
+                                "text": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Items.Second.Text"
+                            },
+                            {
+                                "author": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Items.Third.Author",
+                                "rating": 4,
+                                "text": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Items.Third.Text"
+                            },
+                            {
+                                "author": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Items.Fourth.Author",
+                                "rating": 4,
+                                "text": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Items.Fourth.Text"
+                            },
+                            {
+                                "author": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Items.Fifth.Author",
+                                "rating": 4,
+                                "text": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Items.Fifth.Text"
+                            },
+                            {
+                                "author": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Items.Sixth.Author",
+                                "rating": 4,
+                                "text": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Items.Sixth.Text"
+                            }
+                        ],
+                        "color_scheme": "color-scheme--light",
+                        "classes": [
+                            "lp-block-reviews",
+                            "reviews-columns-with-stars",
+                            "block-padding-top--45",
+                            "block-padding-bottom--45",
+                            "color-scheme--light"
+                        ],
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "darken": 0,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "style": {
+                            "background-attachment": "scroll",
+                            "background-position": "center center",
+                            "box-shadow": "200vh 200vw 0 rgba(0,0,0, 0) inset",
+                            "background-color": null,
+                            "color": null
+                        },
+                        "mobile_hidden": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Downsell.ReviewsColumnsWithStars.Title.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "formTextAndButton",
+                    "settings": {
+                        "color_scheme": "color-scheme--light",
+                        "classes": ["lp-block-form-text-and-button", "block-padding-top--85", "block-padding-bottom--30", "color-scheme--light"],
+                        "padding_top": 90,
+                        "padding_bottom": 30,
+                        "show_title": false,
+                        "show_subtitle": false,
+                        "button": {
+                            "text": "CreateFunnel.MultyProductsWithCategories.Downsell.FormTextAndButton.Button.Text",
+                            "action": "CheckoutUpsell",
+                            "action_url": "",
+                            "action_section": "",
+                            "action_form": null,
+                            "use_many_offers": true,
+                            "action_offer_items": "#ACTION_OFFER_IDS#",
+                            "action_upsell_lp_id": "#ACTION_THANKYOUPAGE_LP_ID#",
+                            "is_default_style": true
+                        },
+                        "show_button": true
+                    },
+                    "subblocks": [
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.MultyProductsWithCategories.Downsell.FormTextAndButton.Text.Placeholder"
+                        }
+                    ]
+                },
+
+                {
+                    "name": "formTwoButtons",
+                    "settings": {
+                        "color_scheme": "color-scheme--light",
+                        "classes": ["lp-block-form", "color-scheme--light", "block-padding-top--0", "block-padding-bottom--0"],
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "show_title": false,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "show_button2": true,
+                        "button2": {
+                            "is_default_style": true,
+                            "action": "Url",
+                            "action_url": "#ACTION_THANKYOUPAGE_LP_URL#",
+                            "action_form": "",
+                            "action_section": "",
+                            "text": "CreateFunnel.MultyProductsWithCategories.Downsell.FormTwoButtons.ButtonTwo.Text",
+                            "type": "Secondary"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

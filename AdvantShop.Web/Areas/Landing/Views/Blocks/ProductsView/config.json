@@ -1,0 +1,98 @@
+﻿{
+    "name": "productsView",
+    "type": "productsView",
+    "description": "Landings.Views.Blocks.Config.ProductsView.Description",
+    "category": "Landings.Views.Blocks.Config.ProductsView.Category",
+    "picture": "./areas/landing/images/productsView/products_view_preview.jpg",
+    "depends_on": ["storeClosed"],
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ProductsView.SubBlockTitlePlaceholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ProductsView.SubBlockSubtitlePlaceholder"
+        }
+    ],
+    "settings": {
+        "product_ids": [],
+        "show_title": true,
+        "show_subtitle": true,
+        "show_availibility": false,
+        "color_scheme": "color-scheme--light",
+        "classes": ["lp-block-products-view", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "show_price": true,
+        "hide_photo": false,
+        "show_description": false,
+        "quickview": true,
+        "quickview_description": "briefDescription",
+        "descriptionOptions": [
+            {
+                "value": "none",
+                "name": "Landings.Views.Blocks.Config.ProductsView.DescriptionOptions.None"
+            },
+            {
+                "value": "briefDescription",
+                "name": "Landings.Views.Blocks.Config.ProductsView.DescriptionOptions.BriefDescription"
+            },
+            {
+                "value": "fullDescription",
+                "name": "Landings.Views.Blocks.Config.ProductsView.DescriptionOptions.FullDescription"
+            }
+        ],
+        "multiSelect": false,
+        "number_products_in_row": 3,
+        "show_buybutton": true,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "button": {
+            "text": "Landings.Views.Blocks.Config.ProductsView.ButtonText",
+            "action_upsell_lp_id": null
+        },
+        "hover_animation": "none",
+        "hover_animation_options": [
+            {
+                "value": "none",
+                "name": "Landings.Views.Blocks.Config.ProductsView.HoverAnimation.None"
+            },
+            {
+                "value": "zoom-animation",
+                "name": "Landings.Views.Blocks.Config.ProductsView.HoverAnimation.ZoomAnimation"
+            },
+            {
+                "value": "next-image-animation",
+                "name": "Landings.Views.Blocks.Config.ProductsView.HoverAnimation.NextImageAnimation"
+            },
+            {
+                "value": "photo-view-list",
+                "name": "Landings.Views.Blocks.Config.ProductsView.HoverAnimation.PhotoViewList"
+            }
+        ],
+        "cart_add_type": 0,
+        "cart_add_type_options": [
+            {
+                "value": 0,
+                "name": "Landings.Views.Blocks.Config.ProductsView.CartAddType.Classic"
+            },
+            {
+                "value": 1,
+                "name": "Landings.Views.Blocks.Config.ProductsView.CartAddType.UnifiedWithQuantity"
+            }
+        ],
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "mobile_hidden": false,
+        "style": {},
+        "no_cache": true,
+        "move_not_avaliable_to_end": false,
+        "show_only_available": false
+    }
+}

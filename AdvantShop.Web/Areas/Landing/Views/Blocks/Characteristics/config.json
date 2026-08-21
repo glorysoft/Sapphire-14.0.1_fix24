@@ -1,0 +1,87 @@
+﻿{
+    "name": "characteristics",
+    "type": "characteristics",
+    "description": "Landings.Views.Blocks.Config.Characteristics.Description",
+    "category": "Landings.Views.Blocks.Config.Characteristics.Category",
+    "picture": "./areas/landing/images/characteristics/characteristics_preview.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Characteristics.SubBlockTitle"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Characteristics.SubBlockSubtitle"
+        }
+    ],
+    "darken": 0,
+    "settings": {
+        "items": [
+            {
+                "header": "Landings.Views.Blocks.Config.Characteristics.Group1Header",
+                "content_items": [
+                    {
+                        "name": "Landings.Views.Blocks.Config.Characteristics.Group1Item1Name",
+                        "value": "Landings.Views.Blocks.Config.Characteristics.Group1Item1Value"
+                    },
+                    {
+                        "name": "Landings.Views.Blocks.Config.Characteristics.Group1Item2Name",
+                        "value": "Landings.Views.Blocks.Config.Characteristics.Group1Item2Value"
+                    },
+                    {
+                        "name": "Landings.Views.Blocks.Config.Characteristics.Group1Item3Name",
+                        "value": "Landings.Views.Blocks.Config.Characteristics.Group1Item3Value"
+                    },
+                    {
+                        "name": "Landings.Views.Blocks.Config.Characteristics.Group1Item4Name",
+                        "value": "Landings.Views.Blocks.Config.Characteristics.Group1Item4Value"
+                    }
+                ]
+            },
+            {
+                "header": "Landings.Views.Blocks.Config.Characteristics.Group2Header",
+                "content_items": [
+                    {
+                        "name": "Landings.Views.Blocks.Config.Characteristics.Group2Item1Name",
+                        "value": "Landings.Views.Blocks.Config.Characteristics.Group2Item1Value"
+                    },
+                    {
+                        "name": "Landings.Views.Blocks.Config.Characteristics.Group2Item2Name",
+                        "value": "Landings.Views.Blocks.Config.Characteristics.Group2Item2Value"
+                    }
+                ]
+            },
+            {
+                "header": "Landings.Views.Blocks.Config.Characteristics.Group3Header",
+                "content_items": [
+                    {
+                        "name": "Landings.Views.Blocks.Config.Characteristics.Group3Item1Name",
+                        "value": "Landings.Views.Blocks.Config.Characteristics.Group3Item1Value"
+                    },
+                    {
+                        "name": "Landings.Views.Blocks.Config.Characteristics.Group3Item2Name",
+                        "value": "Landings.Views.Blocks.Config.Characteristics.Group3Item2Value"
+                    }
+                ]
+            }
+        ],
+        "classes": ["lp-block-characteristics", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": true,
+        "show_subtitle": false,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "style": {},
+        "mobile_hidden": false,
+        "width_in_columns": 12
+    }
+}

@@ -1,0 +1,111 @@
+﻿{
+    "name": "productsByCategories",
+    "type": "productsByCategories",
+    "description": "Landings.Views.Blocks.Config.ProductsByCategories.Description",
+    "category": "Landings.Views.Blocks.Config.ProductsByCategories.Category",
+    "picture": "./areas/landing/images/productsView/products_view_by_categories_preview.jpg",
+    "depends_on": ["storeClosed"],
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ProductsByCategories.SubBlockTitlePlaceholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ProductsByCategories.SubBlockSubtitlePlaceholder"
+        },
+        {
+            "name": "productsViewItem",
+            "type": "productsViewItem",
+            "placeholder": null
+        }
+    ],
+    "settings": {
+        "show_title": true,
+        "show_subtitle": true,
+        "color_scheme": "color-scheme--light",
+        "classes": ["lp-block-products-by-categories", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "show_price": true,
+        "show_description": false,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "show_buybutton": true,
+        "show_button_quickview": true,
+        "quickview": true,
+        "quickview_description": "briefDescription",
+        "show_filter": false,
+        "descriptionOptions": [
+            {
+                "value": "none",
+                "name": "Landings.Views.Blocks.Config.ProductsByCategories.DescriptionOptions.None"
+            },
+            {
+                "value": "briefDescription",
+                "name": "Landings.Views.Blocks.Config.ProductsByCategories.DescriptionOptions.BriefDescription"
+            },
+            {
+                "value": "fullDescription",
+                "name": "Landings.Views.Blocks.Config.ProductsByCategories.DescriptionOptions.FullDescription"
+            }
+        ],
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "number_products_in_row": 3,
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "button": {
+            "text": "Landings.Views.Blocks.Config.ProductsByCategories.ButtonText",
+            "action_upsell_lp_id": null
+        },
+        "view_mode_categories": "buttons",
+        "view_mode_categories_options": [
+            {
+                "value": "buttons",
+                "name": "Landings.Views.Blocks.Config.ProductsByCategories.ViewModeCategories.Buttons"
+            },
+            {
+                "value": "links",
+                "name": "Landings.Views.Blocks.Config.ProductsByCategories.ViewModeCategories.Links"
+            }
+        ],
+        "hover_animation": "none",
+        "hover_animation_options": [
+            {
+                "value": "none",
+                "name": "Landings.Views.Blocks.Config.ProductsByCategories.HoverAnimation.None"
+            },
+            {
+                "value": "zoom-animation",
+                "name": "Landings.Views.Blocks.Config.ProductsByCategories.HoverAnimation.ZoomAnimation"
+            },
+            {
+                "value": "next-image-animation",
+                "name": "Landings.Views.Blocks.Config.ProductsByCategories.HoverAnimation.NextImageAnimation"
+            },
+            {
+                "value": "photo-view-list",
+                "name": "Landings.Views.Blocks.Config.ProductsByCategories.HoverAnimation.PhotoViewList"
+            }
+        ],
+        "cart_add_type": 0,
+        "cart_add_type_options": [
+            {
+                "value": 0,
+                "name": "Landings.Views.Blocks.Config.ProductsByCategories.CartAddType.Classic"
+            },
+            {
+                "value": 1,
+                "name": "Landings.Views.Blocks.Config.ProductsByCategories.CartAddType.UnifiedWithQuantity"
+            }
+        ],
+        "style": {},
+        "products_count": 12,
+        "no_cache": true,
+        "show_all_categories": false
+    }
+}

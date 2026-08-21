@@ -1,0 +1,52 @@
+﻿@{
+    var isMobile = SettingsDesign.IsMobileTemplate;
+}
+
+<div ng-controller="ShippingRulesCtrl as shippingRules" ng-init="settingsShippingMethods.shippingRules = shippingRules">
+    <div class="sticky-page-name @(isMobile ? "" : " m-t-n-xs")" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            @if (!isMobile)
+            {
+                <div class="page-name-block-item-main flex middle-xs">
+                    <h2 class="sticky-page-name-text m-t-none setting--align-top" data-e2e="DiscountsTitle">
+                        @T("Admin.ShippingRules.Index.Title")
+                    </h2>
+                </div>
+                <div class="page-name-block-item-additional">
+                    <ui-modal-trigger data-controller="'ModalShippingRulesCtrl'" controller-as="ctrl"
+                                      template-url="@Html.GetAssetPath("shippingRules.html")" size="middle"
+                                      data-on-close="shippingRules.grid.fetchData()">
+                        <button class="btn btn-sm btn-success btn--margin-left" type="button"
+                                disabled ng-disabled="!shippingRules.gridInited">
+                            <span class="fa fa-plus"></span>@T("Admin.Add")
+                        </button>
+                    </ui-modal-trigger>
+                </div>
+            }
+        </div>
+    </div>
+
+    <ui-grid-custom grid-unique-id="gridShippingRules"
+                    grid-on-init="shippingRules.gridOnInit(grid)"
+                    grid-options="shippingRules.gridOptions"
+                    grid-url="'ShippingMethods/getRuleItems'"
+                    grid-inplace-url="'ShippingMethods/inplaceRule'"
+                    grid-extend-ctrl="shippingRules"
+                    grid-swipe-line="true">
+        <ui-grid-custom-override-control class="ng-cloak">
+            <ui-modal-trigger data-controller="'ModalShippingRulesCtrl'" controller-as="ctrl"
+                              template-url="@Html.GetAssetPath("shippingRules.html")"
+                              data-resolve="{'id': row.entity.Id}"
+                              data-on-close="grid.appScope.$ctrl.fetchData()">
+                <div class="card card--gap-row-sm card--p-18">
+                    <div class="flex between-xs center-xs">
+                        <div class="card__col m-r-xs flex middle-xs">
+                            {{row.entity.Name}}
+                        </div>
+                    </div>
+                </div>
+            </ui-modal-trigger>
+        </ui-grid-custom-override-control>
+    </ui-grid-custom>
+
+</div>

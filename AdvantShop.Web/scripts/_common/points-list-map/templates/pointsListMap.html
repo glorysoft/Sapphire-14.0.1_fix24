@@ -1,0 +1,40 @@
+﻿<div class="points-list-map">
+    <points-filters
+        class="points-list-map__filters"
+        data-ng-if="pointsListMap.filters"
+        data-change="pointsListMap.resetPointsMap(filter)"
+        data-filters="pointsListMap.filters"></points-filters>
+    <div class="points-list-map__row" data-ng-class="{'points-list-map__row--nowrap': !pointsListMap.displayMap}">
+        <div>
+            <points-list
+                class="points-list-map__list"
+                data-on-back-to-list="pointsListMap.resetPointsMap()"
+                data-points="pointsListMap.pointsListData"
+                data-show-details-point="pointsListMap.showDetailsPoint"
+                data-on-click-point="pointsListMap.runBalloon(point, index)"
+                data-is-select="pointsListMap.isSelect"
+                data-on-select="pointsListMap.handleSelect(point)"
+                data-async-init="pointsListMap.asyncInit"
+                data-on-init="pointsListMap.onInitPointsList(pointsListCtrl)"
+                data-active-point="pointsListMap.activeBalloon"></points-list>
+        </div>
+        <div class="relative points-list-map__map-wrap" data-ng-if="pointsListMap.displayMap">
+            <points-map
+                data-ya-after-init="pointsListMap.handleAfterInitMap($target)"
+                data-show-all="pointsListMap.showAll"
+                class="points-list-map__map"
+                data-points="pointsListMap.pointsMapData"
+                data-polygon="pointsListMap.polygon"
+                data-ya-map-key="pointsListMap.apiKeyMap"
+                data-ya-zoom="pointsListMap.zoom"
+                data-ya-center="pointsListMap.center"
+                data-map-options="pointsListMap.mapOptions"
+                data-ya-controls="pointsListMap.mapControls"
+                data-ya-collection-option="pointsListMap.collectionOptions"
+                data-ya-collection-after-init="pointsListMap.setCollection($target)"
+                data-ya-cluster-collection-after-init="pointsListMap.setClusterCollection($target)"
+                data-ya-geo-object-event-click="pointsListMap.showBalloonPlace(balloon, fromCluster)">
+            </points-map>
+        </div>
+    </div>
+</div>

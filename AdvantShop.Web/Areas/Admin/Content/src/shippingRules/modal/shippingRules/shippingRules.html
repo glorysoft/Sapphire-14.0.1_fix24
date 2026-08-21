@@ -1,0 +1,607 @@
+﻿<form data-is-mobile novalidate name="addEditShippingRuleForm">
+    <div class="modal-header">
+        <ui-modal-cross ng-if="!isMobile.value"></ui-modal-cross>
+        <h2 class="modal-header-title">{{'Admin.Js.ShippingRules.ModalHeader' | translate}}</h2>
+    </div>
+    <div class="modal-body">
+            <div class="form-group row setting__form-group">
+                <label class="col-xs-12 col-md-2 control-label">
+                    <span class="text-required setting__label"> {{'Admin.Js.ShippingRules.Name' | translate}} </span>
+                </label>
+                <div class="col-xs-12 col-md-10">
+                    <input
+                        type="text"
+                        class="form-control input-alt"
+                        ng-model="ctrl.rule.Name"
+                        required
+                        validation-input-text="{{'Admin.Js.ShippingRules.Name'|translate}}"
+                        data-autofocus="!isMobile.value"/>
+                </div>
+            </div>
+            <div class="form-group row setting__form-group">
+                <label class="col-xs-12 col-md-2 control-label">
+                    <span class="text-required setting__label"> {{'Admin.Js.ShippingRules.Rules' | translate}} </span>
+                </label>
+                <div class="col-xs-12 col-md-10">
+                    <div class="sortable-row" ng-model="ctrl.actions" as-sortable>
+                        <div class="row m-b middle-xs" ng-repeat="action in ctrl.actions" as-sortable-item
+                             ng-class="{'m-t p-t-sm b-t-1': isMobile.value && $index !== 0}">
+                            <div class="col-xs">
+                                <div class="row middle-xs">
+                                    <div class="col-slim m-l-xs" ng-class="{'col-xs-slim': isMobile.value}" as-sortable-item-handle>
+                                        <icon-move/>
+                                    </div>
+                                    <div class="col-xs">
+                                        <div class="row middle-xs">
+                                            <div class="col-xs-12 col-md-4">
+                                                <ui-select
+                                                    class="input-alt"
+                                                    ng-model="action.type"
+                                                    required
+                                                    validation-input-text="{{'Admin.Js.ShippingRules.Rules'|translate}}">
+                                                    <ui-select-match>{{$select.selected.label}}</ui-select-match>
+                                                    <ui-select-choices repeat="s.value as s in ctrl.typesOfAction | filter: $select.search">
+                                                        <div>{{s.label}}</div>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                            <div class="col-xs-12 col-md-8">
+                                                <div class="row middle-xs" ng-if="action.type === 'fixedCost'">
+                                                    <div class="col-xs-12 col-md-6" ng-class="{'m-t-md': isMobile.value}">
+                                                        <input type="number"
+                                                               min="0"
+                                                               required
+                                                               ng-model="action.cost"
+                                                               placeholder="{{'Admin.Js.ShippingRules.Rules.FixedCost.Placeholder'|translate}}"
+                                                               validation-input-text="{{'Admin.Js.ShippingRules.Rules.FixedCost.ValidationName'|translate}}"
+                                                               class="form-control input-alt"/>
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6" ng-class="{'m-t-md': isMobile.value}">
+                                                        <ui-select
+                                                            class="input-alt"
+                                                            ng-model="action.currency"
+                                                            required
+                                                            validation-input-text="{{'Admin.Js.ShippingRules.Rules.Currency'|translate}}">
+                                                            <ui-select-match
+                                                                placeholder="{{'Admin.Js.ShippingRules.Rules.Currency.SetCurrency'|translate}}">
+                                                                {{$select.selected.label}}
+                                                            </ui-select-match>
+                                                            <ui-select-choices
+                                                                repeat="s.value as s in ctrl.formData.Currencies | filter: $select.search">
+                                                                <div>{{s.label}}</div>
+                                                            </ui-select-choices>
+                                                        </ui-select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row middle-xs" ng-if="action.type === 'increaseCost'">
+                                                    <div class="col-xs-12 col-md-3" ng-class="{'m-t-md': isMobile.value}">
+                                                        <div class="input-group">
+                                                            <input type="number"
+                                                                   min="0"
+                                                                   required
+                                                                   ng-model="action.percents"
+                                                                   placeholder="{{'Admin.Js.ShippingRules.Rules.IncreaseCost.Percents.Placeholder'|translate}}"
+                                                                   validation-input-text="{{'Admin.Js.ShippingRules.Rules.IncreaseCost.Percents.ValidationName'|translate}}"
+                                                                   class="form-control input-alt"/>
+                                                            <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default"><span>%</span></button>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-1 text-center" ng-class="{'m-t-md': isMobile.value}">
+                                                        +
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-4" ng-class="{'m-t-md': isMobile.value}">
+                                                        <input type="number"
+                                                               min="0"
+                                                               required
+                                                               ng-model="action.cost"
+                                                               placeholder="{{'Admin.Js.ShippingRules.Rules.IncreaseCost.Placeholder'|translate}}"
+                                                               validation-input-text="{{'Admin.Js.ShippingRules.Rules.IncreaseCost.ValidationName'|translate}}"
+                                                               class="form-control input-alt"/>
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-4" ng-class="{'m-t-md': isMobile.value}">
+                                                        <ui-select
+                                                            class="input-alt"
+                                                            ng-model="action.currency"
+                                                            required
+                                                            validation-input-text="{{'Admin.Js.ShippingRules.Rules.Currency'|translate}}">
+                                                            <ui-select-match
+                                                                placeholder="{{'Admin.Js.ShippingRules.Rules.Currency.SetCurrency'|translate}}">
+                                                                {{$select.selected.label}}
+                                                            </ui-select-match>
+                                                            <ui-select-choices
+                                                                repeat="s.value as s in ctrl.formData.Currencies | filter: $select.search">
+                                                                <div>{{s.label}}</div>
+                                                            </ui-select-choices>
+                                                        </ui-select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row middle-xs" ng-if="action.type === 'reduceCost'">
+                                                    <div class="col-xs-12 col-md-3" ng-class="{'m-t-md': isMobile.value}">
+                                                        <div class="input-group">
+                                                            <input type="number"
+                                                                   min="0"
+                                                                   required
+                                                                   ng-model="action.percents"
+                                                                   placeholder="{{'Admin.Js.ShippingRules.Rules.ReduceCost.Percents.Placeholder'|translate}}"
+                                                                   validation-input-text="{{'Admin.Js.ShippingRules.Rules.ReduceCost.Percents.ValidationName'|translate}}"
+                                                                   class="form-control input-alt"/>
+                                                            <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default"><span>%</span></button>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-1 text-center" ng-class="{'m-t-md': isMobile.value}">
+                                                        -
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-4" ng-class="{'m-t-md': isMobile.value}">
+                                                        <input type="number"
+                                                               min="0"
+                                                               required
+                                                               ng-model="action.cost"
+                                                               placeholder="{{'Admin.Js.ShippingRules.Rules.ReduceCost.Placeholder'|translate}}"
+                                                               validation-input-text="{{'Admin.Js.ShippingRules.Rules.ReduceCost.ValidationName'|translate}}"
+                                                               class="form-control input-alt"/>
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-4" ng-class="{'m-t-md': isMobile.value}">
+                                                        <ui-select
+                                                            class="input-alt"
+                                                            ng-model="action.currency"
+                                                            required
+                                                            validation-input-text="{{'Admin.Js.ShippingRules.Rules.Currency'|translate}}">
+                                                            <ui-select-match
+                                                                placeholder="{{'Admin.Js.ShippingRules.Rules.Currency.SetCurrency'|translate}}">
+                                                                {{$select.selected.label}}
+                                                            </ui-select-match>
+                                                            <ui-select-choices
+                                                                repeat="s.value as s in ctrl.formData.Currencies | filter: $select.search">
+                                                                <div>{{s.label}}</div>
+                                                            </ui-select-choices>
+                                                        </ui-select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row middle-xs" ng-if="action.type === 'increaseCostByOrderSum'" >
+                                                    <div class="col-xs-12 col-md-4" ng-class="{'m-t-md': isMobile.value}">
+                                                        <div class="input-group">
+                                                            <input type="number"
+                                                                   min="0"
+                                                                   required
+                                                                   ng-model="action.percents"
+                                                                   placeholder="{{'Admin.Js.ShippingRules.Rules.IncreaseCostByOrderSum.Placeholder'|translate}}"
+                                                                   validation-input-text="{{'Admin.Js.ShippingRules.Rules.IncreaseCostByOrderSum.ValidationName'|translate}}"
+                                                                   class="form-control input-alt"/>
+                                                            <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default"><span>%</span></button>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row middle-xs" ng-if="action.type === 'reduceCostByOrderSum'">
+                                                    <div class="col-xs-12 col-md-4" ng-class="{'m-t-md': isMobile.value}">
+                                                        <div class="input-group">
+                                                            <input type="number"
+                                                                   min="0"
+                                                                   required
+                                                                   ng-model="action.percents"
+                                                                   placeholder="{{'Admin.Js.ShippingRules.Rules.ReduceCostByOrderSum.Placeholder'|translate}}"
+                                                                   validation-input-text="{{'Admin.Js.ShippingRules.Rules.ReduceCostByOrderSum.ValidationName'|translate}}"
+                                                                   class="form-control input-alt"/>
+                                                            <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default"><span>%</span></button>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-slim m-l-xs" ng-class="{'col-xs-slim': isMobile.value}">
+                                        <a class="link link-invert link-decoration-none fas fa-trash" ng-click="ctrl.removeAction($index)"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <input class="ng-hide" type="text" required ng-model="ctrl.empty" ng-if="!ctrl.actions.length"
+                               validation-input-text="{{'Admin.Js.ShippingRules.Rules'|translate}}">
+                        <button type="button" ng-class="{'btn btn-sm btn-success':isMobile.value,'btn btn-save btn-default':!isMobile.value}"
+                                ng-click="ctrl.addAction()">
+                            <span ng-if="!isMobile.value" class="fa fa-plus"></span>
+                            {{'Admin.Js.ShippingRules.Rules.AddRule' | translate}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row setting__form-group">
+                <label class="col-xs-12 col-md-2 control-label setting__label">
+                    <span ng-class="{'text-required': ctrl.validFor !== 'allShipping'}">{{'Admin.Js.ShippingRules.ValidFor' | translate}}</span>
+                </label>
+                <div class="col-xs-12 col-md-10">
+                    <div class="row middle-xs">
+                        <div class="col-xs">
+                            <div class="row middle-xs">
+                                <div class="col-xs">
+                                    <ui-select
+                                        class="input-alt"
+                                        ng-model="ctrl.validFor"
+                                        required
+                                        validation-input-text="{{'Admin.Js.ShippingRules.ValidFor'|translate}}">
+                                        <ui-select-match>{{$select.selected.label}}</ui-select-match>
+                                        <ui-select-choices repeat="s.value as s in ctrl.validForList | filter: $select.search">
+                                            <div>{{s.label}}</div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+
+                            <div class="row m-t-xs middle-xs" ng-if="ctrl.validFor === 'byType'">
+                                <div class="col-xs" ng-class="{'m-t-md': isMobile.value}">
+                                    <ui-select
+                                        class="input-alt"
+                                        ng-model="ctrl.ValidForTypes"
+                                        required
+                                        multiple
+                                        validation-input-text="{{'Admin.Js.ShippingRules.ValidFor.ByType.Validation'|translate}}">
+                                        <ui-select-match placeholder="{{'Admin.Js.ShippingRules.ValidFor.ByType.Placeholder'|translate}}">
+                                            {{$item.label}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="s.value as s in ctrl.formData.ShippingTypes | filter: $select.search">
+                                            <div>{{s.label}}</div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+
+                            <div class="row m-t-xs middle-xs" ng-if="ctrl.validFor === 'byId'">
+                                <div class="col-xs" ng-class="{'m-t-md': isMobile.value}">
+                                    <ui-select
+                                        class="input-alt"
+                                        ng-model="ctrl.ValidForIds"
+                                        required
+                                        multiple
+                                        validation-input-text="{{'Admin.Js.ShippingRules.ValidFor.ById.Validation'|translate}}">
+                                        <ui-select-match placeholder="{{'Admin.Js.ShippingRules.ValidFor.ById.Placeholder'|translate}}">
+                                            {{$item.label}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="s.value as s in ctrl.formData.ShippingMethods | filter: $select.search">
+                                            <div>{{s.label}}</div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+
+                            <div class="row m-t-xs middle-xs" ng-if="ctrl.validFor === 'excludeByType'">
+                                <div class="col-xs" ng-class="{'m-t-md': isMobile.value}">
+                                    <ui-select
+                                        class="input-alt"
+                                        ng-model="ctrl.ExcludeForTypes"
+                                        required
+                                        multiple
+                                        validation-input-text="{{'Admin.Js.ShippingRules.ValidFor.ExcludeByType.Validation'|translate}}">
+                                        <ui-select-match placeholder="{{'Admin.Js.ShippingRules.ValidFor.ByType.Placeholder'|translate}}">
+                                            {{$item.label}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="s.value as s in ctrl.formData.ShippingTypes | filter: $select.search">
+                                            <div>{{s.label}}</div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+
+                            <div class="row m-t-xs middle-xs" ng-if="ctrl.validFor === 'excludeById'">
+                                <div class="col-xs" ng-class="{'m-t-md': isMobile.value}">
+                                    <ui-select
+                                        class="input-alt"
+                                        ng-model="ctrl.ExcludeForIds"
+                                        required
+                                        multiple
+                                        validation-input-text="{{'Admin.Js.ShippingRules.ValidFor.ExcludeById.Validation'|translate}}">
+                                        <ui-select-match placeholder="{{'Admin.Js.ShippingRules.ValidFor.ById.Placeholder'|translate}}">
+                                            {{$item.label}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="s.value as s in ctrl.formData.ShippingMethods | filter: $select.search">
+                                            <div>{{s.label}}</div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row setting__form-group">
+                <label class="col-xs-12 col-md-2 control-label">
+                    <span class="setting__label"> {{'Admin.Js.ShippingRules.If' | translate}} </span>
+                </label>
+                <div class="col-xs-12 col-md-10">
+                    <div class="row m-b middle-xs" ng-repeat="filter in ctrl.filters" ng-class="{'m-t p-t-sm b-t-1': isMobile.value && $index !== 0}">
+                        <div class="col-xs">
+                            <div class="row middle-xs">
+                                <div class="col-xs">
+                                    <div class="row middle-xs">
+                                        <div class="col-xs-12 col-md-3" ng-class="{'m-t-md': isMobile.value}">
+                                            <ui-select
+                                                class="input-alt"
+                                                ng-model="filter.type"
+                                                required
+                                                validation-input-text="{{'Admin.Js.ShippingRules.If'|translate}}">
+                                                <ui-select-match>{{$select.selected.label}}</ui-select-match>
+                                                <ui-select-choices repeat="s.value as s in ctrl.typesOfFilter | filter: $select.search">
+                                                    <div>{{s.label}}</div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                        <div class="col-xs-12 col-md-9">
+                                            <div class="row middle-xs" ng-if="filter.type === 'filterTotalPrice'">
+                                                <div class="col-xs-12 col-md-3" ng-class="{'m-t-md': isMobile.value}">
+                                                    <ui-select
+                                                        class="input-alt"
+                                                        ng-model="filter.typeOfComparison"
+                                                        required
+                                                        validation-input-text="{{'Admin.Js.ShippingRules.If.TypeOfComparison'|translate}}">
+                                                        <ui-select-match placeholder="{{'Admin.Js.ShippingRules.If.TypeOfComparison'|translate}}">
+                                                            {{$select.selected.label}}
+                                                        </ui-select-match>
+                                                        <ui-select-choices repeat="s.value as s in ctrl.typesOfComparison | filter: $select.search">
+                                                            <div>{{s.label}}</div>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison === 'range'"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <input type="number"
+                                                           min="0"
+                                                           required
+                                                           ng-model="filter.fromTotalPrice"
+                                                           placeholder="{{'Admin.Js.ShippingRules.If.FromPlaceholder'|translate}}"
+                                                           validation-input-text="{{'Admin.Js.ShippingRules.If.FromPlaceholder'|translate}}"
+                                                           class="form-control input-alt"/>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison === 'range'"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <input type="number"
+                                                           data-ng-min="filter.fromTotalPrice"
+                                                           required
+                                                           ng-model="filter.toTotalPrice"
+                                                           placeholder="{{'Admin.Js.ShippingRules.If.ToPlaceholder'|translate}}"
+                                                           validation-input-text="{{'Admin.Js.ShippingRules.If.ToPlaceholder'|translate}}"
+                                                           class="form-control input-alt"/>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison === 'more'"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <input type="number"
+                                                           min="0"
+                                                           required
+                                                           ng-model="filter.fromTotalPrice"
+                                                           placeholder="{{'Admin.Js.ShippingRules.If.Value'|translate}}"
+                                                           validation-input-text="{{'Admin.Js.ShippingRules.If.Value'|translate}}"
+                                                           class="form-control input-alt"/>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison === 'less'" ng-class="{'m-t-md': isMobile.value}">
+                                                    <input type="number"
+                                                           min="0"
+                                                           required
+                                                           ng-model="filter.toTotalPrice"
+                                                           placeholder="{{'Admin.Js.ShippingRules.If.Value'|translate}}"
+                                                           validation-input-text="{{'Admin.Js.ShippingRules.If.Value'|translate}}"
+                                                           class="form-control input-alt"/>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <ui-select
+                                                        class="input-alt"
+                                                        ng-model="filter.currency"
+                                                        required
+                                                        validation-input-text="{{'Admin.Js.ShippingRules.If.Currency'|translate}}">
+                                                        <ui-select-match placeholder="{{'Admin.Js.ShippingRules.If.Currency.SetCurrency'|translate}}">
+                                                            {{$select.selected.label}}
+                                                        </ui-select-match>
+                                                        <ui-select-choices repeat="s.value as s in ctrl.formData.Currencies | filter: $select.search">
+                                                            <div>{{s.label}}</div>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row middle-xs" ng-if="filter.type === 'filterCost'">
+                                                <div class="col-xs-12 col-md-3"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <ui-select
+                                                        class="input-alt"
+                                                        ng-model="filter.typeOfComparison"
+                                                        required
+                                                        validation-input-text="{{'Admin.Js.ShippingRules.If.TypeOfComparison'|translate}}">
+                                                        <ui-select-match placeholder="{{'Admin.Js.ShippingRules.If.TypeOfComparison'|translate}}">
+                                                            {{$select.selected.label}}
+                                                        </ui-select-match>
+                                                        <ui-select-choices repeat="s.value as s in ctrl.typesOfComparison | filter: $select.search">
+                                                            <div>{{s.label}}</div>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison === 'range'"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <input type="number"
+                                                           min="0"
+                                                           required
+                                                           ng-model="filter.fromCost"
+                                                           placeholder="{{'Admin.Js.ShippingRules.If.FromPlaceholder'|translate}}"
+                                                           validation-input-text="{{'Admin.Js.ShippingRules.If.FromPlaceholder'|translate}}"
+                                                           class="form-control input-alt"/>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison === 'range'"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <input type="number"
+                                                           data-ng-min="filter.fromCost"
+                                                           required
+                                                           ng-model="filter.toCost"
+                                                           placeholder="{{'Admin.Js.ShippingRules.If.ToPlaceholder'|translate}}"
+                                                           validation-input-text="{{'Admin.Js.ShippingRules.If.ToPlaceholder'|translate}}"
+                                                           class="form-control input-alt"/>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison === 'more'"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <input type="number"
+                                                           min="0"
+                                                           required
+                                                           ng-model="filter.fromCost"
+                                                           placeholder="{{'Admin.Js.ShippingRules.If.Value'|translate}}"
+                                                           validation-input-text="{{'Admin.Js.ShippingRules.If.Value'|translate}}"
+                                                           class="form-control input-alt"/>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison === 'less'"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <input type="number"
+                                                           min="0"
+                                                           required
+                                                           ng-model="filter.toCost"
+                                                           placeholder="{{'Admin.Js.ShippingRules.If.Value'|translate}}"
+                                                           validation-input-text="{{'Admin.Js.ShippingRules.If.Value'|translate}}"
+                                                           class="form-control input-alt"/>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <ui-select
+                                                        class="input-alt"
+                                                        ng-model="filter.currency"
+                                                        required
+                                                        validation-input-text="{{'Admin.Js.ShippingRules.If.Currency'|translate}}">
+                                                        <ui-select-match placeholder="{{'Admin.Js.ShippingRules.If.Currency.SetCurrency'|translate}}">
+                                                            {{$select.selected.label}}
+                                                        </ui-select-match>
+                                                        <ui-select-choices repeat="s.value as s in ctrl.formData.Currencies | filter: $select.search">
+                                                            <div>{{s.label}}</div>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row middle-xs" ng-if="filter.type === 'filterWeight'">
+                                                <div class="col-xs-12 col-md-3"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <ui-select
+                                                        class="input-alt"
+                                                        ng-model="filter.typeOfComparison"
+                                                        required
+                                                        validation-input-text="{{'Admin.Js.ShippingRules.If.TypeOfComparison'|translate}}">
+                                                        <ui-select-match placeholder="{{'Admin.Js.ShippingRules.If.TypeOfComparison'|translate}}">
+                                                            {{$select.selected.label}}
+                                                        </ui-select-match>
+                                                        <ui-select-choices repeat="s.value as s in ctrl.typesOfComparison | filter: $select.search">
+                                                            <div>{{s.label}}</div>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison === 'range'"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <div class="input-group">
+                                                        <input type="number"
+                                                               min="0"
+                                                               required
+                                                               ng-model="filter.fromWeight"
+                                                               placeholder="{{'Admin.Js.ShippingRules.If.FromPlaceholder'|translate}}"
+                                                               validation-input-text="{{'Admin.Js.ShippingRules.If.FromPlaceholder'|translate}}"
+                                                               class="form-control input-alt"/>
+                                                        <span class="input-group-btn">
+                                                            <button type="button"
+                                                                    class="btn btn-default"><span>{{'Admin.Js.ShippingRules.If.Kg' | translate}}</span></button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison === 'range'"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <div class="input-group">
+                                                        <input type="number"
+                                                               data-ng-min="filter.fromWeight"
+                                                               required
+                                                               ng-model="filter.toWeight"
+                                                               placeholder="{{'Admin.Js.ShippingRules.If.ToPlaceholder'|translate}}"
+                                                               validation-input-text="{{'Admin.Js.ShippingRules.If.ToPlaceholder'|translate}}"
+                                                               class="form-control input-alt"/>
+                                                        <span class="input-group-btn">
+                                                            <button type="button"
+                                                                    class="btn btn-default"><span>{{'Admin.Js.ShippingRules.If.Kg' | translate}}</span></button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison === 'more'"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <div class="input-group">
+                                                        <input type="number"
+                                                               min="0"
+                                                               required
+                                                               ng-model="filter.fromWeight"
+                                                               placeholder="{{'Admin.Js.ShippingRules.If.Value'|translate}}"
+                                                               validation-input-text="{{'Admin.Js.ShippingRules.If.Value'|translate}}"
+                                                               class="form-control input-alt"/>
+                                                        <span class="input-group-btn">
+                                                            <button type="button"
+                                                                    class="btn btn-default"><span>{{'Admin.Js.ShippingRules.If.Kg' | translate}}</span></button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3" ng-if="filter.typeOfComparison === 'less'"  ng-class="{'m-t-md': isMobile.value}">
+                                                    <div class="input-group">
+                                                        <input type="number"
+                                                               min="0"
+                                                               required
+                                                               ng-model="filter.toWeight"
+                                                               placeholder="{{'Admin.Js.ShippingRules.If.Value'|translate}}"
+                                                               validation-input-text="{{'Admin.Js.ShippingRules.If.Value'|translate}}"
+                                                               class="form-control input-alt"/>
+                                                        <span class="input-group-btn">
+                                                            <button type="button"
+                                                                    class="btn btn-default"><span>{{'Admin.Js.ShippingRules.If.Kg' | translate}}</span></button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-slim m-l-xs" ng-class="{'col-xs-slim': isMobile.value}">
+                                    <a class="link link-invert link-decoration-none fas fa-trash" ng-click="ctrl.removeFilter($index)"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" ng-class="{'btn btn-sm btn-success':isMobile.value,'btn btn-save btn-default':!isMobile.value}"
+                                ng-click="ctrl.addFilter()">
+                            <span ng-if="!isMobile.value" class="fa fa-plus"></span>
+                            {{'Admin.Js.ShippingRules.If.AddFilter' | translate}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row setting__form-group middle-xs">
+                <div class="col-xs-slim col-md-9" ng-class="{'p-r-xs': isMobile.value}">
+                    <label class="adv-checkbox-label control-checkbox">
+                        <input type="checkbox" class="adv-checkbox-input" ng-model="ctrl.rule.Enabled"/>
+                        <span class="adv-checkbox-emul"></span>
+                    </label>
+                </div>
+                <label class="col-xs col-md-2 first-md"
+                       ng-class="{'flex-grow setting__font-weight--xs': isMobile.value, 'control-label': !isMobile.value}">
+                    {{'Admin.Js.ShippingRules.Enabled' | translate}}
+                </label>
+            </div>
+            <div class="form-group row setting__form-group">
+                <label class="col-xs-12 col-md-2 control-label">
+                    {{'Admin.Js.ShippingRules.SortOrder' | translate}}
+                </label>
+                <div class="col-xs-12 col-md-10">
+                    <input type="number"
+                           ng-model="ctrl.rule.SortOrder"
+                           required
+                           validation-input-text="{{'Admin.Js.ShippingRules.SortOrder'|translate}}"
+                           class="form-control input-alt"/>
+                </div>
+            </div>
+    </div>
+    <div class="modal-footer">
+        <button
+            class="btn btn-save btn-primary"
+            type="button"
+            data-button-validation-success="ctrl.save()"
+            data-button-validation
+            disabled
+            ng-disabled="!addEditShippingRuleForm.modified">
+            {{'Admin.Js.AddEdit.Save' | translate}}
+        </button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">{{'Admin.Js.AddEdit.Cancel' | translate}}</button>
+    </div>
+</form>

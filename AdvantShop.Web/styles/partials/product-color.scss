@@ -1,0 +1,11 @@
+@use '../settings';
+@use '../functions/util';
+
+.product-color {
+    display: inline-block;
+    vertical-align: middle;
+    text-indent: 100%;
+    border-radius: settings.$border-radius-small;
+    margin: 0 util.rem-calc(5px);
+    overflow: hidden;
+}

@@ -1,0 +1,65 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.CustomersSettingsModel
+
+@{
+var isMobile = SettingsDesign.IsMobileTemplate;
+}
+
+<div class="sticky-page-name  m-t-n-xs hidden-xs visible-md" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner m-t-n-xs">
+        <div class="page-name-block-item-main flex middle-xs">
+            <h3 class="sticky-page-name-text m-t-none bold" data-e2e="CustomerSettingTitle">
+                @T("Admin.Settings.CustomerSettings.Title")
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="form-group row">
+    @if (!isMobile)
+    {
+    <div class="col-xs-12 col-md-3 col-wl-2">
+        <div class="setting-label-wrap setting__label">
+            @T("Admin.Settings.CustomerSettings.ForbiddenChangeData")
+        </div>
+    </div>
+    }
+    <div class="col-xs-12 col-md-4 relative @(isMobile ? "flex middle-xs" : "")">
+        <label class="adv-checkbox-label @(isMobile ? "p-r-sm" : "")">
+            @Html.CheckBoxFor(x => x.IsForbiddenAsChangingGeneralData, new { @class = "adv-checkbox-input", ng_model = "settingsCustomers.IsForbiddenAsChangingGeneralData" })
+            <span class="adv-checkbox-emul" data-e2e="ChangingGeneralData"></span>
+            @if (isMobile)
+            {
+            <span>@T("Admin.Settings.CustomerSettings.ForbiddenChangeData")</span>
+            }
+        </label>
+        <help-trigger class="ng-cloak @(isMobile ? "m-l-sm p-l-xs" : "p-l-xs")" data-title="@T("Admin.Settings.CustomerSettings.ForbiddenChangeData")">
+            <div class="help-content">
+                @T("Admin.Settings.CustomerSettings.ForbiddenChangeDataHelp")
+            </div>
+        </help-trigger>
+    </div>
+</div>
+<div class="form-group row">
+    @if (!isMobile)
+    {
+    <div class="col-xs-12 col-md-3 col-wl-2">
+        <div class="setting-label-wrap setting__label">
+            @T("Admin.Settings.CustomerSettings.ForbiddenChangeAddressBook")
+        </div>
+    </div>
+    }
+    <div class="col-xs-12 col-md-4 relative @(isMobile ? "flex middle-xs" : "")">
+        <label class="adv-checkbox-label @(isMobile ? "p-r-sm" : "")">
+            @Html.CheckBoxFor(x => x.IsForbiddenAsChangingAddressBook, new { @class = "adv-checkbox-input", ng_model = "settingsCustomers.IsForbiddenAsChangingddressBook" })
+            <span class="adv-checkbox-emul" data-e2e="ChangingAddressBook"></span>
+            @if (isMobile)
+            {
+            <span>@T("Admin.Settings.CustomerSettings.ForbiddenChangeAddressBook")</span>
+            }
+        </label>
+        <help-trigger class="ng-cloak @(isMobile ? "m-l-sm p-l-xs" : "p-l-xs")" data-title="@T("Admin.Settings.CustomerSettings.ForbiddenChangeAddressBook")">
+            <div class="help-content">
+                @T("Admin.Settings.CustomerSettings.ForbiddenChangeAddressBookHelp")
+            </div>
+        </help-trigger>
+    </div>
+</div>

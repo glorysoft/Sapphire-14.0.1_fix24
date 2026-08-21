@@ -1,0 +1,22 @@
+﻿<div
+    class="{{::modal.modalOverlayClass}}"
+    data-ng-class="{'adv-modal--floating-animation': modal.modalVariant === modal.modalVariants.SHEET, 'adv-modal': modal.isFloating === false, 'adv-modal-floating': modal.isFloating === true, 'adv-modal-active' : modal.isOpen === true, 'adv-modal-background' : modal.backgroundEnable === true, 'adv-modal-in-iframe': modal.inIframe === true}"
+    data-ng-show="modal.isOpen"
+    data-modal-wrapper=""
+    data-ng-click="modal.modalClickOut($event)">
+    <div
+        class="adv-modal-inner {{::modal.modalClass}}"
+        data-modal-form=""
+        data-ng-mousedown="modal.setMousedownOnContent(true)">
+        <a
+            href="javascript:void(0)"
+            role="link"
+            class="adv-modal-close icon-cancel-after link-text-decoration-none {{::modal.closePositionClass}}"
+            data-ng-click="modal.close($event)"
+            data-ng-if="::modal.crossEnable === true"
+            data-translate="Js.Modal.Close"></a>
+        <!--data-ng-class="{'close-outside cs-l-4' : modal.headerExist === false || modal.headerExist == null }"-->
+        <div class="js-modal-transclude"></div>
+        <div class="js-transclude-bottom-modal adv-modal-bottom"></div>
+    </div>
+</div>

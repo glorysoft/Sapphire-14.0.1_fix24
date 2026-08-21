@@ -1,0 +1,51 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.SystemSettingsModel
+
+@{
+    var isMobile = SettingsDesign.IsMobileTemplate;
+}
+@if (!isMobile)
+{
+    <div class="setting-title m-t-none">
+        <h3 class="font-bold">Бонусная система</h3>
+    </div>
+}
+<div class="form-group row middle-xs setting__form-group">
+    @if (!isMobile)
+    {
+        <div class="col-xs-3">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(x => x.BonusAppActive, "Активность")
+            </div>
+        </div>
+    }
+    <div class="col-xs-12 col-md-6 @(isMobile ? "flex middle-xs" : "")">
+        <label class="adv-checkbox-label @(isMobile ? "p-r-sm" : "")">
+            @Html.CheckBoxFor(x => x.BonusAppActive, new { @class = "adv-checkbox-input", ng_model = "settingsSystem.BonusAppActive" })
+            <span class="adv-checkbox-emul"></span>
+        </label>
+        @if (isMobile)
+        {
+            <div class="setting-label-wrap setting__label setting--m-none flex-grow">
+                @Html.LabelFor(x => x.BonusAppActive, "Активность бонусной системы")
+            </div>
+        }
+    </div>
+</div>
+<div class="form-group row middle-xs setting__form-group">
+    <div class="col-xs-12 col-md-3">
+        <div class="setting-label-wrap setting__label">
+            @Html.LabelFor(x => x.ActiveBonusSystemModule, "Использовать бонусную систему")
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6 relative">
+        @Html.DropDownListFor(x => x.ActiveBonusSystemModule, Model.BonusSystemModules, new { @class = "form-control input-alt", ng_model = "settingsSystem.activeBonusSystemModule" })
+        @* <div class="m-t-sm"> *@
+        @*     <a class="link-decoration-none" href="@Url.AbsoluteActionUrl("Market", "Modules", new {name = "bonussystem"})" target="_blank">Найти и установить модули бонусной системы</a> *@
+        @* </div> *@
+    </div>
+</div>
+
+
+
+
+

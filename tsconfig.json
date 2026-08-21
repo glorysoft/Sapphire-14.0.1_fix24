@@ -1,0 +1,4 @@
+{
+    "extends": "./AdvantShop.Web/tsconfig.json",
+    "include": ["./Modules/**/*.ts"]
+}

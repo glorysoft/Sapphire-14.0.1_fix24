@@ -1,0 +1,86 @@
+﻿<ng-form name="shippingFivePostSyncStatus" is-mobile>
+    <div ng-if="!isMobile.value" class="form-group row middle-xs setting__form-group">
+        <div class="col-xs-12 col-sm-3 col-md-3">
+            {{'Admin.Js.ShippingMethod.FivePost.StoreStatus' | translate}}
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3">
+            {{'Admin.Js.ShippingMethod.FivePost.FivePostStatus' | translate}}
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3">
+            {{'Admin.Js.ShippingMethod.FivePost.ExecutionStatus' | translate}}
+        </div>
+    </div>
+    <div class="form-group row middle-xs setting__form-group" ng-repeat="item in $ctrl.syncStatuses track by $index">
+        <div class="col-xs-12 col-sm-3 col-md-3 m-b-sm">
+            <label ng-if="isMobile.value">
+                {{'Admin.Js.ShippingMethod.FivePost.StoreStatus' | translate}}
+            </label>
+            <label>
+                <input type="text" class="form-control input-alt" readonly="readonly" value="{{$ctrl.getAdvStatusName(item.advStatus)}}" />
+            </label>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 m-b-sm">
+            <label ng-if="isMobile.value">
+                {{'Admin.Js.ShippingMethod.FivePost.FivePostStatus' | translate}}
+            </label>
+            <label>
+                <input type="text" class="form-control input-alt" readonly="readonly" value="{{$ctrl.getStatusNameByObj(item)}}" />
+            </label>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 m-b-sm">
+            <label ng-if="isMobile.value && item.fivePostExecutionStatus">
+                {{'Admin.Js.ShippingMethod.FivePost.ExecutionStatus' | translate}}
+            </label>
+            <label ng-if="!isMobile.value || item.fivePostExecutionStatus">
+                <input type="text" class="form-control input-alt" readonly="readonly"
+                       value="{{$ctrl.getExecutionStatusName(item.fivePostExecutionStatus)}}" />
+            </label>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 m-b-sm">
+            <a href="" ng-click="$ctrl.deleteSyncStatus($index)" class="link-danger link-decoration-none">Удалить</a>
+        </div>
+    </div>
+    <div class="form-group row bottom-xs setting__form-group">
+        <div class="col-xs-12 col-sm-3 col-md-3 m-b-sm">
+            <label>
+                {{'Admin.Js.ShippingMethod.FivePost.StoreStatus' | translate}}
+            </label>
+            <ui-select ng-model="$ctrl.advStatus">
+                <ui-select-match>{{$select.selected.label}}</ui-select-match>
+                <ui-select-choices repeat="s.value as s in $ctrl.advStatuses | filter: $select.search">
+                    <div>{{s.label}}</div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 m-b-sm">
+            <label>
+                {{'Admin.Js.ShippingMethod.FivePost.FivePostStatus' | translate}}
+            </label>
+            <ui-select ng-model="$ctrl.Status">
+                <ui-select-match>{{$select.selected.label}}</ui-select-match>
+                <ui-select-choices repeat="s.value as s in $ctrl.listStatuses | filter: $select.search">
+                    <div>{{s.label}}</div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 m-b-sm">
+            <label>
+                {{'Admin.Js.ShippingMethod.FivePost.ExecutionStatus' | translate}}
+            </label>
+            <ui-select ng-model="$ctrl.ExecutionStatus">
+                <ui-select-match>{{$select.selected.label}}</ui-select-match>
+                <ui-select-choices repeat="s.value as s in $ctrl.listExecutionStatuses | filter: $select.search">
+                    <div>{{s.label}}</div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 m-b-sm">
+            <button type="button" ng-disabled="$ctrl.Status == null || $ctrl.advStatus == null" class="btn btn-action"
+                    ng-click="$ctrl.addSyncStatus()">{{'Admin.Js.ShippingMethods.Add' | translate}}
+            </button>
+        </div>
+    </div>
+
+    <input type="hidden" name="statusesReference" value="{{$ctrl.statusesReference}}" />
+    <input type="text" ng-model="$ctrl.update" class="hidden" />
+</ng-form>

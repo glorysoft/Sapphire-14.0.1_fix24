@@ -1,0 +1,100 @@
+﻿{
+    "name": "servicesColumns",
+    "type": "servicesColumns",
+    "description": "Landings.Views.Blocks.Config.ServicesColumns.Description",
+    "category": "Услуги",
+    "picture": "./areas/landing/frontend/images/services/servicesColumns.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ServicesColumns.Subblocks.Title.Placeholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ServicesColumns.Subblocks.Subtitle.Placeholder"
+        }
+    ],
+    "settings": {
+        "items": [
+            {
+                "header": "Landings.Views.Blocks.Config.ServicesColumns.Settings.Items.Header1",
+                "text": "Landings.Views.Blocks.Config.ServicesColumns.Settings.Items.Text1",
+                "price": "Landings.Views.Blocks.Config.ServicesColumns.Settings.Items.Price1",
+                "show_price": true
+            },
+            {
+                "header": "Landings.Views.Blocks.Config.ServicesColumns.Settings.Items.Header2",
+                "text": "Landings.Views.Blocks.Config.ServicesColumns.Settings.Items.Text2",
+                "price": "Landings.Views.Blocks.Config.ServicesColumns.Settings.Items.Price2",
+                "show_price": true
+            },
+            {
+                "header": "Landings.Views.Blocks.Config.ServicesColumns.Settings.Items.Header3",
+                "text": "Landings.Views.Blocks.Config.ServicesColumns.Settings.Items.Text3",
+                "price": "Landings.Views.Blocks.Config.ServicesColumns.Settings.Items.Price3",
+                "show_price": true
+            }
+        ],
+        "classes": ["lp-block-services-columns", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": true,
+        "show_subtitle": true,
+        "show_button": false,
+        "align_items": "start-xs",
+        "constructor_buttons_reverse": true,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "items_in_row": 2,
+        "style": {},
+        "align_btns": "center-xs",
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.ServicesColumns.Settings.Button.Text",
+            "color": null,
+            "background_color": null,
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": null,
+            "border_radius": 0,
+            "size": "xsmall",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false,
+        "style_custom": {
+            "color-scheme--light": {
+                "background_color_default": "rgb(248, 248, 248)",
+                "background_color_active": "rgb(255, 255, 255)"
+            },
+            "color-scheme--medium": {
+                "background_color_default": "rgb(255, 255, 255)",
+                "background_color_active": "rgb(255, 255, 255)"
+            },
+            "color-scheme--dark": {
+                "background_color_default": "rgb(148, 148, 148)",
+                "background_color_active": "rgb(148, 148, 148)"
+            },
+            "color-scheme--custom": {
+                "background_color_default": "rgb(248, 248, 248)",
+                "background_color_active": "rgb(255, 255, 255)"
+            }
+        },
+        "first_tab_open": false
+    }
+}

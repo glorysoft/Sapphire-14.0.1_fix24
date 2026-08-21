@@ -1,0 +1,494 @@
+﻿@using Newtonsoft.Json
+@model AdvantShop.Web.Admin.Models.Catalog.WarehouseGroups.WarehouseGroupModel
+@{
+    var isEditMode = Model.Id > 0;
+    var isMobile = SettingsDesign.IsMobileTemplate;
+    Html.AddAsset("settingsWarehouses");
+}
+
+<div data-ng-controller="WarehouseGroupCtrl as warehouseGroup">
+    
+    <form method="POST"
+          action="@Url.AbsoluteActionUrl("AddEdit")"
+          enctype="multipart/form-data"
+          name="form"
+          novalidate="novalidate">
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x => x.Id, new { ng_value = "warehouseGroup.Id", ng_init = "warehouseGroup.Id=" + Model.Id, ng_model = "warehouseGroup.Id" })
+
+        @if (isMobile)
+        {
+            var headerModel = new AdvantShop.Web.Admin.ViewModels.Shared.Common.HeaderViewModel
+            {
+                ShowOnlySticky = true,
+                EnabledBack = true,
+                Back = new AdvantShop.Web.Admin.ViewModels.Shared.Common.BackViewModel()
+                {
+                    Text = T("Admin.Settings.IndexSettings").ToString(),
+                    Url = Url.AbsoluteActionUrl("Index", "SettingsWarehouses") + "?warehousesTab=groups",
+                    NgBackTriggerCallback = "",
+                },
+                Title =
+                    "<span class=\"float-header-page\">" + 
+                    (isEditMode ? Html.Raw(T("Admin.WarehouseGroup.AddEdit.Title") + " \"" + Model.Name + "\"") : Html.Raw(T("Admin.WarehouseGroup.AddEdit.NewWarehouse"))) +
+                    "</span>"
+            };
+
+            headerModel.Controls.Add(
+                new ButtonModel()
+                {
+                    Modificators = new List<eButtonModificators>() { eButtonModificators.OnlyIcon },
+                    ColorType = eColorType.Secondary,
+                    Type = eButtonType.Save,
+                    Attributes = new[] { "type=\"submit\"", "data-button-validation disabled", "ng-disabled=\"!form.modified\"" },
+                    Icon = new ButtonIcon()
+                    {
+                        SvgName = "done",
+                        Attributes = new { width = 25, height = 25 }
+                    }
+                }
+            );
+            if (Model.Id != 0)
+            {
+                var moreButton = new MoreButtonModel
+                {
+                    ColorType = eColorType.Secondary,
+                    NgTemplateId = "moreButtonHeaderTemplate",
+                    Attributes = new string[] { },
+                    Items = new List<MoreButtonPopoverItem>
+                    {
+                        new MoreButtonPopoverItem()
+                        {
+                            Type = eButtonType.Link,
+                            ColorType = eColorType.Danger,
+                            Modificators = new List<eButtonModificators>() { eButtonModificators.HorizontalPaddingZero },
+                            Icon = new ButtonIcon()
+                            {
+                                SvgName = "remove",
+                                Attributes = new { width = 24, height = 24 }
+                            },
+                            Text = T("Admin.Delete"),
+                            Attributes = new[] { "ng-click=\"warehouseGroup.deleteWarehouseGroup(" + Model.Id + ")\"" }
+                        }
+                    }
+                };
+
+                headerModel.Controls.Add(moreButton);
+            }
+
+            @Html.Header(headerModel)
+        }
+        else
+        {
+            <div class="">
+                <div sticky sticky-top="0" class="sticky-page-name page-name-block sticky-page-name-inner top-xs p-b-n" style="padding-bottom:3px;">
+                    <div class="page-name-block-item-main flex flex-column p-t-xs">
+                        <h1 class="page-name-block-text sticky-page-name-text">
+                            <strong>@(isEditMode ? Html.Raw(T("Admin.WarehouseGroup.AddEdit.Title") + " \"" + Model.Name + "\"") : Html.Raw(T("Admin.WarehouseGroup.AddEdit.NewWarehouse")))</strong>
+                        </h1>
+                    </div>
+                    <div class="page-name-block-item-additional">
+                        @if (Model.Id != 0)
+                        {
+                            <a href="" class="link-danger m-r-xs" ng-click="warehouseGroup.deleteWarehouseGroup(@Model.Id)">@T("Admin.Warehouse.AddEdit.Delete")</a>
+                        }
+                        @Html.Button(T("Admin.Save"), eButtonType.Save, eButtonSize.Small, eColorType.Success, validation: true, attributes: new[] { "ng-disabled=\"!form.modified\"", "disabled" })
+                    </div>
+                </div>
+            </div>
+            <ul class="breadcrumb sticky-page-name-subtext">
+                <li>
+                    <a class="link-invert" href="@(Url.AbsoluteActionUrl("Index", "SettingsWarehouses") + "?warehousesTab=groups")">@T("Admin.WarehouseGroup.AddEdit.Back")</a>
+                </li>
+            </ul>
+        }
+        <div class="row" is-mobile>
+            <div class="@(isMobile ? "col-xs-12" : "flex-grow flex-basis-n flex-width-n")">
+                <div class="row" ng-class="{'form-group': isMobile.value}">
+                    <div class="col-xs-12 col-md-3 col-wl-2">
+                        <h2 class="category-title @(isMobile ? "setting__subtitle" : "")">@T("Admin.Warehouse.AddEdit.Main")</h2>
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-wl-10">
+                        <div class="ibox category-block">
+                            <div class="ibox-content category-content border_none">
+                                <div>
+                                    <div class="row middle-xs" ng-class="{'form-group': isMobile.value, 'category-row': !isMobile.value}">
+                                        <div class="col-xs-12 col-md-2" ng-class="{'control-label': isMobile.value}">
+                                            <span class="text-required">@T("Admin.WarehouseGroup.AddEdit.Name")</span>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10 flex middle-xs">
+                                            @Html.TextBoxFor(x => x.Name, new
+                                            {
+                                                @class = "form-control input-alt",
+                                                required = "required",
+                                                ng_model = "warehouseGroup.Name",
+                                                validation_input_text = T("Admin.WarehouseGroup.AddEdit.Name")
+                                            })
+                                        </div>
+                                    </div>
+
+                                    <div class="row middle-xs">
+                                        @if (!isMobile)
+                                        {
+                                            <div class="col-xs-12 col-md-2">
+                                                <label for="Enabled" class="form-label-block">@T("Admin.WarehouseGroup.AddEdit.Enabled")</label>
+                                            </div>
+                                        }
+                                        <div class="col-xs-12 col-md-10 flex middle-xs">
+                                            <label class="adv-checkbox-label form-label-block">
+                                                @Html.CheckBoxFor(x => x.Enabled, new
+                                                {
+                                                    ng_model = "warehouseGroup.Enabled",
+                                                    ng_init = "warehouseGroup.Enabled=" + Model.Enabled.ToLowerString(),
+                                                    @class = "adv-checkbox-input"
+                                                })
+                                                <span class="adv-checkbox-emul"></span>
+                                                @if (isMobile)
+                                                {
+                                                    <span>@T("Admin.WarehouseGroup.AddEdit.Enabled")</span>
+                                                }
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-class="{'form-group': isMobile.value}">
+                    <div class="col-xs-12 col-md-3 col-wl-2">
+                        <h2 class="category-title @(isMobile ? "setting__subtitle" : "")">@T("Admin.Warehouse.AddEdit.WarehouseDescription.Description")</h2>
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-wl-10">
+                        <div class="ibox category-block">
+                            <div class="ibox-content category-content border_none">
+                                @Html.TextAreaFor(x => x.Description, new
+                                {
+                                    @class = "wysiwyg", ckeditor = "", ng_model = "warehouseGroup.Description"
+                                })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row" ng-class="{'form-group': isMobile.value}">
+                    <div class="col-xs-12 col-md-3 col-wl-2">
+                        <h2 class="category-title @(isMobile ? "setting__subtitle" : "")">@T("Admin.WarehouseGroup.AddEdit.Warehouses")</h2>
+                        <div ng-class="{'form-group': isMobile.value}">@T("Admin.WarehouseGroup.AddEdit.WarehousesHint")</div>
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-wl-10">
+                        <div class="ibox category-block">
+                            <div class="ibox-content category-content border_none ng-cloak">
+                                @{
+                                    var warehousesJson = Model.Warehouses != null && Model.Warehouses.Count > 0 
+                                        ? JsonConvert.SerializeObject(Model.Warehouses.Select(x => new { x.Id, x.Name })) 
+                                        : "null";
+                                }
+
+                                <div data-ng-init='warehouseGroup.Warehouses=@Html.Raw(warehousesJson.Replace("'", ""))'
+                                     ng-model="warehouseGroup.Warehouses"
+                                     as-sortable="warehouseGroup.sortableOptions"
+                                     class="form-group">
+                                    <div data-ng-repeat="warehouse in warehouseGroup.Warehouses" 
+                                         as-sortable-item 
+                                         class="card shipping-methods-list__item m-b-xs">
+                                        <div class="payment-row middle-xs between-xs shipping-methods-list__row row m-l-none m-r-none">
+                                            <div class="flex middle-xs col-xs shipping-methods-list__data">
+                                                <div class="as-sortable-item-handle navigation-item__icon m-r-sm" as-sortable-item-handle>
+                                                    <icon-move>
+                                                        <svg
+                                                            class="icon-move"
+                                                            version="1.0"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="10.000000pt"
+                                                            height="20.000000pt"
+                                                            viewBox="0 0 10.000000 20.000000"
+                                                            preserveAspectRatio="xMidYMid meet">
+                                                            <g transform="translate(0.000000,20.000000) scale(0.100000,-0.100000)" fill="#c4c4c4" stroke="none">
+                                                                <path d="M10 175 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                                                <path d="M60 175 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                                                <path d="M10 125 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                                                <path d="M60 125 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                                                <path d="M10 75 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                                                <path d="M60 75 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                                                <path d="M10 25 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                                                <path d="M60 25 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </icon-move>
+                                                </div>
+                                                <span class="shipping-text shipping-methods-list__info">
+                                                    {{warehouse.Name}}
+                                                </span>
+                                            </div>
+                                            <div class="flex middle-xs col-fixed-size-ls shipping-methods-list__delete">
+                                                <a href="" class="fa fa-times link-invert link-decoration-none" ng-click="warehouseGroup.removeWarehouse(warehouse)"></a>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <ui-modal-trigger
+                                        data-controller="'ModalSelectWarehouseCtrl'"
+                                        controller-as="ctrl"
+                                        template-url="../areas/admin/content/src/warehouse/modal/selectWarehouse/selectWarehouse.html"
+                                        size="lg"
+                                        data-resolve="{'params': { 'multiSelect': true }}"
+                                        data-on-close="warehouseGroup.addWarehouses(result)">
+                                        <a href="" class="btn btn-action">@T("Admin.WarehouseGroup.AddEdit.AddWarehouses")</a>
+                                    </ui-modal-trigger>
+                                </div>
+
+                                @Html.HiddenFor(x => x.WarehouseIds,
+                                    new { ng_value = "warehouseGroup.WarehouseIds", ng_model = "warehouseGroup.WarehouseIds" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @Html.Partial("_Pictures", Model)
+
+                <div class="row" ng-class="{'form-group': isMobile.value}">
+                    <div class="col-xs-12 col-md-3 col-wl-2">
+                        <h2 class="category-title @(isMobile ? "setting__subtitle" : "")">@T("Admin.WarehouseGroup.AddEdit.Contacts")</h2>
+                        <div data-ng-class="{'ng-hide': isMobile.value}">@T("Admin.WarehouseGroup.AddEdit.ContactsHint")</div>
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-wl-10">
+                        <div class="ibox category-block">
+                            <div class="ibox-content category-content border_none ng-cloak">
+                                <div>
+                                    
+                                    <div class="row middle-xs" ng-class="{'form-group': isMobile.value, 'category-row': !isMobile.value}">
+                                        <div class="col-xs-12 col-md-2" ng-class="{'control-label': isMobile.value}">
+                                            <span>@T("Admin.WarehouseGroup.AddEdit.City")</span>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10 middle-xs">
+                                            <div class="row">
+                                                <div class="col-xs-12 flex">
+                                                    @Html.TextBoxFor(x => x.CityName, new
+                                                    {
+                                                        @class = "form-control input-alt",
+                                                        ng_model = "warehouseGroup.CityName",
+                                                        autocompleter_address = "",
+                                                        autocompleter_params="{withId: true}",
+                                                        on_select="warehouseGroup.chooseCity(item)"
+                                                    })
+                                                    @Html.HiddenFor(x => x.CityId, new
+                                                    {
+                                                        ng_model = "warehouseGroup.CityId",
+                                                        ng_value = "warehouseGroup.CityId",
+                                                        ng_init = "warehouseGroup.CityId = " + (Model.CityId.HasValue ? Model.CityId.ToString() : "null")
+                                                    })
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <span class="help-block" ng-class="{'block m-t-sm ': isMobile.value && warehouseGroup.CountryAndRegion}" 
+                                                          ng-bind="warehouseGroup.CountryAndRegion" 
+                                                          ng-init="warehouseGroup.CountryAndRegion='@Model.CountryAndRegion'"></span>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="row middle-xs" ng-class="{'form-group': isMobile.value, 'category-row': !isMobile.value}">
+                                        <div class="col-xs-12 col-md-2" ng-class="{'control-label': isMobile.value}">
+                                            <span>@T("Admin.WarehouseGroup.AddEdit.Phone")</span>
+                                        </div>
+                                        <div class="col-xs-12 col-md-10 flex middle-xs">
+                                            @Html.TextBoxFor(x => x.Phone, new
+                                            {
+                                                @class = "form-control input-alt",
+                                                ng_model = "warehouseGroup.Phone",
+                                                mask_control_preset="phone", 
+                                                mask_control=""
+                                            })
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group" ng-class="{'m-b-sm' : warehouseGroup.ShowVk && isMobile.value}">
+                                        <div class="col-xs-12" ng-class="{'flex middle-xs': isMobile.value}">
+                                            <label class="adv-checkbox-label m-r-sm ">
+                                                <input class="adv-checkbox-input" 
+                                                       id="ShowVk"
+                                                       ng-init="warehouseGroup.ShowVk=@((!string.IsNullOrEmpty(Model.Vk)).ToLowerString())" 
+                                                       ng-model="warehouseGroup.ShowVk" 
+                                                       type="checkbox" />
+                                                <span class="adv-checkbox-emul"></span>
+                                            </label>
+                                            <label for="ShowVk">ВКонтакте</label>
+                                        </div>
+                                    </div>
+                                    <div class="row middle-xs form-group" data-ng-if="warehouseGroup.ShowVk">
+                                        <div class="col-xs-12 col-md-12 flex middle-xs">
+                                            @Html.TextBoxFor(x => x.Vk, new { @class = "form-control input-alt", ng_model = "warehouseGroup.Vk"})
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group" ng-class="{'m-b-sm' : warehouseGroup.ShowFacebook && isMobile.value}">
+                                        <div class="col-xs-12" ng-class="{'flex middle-xs': isMobile.value}">
+                                            <label class="adv-checkbox-label m-r-sm ">
+                                                <input class="adv-checkbox-input"
+                                                       id="ShowFacebook"
+                                                       ng-init="warehouseGroup.ShowFacebook=@((!string.IsNullOrEmpty(Model.Facebook)).ToLowerString())"
+                                                       ng-model="warehouseGroup.ShowFacebook"
+                                                       type="checkbox" />
+                                                <span class="adv-checkbox-emul"></span>
+                                            </label>
+                                            <label for="ShowFacebook">Facebook</label>
+                                        </div>
+                                    </div>
+                                    <div class="row middle-xs form-group" data-ng-if="warehouseGroup.ShowFacebook">
+                                        <div class="col-xs-12 col-md-12 flex middle-xs">
+                                            @Html.TextBoxFor(x => x.Facebook, new { @class = "form-control input-alt", ng_model = "warehouseGroup.Facebook"})
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group" ng-class="{'m-b-sm' : warehouseGroup.ShowInstagram && isMobile.value}">
+                                        <div class="col-xs-12" ng-class="{'flex middle-xs': isMobile.value}">
+                                            <label class="adv-checkbox-label m-r-sm ">
+                                                <input class="adv-checkbox-input"
+                                                       id="ShowInstagram"
+                                                       ng-init="warehouseGroup.ShowInstagram=@((!string.IsNullOrEmpty(Model.Instagram)).ToLowerString())"
+                                                       ng-model="warehouseGroup.ShowInstagram"
+                                                       type="checkbox" />
+                                                <span class="adv-checkbox-emul"></span>
+                                            </label>
+                                            <label for="ShowInstagram">Instagram</label>
+                                        </div>
+                                    </div>
+                                    <div class="row middle-xs form-group" data-ng-if="warehouseGroup.ShowInstagram">
+                                        <div class="col-xs-12 col-md-12 flex middle-xs">
+                                            @Html.TextBoxFor(x => x.Instagram, new { @class = "form-control input-alt", ng_model = "warehouseGroup.Instagram"})
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group" ng-class="{'m-b-sm' : warehouseGroup.ShowTwitter && isMobile.value}">
+                                        <div class="col-xs-12" ng-class="{'flex middle-xs': isMobile.value}">
+                                            <label class="adv-checkbox-label m-r-sm ">
+                                                <input class="adv-checkbox-input"
+                                                       id="ShowTwitter"
+                                                       ng-init="warehouseGroup.ShowTwitter=@((!string.IsNullOrEmpty(Model.Twitter)).ToLowerString())"
+                                                       ng-model="warehouseGroup.ShowTwitter"
+                                                       type="checkbox" />
+                                                <span class="adv-checkbox-emul"></span>
+                                            </label>
+                                            <label for="ShowTwitter">Twitter</label>
+                                        </div>
+                                    </div>
+                                    <div class="row middle-xs form-group" data-ng-if="warehouseGroup.ShowTwitter">
+                                        <div class="col-xs-12 col-md-12 flex middle-xs">
+                                            @Html.TextBoxFor(x => x.Twitter, new { @class = "form-control input-alt", ng_model = "warehouseGroup.Twitter"})
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group" ng-class="{'m-b-sm' : warehouseGroup.ShowTelegram && isMobile.value}">
+                                        <div class="col-xs-12" ng-class="{'flex middle-xs': isMobile.value}">
+                                            <label class="adv-checkbox-label m-r-sm ">
+                                                <input class="adv-checkbox-input"
+                                                       id="ShowTelegram"
+                                                       ng-init="warehouseGroup.ShowTelegram=@((!string.IsNullOrEmpty(Model.Telegram)).ToLowerString())"
+                                                       ng-model="warehouseGroup.ShowTelegram"
+                                                       type="checkbox" />
+                                                <span class="adv-checkbox-emul"></span>
+                                            </label>
+                                            <label for="ShowTelegram">Telegram</label>
+                                        </div>
+                                    </div>
+                                    <div class="row middle-xs form-group" data-ng-if="warehouseGroup.ShowTelegram">
+                                        <div class="col-xs-12 col-md-12 flex middle-xs">
+                                            @Html.TextBoxFor(x => x.Telegram, new { @class = "form-control input-alt", ng_model = "warehouseGroup.Telegram"})
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group" ng-class="{'m-b-sm' : warehouseGroup.ShowOkRu && isMobile.value}">
+                                        <div class="col-xs-12" ng-class="{'flex middle-xs': isMobile.value}">
+                                            <label class="adv-checkbox-label m-r-sm ">
+                                                <input class="adv-checkbox-input"
+                                                       id="ShowOkRu"
+                                                       ng-init="warehouseGroup.ShowOkRu=@((!string.IsNullOrEmpty(Model.OkRu)).ToLowerString())"
+                                                       ng-model="warehouseGroup.ShowOkRu"
+                                                       type="checkbox" />
+                                                <span class="adv-checkbox-emul"></span>
+                                            </label>
+                                            <label for="ShowOkRu">Одноклассники</label>
+                                        </div>
+                                    </div>
+                                    <div class="row middle-xs form-group" data-ng-if="warehouseGroup.ShowOkRu">
+                                        <div class="col-xs-12 col-md-12 flex middle-xs">
+                                            @Html.TextBoxFor(x => x.OkRu, new { @class = "form-control input-alt", ng_model = "warehouseGroup.OkRu"})
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group" ng-class="{'m-b-sm' : warehouseGroup.ShowYoutube && isMobile.value}">
+                                        <div class="col-xs-12" ng-class="{'flex middle-xs': isMobile.value}">
+                                            <label class="adv-checkbox-label m-r-sm ">
+                                                <input class="adv-checkbox-input"
+                                                       id="ShowYoutube"
+                                                       ng-init="warehouseGroup.ShowYoutube=@((!string.IsNullOrEmpty(Model.Youtube)).ToLowerString())"
+                                                       ng-model="warehouseGroup.ShowYoutube"
+                                                       type="checkbox" />
+                                                <span class="adv-checkbox-emul"></span>
+                                            </label>
+                                            <label for="ShowYoutube">Youtube</label>
+                                        </div>
+                                    </div>
+                                    <div class="row middle-xs form-group" data-ng-if="warehouseGroup.ShowYoutube">
+                                        <div class="col-xs-12 col-md-12 flex middle-xs">
+                                            @Html.TextBoxFor(x => x.Youtube, new { @class = "form-control input-alt", ng_model = "warehouseGroup.Youtube"})
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group" ng-class="{'m-b-sm': warehouseGroup.ShowZen && isMobile.value}">
+                                        <div class="col-xs-12" ng-class="{'flex middle-xs': isMobile.value}">
+                                            <label class="adv-checkbox-label m-r-sm ">
+                                                <input class="adv-checkbox-input"
+                                                       id="ShowZen"
+                                                       ng-init="warehouseGroup.ShowZen=@((!string.IsNullOrEmpty(Model.Zen)).ToLowerString())"
+                                                       ng-model="warehouseGroup.ShowZen"
+                                                       type="checkbox" />
+                                                <span class="adv-checkbox-emul"></span>
+                                            </label>
+                                            <label for="ShowZen">Яндекс.Дзен</label>
+                                        </div>
+                                    </div>
+                                    <div class="row middle-xs form-group" data-ng-if="warehouseGroup.ShowZen">
+                                        <div class="col-xs-12 col-md-12 flex middle-xs">
+                                            @Html.TextBoxFor(x => x.Zen, new { @class = "form-control input-alt", ng_model = "warehouseGroup.Zen"})
+                                        </div>
+                                    </div>
+
+                                    <div class="row" ng-class="{'m-b-sm' : warehouseGroup.ShowRutube && isMobile.value, 'form-group': !isMobile.value}">
+                                        <div class="col-xs-12" ng-class="{'flex middle-xs': isMobile.value}">
+                                            <label class="adv-checkbox-label m-r-sm ">
+                                                <input class="adv-checkbox-input"
+                                                       id="ShowRutube"
+                                                       ng-init="warehouseGroup.ShowRutube=@((!string.IsNullOrEmpty(Model.Rutube)).ToLowerString())"
+                                                       ng-model="warehouseGroup.ShowRutube"
+                                                       type="checkbox" />
+                                                <span class="adv-checkbox-emul"></span>
+                                            </label>
+                                            <label for="ShowRutube">Rutube</label>
+                                        </div>
+                                    </div>
+                                    <div class="row middle-xs" ng-class="{'form-group': !isMobile.value}" data-ng-if="warehouseGroup.ShowRutube">
+                                        <div class="col-xs-12 col-md-12 flex middle-xs">
+                                            @Html.TextBoxFor(x => x.Rutube, new { @class = "form-control input-alt", ng_model = "warehouseGroup.Rutube"})
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+
+            @Html.Partial("_RightPanel", Model)
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,32 @@
+﻿@using AdvantShop.Trial
+@using AdvantShop.Saas
+@{ 
+    Layout = "_ModulesLayout.cshtml";
+    var currentCustomer = CustomerContext.CurrentCustomer;
+}
+
+@Html.Header(
+    new AdvantShop.Web.Admin.ViewModels.Shared.Common.HeaderViewModel
+    {
+        Title = T("Admin.Modules.ModulesLayout.Modules").ToString(),
+    }
+)
+
+<article class="modules-page modules-unavailable">
+    <div class="m-b-xs">
+        <i class="fa fa-exclamation-triangle modules-unavailable__icon-warn"></i>
+    </div>
+    <h3 class="modules-unavailable__title">
+        @T("Admin.Modules.Unavailable.Title")
+    </h3>
+    <p class="m-b-md">
+        @T("Admin.Modules.Unavailable.Description")
+    </p>
+    <div class="modules-unavailable__actions">
+        <button type="button" 
+                class="btn btn-success btn-sm" 
+                onclick="window.location.reload()">
+            @T("Admin.Modules.Unavailable.Refresh")
+        </button>
+    </div>
+</article>

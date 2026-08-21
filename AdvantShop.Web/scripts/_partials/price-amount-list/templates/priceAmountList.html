@@ -1,0 +1,24 @@
+<div>
+    <div class="price-amount-list" data-ng-if="priceAmountList.amountList != null && priceAmountList.amountList.length > 0">
+        <div class="price-amount-list__row price-amount-list__row--head"
+            data-ng-if="priceAmountList.showHead">
+            <div class="price-amount-list__col price-amount-list__col--amount price-amount-list__col--head">Количество</div>
+            <div class="price-amount-list__col price-amount-list__col--price price-amount-list__col--head">Цена за ед.</div>
+        </div>
+        <div class="price-amount-list__row" data-ng-repeat="item in priceAmountList.amountList track by $index">
+            <div class="price-amount-list__col price-amount-list__col--amount" data-ng-bind="item.Amount"></div>
+            <div class="price-amount-list__col price-amount-list__col--price" data-ng-bind="item.Price"></div>
+        </div>
+    </div>
+    <div class="price-amount-list price-amount-list--cart-sum" data-ng-if="priceAmountList.cartSumList != null && priceAmountList.cartSumList.length > 0">
+        <div class="price-amount-list__row price-amount-list__row--head"
+            data-ng-if="priceAmountList.showHead">
+            <div class="price-amount-list__col price-amount-list__col--amount price-amount-list__col--head">Сумма заказа</div>
+            <div class="price-amount-list__col price-amount-list__col--price price-amount-list__col--head">Цена за ед.</div>
+        </div>
+        <div class="price-amount-list__row" data-ng-repeat="item in priceAmountList.cartSumList track by $index">
+            <div class="price-amount-list__col price-amount-list__col--amount" data-ng-bind="item.Amount"></div>
+            <div class="price-amount-list__col price-amount-list__col--price" data-ng-bind="item.Price"></div>
+        </div>
+    </div>
+</div>

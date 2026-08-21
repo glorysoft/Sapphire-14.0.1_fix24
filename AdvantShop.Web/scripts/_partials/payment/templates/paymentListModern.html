@@ -1,0 +1,97 @@
+﻿<div data-is-mobile>
+    <div
+        class="payment-list payment-list--modern"
+        id="{{::paymentList.anchor}}"
+        data-ng-class="{
+            'icon-spinner-after-abs icon-animate-spin-after payment-progress-after payment-progress': paymentList.isProgress === true,
+            'payment-list--tile': paymentList.mode === 'tile' && !isMobile.value
+        }"
+        data-ng-switch="paymentList.items != null && paymentList.items.length > 0"
+        data-ng-model="paymentList.selectPayment"
+        data-required>
+        <div class="payment-list__inner" data-ng-switch-when="true">
+            <div
+                data-ng-click="paymentList.selectPayment.Id === item.Id ? null : paymentList.changePayment(item, $index)"
+                class="payment-item"
+                data-ng-repeat="item in paymentList.items | limitTo:paymentList.visibleItems track by $index"
+                data-ng-class="{'payment-item-active' : item.Id === paymentList.selectPayment.Id,
+                                'payment-item--tile': paymentList.mode === 'tile'}">
+                <span class="payment-item__col">
+                    <span class="payment-item__radio-wrap">
+                        <span
+                            class="payment-item__form-field-input"
+                            data-ng-init="item.Id === paymentList.selectPayment.Id ? paymentList.setSelectedIndex($index) : null">
+                            <input
+                                type="radio"
+                                aria-labelledby="payment-item-{{item.Id}}"
+                                name="payment"
+                                class="custom-input-native"
+                                data-ng-model="paymentList.selectPayment.Id"
+                                data-ng-value="item.Id" />
+                            <span class="custom-input-radio payment-item__radio input-alt-mobile"></span>
+                        </span>
+                    </span>
+                    <span
+                        class="payment-item__icon"
+                        data-ng-style="{width: paymentList.iconWidth}">
+                        <img
+                            data-ng-if="item.IconName != null"
+                            ng-style="{width: paymentList.iconWidth, maxHeight: paymentList.iconHeight }"
+                            data-ng-src="{{item.IconName}}"
+                            alt="{{item.Name}}" />
+                    </span>
+                </span>
+                <span class="payment-item__info">
+                    <span class="payment-item__title-wrap">
+                        <span
+                            class="payment-item__title"
+                            id="payment-item-{{item.Id}}"
+                            data-ng-bind-html="item.Name"></span>
+                        <span
+                            class="payment-item__title payment-item__title--discount"
+                            data-ng-if="item.NamePostfix"
+                            data-ng-click="paymentList.selectPayment.Id === item.Id ? null : paymentList.changePayment(item, $index)"
+                            data-ng-bind-html="item.NamePostfix"></span>
+                    </span>
+
+                    <span class="payment-item__description"
+                          data-ng-if="(isMobile.value || paymentList.mode !== 'tile') && item.Desc"
+                          data-ng-bind-html="item.Desc"></span>
+
+                    <help-trigger
+                        data-ng-if="!isMobile.value && paymentList.mode === 'tile' && item.Desc"
+                        data-placement="top auto"
+                        class="ng-cloak cs-t-3 payment-item__description-icon"
+                        data-use-template="true">
+                        <span class="payment-item-popover__description" data-ng-bind-html="item.Desc"></span>
+                    </help-trigger>
+                </span>
+            </div>
+            <button type="button"
+                    data-ng-class="{'payment-item--tile': paymentList.mode === 'tile'}"
+                    class="link-dotted-invert payment-item payment-item--more"
+                    data-ng-if="paymentList.items.length > paymentList.countVisibleItems"
+                    data-ng-switch="paymentList.collapsed"
+                    data-ng-click="paymentList.toggleVisible()">
+                <span data-ng-switch-when="true"> {{ ::'Js.Payment.More' | translate }} </span>
+                <span data-ng-switch-when="false"> {{ ::'Js.Payment.Hide' | translate }} </span>
+            </button>
+
+            <span
+                class="payment-item-additional payment-item-active"
+                data-ng-if="paymentList.selectPayment.Template != null && paymentList.selectPayment.Template.length > 0">
+                <span
+                    data-payment-template
+                    data-payment="paymentList.selectPayment"
+                    data-template-url="paymentList.selectPayment.Template"
+                    data-change-control="paymentList.changePaymentControl(payment)"
+                    data-enable-phone-mask="paymentList.enablePhoneMask"></span>
+            </span>
+
+        </div>
+        <div ng-switch-when="false" class="payment-empty">
+            <span
+                ng-bind="paymentList.isProgress === true ? ('Js.Payment.PaymentMethodsLoading' | translate) : ('Js.Payment.NoPaymentMethods' | translate)"></span>
+        </div>
+    </div>
+</div>

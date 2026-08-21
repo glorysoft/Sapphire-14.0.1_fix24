@@ -1,0 +1,18 @@
+/* @ngInject */
+function PopoverOverlayCtrl(popoverService) {
+    const ctrl = this;
+
+    ctrl.overlayHide = function () {
+        popoverService.getPopoverScope(ctrl.popoverId).then((popoverScope) => {
+            popoverScope.deactive();
+
+            ctrl.popoverId = null;
+
+            ctrl.isVisibleOverlay = false;
+        });
+    };
+
+    popoverService.addPopoverOverlay(ctrl);
+}
+
+export default PopoverOverlayCtrl;

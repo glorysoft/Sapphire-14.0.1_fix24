@@ -1,0 +1,72 @@
+﻿@model AdvantShop.ViewModel.Cart.CartViewModel
+@{
+    Html.AddAsset("cart");
+}
+<div class="col-p-v cart cart-page cart-page--two-cols ng-cloak" data-ng-controller="CartFullCtrl as cartFull">
+        <div class="cart-page__content" data-ng-class="{'cart-page__content--two-cols': cartFull.cartData.CartProducts.length > 0}">
+            <div class="cart-page__content-column">
+                <div class="cart-page__product-items">
+                    <div class="cart-title page-title">
+                        <div class="row between-xs m-b-md middle-xs">
+                            <h1 class="m-b-none col-xs">
+                                @T("Cart.Index.ShoppingCart")
+                            </h1>
+                            <div ng-if="cartPage.cartData != null && cartPage.cartData.CartProducts.length > 0"
+                                 class="col-xs-slim">
+                                <div class="cart-page__cart-btns-wrap">
+                                    <button type="button" data-clear-cart="" data-ng-click="cartFull.clear($event)"
+                                            title="@T("Js.Cart.ClearBasket")"
+                                            class="btn btn-small btn-icon btn-action btn--two-column cart-clear-btn cart__clear-btn">
+                                    </button>
+                                    <button type="button" class="btn btn-small btn-icon btn-submit btn--two-column cart-share-btn cart__share-btn"
+                                            title="@T("Cart.Index.ShoppingCart.Share")"
+                                            data-ng-click="cartPage.getUrlShareCart()"
+                                            uib-tooltip-template="'@Html.GetAssetPath("urlShare.html")'"
+                                            tooltip-trigger="'click'" tooltip-class="cart-page__url-share"
+                                            tooltip-placement="bottom-right">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-page__column">
+                        <div data-module data-key="fullcartmessage" class="cart-page__fullcartmessage fullcartmessage">
+                            @Html.RenderModules("fullcartmessage")
+                        </div>
+                        @if (Model.ShowPriceAmountNextDiscountsInCart)
+                        {
+                            <div class="cart-page__price-rules-text" data-price-amount-cart></div>
+                        }
+                        <div data-cart-full-items=""
+                             data-cart-data="cartFull.cartData"
+                             data-on-update-amount="cartFull.updateAmount(value, itemId)"
+                             data-on-remove="cartFull.remove(event, shoppingCartItemId)"
+                             data-link-as-quickview="@SettingsDesign.OnePageCatalog.ToLowerString()"></div>
+                    </div>
+                </div>
+                <div class="cart-page__static-block">
+                    @Html.StaticBlock("shoppingcart")
+                </div>
+                
+                @Html.RenderModules("shoppingcart")
+                
+                @if (Model.IsDemo)
+                {
+                    <div class="cart-full-error">@T("Cart.Index.FakeShop")</div>
+                }
+                @Html.RenderModules("shoppingcart_after")
+            </div>
+            <div class="cart-page__content-column" data-ng-if="cartFull.cartData.CartProducts.length > 0" data-sticky-element>
+                <div class="cart-page__content-column-inner">
+                    <div class="cart-page__products-summary cs-bg-4">
+                        <div data-cart-full-summary=""
+                             data-cart-data="cartFull.cartData"
+                             data-on-refresh="cartFull.refresh()"></div>
+                    </div>
+                    <div class="cart-page__banner-in-shopping-cart">
+                        @Html.RenderModules("cart_right_column")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

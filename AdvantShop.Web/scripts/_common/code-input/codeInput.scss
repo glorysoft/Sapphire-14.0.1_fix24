@@ -1,0 +1,26 @@
+﻿.code-input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__group {
+        display: flex;
+        gap: 8px;
+
+        &-item {
+            text-align: center;
+        }
+    }
+
+    &__resend {
+        text-align: center;
+    }
+
+    &__timer {
+        text-align: center;
+    }
+
+    &__button {
+        max-width: fit-content;
+    }
+}

@@ -1,0 +1,37 @@
+@use 'functions/util';
+
+// base font-size for root. It is recommended not to change!
+$rem-base: 16px;
+$max-width: util.rem-calc(1180px);
+$min-width: util.rem-calc(970px);
+$font-size-base: 14px;
+$font-family: tahoma;
+$line-height: 1.5;
+$font-size-huge: util.rem-calc(34px);
+$font-size-xbig: util.rem-calc(30px);
+$font-size-big: util.rem-calc(28px);
+$font-size-xlarge: util.rem-calc(26px);
+$font-size-large: util.rem-calc(22px);
+$font-size-xmedium: util.rem-calc(16px);
+$font-size-medium: util.rem-calc(14px);
+$font-size-premedium: util.rem-calc(13px);
+$font-size-normal: util.rem-calc(12px);
+$font-size-small: util.rem-calc(11px);
+$font-size-xsmall: util.rem-calc(10px);
+$font-base: #{$font-size-base}/#{$line-height} #{$font-family};
+$border-width: 1px;
+$border-radius-base: util.rem-calc(5px);
+$border-radius-small: util.rem-calc(3px);
+$box-shadow-base: 0 0 9px 0 rgb(0 0 0 / 25%);
+$box-shadow-menu: 0 0 6px 0 rgb(0 0 0 / 25%);
+$margin-value-base: util.rem-calc(17px);
+$margin-value-alt: util.rem-calc(40px);
+$padding-base: util.rem-calc(10px);
+$vertical-interval-xsmall: util.rem-calc(5px);
+$vertical-interval-small: util.rem-calc(7px);
+$vertical-interval-middle: util.rem-calc(10px);
+$vertical-interval-big: util.rem-calc(15px);
+$horizontal-interval-xsmall: util.rem-calc(5px);
+$horizontal-interval-small: util.rem-calc(7px);
+$horizontal-interval-middle: util.rem-calc(10px);
+$horizontal-interval-big: util.rem-calc(15px);

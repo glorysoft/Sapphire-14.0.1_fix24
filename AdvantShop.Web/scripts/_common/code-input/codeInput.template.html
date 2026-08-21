@@ -1,0 +1,43 @@
+﻿<div class="code-input">
+    <button type="button"
+            class="btn btn-small btn-submit code-input__button"
+            data-ng-click="$ctrl.onButtonClick()"
+            data-ng-if="$ctrl.showButton">
+        {{$ctrl.sendText}}
+    </button>
+
+    <div class="code-input__description"
+         data-ng-if="$ctrl.description != null && $ctrl.description !== '' && !$ctrl.showButton">
+        {{$ctrl.description}}
+    </div>
+
+    <div class="code-input__group"
+         data-ng-if="!$ctrl.showButton">
+        <input type="text"
+               inputmode="{{$ctrl.codeInputConfig.inputMode}}"
+               pattern="{{$ctrl.codeInputConfig.pattern}}"
+               autocomplete="one-time-code"
+               required
+               maxlength="{{$ctrl.length}}"
+               class="input-small code-input__group-item"
+               data-ng-model="$ctrl.values[$index]"
+               data-ng-keydown="$ctrl.onKeydown($event, $index)"
+               data-ng-change="$ctrl.onChange($index)"
+               data-ng-repeat="value in $ctrl.values track by $index"
+               data-index="{{$index}}"
+               data-ng-disabled="$ctrl.disabled"
+               data-autofocus="$ctrl.focusOn === $index"/>
+    </div>
+
+    <a href=""
+       class="code-input__resend"
+       data-ng-click="$ctrl.onRetry()"
+       data-ng-if="!$ctrl.showButton && $ctrl.onSendCode != null && $ctrl.timer === 0">
+        {{$ctrl.resendText}}
+    </a>
+
+    <div class="code-input__timer"
+         data-ng-bind-html="$ctrl.timerHtml"
+         data-ng-if="!$ctrl.showButton && $ctrl.timer !== 0">
+    </div>
+</div>

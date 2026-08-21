@@ -1,0 +1,29 @@
+.shipping-point-delivery-map__modal {
+    min-height: 80vh;
+
+    .modal-content {
+        position: relative;
+    }
+}
+
+.shipping-point-delivery-map {
+    position: absolute;
+    height: 300px;
+    inset: 15px;
+}
+
+@media (width >= 49em) {
+    .shipping-point-delivery-map {
+        min-width: 70vw;
+        min-height: 70vh;
+        position: relative;
+        inset: auto;
+    }
+}
+
+.mobile-version {
+    .shipping-point-delivery-map {
+        position: static;
+        min-height: 80vh;
+    }
+}

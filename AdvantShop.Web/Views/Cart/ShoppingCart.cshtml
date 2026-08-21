@@ -1,0 +1,27 @@
+﻿@model AdvantShop.ViewModel.Common.ShoppingCartViewModel
+
+<div class="site-head-cart">
+    @Html.Action("ClientCode", "User")
+    <div class="cart-mini" data-cart-mini>
+        <a @Html.Raw(Model.EnableShoppingCartPopup
+            ? "data-cart-mini-trigger "
+            : "")
+           href="@Url.RouteUrl("Cart")" class="cs-l-2 cs-bg-9 cart-mini-main-link icon-bag-before">
+            <span class="cart-mini-main-text"> @T("Cart.ShoppingCart.ShoppingCart"):</span> <span data-cart-count
+                                                                                                  data-type="count"
+                                                                                                  data-ng-bind-html="cartCount.getValue()">@Model.Amount</span>
+        </a>
+
+        @if (Model.EnableShoppingCartPopup)
+        {
+            <div
+                @Html.Raw(Model.ShoppingCartPopupType == SettingsDesign.EShoppingCartPopupType.Mini ? "data-cart-mini-popup" :
+                            Model.ShoppingCartPopupType == SettingsDesign.EShoppingCartPopupType.Sidebar ? "data-cart-mini-sidebar" : "")>
+                        
+                <div data-cart-mini-list data-cart-data="cartMini.cartData"
+                     data-link-as-quickview="@SettingsDesign.OnePageCatalog.ToLowerString()">
+                </div>
+            </div>
+        }
+    </div>
+</div>

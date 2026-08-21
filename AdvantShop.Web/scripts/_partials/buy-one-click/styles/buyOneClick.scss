@@ -1,0 +1,21 @@
+@use '../../../../styles/functions/util';
+@use '../../../../styles/settings';
+@use '../../../../styles/functions/breakpoints';
+
+.buy-one-click-dialog,
+.adv-modal .adv-modal-inner.buy-one-click-dialog,
+.adv-modal-floating .adv-modal-inner.buy-one-click-dialog {
+    min-width: 35vw;
+    max-width: 35vw;
+}
+
+@include breakpoints.breakpointsGetMedia(tablet) {
+    .buy-one-click-dialog {
+        min-width: 70vw;
+    }
+}
+
+.buy-one-click-buttons {
+    text-align: right;
+    margin-top: settings.$vertical-interval-middle;
+}

@@ -1,0 +1,17 @@
+@use '../functions/util';
+@use '../settings';
+
+.news-block-items {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.news-block-row {
+    margin: 0 0 util.rem-calc(20px) 0;
+    font-size: settings.$font-size-normal;
+}
+
+.allNews {
+    font-size: settings.$font-size-normal;
+}

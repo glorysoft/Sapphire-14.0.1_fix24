@@ -1,0 +1,67 @@
+﻿{
+    "name": "contactsCenter",
+    "type": "contacts",
+    "description": "Landings.Views.Blocks.Config.ContactsCenter.Description",
+    "category": "Landings.Views.Blocks.Config.ContactsCenter.Category",
+    "picture": "./areas/landing/frontend/images/contacts/contactsCenter.png",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ContactsCenter.SubBlockPlasholderOne"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ContactsCenter.SubBlockPlasholderTwo"
+        },
+        {
+            "name": "text",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ContactsCenter.SubBlockPlasholderThree"
+        }
+    ],
+    "settings": {
+        "classes": ["lp-block-contacts-center", "color-scheme--dark", "block-padding-top--135", "block-padding-bottom--135"],
+        "color_scheme": "color-scheme--dark",
+        "show_title": true,
+        "show_subtitle": false,
+        "vk_enabled": true,
+        "vk_url": null,
+        "vk_text": "Landings.Views.Blocks.Config.ContactsCenter.VkText",
+        "fb_enabled": true,
+        "fb_url": null,
+        "fb_text": "Landings.Views.Blocks.Config.ContactsCenter.FbText",
+        "youtube_enabled": true,
+        "youtube_url": null,
+        "youtube_text": "Landings.Views.Blocks.Config.ContactsCenter.YoutubeText",
+        "twitter_enabled": true,
+        "twitter_url": null,
+        "twitter_text": "Landings.Views.Blocks.Config.ContactsCenter.TwitterText",
+        "instagram_enabled": true,
+        "instagram_url": null,
+        "instagram_text": "Landings.Views.Blocks.Config.ContactsCenter.InstagramText",
+        "whatsapp_enabled": false,
+        "whatsapp_text": "Landings.Views.Blocks.Config.ContactsCenter.WhatsappText",
+        "whatsapp_message": "Landings.Views.Blocks.Config.ContactsCenter.WhatsappMessage",
+        "telegram_enabled": false,
+        "telegram_url": null,
+        "telegram_text": "Landings.Views.Blocks.Config.ContactsCenter.TelegramText",
+        "odnoklassniki_enabled": false,
+        "odnoklassniki_url": null,
+        "odnoklassniki_text": "Landings.Views.Blocks.Config.ContactsCenter.OdnoklassnikiText",
+        "background_image": "./areas/landing/images/contacts/contactsCenter.jpg",
+        "darken": 0,
+        "background_color": "#ffffff",
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 135,
+        "padding_bottom": 135,
+        "style": {
+            "background-image": "url('./areas/landing/images/contacts/contactsCenter.jpg')"
+        },
+        "mobile_hidden": false
+    }
+}

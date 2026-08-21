@@ -1,0 +1,23 @@
+﻿<div data-ng-switch="cartFull.cartData != null" class="cart-full cart-full--modern">
+    <div data-ng-switch-when="true" class="flex cart-full__inner">
+        <div data-cart-full-items=""
+             data-is-show-photo-in-cart="cartFull.isShowPhotoInCart"
+             data-cart-data="cartFull.cartData"
+             data-show-brief-description="cartFull.showBriefDescription"
+             data-on-update-amount="cartFull.updateAmount(value, itemId)"
+             data-on-remove="cartFull.remove(event, shoppingCartItemId)"
+             data-show-photo="cartFull.showPhoto"
+             data-is-checkout="cartFull.isCheckout"
+             data-link-as-quickview="cartFull.linkAsQuickview"></div>
+        <div data-cart-full-summary=""
+             data-ng-if="cartFull.showOnlyItems !== true"
+             data-cart-data="cartFull.cartData"
+             data-on-refresh="cartFull.refresh()"
+             data-show-only-items="cartFull.showOnlyItems"></div>
+    </div>
+    <div data-ng-switch-when="false">
+        <div class="cart-full-loading">
+            <span class="icon-spinner-before icon-animate-spin-before cart-full-loading-text"> {{ ::'Js.Cart.Loading' | translate }} </span>
+        </div>
+    </div>
+</div>

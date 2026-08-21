@@ -1,0 +1,17 @@
+@use '../../themes';
+@use '../../../../styles/functions/util';
+@use '../../../../styles/settings';
+
+$bgTop: (height util.rem-calc(876px), bg (url('../images/background-top.jpg') no-repeat center top));
+$bgBottom: (height util.rem-calc(845px), bg (url('../images/background-bottom.jpg') no-repeat center bottom));
+
+@include themes.theme-background($bgTop, $bgBottom);
+
+.site-footer-top-level,
+.footer-bottom-level {
+    background-color: transparent;
+}
+
+.site-body-inner {
+    min-height: util.rem-calc(477px);
+}

@@ -1,0 +1,26 @@
+﻿<div class="phone-confirmation"
+     data-ng-model="$ctrl.confirmed"
+     data-validation-custom-function="$ctrl.confirmed">
+
+    <span data-ng-class="{
+            'phone-confirmation__phone-confirmed': $ctrl.confirmed,
+            'phone-confirmation__phone-not-confirmed': !$ctrl.confirmed
+          }">
+        {{(
+            $ctrl.confirmed
+                ? $ctrl.phoneConfirmedText
+                : $ctrl.phoneNotConfirmedText
+        )}}
+    </span>
+
+    <div data-ng-if="!$ctrl.confirmed"
+         data-ng-repeat="controllerNames in $ctrl.modulesControllerNames">
+        <phone-confirmation-module data-controller-name="controllerNames">
+        </phone-confirmation-module>
+    </div>
+
+    <phone-confirmation-code data-ng-if="!$ctrl.confirmed && $ctrl.showCodeConfirmation"
+                             data-phone="$ctrl.phone"
+                             data-confirmed="$ctrl.confirmed">
+    </phone-confirmation-code>
+</div>

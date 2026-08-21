@@ -1,0 +1,20 @@
+﻿<div is-mobile>
+    <div class="modal-header">
+        <ui-modal-cross ng-if="!isMobile.value" close-fn="ctrl.close()"></ui-modal-cross>
+        <h2 class="modal-header-title">{{'Admin.Js.ProductSelect.ProductSelection' | translate}}</h2>
+    </div>
+    <div class="modal-body">
+        <offers-selectvizr
+            selectvizr-tree-url="ctrl.selectvizrTreeUrl"
+            selectvizr-grid-url="ctrl.selectvizrGridUrl"
+            selectvizr-grid-options="ctrl.selectvizrGridOptions"
+            selectvizr-grid-on-fetch="ctrl.gridOnFetch(grid)"
+            selectvizr-on-change="ctrl.onChange(categoryId, ids, selectMode)"
+            selectvizr-grid-selection-items-selected-fn="ctrl.gridSelectionItemsSelectedFn(rowEntity)"
+            selectvizr-property="ctrl.selectvizrProperty"
+            selectvizr-grid-inplace-url="ctrl.inplaceProducts"
+            selectvizr-grid-params="ctrl.selectvizrGridParams"
+            selectvizr-grid-items-selected="ctrl.itemsSelected">
+        </offers-selectvizr>
+    </div>
+</div>

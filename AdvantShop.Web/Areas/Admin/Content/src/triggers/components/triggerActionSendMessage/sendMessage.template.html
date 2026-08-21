@@ -1,0 +1,68 @@
+﻿<div data-is-mobile
+     data-ng-class="{'form-group' : !isMobile.value}">
+
+    <div data-ng-if="$ctrl.isEnabled">
+        <div class="form-group row setting__form-group">
+            <label for="moduleNames"
+                   class="col-xs-12 col-md-2"
+                   data-ng-class="{'setting-label-wrap setting__label' : isMobile.value}">
+                Модули
+            </label>
+
+            <div class="col-xs-12 col-md-10">
+                <ui-select id="moduleNames"
+                           class="input-alt"
+                           multiple
+                           data-ng-model="$ctrl.action.SendMessageData.ModuleNames">
+                    <ui-select-match>
+                        {{$item.value}}
+                    </ui-select-match>
+                    <ui-select-choices
+                        data-repeat="module.key as (key, module) in $ctrl.modules | filter: { value: $select.search }">
+                        {{module.value}}
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+
+        <div class="form-group row setting__form-group">
+            <label for="messageText"
+                   class="col-xs-12 col-md-2"
+                   data-ng-class="{'setting-label-wrap setting__label' : isMobile.value}">
+                {{'Admin.Js.Triggers.EditTrigger.MessageText' | translate}}
+            </label>
+
+            <div class="col-xs-12 col-md-10">
+                <textarea id="messageText"
+                          class="form-control input-alt"
+                          data-ng-model="$ctrl.action.MessageText"
+                          rows="5"
+                          required
+                          validation-input-text="Текст сообщения">
+                </textarea>
+
+                <div class="help-block row"
+                     data-ng-class="{'fs-xs m-t-xs' : isMobile.value}"
+                     data-ng-if="$ctrl.messageVariables">
+                    <span class="col-xs-12">
+                        {{'Admin.Js.SettingsTasks.AvailableVariables' | translate}}
+                    </span>
+
+                    <span class="col-xs-12" data-ng-repeat="variable in $ctrl.messageVariables">
+                        <span class="letter-format-key">
+                            <strong>{{variable.Key}}</strong>
+                        </span>
+                        <span>-</span>
+                        <span>
+                            {{variable.Description}}
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-ng-if="!$ctrl.isEnabled">
+        {{'Нет ни одного подключенного модуля мессенджера'}}
+    </div>
+</div>

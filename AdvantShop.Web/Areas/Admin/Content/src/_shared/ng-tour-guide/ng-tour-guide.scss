@@ -1,0 +1,14 @@
+.tg-backdrop {
+    z-index: 2040;
+}
+
+.ng-tg-dialog--hide-nav {
+    .tg-dialog-footer {
+        display: none;
+    }
+}
+.ng-tg-interactive-force,
+.ng-tg-interactive-force *{
+    pointer-events: auto !important;
+    user-select: text !important;
+}

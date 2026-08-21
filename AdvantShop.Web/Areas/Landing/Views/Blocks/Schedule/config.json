@@ -1,0 +1,78 @@
+﻿{
+    "name": "schedule",
+    "type": "schedule",
+    "description": "Landings.Views.Blocks.Config.Schedule.Description",
+    "category": "Landings.Views.Blocks.Config.Schedule.Category",
+    "picture": "./areas/landing/images/schedule/schedule.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Schedule.Title.Placeholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Schedule.Subtitle.Placeholder"
+        }
+    ],
+    "settings": {
+        "gridColumns": {
+            "picture": true
+        },
+        "items": [
+            {
+                "name": "Landings.Views.Blocks.Config.Schedule.Item1.Name",
+                "position": "Landings.Views.Blocks.Config.Schedule.Item1.Position",
+                "text": "Landings.Views.Blocks.Config.Schedule.Item1.Text",
+                "time": "09:30 - 10:15",
+                "picture": {
+                    "src": "areas/landing/frontend/images/schedule/schedule1.jpg"
+                }
+            }
+        ],
+        "classes": ["lp-block-schedule", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": true,
+        "show_subtitle": true,
+        "show_button": false,
+        "hide_photo": false,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "style": {},
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.Schedule.Button.Text",
+            "color": null,
+            "background_color": null,
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": null,
+            "border_radius": 0,
+            "size": "xsmall",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false,
+        "settings_picture": {
+            "cropper_params": {
+                "aspectRatio": "1"
+            }
+        },
+        "width_in_columns": 10
+    }
+}

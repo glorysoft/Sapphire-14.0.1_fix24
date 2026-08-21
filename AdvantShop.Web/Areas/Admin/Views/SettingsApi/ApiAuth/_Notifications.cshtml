@@ -1,0 +1,54 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.APISettingsModel
+
+<div class="api-item post">
+    <div class="api-item__header" ng-click="settings.showDetails($event)">
+        <span class="method">POST</span>
+        <span class="path">/api/notifications/{id}/status</span>
+        <span class="description">@T("Admin.SettingsApi.Index.Notifications.ChangePushStatus")</span>
+    </div>
+    <div class="details">
+        <div class="m-b">
+            POST @Model.GetApiUrl("/api/notifications/{id}/status")
+        </div>
+                
+        <div class="row-tb">
+            <div class="row m-b-xs">
+                <div class="col-xs-2">id</div>
+                <div class="col-xs-1">guid</div>
+                <div class="col-xs">Идентификатор уведомления</div>
+            </div>
+            <div class="row m-b-xs">
+                <div class="col-xs-2">customerId</div>
+                <div class="col-xs-1">guid</div>
+                <div class="col-xs">Идентификатор покупателя</div>
+            </div>
+            <div class="row m-b-xs">
+                <div class="col-xs-2">status</div>
+                <div class="col-xs-1">string</div>
+                <div class="col-xs">Статус уведомления: delivered, opened</div>
+            </div>
+        </div>
+        
+        <h3 class="m-t">@T("Admin.SettingsApi.Index.Order.SampleRequest")</h3>
+        <pre class="m-t-sm">/api/notifications/{id}/status</pre>
+        <pre class="m-t-sm">{
+    "customerId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "status": "delivered"
+}
+</pre>
+
+        <div class="m-t m-b-xs">
+            <h3>@T("Admin.SettingsApi.Index.Order.SampleAnswer")</h3>
+        </div>
+        <pre class="m-t-sm">{
+    "status": "ok"
+}</pre>     
+        <div class="m-t m-b-xs">
+            <h3>@T("Admin.SettingsApi.Index.Order.SampleAnswerError")</h3>
+        </div>
+        <pre class="m-t-sm">{
+    "status": "error",
+    "errors": "Неизвестный статус"
+}</pre>
+    </div>
+</div>

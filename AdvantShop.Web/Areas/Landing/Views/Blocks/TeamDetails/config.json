@@ -1,0 +1,81 @@
+﻿{
+    "name": "teamDetails",
+    "type": "text",
+    "description": "Landings.Views.Blocks.Config.TeamDetails.Description",
+    "category": "Landings.Views.Blocks.Config.TeamDetails.Category",
+    "picture": "./areas/landing/frontend/images/team/teamDetails.png",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TeamDetails.Title.Placeholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TeamDetails.Subtitle.Placeholder"
+        },
+        {
+            "name": "picture",
+            "type": "picture",
+            "settings": {
+                "src": "areas/landing/images/team/teamDetails.jpg",
+                "class": ""
+            }
+        },
+        {
+            "name": "header",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TeamDetails.Header.Placeholder"
+        },
+        {
+            "name": "subheader",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TeamDetails.Subheader.Placeholder"
+        },
+        {
+            "name": "text",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TeamDetails.Text.Placeholder"
+        }
+    ],
+    "settings": {
+        "classes": ["lp-block-team-details", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": false,
+        "show_subtitle": false,
+        "show_button": false,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "style": {},
+        "align_btns": "start-xs",
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.TeamDetails.Button.Text",
+            "color": null,
+            "background_color": null,
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": null,
+            "border_radius": 0,
+            "size": "xsmall",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false
+    }
+}

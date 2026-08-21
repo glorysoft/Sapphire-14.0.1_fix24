@@ -1,0 +1,163 @@
+﻿{
+    "name": "footerWithMenu",
+    "type": "footer",
+    "description": "Landings.Views.Blocks.Config.FooterWithMenu.Description",
+    "category": "Landings.Views.Blocks.Config.FooterWithMenu.Category",
+    "picture": "./areas/landing/frontend/images/footers/footerWithMenu.jpg",
+    "subblocks": [
+        {
+            "name": "logo",
+            "description": "Landings.Views.Blocks.Config.FooterWithMenu.SubBlockLogoDescription",
+            "type": "logo",
+            "settings": {
+                "alt": null,
+                "src": "areas/landing/frontend/images/logotype.png"
+            }
+        },
+        {
+            "name": "text",
+            "description": "Landings.Views.Blocks.Config.FooterWithMenu.SubBlockTextDescription",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.FooterWithMenu.SubBlockTextPlaceholder"
+        },
+        {
+            "name": "menu",
+            "description": "Landings.Views.Blocks.Config.FooterWithMenu.SubBlockMenuDescription",
+            "type": "menu",
+            "settings": {
+                "font_size": 16,
+                "menu_items_spacing": 20,
+                "view_mode": "static",
+                "style": {
+                    "font-size": "16px",
+                    "padding-left": "0px",
+                    "padding-right": "10px"
+                }
+            }
+        }
+    ],
+    "settings": {
+        "classes": ["lp-footer-with-menu", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "vk_enabled": true,
+        "vk_url": null,
+        "fb_enabled": true,
+        "fb_url": null,
+        "youtube_enabled": true,
+        "youtube_url": null,
+        "twitter_enabled": true,
+        "twitter_url": null,
+        "instagram_enabled": true,
+        "instagram_url": null,
+        "whatsapp_enabled": false,
+        "telegram_enabled": false,
+        "telegram_url": null,
+        "odnoklassniki_enabled": false,
+        "odnoklassniki_url": null,
+        "background_image": null,
+        "background_color": "#ffffff",
+        "background_fixed": false,
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "darken": 0,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "mobile_hidden": false,
+        "show_on_all_landing_pages_top": false,
+        "show_on_all_landing_pages_bottom": false,
+        "style": {},
+        "show_menu": true,
+        "reverse": false,
+        "show_logo": false,
+        "menu_items": [
+            {
+                "text": "Landings.Views.Blocks.Config.FooterWithMenu.MenuItem.Information",
+                "href": "",
+                "target": false,
+                "class": "",
+                "childs": [
+                    {
+                        "text": "Landings.Views.Blocks.Config.FooterWithMenu.MenuItem.AboutStore",
+                        "href": "",
+                        "target": false,
+                        "class": "",
+                        "childs": []
+                    },
+                    {
+                        "text": "Landings.Views.Blocks.Config.FooterWithMenu.MenuItem.Brands",
+                        "href": "",
+                        "target": false,
+                        "class": "",
+                        "childs": []
+                    },
+                    {
+                        "text": "Landings.Views.Blocks.Config.FooterWithMenu.MenuItem.ShippingPayment",
+                        "href": "",
+                        "target": false,
+                        "class": "",
+                        "childs": []
+                    },
+                    {
+                        "text": "Landings.Views.Blocks.Config.FooterWithMenu.MenuItem.Blog",
+                        "href": "",
+                        "target": false,
+                        "class": "",
+                        "childs": []
+                    },
+                    {
+                        "text": "Landings.Views.Blocks.Config.FooterWithMenu.MenuItem.BonusProgram",
+                        "href": "",
+                        "target": false,
+                        "class": "",
+                        "childs": []
+                    },
+                    {
+                        "text": "Landings.Views.Blocks.Config.FooterWithMenu.MenuItem.Contacts",
+                        "href": "",
+                        "target": false,
+                        "class": "",
+                        "childs": []
+                    }
+                ]
+            },
+            {
+                "text": "Landings.Views.Blocks.Config.FooterWithMenu.MenuItem.AdditionalInfo",
+                "href": "",
+                "target": false,
+                "class": "",
+                "childs": [
+                    {
+                        "text": "Landings.Views.Blocks.Config.FooterWithMenu.MenuItem.PartnerProgram",
+                        "href": "",
+                        "target": false,
+                        "class": "",
+                        "childs": []
+                    },
+                    {
+                        "text": "Landings.Views.Blocks.Config.FooterWithMenu.MenuItem.Offer",
+                        "href": "",
+                        "target": false,
+                        "class": "",
+                        "childs": []
+                    },
+                    {
+                        "text": "Landings.Views.Blocks.Config.FooterWithMenu.MenuItem.Reviews",
+                        "href": "",
+                        "target": false,
+                        "class": "",
+                        "childs": []
+                    },
+                    {
+                        "text": "Landings.Views.Blocks.Config.FooterWithMenu.MenuItem.Rating",
+                        "href": "",
+                        "target": false,
+                        "class": "",
+                        "childs": []
+                    }
+                ]
+            }
+        ]
+    }
+}

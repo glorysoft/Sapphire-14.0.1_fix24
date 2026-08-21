@@ -1,0 +1,36 @@
+@use '../settings';
+@use '../functions/util';
+
+.products-specials-more {
+    font-size: settings.$font-size-small;
+    margin-left: util.rem-calc(10px);
+}
+
+.products-specials-category {
+    display: none;
+    margin: util.rem-calc(25px) util.rem-calc(15px) 0;
+}
+
+.products-specials {
+    & .products-specials-category {
+        display: block;
+        text-align: center;
+        flex-basis: 100%;
+    }
+}
+
+.products-specials-best-h,
+.products-specials-new-h,
+.products-specials-discount-h {
+    line-height: 1;
+}
+
+.products-specials-discount-h {
+    color: #d20e0e;
+}
+
+.products-specials-empty {
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+}

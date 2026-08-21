@@ -1,0 +1,908 @@
+﻿<form is-mobile>
+    <div class="modal-header">
+        <ui-modal-cross ng-if="!isMobile.value"></ui-modal-cross>
+        <h2 class="modal-header-title">
+            {{ctrl.mode === 'add' ? ('Admin.Js.AddEditCarousel.AddCarouselImage'|translate) :
+            ('Admin.Js.AddEditCarousel.EditCarouselImage'|translate)}}
+        </h2>
+    </div>
+    <div class="modal-body">
+        <div ng-if="!ctrl.advansedCarouselSettingsEnabled">
+            <div class="form-group row setting__form-group">
+                <label class="col-xs-12 col-md-3 control-label"
+                    ><span class="text-required">{{'Admin.Js.AddEditCarousel.Picture'|translate}}</span></label
+                >
+                <div class="col-xs-12 col-md-9">
+                    <picture-uploader
+                        start-src="{{ ctrl.ImageSrc ? ctrl.ImageSrc : '../images/nophoto_small.png' }}"
+                        upload-url="/carousel/Upload?carouselId={{ ctrl.carouselId }}"
+                        delete-url="/carousel/DeleteFile?carouselId={{ ctrl.carouselId }}"
+                        file-types="ctrl.fileTypes"
+                        uploadbylink-url="/carousel/uploadByLink?carouselId={{ ctrl.carouselId }}"
+                        on-update="ctrl.updateImage(result)"
+                        on-delete="ctrl.updateImage(result)"></picture-uploader>
+                    <p style="margin-bottom: 5px" ng-bind-html="'Admin.Js.AddEditCarousel.Size'|translate"></p>
+                    <p style="margin-bottom: 0" ng-bind-html="'Admin.Js.AddEditCarousel.MobileSize'|translate"></p>
+                </div>
+            </div>
+            <div class="form-group row setting__form-group">
+                <label for="carouselUrl" class="col-xs-12 col-md-3 control-label">
+                    <span> {{'Admin.Js.AddEditCarousel.NavigationURL'|translate}} </span>
+                </label>
+                <div class="col-xs-12 col-md-9">
+                    <input
+                        id="carouselUrl"
+                        type="text"
+                        class="form-control input-alt-mobile"
+                        ng-model="ctrl.CaruselUrl"
+                        validation-input-text="{{::'Admin.Js.AddEditCarousel.NavigationURL'|translate}}"
+                        data-autofocus="!isMobile.value"
+                        data-e2e="carouselAddUrl" />
+                </div>
+            </div>
+            <div class="form-group row setting__form-group">
+                <label for="carouselDescription" class="col-xs-12 col-md-3 control-label">{{'Admin.Js.AddEditCarousel.AltTagImage'|translate}}</label>
+                <div class="col-xs-12 col-md-9">
+                    <input
+                        id="carouselDescription"
+                        type="text"
+                        class="form-control input-alt-mobile"
+                        ng-model="ctrl.Description"
+                        data-e2e="carouselAddAltTag" />
+                </div>
+            </div>
+            <div class="form-group setting__form-group">
+                <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                    <label for="carouselDisplayInOneColumn" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                        >{{'Admin.Js.AddEditCarousel.OneColumn'|translate}}</label
+                    >
+                    <div class="col-xs-slim first-xs last-md col-md-9">
+                        <label class="adv-checkbox-label flex" data-e2e="carouselAddOneColumn">
+                            <input
+                                id="carouselDisplayInOneColumn"
+                                type="checkbox"
+                                ng-model="ctrl.DisplayInOneColumn"
+                                ng-init="ctrl.DisplayInOneColumn = (ctrl.DisplayInOneColumn == null ? true : ctrl.DisplayInOneColumn)"
+                                class="adv-checkbox-input control-checkbox" />
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group setting__form-group">
+                <div class="row middle-xs" ng-class="{'control-labe' : !isMobile.value}">
+                    <label for="carouselDisplayInTwoColumns" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                        >{{'Admin.Js.AddEditCarousel.TwoColumns'|translate}}</label
+                    >
+                    <div class="col-xs-slim first-xs last-md col-md-9">
+                        <label class="adv-checkbox-label flex" data-e2e="carouselAddTwoColumns">
+                            <input
+                                id="carouselDisplayInTwoColumns"
+                                type="checkbox"
+                                ng-model="ctrl.DisplayInTwoColumns"
+                                ng-init="ctrl.DisplayInTwoColumns = (ctrl.DisplayInTwoColumns == null ? true : ctrl.DisplayInTwoColumns)"
+                                class="adv-checkbox-input control-checkbox" />
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group setting__form-group">
+                <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                    <label for="carouselDisplayInMobile" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                        >{{'Admin.Js.AddEditCarousel.MobileVersion'|translate}}</label
+                    >
+                    <div class="col-xs-slim first-xs last-md col-md-9">
+                        <label class="adv-checkbox-label flex" data-e2e="carouselAddDisplayInMobile">
+                            <input
+                                id="carouselDisplayInMobile"
+                                type="checkbox"
+                                ng-model="ctrl.DisplayInMobile"
+                                ng-init="ctrl.DisplayInMobile = (ctrl.DisplayInMobile == null ? true : ctrl.DisplayInMobile)"
+                                class="adv-checkbox-input control-checkbox" />
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group setting__form-group">
+                <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                    <label for="carouselBlank" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                        >{{'Admin.Js.AddEditCarousel.NewWindow'|translate}}</label
+                    >
+                    <div class="col-xs-slim first-xs last-md col-md-9">
+                        <label class="adv-checkbox-label flex" data-e2e="carouselAddBlank">
+                            <input id="carouselBlank" type="checkbox" ng-model="ctrl.Blank" class="adv-checkbox-input control-checkbox" />
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row setting__form-group">
+                <label for="carouselSortOrder" class="col-xs-12 col-md-3 control-label">{{'Admin.Js.AddEditCarousel.Sorting'|translate}}</label>
+                <div class="col-xs-12 col-md-9">
+                    <input
+                        type="number"
+                        min="-2147483648"
+                        max="2147483647"
+                        id="carouselSortOrder"
+                        class="form-control input-alt-mobile"
+                        ng-model="ctrl.SortOrder"
+                        data-e2e="carouselAddSortOrder"
+                        validation-input-text="{{::'Admin.Js.AddEditCarousel.Sorting'|translate}}" />
+                </div>
+            </div>
+
+            <div class="form-group setting__form-group">
+                <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                    <label for="carouselEnabled" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                        >{{'Admin.Js.AddEditCarousel.Activity'|translate}}</label
+                    >
+                    <div class="col-xs-slim first-xs last-md col-md-9">
+                        <label class="adv-checkbox-label" data-e2e="carouselAddEnabled">
+                            <input
+                                id="carouselEnabled"
+                                type="checkbox"
+                                ng-model="ctrl.Enabled"
+                                ng-init="ctrl.Enabled = (ctrl.Enabled == null ? true : ctrl.Enabled)"
+                                class="adv-checkbox-input control-checkbox" />
+                            <span class="adv-checkbox-emul"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="ctrl.advansedCarouselSettingsEnabled">
+            <div class="form-group row setting__form-group">
+                <div class="col-xs-12">
+                    <span class="radio">
+                        <label>
+                            <input type="radio" name="contentType" ng-model="ctrl.IsVideo" ng-value="false" />
+                            {{'Admin.Js.AddEditCarousel.Picture'|translate}}
+                        </label>
+                        &nbsp;
+                        <label>
+                            <input type="radio" name="contentType" ng-model="ctrl.IsVideo" ng-value="true" />
+                            {{'Admin.Js.AddEditCarousel.Video'|translate}}
+                        </label>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row setting__form-group" ng-show="ctrl.IsVideo !== true">
+                <div class="col-xs-12">
+                    <picture-uploader
+                        start-src="{{ ctrl.ImageSrc ? ctrl.ImageSrc : '../images/nophoto_small.png' }}"
+                        upload-url="/carousel/Upload?carouselId={{ ctrl.carouselId }}"
+                        delete-url="/carousel/DeleteFile?carouselId={{ ctrl.carouselId }}"
+                        file-types="ctrl.fileTypes"
+                        uploadbylink-url="/carousel/uploadByLink?carouselId={{ ctrl.carouselId }}"
+                        on-update="ctrl.updateImage(result)"
+                        on-delete="ctrl.updateImage(result)"></picture-uploader>
+                    <p style="margin-bottom: 5px" ng-bind-html="'Admin.Js.AddEditCarousel.Size'|translate"></p>
+                    <p style="margin-bottom: 0" ng-bind-html="'Admin.Js.AddEditCarousel.MobileSize'|translate"></p>
+                </div>
+            </div>
+            <div class="form-group row setting__form-group" ng-show="ctrl.IsVideo === true">
+                <div class="col-xs-12">
+                    <div
+                        video-file-uploader
+                        settings="{ urlVideo: ctrl.VideoSrc }"
+                        upload-url="/carousel/uploadVideo?carouselId={{ ctrl.carouselId }}"
+                        delete-url="/carousel/deleteVideo?carouselId={{ ctrl.carouselId }}"
+                        url-list-video="/carousel/getVideos?carouselId={{ ctrl.carouselId }}"
+                        accept="{{ctrl.videoFileTypes}}"
+                        folder-path="../videos/carousel/{{ ctrl.carouselId ? ctrl.carouselId : 0 }}/"
+                        multiple="false"
+                        autoload="true"
+                        on-update="ctrl.updateVideo(result)"
+                        on-delete="ctrl.updateVideo(result)"></div>
+                </div>
+            </div>
+            <uib-tabset active uid="carousel" class="ibox nav-tabs-wrap nav-tabs-wrap--chips">
+                <uib-tab index="'tab-settings'" heading="{{'Admin.Js.AddEditCarousel.Settings'|translate}}">
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedObscuring" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.Obscuring'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                id="carouselAdvancedObscuring"
+                                type="range"
+                                min="0"
+                                max="100"
+                                class="form-control-range"
+                                ng-model="ctrl.Obscuring"
+                                ng-init="ctrl.Obscuring = ctrl.Obscuring || 0"
+                                data-e2e="carouselAdvancedAddObscuring" />
+                        </div>
+                    </div>
+                    <div class="row" ng-class="{'m-b-md' : !isMobile.value}">
+                        <label ng-if="!isMobile.value" class="col-xs-3">
+                            <strong>{{'Admin.Js.AddEditCarousel.Margins'|translate}}</strong>
+                        </label>
+                        <div ng-if="isMobile.value" class="col-xs-12 setting__subtitle">{{'Admin.Js.AddEditCarousel.Margins'|translate}}</div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedMarginTop" class="col-xs-12 col-md-3 control-label"
+                            >{{'Admin.Js.AddEditCarousel.Top'|translate}}</label
+                        >
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                type="number"
+                                min="0"
+                                max="1000"
+                                id="carouselAdvancedMarginTop"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.MarginTop"
+                                ng-init="ctrl.MarginTop = (ctrl.MarginTop == null ? 40 : ctrl.MarginTop)"
+                                data-e2e="carouselAdvancedMarginTop"
+                                validation-input-text="{{'Admin.Js.AddEditCarousel.Top'|translate}}" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedMarginBottom" class="col-xs-12 col-md-3 control-label"
+                            >{{'Admin.Js.AddEditCarousel.Bottom'|translate}}</label
+                        >
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                type="number"
+                                min="0"
+                                max="1000"
+                                id="carouselAdvancedMarginBottom"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.MarginBottom"
+                                ng-init="ctrl.MarginBottom = (ctrl.MarginBottom == null ? 40 : ctrl.MarginBottom)"
+                                data-e2e="carouselAdvancedMarginBottom"
+                                validation-input-text="{{'Admin.Js.AddEditCarousel.Bottom'|translate}}" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedMarginLeft" class="col-xs-12 col-md-3 control-label"
+                            >{{'Admin.Js.AddEditCarousel.Left'|translate}}</label
+                        >
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                type="number"
+                                min="0"
+                                max="1000"
+                                id="carouselAdvancedMarginLeft"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.MarginLeft"
+                                ng-init="ctrl.MarginLeft = (ctrl.MarginLeft == null ? 40 : ctrl.MarginLeft)"
+                                data-e2e="carouselAdvancedMarginLeft"
+                                validation-input-text="{{'Admin.Js.AddEditCarousel.Left'|translate}}" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedMarginRight" class="col-xs-12 col-md-3 control-label"
+                            >{{'Admin.Js.AddEditCarousel.Right'|translate}}</label
+                        >
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                type="number"
+                                min="0"
+                                max="1000"
+                                id="carouselAdvancedMarginRight"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.MarginRight"
+                                ng-init="ctrl.MarginRight = (ctrl.MarginRight == null ? 40 : ctrl.MarginRight)"
+                                data-e2e="carouselAdvancedMarginRight"
+                                validation-input-text="{{'Admin.Js.AddEditCarousel.Right'|translate}}" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedHeaderTextColorCode" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.HeaderTextColor'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9 custom-color-picker-wrap--top flatpickr-custom-wrap">
+                            <color-picker
+                                id="carouselAdvancedHeaderTextColorCode"
+                                ng-model="ctrl.HeaderTextColorCode"
+                                options="ctrl.colorPickerOptions"
+                                api="ctrl.colorPickerHeaderTextApi"
+                                event-api="ctrl.colorPickerHeaderTextEventApi"
+                                data-e2e="carouselAdvancedHeaderTextColorCode"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.HeaderTextColor'|translate}}"></color-picker>
+                            <span class="flatpickr-custom-clear">
+                                <i ng-click="ctrl.HeaderTextColorCode = null" class="fa fa-times" style="padding-right: 10px"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedUrl" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.NavigationURL'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                id="carouselAdvancedUrl"
+                                type="text"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.CaruselUrl"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.NavigationURL'|translate}}"
+                                data-autofocus="!isMobile.value"
+                                data-e2e="carouselAdvancedAddUrl" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedDescription" class="col-xs-12 col-md-3 control-label"
+                            >{{'Admin.Js.AddEditCarousel.AltTagImage'|translate}}</label
+                        >
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                id="carouselAdvancedDescription"
+                                type="text"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Description"
+                                data-e2e="carouselAdvancedAddAltTag" />
+                        </div>
+                    </div>
+                    <div class="form-group setting__form-group">
+                        <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                            <label for="carouselAdvancedDisplayInOneColumn" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                                >{{'Admin.Js.AddEditCarousel.OneColumn'|translate}}</label
+                            >
+                            <div class="col-xs-slim first-xs last-md col-md-9">
+                                <label class="adv-checkbox-label flex" data-e2e="carouselAdvancedAddOneColumn">
+                                    <input
+                                        id="carouselAdvancedDisplayInOneColumn"
+                                        type="checkbox"
+                                        ng-model="ctrl.DisplayInOneColumn"
+                                        ng-init="ctrl.DisplayInOneColumn = (ctrl.DisplayInOneColumn == null ? true : ctrl.DisplayInOneColumn)"
+                                        class="adv-checkbox-input control-checkbox" />
+                                    <span class="adv-checkbox-emul"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group setting__form-group">
+                        <div class="row middle-xs" ng-class="{'control-labe' : !isMobile.value}">
+                            <label for="carouselAdvancedDisplayInTwoColumns" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                                >{{'Admin.Js.AddEditCarousel.TwoColumns'|translate}}</label
+                            >
+                            <div class="col-xs-slim first-xs last-md col-md-9">
+                                <label class="adv-checkbox-label flex" data-e2e="carouselAdvancedAddTwoColumns">
+                                    <input
+                                        id="carouselAdvancedDisplayInTwoColumns"
+                                        type="checkbox"
+                                        ng-model="ctrl.DisplayInTwoColumns"
+                                        ng-init="ctrl.DisplayInTwoColumns = (ctrl.DisplayInTwoColumns == null ? true : ctrl.DisplayInTwoColumns)"
+                                        class="adv-checkbox-input control-checkbox" />
+                                    <span class="adv-checkbox-emul"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group setting__form-group">
+                        <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                            <label for="carouselAdvancedDisplayInMobile" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                                >{{'Admin.Js.AddEditCarousel.MobileVersion'|translate}}</label
+                            >
+                            <div class="col-xs-slim first-xs last-md col-md-9">
+                                <label class="adv-checkbox-label flex" data-e2e="carouselAdvancedAddDisplayInMobile">
+                                    <input
+                                        id="carouselAdvancedDisplayInMobile"
+                                        type="checkbox"
+                                        ng-model="ctrl.DisplayInMobile"
+                                        ng-init="ctrl.DisplayInMobile = (ctrl.DisplayInMobile == null ? true : ctrl.DisplayInMobile)"
+                                        class="adv-checkbox-input control-checkbox" />
+                                    <span class="adv-checkbox-emul"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group setting__form-group">
+                        <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                            <label for="carouselAdvancedBlank" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                                >{{'Admin.Js.AddEditCarousel.NewWindow'|translate}}</label
+                            >
+                            <div class="col-xs-slim first-xs last-md col-md-9">
+                                <label class="adv-checkbox-label flex" data-e2e="carouselAdvancedAddBlank">
+                                    <input
+                                        id="carouselAdvancedBlank"
+                                        type="checkbox"
+                                        ng-model="ctrl.Blank"
+                                        class="adv-checkbox-input control-checkbox" />
+                                    <span class="adv-checkbox-emul"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedSortOrder" class="col-xs-12 col-md-3 control-label"
+                            >{{'Admin.Js.AddEditCarousel.Sorting'|translate}}</label
+                        >
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                type="number"
+                                min="-2147483648"
+                                max="2147483647"
+                                id="carouselAdvancedSortOrder"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.SortOrder"
+                                data-e2e="carouselAdvancedAddSortOrder"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.Sorting'|translate}}" />
+                        </div>
+                    </div>
+
+                    <div class="form-group setting__form-group">
+                        <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                            <label for="carouselAdvancedEnabled" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                                >{{'Admin.Js.AddEditCarousel.Activity'|translate}}</label
+                            >
+                            <div class="col-xs-slim first-xs last-md col-md-9">
+                                <label class="adv-checkbox-label" data-e2e="carouselAdvancedAddEnabled">
+                                    <input
+                                        id="carouselAdvancedEnabled"
+                                        type="checkbox"
+                                        ng-model="ctrl.Enabled"
+                                        ng-init="ctrl.Enabled = (ctrl.Enabled == null ? true : ctrl.Enabled)"
+                                        class="adv-checkbox-input control-checkbox" />
+                                    <span class="adv-checkbox-emul"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab index="'tab-text'" heading="{{'Admin.Js.AddEditCarousel.Text'|translate}}">
+                    <div class="form-group setting__form-group">
+                        <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                            <label for="carouselAdvancedTextEnabled" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                                >{{'Admin.Js.AddEditCarousel.TextEnabled'|translate}}</label
+                            >
+                            <div class="col-xs-slim first-xs last-md col-md-9">
+                                <label class="adv-checkbox-label" data-e2e="carouselAdvancedTextEnabled">
+                                    <input
+                                        id="carouselAdvancedTextEnabled"
+                                        type="checkbox"
+                                        ng-model="ctrl.Text.Enabled"
+                                        ng-init="ctrl.Text.Enabled = (ctrl.Text.Enabled == null ? true : ctrl.Text.Enabled)"
+                                        class="adv-checkbox-input control-checkbox" />
+                                    <span class="adv-checkbox-emul"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedTextTitle" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.TextTitle'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                id="carouselAdvancedTextTitle"
+                                type="text"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Text.Title"
+                                ng-init="ctrl.Text.Title = ctrl.TextTitle || ctrl.Text.Title"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.TextTitle'|translate}}"
+                                data-autofocus="!isMobile.value"
+                                data-e2e="carouselAdvancedTextTitle" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedTitleSize" class="col-xs-12 col-md-3 control-label"
+                            >{{'Admin.Js.AddEditCarousel.TextTitleSize'|translate}}</label
+                        >
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                type="number"
+                                min="1"
+                                max="100"
+                                id="carouselAdvancedTitleSize"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Text.TitleSize"
+                                ng-init="ctrl.Text.TitleSize = ctrl.Text.TitleSize || 60"
+                                data-e2e="carouselAdvancedTitleSize"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.TextTitleSize'|translate}}" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedTitleLineHeight" class="col-xs-12 col-md-3 control-label"
+                            >{{'Admin.Js.AddEditCarousel.TextTitleLineHeight'|translate}}</label
+                        >
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                type="number"
+                                min="0"
+                                max="10"
+                                step="0.05"
+                                id="carouselAdvancedTitleLineHeight"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Text.TitleLineHeight"
+                                ng-init="ctrl.Text.TitleLineHeight = (ctrl.Text.TitleLineHeight == null ? 1.2 : ctrl.Text.TitleLineHeight)"
+                                data-e2e="carouselAdvancedTitleLineHeight"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.TextTitleLineHeight'|translate}}" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedTextMainText" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.TextMainText'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9">
+                            <textarea
+                                id="carouselAdvancedTextMainText"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Text.Text"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.TextMainText'|translate}}"
+                                data-e2e="carouselAdvancedTextMainText"
+                                rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedTextSize" class="col-xs-12 col-md-3 control-label"
+                            >{{'Admin.Js.AddEditCarousel.TextSize'|translate}}</label
+                        >
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                type="number"
+                                min="1"
+                                max="100"
+                                id="carouselAdvancedTextSize"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Text.TextSize"
+                                ng-init="ctrl.Text.TextSize = ctrl.Text.TextSize || 20"
+                                data-e2e="carouselAdvancedTextSize"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.TextSize'|translate}}" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedTextLineHeight" class="col-xs-12 col-md-3 control-label"
+                            >{{'Admin.Js.AddEditCarousel.TextLineHeight'|translate}}</label
+                        >
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                type="number"
+                                min="0"
+                                max="10"
+                                step="0.05"
+                                id="carouselAdvancedTextLineHeight"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Text.TextLineHeight"
+                                ng-init="ctrl.Text.TextLineHeight = (ctrl.Text.TextLineHeight == null ? 1 : ctrl.Text.TextLineHeight)"
+                                data-e2e="carouselAdvancedTextLineHeight"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.TextLineHeight'|translate}}" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedTextColor" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.TextColor'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9 custom-color-picker-wrap--top">
+                            <color-picker
+                                id="carouselAdvancedTextColor"
+                                ng-model="ctrl.Text.ColorCode"
+                                options="ctrl.colorPickerOptions"
+                                api="ctrl.colorPickerTextApi"
+                                event-api="ctrl.colorPickerTextEventApi"
+                                data-e2e="carouselAdvancedTextColor"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.TextColor'|translate}}"></color-picker>
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedBlockSize" class="col-xs-12 col-md-3 control-label"
+                            >{{'Admin.Js.AddEditCarousel.BlockSizeInPercent'|translate}}</label
+                        >
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                type="number"
+                                min="1"
+                                max="100"
+                                id="carouselAdvancedBlockSize"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Text.BlockSize"
+                                ng-init="ctrl.Text.BlockSize = ctrl.Text.BlockSize || 50"
+                                data-e2e="carouselAdvancedTextSize"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.BlockSizeInPercent'|translate}}" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedTextAlignment" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.Alignment'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9">
+                            <select
+                                id="carouselAdvancedTextAlignment"
+                                ng-options="option.value as option.label for option in ctrl.alignments"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Text.Alignment"
+                                data-e2e="carouselAdvancedTextAlignment"></select>
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedTextPositionHorizontal" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.HorizontalPosition'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9">
+                            <select
+                                id="carouselAdvancedTextPositionHorizontal"
+                                ng-options="option.value as option.label for option in ctrl.horizontalPositions"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Text.PositionHorizontal"
+                                data-e2e="carouselAdvancedTextPositionHorizontal"></select>
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedTextPositionVertical" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.VerticalPosition'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9">
+                            <select
+                                id="carouselAdvancedTextPositionVertical"
+                                ng-options="option.value as option.label for option in ctrl.verticalPositions"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Text.PositionVertical"
+                                data-e2e="carouselAdvancedTextPositionVertical"></select>
+                        </div>
+                    </div>
+                    <!--<div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedTextAnimation" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.TextAnimation'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9">
+                            <select
+                                id="carouselAdvancedTextAnimation"
+                                ng-options="option.value as option.label for option in ctrl.animations"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Text.Animation"
+                                data-e2e="carouselAdvancedTextAnimation"></select>
+                        </div>
+                    </div>-->
+                </uib-tab>
+                <uib-tab index="'tab-button1'" heading="{{'Admin.Js.AddEditCarousel.Button'|translate}} 1">
+                    <div class="form-group setting__form-group">
+                        <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                            <label for="carouselAdvancedButton1Enabled" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                                >{{'Admin.Js.AddEditCarousel.ButtonEnabled'|translate}}</label
+                            >
+                            <div class="col-xs-slim first-xs last-md col-md-9">
+                                <label class="adv-checkbox-label" data-e2e="carouselAdvancedButton1Enabled">
+                                    <input
+                                        id="carouselAdvancedButton1Enabled"
+                                        type="checkbox"
+                                        ng-model="ctrl.Buttons[0].Enabled"
+                                        class="adv-checkbox-input control-checkbox" />
+                                    <span class="adv-checkbox-emul"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedButton1Text" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.ButtonText'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                id="carouselAdvancedButton1Text"
+                                type="text"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Buttons[0].Text"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.ButtonText'|translate}}"
+                                data-autofocus="!isMobile.value"
+                                data-e2e="carouselAdvancedButton1Text" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedButton1Url" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.ButtonUrl'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                id="carouselAdvancedButton1Url"
+                                type="text"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Buttons[0].Url"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.ButtonUrl'|translate}}"
+                                data-e2e="carouselAdvancedButton1Url" />
+                        </div>
+                    </div>
+                    <div class="form-group setting__form-group">
+                        <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                            <label for="carouselAdvancedButton1InANewWindow" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                                >{{'Admin.Js.AddEditCarousel.ButtonInANewWindow'|translate}}</label
+                            >
+                            <div class="col-xs-slim first-xs last-md col-md-9">
+                                <label class="adv-checkbox-label flex" data-e2e="carouselAdvancedButton1InANewWindow">
+                                    <input
+                                        id="carouselAdvancedButton1InANewWindow"
+                                        type="checkbox"
+                                        ng-model="ctrl.Buttons[0].Blank"
+                                        class="adv-checkbox-input control-checkbox" />
+                                    <span class="adv-checkbox-emul"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group setting__form-group">
+                        <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                            <label
+                                for="carouselAdvancedButton1UseStoreColorScheme"
+                                class="col-xs-slim col-md-3"
+                                ng-class="{'p-l-xs' : isMobile.value}"
+                                >{{'Admin.Js.AddEditCarousel.ButtonUseStoreColorScheme'|translate}}</label
+                            >
+                            <div class="col-xs-slim first-xs last-md col-md-9">
+                                <label class="adv-checkbox-label flex" data-e2e="carouselAdvancedButton1UseStoreColorScheme">
+                                    <input
+                                        id="carouselAdvancedButton1UseStoreColorScheme"
+                                        type="checkbox"
+                                        ng-model="ctrl.Buttons[0].UseStoreColorScheme"
+                                        class="adv-checkbox-input control-checkbox" />
+                                    <span class="adv-checkbox-emul"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-hide="ctrl.Buttons[0].UseStoreColorScheme === true">
+                        <div class="form-group row setting__form-group">
+                            <label for="carouselAdvancedButton1Color" class="col-xs-12 col-md-3 control-label">
+                                <span> {{'Admin.Js.AddEditCarousel.ButtonColor'|translate}} </span>
+                            </label>
+                            <div class="col-xs-12 col-md-9 custom-color-picker-wrap--top">
+                                <color-picker
+                                    id="carouselAdvancedButton1Color"
+                                    ng-model="ctrl.Buttons[0].ButtonColorCode"
+                                    options="ctrl.colorPickerOptions"
+                                    api="ctrl.colorPickerButton1Api"
+                                    event-api="ctrl.colorPickerButton1EventApi"
+                                    data-e2e="carouselAdvancedButton1Color"
+                                    validation-input-text="{{::'Admin.Js.AddEditCarousel.ButtonColor'|translate}}"></color-picker>
+                            </div>
+                        </div>
+                        <div class="form-group row setting__form-group">
+                            <label for="carouselAdvancedButton1TextColor" class="col-xs-12 col-md-3 control-label">
+                                <span> {{'Admin.Js.AddEditCarousel.ButtonTextColor'|translate}} </span>
+                            </label>
+                            <div class="col-xs-12 col-md-9 custom-color-picker-wrap--bottom">
+                                <color-picker
+                                    id="carouselAdvancedButton1TextColor"
+                                    ng-model="ctrl.Buttons[0].TextColorCode"
+                                    options="ctrl.colorPickerOptions"
+                                    api="ctrl.colorPickerButton1TextApi"
+                                    event-api="ctrl.colorPickerButton1TextEventApi"
+                                    data-e2e="carouselAdvancedButton1TextColor"
+                                    validation-input-text="{{::'Admin.Js.AddEditCarousel.ButtonTextColor'|translate}}"></color-picker>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab index="'tab-button2'" heading="{{'Admin.Js.AddEditCarousel.Button'|translate}} 2">
+                    <div class="form-group setting__form-group">
+                        <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                            <label for="carouselAdvancedButton2Enabled" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                                >{{'Admin.Js.AddEditCarousel.ButtonEnabled'|translate}}</label
+                            >
+                            <div class="col-xs-slim first-xs last-md col-md-9">
+                                <label class="adv-checkbox-label" data-e2e="carouselAdvancedButton2Enabled">
+                                    <input
+                                        id="carouselAdvancedButton2Enabled"
+                                        type="checkbox"
+                                        ng-model="ctrl.Buttons[1].Enabled"
+                                        class="adv-checkbox-input control-checkbox" />
+                                    <span class="adv-checkbox-emul"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedButton2Text" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.ButtonText'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                id="carouselAdvancedButton2Text"
+                                type="text"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Buttons[1].Text"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.ButtonText'|translate}}"
+                                data-autofocus="!isMobile.value"
+                                data-e2e="carouselAdvancedButton2Text" />
+                        </div>
+                    </div>
+                    <div class="form-group row setting__form-group">
+                        <label for="carouselAdvancedButton2Url" class="col-xs-12 col-md-3 control-label">
+                            <span> {{'Admin.Js.AddEditCarousel.ButtonUrl'|translate}} </span>
+                        </label>
+                        <div class="col-xs-12 col-md-9">
+                            <input
+                                id="carouselAdvancedButton2Url"
+                                type="text"
+                                class="form-control input-alt-mobile"
+                                ng-model="ctrl.Buttons[1].Url"
+                                validation-input-text="{{::'Admin.Js.AddEditCarousel.ButtonUrl'|translate}}"
+                                data-e2e="carouselAdvancedButton2Url" />
+                        </div>
+                    </div>
+                    <div class="form-group setting__form-group">
+                        <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                            <label for="carouselAdvancedButton2InANewWindow" class="col-xs-slim col-md-3" ng-class="{'p-l-xs' : isMobile.value}"
+                                >{{'Admin.Js.AddEditCarousel.ButtonInANewWindow'|translate}}</label
+                            >
+                            <div class="col-xs-slim first-xs last-md col-md-9">
+                                <label class="adv-checkbox-label flex" data-e2e="carouselAdvancedButton2InANewWindow">
+                                    <input
+                                        id="carouselAdvancedButton2InANewWindow"
+                                        type="checkbox"
+                                        ng-model="ctrl.Buttons[1].Blank"
+                                        class="adv-checkbox-input control-checkbox" />
+                                    <span class="adv-checkbox-emul"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group setting__form-group">
+                        <div class="row middle-xs" ng-class="{'control-label' : !isMobile.value}">
+                            <label
+                                for="carouselAdvancedButton2UseStoreColorScheme"
+                                class="col-xs-slim col-md-3"
+                                ng-class="{'p-l-xs' : isMobile.value}"
+                                >{{'Admin.Js.AddEditCarousel.ButtonUseStoreColorScheme'|translate}}</label
+                            >
+                            <div class="col-xs-slim first-xs last-md col-md-9">
+                                <label class="adv-checkbox-label flex" data-e2e="carouselAdvancedButton2UseStoreColorScheme">
+                                    <input
+                                        id="carouselAdvancedButton2UseStoreColorScheme"
+                                        type="checkbox"
+                                        ng-model="ctrl.Buttons[1].UseStoreColorScheme"
+                                        class="adv-checkbox-input control-checkbox" />
+                                    <span class="adv-checkbox-emul"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-hide="ctrl.Buttons[1].UseStoreColorScheme === true">
+                        <div class="form-group row setting__form-group">
+                            <label for="carouselAdvancedButton2Color" class="col-xs-12 col-md-3 control-label">
+                                <span> {{'Admin.Js.AddEditCarousel.ButtonColor'|translate}} </span>
+                            </label>
+                            <div class="col-xs-12 col-md-9 custom-color-picker-wrap--top">
+                                <color-picker
+                                    id="carouselAdvancedButton2Color"
+                                    ng-model="ctrl.Buttons[1].ButtonColorCode"
+                                    options="ctrl.colorPickerOptions"
+                                    api="ctrl.colorPickerButton2Api"
+                                    event-api="ctrl.colorPickerButton2EventApi"
+                                    data-e2e="carouselAdvancedButton2Color"
+                                    validation-input-text="{{::'Admin.Js.AddEditCarousel.ButtonColor'|translate}}"></color-picker>
+                            </div>
+                        </div>
+                        <div class="form-group row setting__form-group">
+                            <label for="carouselAdvancedButton2TextColor" class="col-xs-12 col-md-3 control-label">
+                                <span> {{'Admin.Js.AddEditCarousel.ButtonTextColor'|translate}} </span>
+                            </label>
+                            <div class="col-xs-12 col-md-9 custom-color-picker-wrap--bottom">
+                                <color-picker
+                                    id="carouselAdvancedButton2TextColor"
+                                    ng-model="ctrl.Buttons[1].TextColorCode"
+                                    options="ctrl.colorPickerOptions"
+                                    api="ctrl.colorPickerButton2TextApi"
+                                    event-api="ctrl.colorPickerButton2TextEventApi"
+                                    data-e2e="carouselAdvancedButton2TextColor"
+                                    validation-input-text="{{::'Admin.Js.AddEditCarousel.ButtonTextColor'|translate}}"></color-picker>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button
+            class="btn btn-save btn-primary"
+            ladda="ctrl.btnSleep"
+            type="button"
+            data-button-validation-success="ctrl.saveCarousel()"
+            data-e2e="carouselAdd"
+            data-button-validation>
+            {{'Admin.Js.AddEdit.Save'|translate}}
+        </button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()" data-e2e="carouselAddCancel">
+            {{'Admin.Js.AddEdit.Cancel'|translate}}
+        </button>
+    </div>
+</form>

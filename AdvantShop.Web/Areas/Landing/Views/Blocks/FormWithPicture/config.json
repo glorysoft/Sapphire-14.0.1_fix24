@@ -1,0 +1,48 @@
+﻿{
+    "name": "formWithPicture",
+    "type": "form",
+    "description": "Landings.Views.Blocks.Config.FormWithPicture.Description",
+    "category": "Landings.Views.Blocks.Config.FormWithPicture.Category",
+    "picture": "./areas/landing/images/forms/formWithPicture.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.FormWithPicture.SubBlockPlasholderOne"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.FormWithPicture.SubBlockPlasholderTwo"
+        },
+        {
+            "name": "picture",
+            "type": "picture",
+            "settings": {
+                "src": "areas/landing/frontend/images/forms/formWithPicture.jpg",
+                "class": ""
+            }
+        }
+    ],
+    "settings": {
+        "color_scheme": "color-scheme--light",
+        "classes": ["lp-block-form-with-picture", "color-scheme--light", "block-padding-top--85", "block-padding-bottom--85"],
+        "background_image": null,
+        "background_color": null,
+        "darken": 0,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 85,
+        "padding_bottom": 85,
+        "style": {},
+        "show_title": false,
+        "show_subtitle": false,
+        "form": {
+            "is_hidden": false,
+            "SubTitle": "Landings.Views.Blocks.Config.FormWithPicture.FormSubTitle"
+        },
+        "mobile_hidden": false
+    }
+}

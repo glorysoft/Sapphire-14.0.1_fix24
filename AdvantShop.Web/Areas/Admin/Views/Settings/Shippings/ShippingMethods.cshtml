@@ -1,0 +1,95 @@
+﻿@using AdvantShop.Core.Services.Admin
+
+@model AdvantShop.Web.Admin.Models.Settings.ShippingMethodsSettingsModel
+@{
+    Layout = "~/Areas/Admin/Views/Settings/_SettingsLayout.cshtml";
+    var isAdminv3 = AdminAreaTemplate.Current == "adminv3";
+    var isMobile = SettingsDesign.IsMobileTemplate;
+}
+@{
+    Html.AddAsset("settings");
+}
+
+@{
+    var headerModel = new AdvantShop.Web.Admin.ViewModels.Shared.Common.HeaderViewModel();
+    headerModel.ShowOnlySticky = true;
+    headerModel.EnabledBack = true;
+    headerModel.Back = new AdvantShop.Web.Admin.ViewModels.Shared.Common.BackViewModel()
+    {
+        Text = T("Admin.Settings.IndexSettings").ToString(),
+        Url = Url.AbsoluteActionUrl("Index", "Settings"),
+        NgBackTriggerCallback = "settingsShippingMethods.onSelectTab(null)"
+    };
+    headerModel.Title = T("Admin.Settings.Shippingsmethods").ToString();
+    headerModel.Controls = new List<IButton>()
+{
+            new ButtonModel()
+            {
+                ColorType = isMobile ? eColorType.Secondary : eColorType.Success,
+                Text = @T("Admin.Settings.Shippings.ShippingMethods.AddDeliveryMethod"),
+                Type = eButtonType.Add,
+                Modificators = new List<eButtonModificators>()
+                {
+                    eButtonModificators.OnlyIcon
+                },
+                Icon =  new ButtonIcon()
+                {
+                    SvgName = "plus-alt",
+                    Attributes = new { width=16, height=16 }
+                },
+                Size = eButtonSize.Small,
+                Attributes = new string[]{ "data-e2e=\"ShippingAdd\"" },
+                WrapStart = "<ui-modal-trigger class=\"inline\" ng-if=\"settingsShippingMethods.tabActiveIndex === 'shippings'\" data-controller=\"'ModalAddShippingMethodCtrl'\" controller-as=\"ctrl\" template-url=\"" + Html.GetAssetPath("addShippingMethod.html") + "\" data-on-close=\"settings.shippingMethodsList.fetch()\">",
+                WrapEnd = "</ui-modal-trigger>"
+            },
+            new ButtonModel()
+            {
+                ColorType = isMobile ? eColorType.Secondary : eColorType.Success,
+                // Text = @T("Admin.Settings.Shippings.ShippingMethods.AddDeliveryMethod"),
+                Type = eButtonType.Add,
+                Modificators = new List<eButtonModificators>()
+                {
+                    eButtonModificators.OnlyIcon
+                },
+                Icon =  new ButtonIcon()
+                {
+                    SvgName = "plus-alt",
+                    Attributes = new { width=16, height=16 }
+                },
+                Size = eButtonSize.Small,
+                // Attributes = new string[]{ "data-e2e=\"ShippingAdd\"" },
+                WrapStart = "<ui-modal-trigger class=\"inline\" ng-if=\"settingsShippingMethods.tabActiveIndex === 'rules'\" data-controller=\"'ModalShippingRulesCtrl'\" controller-as=\"ctrl\" template-url=\"" + Html.GetAssetPath("shippingRules.html") + "\" data-on-close=\"settingsShippingMethods.shippingRules.grid.fetchData()\">",
+                WrapEnd = "</ui-modal-trigger>"
+            },
+        };
+
+
+    @Html.Header(headerModel)
+}
+
+@if (isAdminv3 && !isMobile)
+{
+    <div class="backSetting-link__desktop">
+        @Html.Back(T("Admin.Settings.Shippingsmethods.Settings").ToString(), Url.AbsoluteActionUrl("Index", "Settings"))
+    </div>
+    <div class="sticky-page-name m-t-xs sticky-page-name-block_mobile" style="margin-bottom:4px;">
+        <div class="backSetting-link__mobile col-xs-2">
+            @Html.Back(@T("Admin.Coupons.Index.Settings").ToString(), Url.AbsoluteActionUrl("Index", "Settings"))
+        </div>
+        <h1 class="page-name-block-text">@T("Admin.Settings.Shippingsmethods")</h1>
+    </div>
+}
+
+<uib-tabset active
+            on-select-batch="settingsShippingMethods.onSelectTab(tab.index);"
+            uid="shippingsTab"
+            @Html.Raw(isMobile ? "tabs-mode=\"'navigation'\" class=\"tabs-navigation\"" : "")>
+    
+    <uib-tab index="'shippings'" heading="@T("Admin.Settings.ShippingMethods")" classes="ng-tab">
+        @Html.Partial("Shippings/_ShippingMethodsList")
+    </uib-tab>
+
+    <uib-tab index="'rules'" heading="@T("Admin.Settings.ShippingMethods.Rules")" classes="ng-tab" removable="true">
+        @Html.Partial("Shippings/_Rules")
+    </uib-tab>
+</uib-tabset>

@@ -1,0 +1,81 @@
+﻿@using AdvantShop.Core.Services.Localization
+@model AdvantShop.Web.Admin.ViewModels.Triggers.TriggerStatisticsModel
+@{
+    Html.AddAsset("triggers");
+    
+    var isMobile = SettingsDesign.IsMobileTemplate;
+    if (isMobile)
+    {
+        var headerModel = new AdvantShop.Web.Admin.ViewModels.Shared.Common.HeaderViewModel
+        {
+            Controls = new List<IButton>(),
+            DefaultTitle = LocalizationService.GetResource("Admin.Triggers.Statistics"),
+            Back = new AdvantShop.Web.Admin.ViewModels.Shared.Common.BackViewModel()
+            {
+                Url = Url.AbsoluteActionUrl("Edit", "Triggers", new { id = Model.Trigger.Id })
+            }
+        };
+
+        @Html.Header(headerModel)
+    }
+}
+
+<div class="m-b-lg">
+    @Html.Back("Триггер", Url.AbsoluteActionUrl("Edit", "Triggers", new {id = Model.Trigger.Id}))
+    <h2 class="page-name-block-text">@T("Admin.Triggers.Statistics.Title", Model.Trigger.Name)</h2>
+</div>
+
+<div class="row" ng-init="ctrl.selectedTab = 'statistics'">
+    
+    <div class="col-xs-12 col-md-2 col-wl-2">
+        <div class="aside-menu">
+
+            <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none" ng-class="{'selected':ctrl.selectedTab=='statistics'}" href="" ng-click="ctrl.selectedTab = 'statistics'">
+                <div class="aside-menu-inner">
+                    <div class="aside-menu-name">@T("Admin.Triggers.Statistics")</div>
+                </div>
+            </a>
+
+            <a class="aside-menu-row settigs-menu-row link-invert link-decoration-none" ng-class="{'selected':ctrl.selectedTab=='history'}" href="" ng-click="ctrl.selectedTab = 'history'">
+                <div class="aside-menu-inner">
+                    <div class="aside-menu-name">@T("Admin.Triggers.History")</div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-10 col-wl-10">
+        <div class="ibox">
+            <div class="ibox-content">
+                <div ng-class="container-fluid">
+                    <div ng-switch="ctrl.selectedTab">
+
+                        <div ng-switch-when="statistics">
+                            <div data-oc-lazy-load="[{files: [@Html.RenderAssetFilesList("chart")], serie: true}]">
+                                @{
+                                    var now = DateTime.Now;
+                                    var pervMonth = now.AddMonths(-1);
+                                }
+                                <trigger-statistics
+                                    trigger-id="@Model.Trigger.Id"
+                                    date-from="@pervMonth.ToString("yyyy-MM-dd")"
+                                    date-to="@now.ToString("yyyy-MM-dd")">
+                                </trigger-statistics>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="history">
+                            <trigger-history trigger-id="@Model.Trigger.Id"></trigger-history>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

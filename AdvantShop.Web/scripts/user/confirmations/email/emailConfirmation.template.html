@@ -1,0 +1,26 @@
+﻿<div class="email-confirmation"
+     data-ng-if="$ctrl.showConfirmation"
+     data-ng-model="$ctrl.confirmed"
+     data-validation-custom-function="$ctrl.confirmed">
+
+    <span data-ng-class="{
+            'email-confirmation__email-confirmed': $ctrl.confirmed,
+            'email-confirmation__email-not-confirmed': !$ctrl.confirmed
+          }">
+        {{(
+            $ctrl.confirmed
+                ? $ctrl.emailConfirmationConfig.emailConfirmedText
+                : $ctrl.emailConfirmationConfig.emailNotConfirmedText
+        )}}
+    </span>
+
+    <div data-ng-if="!$ctrl.confirmed">
+        <code-input data-count="$ctrl.emailCodeLength"
+                    data-require-send-code="true"
+                    data-description="$ctrl.emailConfirmationConfig.description"
+                    data-send-code-delay="$ctrl.emailConfirmationConfig.codeDelay"
+                    data-on-complete-filling="$ctrl.confirmCode(code)"
+                    data-on-send-code="$ctrl.sendCode()">
+        </code-input>
+    </div>
+</div>

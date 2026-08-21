@@ -1,0 +1,61 @@
+﻿<form novalidate name="editUserRoleActionsForm" is-mobile>
+    <div class="modal-header">
+        <ui-modal-cross ng-if="!isMobile.value"></ui-modal-cross>
+        <h2 class="modal-header-title">{{'Admin.Js.EditUserRoleActions.Title'|translate}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="row center-md m-b-md">
+            <div class="col-xs-12 col-md-5">
+                <a href="" ng-click="ctrl.setSelectionAll(true)">{{'Admin.Js.EditUserRoleActions.SelectAll'|translate}}</a>
+                <a href="" class="p-l-sm" ng-click="ctrl.setSelectionAll(false)">{{'Admin.Js.EditUserRoleActions.RemoveSelection'|translate}}</a>
+            </div>
+        </div>
+        <div ng-class="{'settings-container' : !isMobile.value, 'settings-container-mobile' : isMobile.value}">
+            <div ng-class="{'settings-group-column' : !isMobile.value, 'settings-group-column-mobile' : isMobile.value}"
+                 ng-repeat="accessGroup in ctrl.accessSettingsGroups track by $index">
+                <h4 ng-class="{'settings-group-header' : !isMobile.value, 'settings-group-header-mobile' : isMobile.value}">{{accessGroup.DisplayName}}</h4>
+                <div class="settings-group-items">
+                    <div ng-repeat="roleAction in ctrl.roleActions | filter: {AccessSettingsGroup: accessGroup.Name, Parent: null}"
+                         ng-class="{'settings-item-mobile' : isMobile.value}">
+                        <div class="settings-parent-item">
+                            <label class="adv-checkbox-label settings-adv-checkbox-label form-group">
+                                <input type="checkbox"
+                                       class="adv-checkbox-input control-checkbox"
+                                       ng-model="roleAction.Enabled"
+                                       ng-change="ctrl.setRoleAsParent(roleAction, roleAction.Enabled)"/>
+                                <span class="adv-checkbox-emul"></span>
+                                <span class="settings-item-text">{{roleAction.Name}}</span>
+                            </label>
+                        </div>
+                        <div ng-repeat="childAction in ctrl.roleActions | filter: {Parent: roleAction.Key}"
+                             ng-class="{'settings-child-item' : !isMobile.value, 'settings-child-item-mobile' : isMobile.value}">
+                            <div ng-style="{'opacity': roleAction.Enabled ? 1 : 0.6}">
+                                <label class="adv-checkbox-label settings-adv-checkbox-label form-group">
+                                    <input type="checkbox"
+                                           class="adv-checkbox-input control-checkbox"
+                                           ng-model="childAction.Enabled"
+                                           ng-disabled="!roleAction.Enabled"/>
+                                    <span class="adv-checkbox-emul"
+                                          ng-class="{'settings-checkbox-inactive': !roleAction.Enabled}"></span>
+                                    <span class="settings-item-text">{{childAction.Name}}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button
+            class="btn btn-save btn-primary"
+            type="button"
+            data-button-validation-success="ctrl.apply()"
+            data-button-validation
+            disabled
+            ng-disabled="!editUserRoleActionsForm.modified">
+            {{'Admin.Js.EditUserRoleActions.Apply'|translate}}
+        </button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">{{'Admin.Js.AddEdit.Cancel'|translate}}</button>
+    </div>
+</form>

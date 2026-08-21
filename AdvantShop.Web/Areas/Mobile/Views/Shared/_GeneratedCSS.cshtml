@@ -1,0 +1,55 @@
+﻿@using AdvantShop.Core.Services.Configuration.Settings;
+
+
+@if (SettingsMobile.HeaderColorVariantsSelected == "White")
+{
+<style>
+    #header {
+        background-color: #ffffff;
+        color: #383838;
+        border-bottom-color: #d9d9d9;
+    }
+
+    #header:has(.mobile-header__menu-triger--opened) {
+        background-color: #ffffff !important;
+        color: #383838;
+    }
+
+    #header:has(.mobile-header__menu-triger--opened) .mobile-header__menu-triger *{
+        color: #383838 !important;
+    }
+
+    .mobile-version #header:has(.mobile-header__menu-triger--opened) .mobile-header__icon path {
+        fill: #383838 !important;
+    }
+
+    .header-link {
+        color: #383838;
+    }
+
+        .header-link:hover {
+            color: #696969;
+        }
+        .header-link:active {
+            color: #000000;
+        }
+
+    .mobile-header__cart-count {
+        background-color: #1b1b1d;
+        color: #fefefe;
+    }
+
+    .autocompleter,
+    .autocompleter-list {
+        color: #383838;
+    }
+
+    .autocompleter-sub {
+        background-color: #ffffff;
+    }
+
+    .search-item-title {
+        border-color: #d9d9d9;
+    }
+</style>
+}

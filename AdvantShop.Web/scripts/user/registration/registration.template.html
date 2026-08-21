@@ -1,0 +1,354 @@
+﻿<form class="registration">
+    <div class="registration-customer-type"
+         data-ng-if="$ctrl.settings.AllCustomerTypes">
+        <label data-ng-repeat="customerType in $ctrl.settings.CustomerTypes">
+            <input type="radio"
+                   name="customerType"
+                   class="custom-input-native"
+                   value="{{customerType.Value}}"
+                   data-ng-model="$ctrl.registration.CustomerType" />
+            <span class="custom-input-radio"></span>
+            <span class="custom-input-text"> {{customerType.Text}} </span>
+        </label>
+    </div>
+
+    <div class="registration-group">
+        <div class="registration-title">
+            Контактные данные
+        </div>
+
+        <div>
+            <div class="registration-field-group">
+                <label class="row form-field-control">
+                    <span class="col-xs-12 form-field-name-wrap">
+                        <span class="form-field-name vertical-interval-xsmall input-required">
+                            {{$ctrl.settings.CustomerFirstNameField}}
+                        </span>
+                    </span>
+                    <span class="col-xs-12 form-field-input-wrap">
+                <span class="autocompleter-block form-field-input vertical-interval-xsmall"
+                      data-field="Value"
+                      data-autocompleter
+                      data-min-length="1"
+                      data-request-url="{{$ctrl.settings.SuggestionsModule.SuggestFullNameUrl != null ? $ctrl.settings.SuggestionsModule.SuggestFullNameUrl : null}}"
+                      data-template-path="scripts/_common/autocompleter/templates/common.html"
+                      data-params="{part: 'FirstName', lastname: $ctrl.registration.LastName, patronymic: $ctrl.registration.Patronymic}">
+                    <input type="text"
+                           class="input-small"
+                           required="required"
+                           data-ng-model="$ctrl.registration.FirstName"
+                           data-ng-pattern="/^[a-zа-яёїієґ ,.'-]+$/i"
+                           maxlength="70"
+                           autocomplete="$ctrl.settings.SuggestionsModule != null && $ctrl.settings.SuggestionsModule.SuggestFullNameInClient ? 'new-password' : 'given-name'"
+                           data-autocompleter-input=""
+                           data-autocompleter-disabled="{{$ctrl.settings.SuggestionsModule == null || $ctrl.settings.SuggestionsModule.SuggestFullNameInClient !== true}}"
+                           data-autocomplete-debounce="400" />
+                </span>
+            </span>
+                </label>
+
+                <label class="row middle-xs form-field-control"
+                       data-ng-if="$ctrl.settings.IsShowLastName">
+                        <span class="col-xs-12 form-field-name-wrap">
+                            <span class="form-field-name vertical-interval-xsmall"
+                                  data-ng-class="{'input-required': $ctrl.settings.IsRequiredLastName}">
+                                {{ ::'Js.Login.Registration.LastName' | translate }}
+                            </span>
+                        </span>
+                    <span class="col-xs-12 form-field-input-wrap">
+                    <span class="autocompleter-block form-field-input vertical-interval-xsmall"
+                          data-field="Value"
+                          data-autocompleter
+                          data-min-length="1"
+                          data-request-url="{{$ctrl.settings.SuggestionsModule.SuggestFullNameUrl != null ? $ctrl.settings.SuggestionsModule.SuggestFullNameUrl : null}}"
+                          data-template-path="scripts/_common/autocompleter/templates/common.html"
+                          data-params="{part: 'LastName', firstname: $ctrl.registration.FirstName, patronymic: $ctrl.registration.Patronymic}">
+                        <input type="text"
+                               class="input-small"
+                               data-ng-required="$ctrl.settings.IsRequiredLastName"
+                               data-ng-model="$ctrl.registration.LastName"
+                               data-ng-pattern="/^[a-zа-яёїієґ ,.'-]+$/i"
+                               maxlength="70"
+                               autocomplete="$ctrl.settings.SuggestionsModule != null && $ctrl.settings.SuggestionsModule.SuggestFullNameInClient ? 'new-password' : 'family-name'"
+                               data-autocompleter-input=""
+                               data-autocompleter-disabled="{{$ctrl.settings.SuggestionsModule == null || $ctrl.settings.SuggestionsModule.SuggestFullNameInClient !== true}}"
+                               data-autocomplete-debounce="400" />
+                    </span>
+                </span>
+                </label>
+
+                <label class="row middle-xs form-field-control"
+                       data-ng-if="$ctrl.settings.IsShowPatronymic">
+                    <span class="col-xs-12 form-field-name-wrap">
+                        <span class="form-field-name vertical-interval-xsmall"
+                              data-ng-class="{'input-required': $ctrl.settings.IsRequiredPatronymic}">
+                            {{ ::'Js.Login.Registration.Patronymic' | translate }}
+                        </span>
+                    </span>
+                    <span class="col-xs-12 form-field-input-wrap">
+                    <span class="autocompleter-block form-field-input vertical-interval-xsmall"
+                          data-field="Value"
+                          data-autocompleter
+                          data-min-length="1"
+                          data-request-url="{{$ctrl.settings.SuggestionsModule.SuggestFullNameUrl != null ? $ctrl.settings.SuggestionsModule.SuggestFullNameUrl : null}}"
+                          data-template-path="scripts/_common/autocompleter/templates/common.html"
+                          data-params="{part: 'Patronymic', firstname: $ctrl.registration.FirstName, lastname: $ctrl.registration.LastName}">
+                        <input type="text"
+                               class="input-small"
+                               data-ng-required="$ctrl.settings.IsRequiredPatronymic"
+                               data-ng-model="$ctrl.registration.Patronymic"
+                               data-ng-pattern="/^[a-zа-яёїієґ ,.'-]+$/i"
+                               maxlength="70"
+                               autocomplete="$ctrl.settings.SuggestionsModule != null && $ctrl.settings.SuggestionsModule.SuggestFullNameInClient ? 'new-password' : 'additional-name'"
+                               data-autocompleter-input=""
+                               data-autocompleter-disabled="{{$ctrl.settings.SuggestionsModule == null || $ctrl.settings.SuggestionsModule.SuggestFullNameInClient !== true}}"
+                               data-autocomplete-debounce="400" />
+                    </span>
+                </span>
+                </label>
+
+            </div>
+            <div class="registration-field-group">
+                <email-field data-ng-if="($ctrl.settings.IsShowEmail || !$ctrl.settings.AuthByCodeActive) && $ctrl.method !== 'email'"
+                             data-ng-model="$ctrl.registration.Email"
+                             data-ng-required="$ctrl.settings.IsRequiredEmail || !$ctrl.settings.AuthByCodeActive"
+                             data-show-email-confirmation="$ctrl.settings.UseEmailConfirmation">
+                </email-field>
+                <phone-field data-ng-if="($ctrl.settings.IsShowPhone || $ctrl.settings.IsBonusSystemActive) && $ctrl.method !== 'code'"
+                             data-ng-model="$ctrl.registration.Phone"
+                             data-ng-required="$ctrl.settings.IsRequiredPhone || $ctrl.settings.IsBonusSystemActive"
+                             data-label="$ctrl.settings.CustomerPhoneField"
+                             data-show-phone-confirmation="$ctrl.settings.UsePhoneConfirmation"
+                             data-enable-mask="$ctrl.settings.EnablePhoneMask">
+                </phone-field>
+            </div>
+
+            <label class="row middle-xs form-field-control"
+                   data-ng-if="$ctrl.settings.IsShowBirthDay">
+                <span class="col-xs-12 form-field-name-wrap">
+                    <span class="form-field-name vertical-interval-xsmall"
+                          data-ng-class="{'input-required': $ctrl.settings.IsRequiredBirthDay}">
+                        {{$ctrl.settings.BirthDayFieldName}}
+                    </span>
+                </span>
+                <span class="col-xs-12 form-field-input-wrap">
+                    <span class="form-field-input vertical-interval-xsmall">
+                        <span class="flatpickr-custom"
+                              data-ng-flatpickr
+                              data-fp-opts="{dateFormat: 'd.m.Y', startDateFormat: 'Y-m-d', wrap: true, enableTime: false}">
+                            <input type="text"
+                                   id="birthday"
+                                   name="birthday"
+                                   class="input-small flatpickr-custom__input"
+                                   data-ng-required="$ctrl.settings.IsRequiredBirthDay"
+                                   data-ng-flatpickr-input
+                                   data-ng-model="$ctrl.registration.BirthDay"
+                                   data-mask-control
+                                   data-mask-control-preset="date" />
+                            <span class="flatpickr-custom__toggle"
+                                  data-toggle>
+                                <svg width="14"
+                                     height="14"
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     viewBox="0 0 448 512">
+                                    <path fill="currentColor"
+                                          d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5
+                                              48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6
+                                              0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6
+                                              0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12
+                                              12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12
+                                              12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12
+                                              12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12
+                                              12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6
+                                              0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6
+                                              0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12
+                                              5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0
+                                              128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12
+                                              12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8
+                                              0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16
+                                              16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"></path>
+                                </svg>
+                            </span>
+                        </span>
+                    </span>
+                </span>
+            </label>
+
+            <div class="registration-field-group">
+                <label class="row middle-xs form-field-control">
+                <span class="col-xs-12 form-field-name-wrap">
+                    <span class="form-field-name vertical-interval-xsmall input-required">
+                        {{ ::'Js.Login.Registration.Password' | translate }}
+                    </span>
+                </span>
+                    <span class="col-xs-12 form-field-input-wrap">
+                    <span class="form-field-input vertical-interval-xsmall relative">
+                        <input class="input-small"
+                               autocomplete="off"
+                               required="required"
+                               data-ng-model="$ctrl.registration.Password"
+                               maxlength="70"
+                               data-ng-attr-type="{{$ctrl.inputPassword}}" />
+                        <a class="showhidepass"
+                           data-ng-click="$ctrl.switchPasswordType('inputPassword');">
+                            <span class="fa"
+                                  data-ng-class="{
+                                      'fa-eye': $ctrl.inputPassword === 'password',
+                                      'fa-eye-slash': $ctrl.inputPassword !== 'password'
+                                  }"> </span>
+                        </a>
+                    </span>
+                </span>
+                </label>
+
+                <label class="row middle-xs form-field-control">
+                <span class="col-xs-12 form-field-name-wrap">
+                    <span class="form-field-name vertical-interval-xsmall input-required">
+                        {{ ::'Js.Login.Registration.PasswordConfirm' | translate }}
+                    </span>
+                </span>
+                    <span class="col-xs-12 form-field-input-wrap">
+                    <span class="form-field-input vertical-interval-xsmall relative">
+                        <input class="input-small"
+                               autocomplete="off"
+                               required="required"
+                               data-ng-model="$ctrl.registration.PasswordConfirm"
+                               maxlength="70"
+                               data-ng-attr-type="{{$ctrl.inputPasswordConfirm}}" />
+                        <a class="showhidepass"
+                           data-ng-click="$ctrl.switchPasswordType('inputPasswordConfirm');">
+                            <span class="fa"
+                                  data-ng-class="{
+                                      'fa-eye': $ctrl.inputPasswordConfirm === 'password',
+                                      'fa-eye-slash': $ctrl.inputPasswordConfirm !== 'password'
+                                  }"> </span>
+                        </a>
+                    </span>
+                </span>
+                </label>
+            </div>
+
+            <div data-bind-html-compile="$ctrl.customerFieldsHtml"
+                 class="registration-field-group">
+            </div>
+        </div>
+    </div>
+
+    <div class="registration-group"
+         data-ng-if="$ctrl.captchaHtml != null">
+        <div class="registration-title">
+            Капча
+        </div>
+
+        <div class="form-field-input registration__captcha"
+             data-bind-html-compile="$ctrl.captchaHtml">
+        </div>
+    </div>
+
+    <div class="registration-group"
+         data-ng-if="$ctrl.settings.IsBonusSystemActive">
+        <div class="registration-title">
+            {{ ::'Js.Login.Registration.Bonuses' | translate }}
+        </div>
+        <label class="row middle-xs form-field-control registration-bonus-form-control">
+            <span class="col-xs-12 form-field-input-wrap registration-bonus-form-input-wrap">
+                <span class="registration-checkbox-field-input form-field-input vertical-interval-xsmall">
+                    <input type="checkbox"
+                           class="custom-input-native"
+                           id="WantBonusCard"
+                           data-ng-model="$ctrl.registration.WantBonusCard" />
+                    <span class="custom-input-checkbox"></span>
+                    <span class="registration-bonus-form-text">
+                        {{ ::'Js.Login.Registration.WantToGetBonusCard' | translate }}
+                    </span>
+                </span>
+                <span class="form-field-input vertical-interval-xsmall">
+                    <span class="bonus-card-plus-amount"
+                          data-ng-if="$ctrl.settings.BonusesForNewCard != null">
+                        <span class="bonus-card-plus-price"> +{{$ctrl.settings.BonusesForNewCard}} </span>
+                        {{ ::'Js.Login.Registration.ToBonusCart' | translate }}
+                    </span>
+                </span>
+            </span>
+        </label>
+    </div>
+
+    <div class="registration-group">
+        <div>
+            <label class="row middle-xs form-field-control registration-block-item-checkbox news-subscription-checkbox"
+                   data-ng-if="$ctrl.settings.NewsSubscriptionVisibility">
+                <span class="col-xs-12 news-subscription-checkbox__input-wrap mobile-p-r-none">
+                    <span class="registration-checkbox-field-input form-field-input vertical-interval-xsmall"
+                          data-e2e="NewsSubscription">
+                        <input type="checkbox" class="custom-input-native"
+                               data-ng-model="$ctrl.registration.NewsSubscription" />
+                        <span class="custom-input-checkbox"></span>
+                        <span class="news-subscription-checkbox__text-wrap">
+                            <span>
+                                {{ ::'Js.Login.Registration.NewsSubscription' | translate }}
+                            </span>
+                        </span>
+                    </span>
+                </span>
+            </label>
+
+            <label class="row middle-xs form-field-control registration-user-agreement-form-control"
+                   data-ng-if="$ctrl.settings.ShowUserAgreementForPromotionalNewsletter">
+                <span class="col-xs-12 form-field-input-wrap registration-user-agreement-input-wrap">
+                    <span class="registration-checkbox-field-input form-field-input vertical-interval-xsmall">
+                        <input type="checkbox"
+                               data-ng-model="$ctrl.registration.UserAgreementForPromotionalNewsletter"
+                               class="custom-input-native"
+                               data-e2e="registrationAgreementNewsletterCheckbox"/>
+                        <span class="custom-input-checkbox" data-e2e="registrationAgreementNewsletterCheckboxEmulator"></span>
+                        <span class="registration-user-agreement-promotions-text"
+                              data-ng-bind-html="$ctrl.settings.UserAgreementForPromotionalNewsletter | sanitize">
+                        </span>
+                    </span>
+                </span>
+            </label>
+
+            <label class="row middle-xs form-field-control registration-user-agreement-form-control"
+                   data-ng-if="$ctrl.settings.IsShowUserAgreementText">
+                <span class="col-xs-12 form-field-input-wrap registration-user-agreement-input-wrap">
+                    <span class="registration-checkbox-field-input form-field-input vertical-interval-xsmall">
+                        <input type="checkbox"
+                               data-ng-model="$ctrl.registration.Agree"
+                               class="custom-input-native"
+                               data-ng-required="true"
+                               data-e2e="registrationAgreementCheckbox"/>
+                        <span class="custom-input-checkbox" data-e2e="registrationAgreementCheckboxEmulator"></span>
+                        <span class="registration-user-agreement-text"
+                              data-ng-bind-html="$ctrl.settings.UserAgreementText | sanitize"> </span>
+                    </span>
+                </span>
+            </label>
+        </div>
+
+        <div>
+            <div class="row middle-xs form-field-control registration-block-submit-btn-wrap">
+                <div class="col-xs-12 col-p-v registration-block-submit-btn-inner">
+                    <div class="vertical-interval-xsmall">
+                        <button type="submit"
+                                class="btn btn-submit btn-big registration-action group-reg"
+                                data-button-validation
+                                data-button-validation-success="$ctrl.submit();">
+                            {{ ::'Js.Login.Registration.RegisterButton' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row middle-xs registration-block-partner-btn-wrap"
+                 data-ng-if="$ctrl.settings.PartnersActive">
+                <div class="col-xs-12 registration-block-partner-btn-inner">
+                    <div class="vertical-interval-xsmall registration-link">
+                        <a data-ng-href="{{$ctrl.partnersRegistrationUrl}}">
+                            {{ ::'Js.Login.Registration.PartnerRegistration' | translate }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

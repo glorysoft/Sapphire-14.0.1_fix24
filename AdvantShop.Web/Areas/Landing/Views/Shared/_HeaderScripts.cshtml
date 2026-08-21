@@ -1,0 +1,52 @@
+﻿@using System.Web.Hosting
+@using AdvantShop.Core
+@using AdvantShop.Core.Services.Landing.Settings
+
+<style>
+    @Html.RenderLandingCriticalCss()
+</style>
+
+@if (LpService.PreviewInAdmin)
+{
+    @*в режиме предпосмотра в админке скрипты выключаются*@
+    <style>
+        .ng-cloak {
+            display: block !important;
+        }
+    </style>
+}
+
+@{
+    var generatedCss = string.Format(LpFiles.LpGeneratedCss, LpService.CurrentSiteId);
+    var isInsertLink = false;
+
+    if(File.Exists(HostingEnvironment.MapPath(generatedCss)) == false)
+    {
+        var regenerateCss = new LpService().ReGenerateCss(LpService.CurrentSiteId);
+        if (regenerateCss && File.Exists(HostingEnvironment.MapPath(generatedCss)))
+        {
+            isInsertLink = true;
+        }
+    }
+    else
+    {
+        isInsertLink = true;
+    }
+
+    if (isInsertLink)
+    {
+        var content = Url.Content(generatedCss);
+        
+        <link href="@UrlService.GetUrl(content)?rnd=@(new Random().Next())" rel="stylesheet"/>
+    }
+}
+@Html.RenderAssetFilesAsHtml("head", "Landing", renderOnlyType: AssetsTool.AssetFileType.Link)
+
+@Html.Raw(LSiteSettings.BlockInHead)
+
+@if (!string.IsNullOrWhiteSpace(LSiteSettings.SiteCss))
+{
+    <style>
+    @Html.Raw(LSiteSettings.SiteCss)
+    </style>
+}

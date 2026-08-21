@@ -1,0 +1,209 @@
+﻿@using AdvantShop.Areas.Mobile.Models.Product
+@using AdvantShop.Orders
+@using AdvantShop.Core.Services.Catalog
+@using AdvantShop.Core.Services.Configuration.Settings
+@using AdvantShop.ViewCommon
+@using AdvantShop.ViewModel.Shared
+@model AdvantShop.Core.Services.Catalog.ProductViewModel
+@{
+    int indexProduct = 0;
+}
+
+@foreach (var product in Model.Products)
+{
+    int? color = Model.SelectedColorsList != null && product.ColorsList != null ? (int?)Model.SelectedColorsList.FirstOrDefault(x => product.ColorsList.Any(y => y.ColorId == x)) : null;
+    int colorId = color ?? product.ColorId;
+    var productUrl = Url.AbsoluteRouteUrl("Product", new { url = product.UrlPath });
+    var isNotPhoto = product.CountPhoto == 0;
+    var isUseScroll = product.CountPhoto > 1;
+    int limitPhotoCount = isNotPhoto ? 1 : 4;
+    var allowToBuy = Model.AllowBuyOutOfStockProducts || Model.AllowPreOrderOutOfStockProducts && product.AllowPreorder;
+    var amountBuy = product.GetMinAmount(product);
+    var quickViewTrigger = "data-quickview-trigger data-product-id=\"" + product.ProductId + "\" data-color-id=\"productViewItem.getSelectedColorId()\" data-cart-add-type=\"" + SettingsDesign.CartAddType + "\" ";
+    var linkOrQuickViewTrigger = @Html.Raw(SettingsDesign.OnePageCatalog || Model.QuickViewAsProductPage ? quickViewTrigger : "data-ng-href=\"{{productViewItem.getUrl('" + productUrl + "')}}\" href=\"" + productUrl + "\"");
+
+    <div class="mobile-product-view-item cs-t-1 mobile-product-view__item js-products-view-block @(Model.WrapCssClass)"
+         data-product-view-item data-offer-id="@product.OfferId" data-product-id="@product.ProductId"
+         data-offer="{Amount: @product.Amount.ToInvariantString(), RoundedPrice: @product.RoundedPrice.ToInvariantString(), OfferId: @product.OfferId, ColorId: @colorId, AmountBuy : @amountBuy.ToInvariantString()}"
+         style="--products-view-name-line-count: @Model.CountLinesProductName"
+         data-ng-class="{'mobile-product-view--loading': productViewItem.getStateLoading()}">
+        <div class="mobile-product-view-item-image-wrap">
+            <a @Html.Raw(linkOrQuickViewTrigger)
+               class="mobile-product-view-item-image-block"
+               data-product-view-image-list
+               data-limit-photo-count="@(isUseScroll ? (limitPhotoCount + 1) : 1)"
+               data-product-id="@product.ProductId"
+               data-view-mode="@Model.ProductViewMode.ToString().ToLower()"
+               data-block-product-photo-height="@(Model.ProductViewMode != ProductViewMode.Single ? Model.BlockProductPhotoHeight : Model.BlockProductPhotoMiddleHeight)"
+               data-product-image-type="'@Model.ProductImageType'"
+               data-photo-width="@Model.PhotoWidth"
+               data-photo-height="@Model.PhotoHeight"
+               data-color-initial-id="@colorId"
+               data-rendered-photo-id="@product.Photo.PhotoId"
+               data-is-product-photo-lazy="@(indexProduct > 4)"
+               data-lozad-adv="productViewImageList.filterPhotos({isVisible, colorId: productViewImageList.currentColorId})"
+               data-lozad-observer-mode="'observerAlways'"
+               lozad-adv-debounce="false"
+               @Html.Raw(isUseScroll ? "data-product-view-scroll-photos" : "")>
+                @Html.Action("ProductViewPhoto", "Product", new { model = new ProductPhotoMobileViewModel(Model, product, limitPhotoCount, indexProduct > 4), area = "Mobile" })
+
+                @if (isUseScroll)
+                {
+                    for (var i = 0; i < limitPhotoCount; i++)
+                    {
+                        <span class="mobile-product-view-item-image-inner js-skeleton-photos"></span>
+                    }
+                }
+            </a>
+            <div class="products-view-labels">
+                @if (Model.ShowNotAvailableLabel && !allowToBuy && (product.AmountByMultiplicity < product.MinAmount || product.AmountByMultiplicity == 0))
+                {
+                    <div class="products-view-label availability">
+                        <span class="products-view-label-inner not-available">@T("Product.NotAvailable")</span>
+                    </div>
+                }
+                @if (!Model.HideMarkers && (product.Recomend || product.Sales || product.Bestseller || product.New || product.TotalDiscount.HasValue))
+                {
+                    @Html.RenderLabels(product.Recomend, product.Sales, product.Bestseller, product.New, product.TotalDiscount, customLabels: product.Labels)
+                }
+            </div>
+            @if (product.Gifts)
+            {
+                <div class="prod-gift-icon"></div>
+            }
+            <div class="mobile-product-view-item__controls">
+                @if (Model.DisplayWishlist && !product.OfferId.IsDefault())
+                {
+                    @Html.Action("WishListBlock", "Wishlist", new { OfferId = product.OfferId, NgOfferId = "productViewItem.offer.OfferId", NgNameCallbackInit = "productViewItem.wishlistControlInit", Mode = "catalog", Checked = ShoppingCartService.CurrentWishlist.Any(x => x.OfferId == product.OfferId), area = "" })
+                }
+                @if (Model.DisplayQuickView && !SettingsDesign.OnePageCatalog && !Model.QuickViewAsProductPage)
+                {
+                    <button type="button"
+                            class="cs-t-1 mobile-product-view-item__controls-icon mobile-product-view-trigger-quickview"
+                            @Html.Raw(quickViewTrigger)>
+                        <svg fill="currentColor" height="18px" width="18px" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="m499.4,250.8c-51-86.3-143.6-140.4-243.4-140.4s-192.5,54.1-243.4,140.4c-2.1,3.1-2.1,7.3 5.32907e-15,10.4 51,86.3 143.6,140.4 243.4,140.4s192.5-54.1 243.4-140.4c2.1-3.1 2.1-7.3 0-10.4zm-243.4,130c-90.5,0-174.8-47.8-221.6-124.8 46.8-77 131.1-124.8 221.6-124.8s174.8,47.8 221.6,124.8c-46.8,77-131.1,124.8-221.6,124.8z" />
+                            <path
+                                d="m256,162.4c-52,0-93.6,41.6-93.6,93.6 0,52 41.6,93.6 93.6,93.6s93.6-41.6 93.6-93.6c0-52-41.6-93.6-93.6-93.6zm0,166.4c-40.6,0-72.8-32.3-72.8-72.8s32.3-72.8 72.8-72.8 72.8,32.3 72.8,72.8-32.2,72.8-72.8,72.8z" />
+                            <path
+                                d="m256,214.4v20.8c11.4,0 20.8,9.4 20.8,20.8s-9.4,20.8-20.8,20.8-20.8-9.4-20.8-20.8h-20.8c0,22.9 18.7,41.6 41.6,41.6 22.9,0 41.6-18.7 41.6-41.6s-18.7-41.6-41.6-41.6z" />
+                        </svg>
+                    </button>
+                }
+            </div>
+        </div>
+        <div class="mobile-prod-info-wrap mobile-product-view-item__wrap">
+            <div class="mobile-product-view-item__inner">
+
+                @if (Model.DisplayRating)
+                {
+                    <div class="products-view-rating">
+                        @Html.Partial("_Rating", new RatingViewModel(product.ManualRatio ?? product.Ratio))
+                    </div>
+                }
+
+                @if (Model.DisplayProductArtNo)
+                {
+                    <div class="mobile-prod-artno cs-t-7">@product.ArtNo</div>
+                }
+                <div
+                    class="mobile-product-view-item__name @(Model.ShowBriefDescription ? "mobile-product-view-item__name--with-desc" : "")">
+                    <a class="prod-name text-floating"
+                       @Html.Raw(linkOrQuickViewTrigger)>@Html.Raw(product.Name)</a>
+                </div>
+                @if (!string.IsNullOrEmpty(product.Colors))
+                {
+                    <div class="mobile-product-view-item__colors-wrap">
+                        <div class="mobile-product-view-item__colors-inner">
+                            @Html.Partial("_Colors", new ColorsViewModel()
+                            {
+                                NgColors = product.Colors,
+                                SelectedColorId = product.SelectedColorId,
+                                ColorWidth = Model.ColorImageWidth,
+                                ColorHeight = Model.ColorImageHeight,
+                                SelectedColors = Model.SelectedColors ?? (product.PreSelectedColorId != null ? "[" + product.PreSelectedColorId + "]" : null),
+                                ColorsViewMode = SettingsCatalog.ColorsViewMode
+                            })
+                        </div>
+                    </div>
+                }
+
+                @if (Model.ShowBriefDescription)
+                {
+                    <div class="mobile-products-view-description">
+                        @Html.Raw(product.BriefDescription)
+                    </div>
+                }
+            </div>
+            <div class="mobile-product-view-item-price-data">
+                @if (!Model.HidePrice && Model.ShowAmountsTableInCatalog)
+                {
+                    <div class="product-view-amount-table"
+                         data-price-amount-list 
+                         data-lazy="true"
+                         data-product-id="@product.ProductId"
+                         data-start-offer-id="@product.OfferId"
+                         data-offer-id="productViewItem.offer.OfferId"
+                         data-init-fn="productViewItem.addPriceAmountList(priceAmountList)"
+                         data-source="catalog">
+                        @Html.RenderAmountTable(product)
+                    </div>
+                    
+                }
+                @if (!Model.HidePrice)
+                {
+                    if(product.AllowAddProductToCart){
+                        <div class="price cs-l-8" data-ng-if="productViewItem.offer.PreparedPrice == null">
+                            @Html.Raw(product.PreparedPrice)
+                        </div>
+                        <div class="price cs-l-8 ng-cloak"
+                             data-ng-if="productViewItem.offer.PreparedPrice != null"
+                             data-ng-bind-html="productViewItem.offer.PreparedPrice"></div>
+                    }
+                    else
+                    {
+                        <div class="price cs-l-8">@Html.Raw(product.PreparedPrice)</div>
+
+                    }
+                }
+                else
+                {
+                    <div class="text-instead-of-price cs-l-8">@Html.Raw(Model.TextInsteadOfPrice)</div>
+                }
+                @if (SettingsMobile.ShowAddButton && !Model.HidePrice)
+                {
+                    var isAvailable = product.RoundedPrice > 0 && product.AmountByMultiplicity > 0;
+                    var showBuyButton = (isAvailable || allowToBuy);
+                    var showPreOrderButton = Model.DisplayPreOrderButton && !showBuyButton && !isAvailable && product.AllowPreorder && product.OfferId != 0 && !Model.AllowBuyOutOfStockProducts;
+
+                    <div class="mobile-product-view-item__btn-wrap">
+                        <div class="contents" data-product-buttons-container>
+                            <div class="contents" data-bind-html-compile="productButtonsContainer.content">
+                                @Html.Action("ProductViewButtons", "ProductExt", new
+                                {
+                                    model = new ProductViewButtonsViewModel
+                                    {
+                                        ShowBuyButton = showBuyButton,
+                                        ShowPreOrderButton = showPreOrderButton,
+                                        ChooseBtnContent = Model.ChooseBtnText,
+                                        ProductUrl = productUrl,
+                                        BtnContent = Model.BuyButtonText,
+                                        LinkOrQuickViewTrigger = linkOrQuickViewTrigger,
+                                        PreOrderButtonText = Model.PreOrderButtonText,
+                                        Product = product,
+                                        IsMobile = true
+                                    },
+                                    area = ""
+                                })
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    ++indexProduct;
+}

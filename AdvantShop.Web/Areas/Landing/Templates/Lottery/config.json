@@ -1,0 +1,291 @@
+﻿{
+    "key": "Lottery",
+    "templateType": "LandingFunnelOrder",
+    "category": "CollectContacts",
+    "sortOrder": 800,
+    "name": "Admin.Dashboard.CreateFunnel.Lottery.Name",
+    "description": "Admin.Dashboard.CreateFunnel.Lottery.Description",
+    "picture": "//cs71.advantshop.net/adv-static/templates/FnLottery/i/scr1_v1.jpg",
+    "video": "https://www.youtube.com/watch?v=DAF4L4ZRD9U",
+    "scheme": "//cs71.advantshop.net/adv-static/templates/FnLottery/i/scheme_v1.jpg",
+    "siteCategory": "CollectingLeads",
+    "demoLink": "http://demo-funnel.on-advantshop.net/lp/rozygrysh",
+    //Если выходит новая картинка, пишем _v2 и т.д.
+    "screens": [
+        {
+            "title": "Admin.Dashboard.CreateFunnel.Lottery.Title.OfferPage",
+            "url": "//cs71.advantshop.net/adv-static/templates/FnLottery/i/scr1_v1.jpg"
+        },
+        {
+            "title": "Admin.Dashboard.CreateFunnel.Lottery.Title.ThankPage",
+            "url": "//cs71.advantshop.net/adv-static/templates/FnLottery/i/scr2_v1.jpg"
+        }
+    ],
+    "blockLists": [],
+    "siteSettings": {
+        "SeoSettings.FontMain": "OpenSans",
+        "SeoSettings.ColorSchemes": "[{\"LpId\":0,\"LpBlockId\":0,\"Name\":\"CreateFunnel.Lottery.ColorSchemes.Light\",\"Class\":\"color-scheme--light\",\"BackgroundColor\":\"rgb(255, 255, 255)\",\"BackgroundColorAlt\":\"rgba(242, 242, 242, 0.9)\",\"TitleColor\":\"rgb(0, 0, 0)\",\"TitleBold\":\"700\",\"SubTitleColor\":\"rgb(96, 96, 96)\",\"SubTitleBold\":\"300\",\"TextColor\":\"rgb(0, 0, 0)\",\"TextColorAlt\":\"rgb(0, 0, 0)\",\"TextBold\":\"300\",\"LinkColor\":\"rgb(23, 121, 250)\",\"LinkColorHover\":\"rgb(4, 89, 200)\",\"LinkColorActive\":\"rgb(23, 121, 250)\",\"ButtonTextColor\":\"rgb(255, 255, 255)\",\"ButtonTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonBorderColor\":\"rgb(23, 121, 250)\",\"ButtonBorderWidth\":\"1px\",\"ButtonBorderRadius\":\"55px\",\"ButtonTextBold\":\"400\",\"ButtonBackgroundColor\":\"rgb(23, 121, 250)\",\"ButtonBackgroundColorHover\":\"rgb(55, 140, 251)\",\"ButtonBackgroundColorActive\":\"rgb(23, 121, 250)\",\"ButtonSecondaryTextColor\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorHover\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorActive\":\"rgb(0, 0, 0)\",\"ButtonSecondaryBorderColor\":\"rgb(218, 218, 218)\",\"ButtonSecondaryBorderWidth\":\"1px\",\"ButtonSecondaryBorderRadius\":\"55px\",\"ButtonSecondaryTextBold\":\"400\",\"ButtonSecondaryBackgroundColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBackgroundColorHover\":\"rgba(0, 0, 0, 0.1)\",\"ButtonSecondaryBackgroundColorActive\":\"rgba(0, 0, 0, 0.2)\",\"DelimiterColor\":\"rgb(226, 226, 226)\"},{\"LpId\":0,\"LpBlockId\":0,\"Name\":\"CreateFunnel.Lottery.ColorSchemes.Medium\",\"Class\":\"color-scheme--medium\",\"BackgroundColor\":\"rgb(248, 248, 248)\",\"BackgroundColorAlt\":\"rgb(205, 205, 205)\",\"TitleColor\":\"rgb(0, 0, 0)\",\"TitleBold\":\"700\",\"SubTitleColor\":\"rgb(96, 96, 96)\",\"SubTitleBold\":\"300\",\"TextColor\":\"rgb(0, 0, 0)\",\"TextColorAlt\":\"rgb(0, 0, 0)\",\"TextBold\":\"300\",\"LinkColor\":\"rgb(23, 121, 250)\",\"LinkColorHover\":\"rgb(4, 89, 200)\",\"LinkColorActive\":\"rgb(23, 121, 250)\",\"ButtonTextColor\":\"rgb(255, 255, 255)\",\"ButtonTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonBorderColor\":\"rgb(23, 121, 250)\",\"ButtonBorderWidth\":\"1px\",\"ButtonBorderRadius\":\"55px\",\"ButtonTextBold\":\"400\",\"ButtonBackgroundColor\":\"rgb(23, 121, 250)\",\"ButtonBackgroundColorHover\":\"rgb(55, 140, 251)\",\"ButtonBackgroundColorActive\":\"rgb(23, 121, 250)\",\"ButtonSecondaryTextColor\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorHover\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorActive\":\"rgb(0, 0, 0)\",\"ButtonSecondaryBorderColor\":\"rgb(218, 218, 218)\",\"ButtonSecondaryBorderWidth\":\"1px\",\"ButtonSecondaryBorderRadius\":\"55px\",\"ButtonSecondaryTextBold\":\"400\",\"ButtonSecondaryBackgroundColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBackgroundColorHover\":\"rgba(0, 0, 0, 0.1)\",\"ButtonSecondaryBackgroundColorActive\":\"rgba(0, 0, 0, 0.2)\",\"DelimiterColor\":\"rgb(205, 205, 205)\"},{\"LpId\":0,\"LpBlockId\":0,\"Name\":\"CreateFunnel.Lottery.ColorSchemes.Dark\",\"Class\":\"color-scheme--dark\",\"BackgroundColor\":\"rgb(0, 0, 0)\",\"BackgroundColorAlt\":\"rgba(47, 47, 47, 1)\",\"TitleColor\":\"rgb(255, 255, 255)\",\"TitleBold\":\"700\",\"SubTitleColor\":\"rgb(232, 232, 232)\",\"SubTitleBold\":\"300\",\"TextColor\":\"rgb(255, 255, 255)\",\"TextColorAlt\":\"rgb(255, 255, 255)\",\"TextBold\":\"300\",\"LinkColor\":\"rgb(255, 255, 255)\",\"LinkColorHover\":\"rgb(204, 204, 204)\",\"LinkColorActive\":\"rgb(255, 255, 255)\",\"ButtonTextColor\":\"rgb(255, 255, 255)\",\"ButtonTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonBorderColor\":\"rgb(23, 121, 250)\",\"ButtonBorderWidth\":\"1px\",\"ButtonBorderRadius\":\"4px\",\"ButtonTextBold\":\"400\",\"ButtonBackgroundColor\":\"rgb(23, 121, 250)\",\"ButtonBackgroundColorHover\":\"rgb(55, 140, 251)\",\"ButtonBackgroundColorActive\":\"rgb(23, 121, 250)\",\"ButtonSecondaryTextColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonSecondaryTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBorderColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBorderWidth\":\"1px\",\"ButtonSecondaryBorderRadius\":\"55px\",\"ButtonSecondaryTextBold\":\"400\",\"ButtonSecondaryBackgroundColor\":\"rgba(255, 255, 255, 0)\",\"ButtonSecondaryBackgroundColorHover\":\"rgba(255, 255, 255, 0.2)\",\"ButtonSecondaryBackgroundColorActive\":\"rgba(255, 255, 255, 0.3)\",\"DelimiterColor\":\"rgb(255, 255, 255)\"}]"
+    },
+    "pages": [
+        {
+            "name": "CreateFunnel.Lottery.Main",
+            "pageType": "Main",
+            "lpPageSettings": {
+                "SeoSettings.PageTitle": "CreateFunnel.Lottery.Main.PageTitle",
+                "SeoSettings.PageKeywords": "#PRODUCT_NAME#",
+                "SeoSettings.IgnoreActionParams": "True"
+            },
+            "blocks": [
+                {
+                    "name": "textImageCountdown",
+                    "settings": {
+                        "classes": ["text-image-countdown", "color-scheme--light", "block-padding-top--35", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": true,
+                        "show_button2": true,
+                        "constructor_buttons_reverse": true,
+                        "image_link": "",
+                        "padding_top": 35,
+                        "padding_bottom": 45,
+                        "date": {
+                            "end_date": 30,
+                            "types": [
+                                {
+                                    "value": "default",
+                                    "name": "CreateFunnel.Lottery.Main.TextImageCountdown.Date.Types.Default"
+                                },
+                                {
+                                    "value": "loop",
+                                    "name": "CreateFunnel.Lottery.Main.TextImageCountdown.Date.Types.Loop"
+                                }
+                            ],
+                            "selectType": {
+                                "value": "loop",
+                                "name": "CreateFunnel.Lottery.Main.TextImageCountdown.Date.SelectType.Loop"
+                            }
+                        },
+                        "align_btns": "start-xs",
+                        "button": {
+                            "is_default_style": true,
+                            "action": "Form",
+                            "action_url": "",
+                            "action_form": "",
+                            "action_section": "",
+                            "text": "CreateFunnel.Lottery.Main.TextImageCountdown.Button.Text",
+                            "size": "xsmall"
+                        },
+                        "button2": {
+                            "is_default_style": true,
+                            "action": "Section",
+                            "action_url": "",
+                            "action_section": "#BLOCK_ID_textCenter#",
+                            "text": "CreateFunnel.Lottery.Main.TextImageCountdown.Button2.Text",
+                            "size": "xsmall",
+                            "type": "Secondary"
+                        },
+                        "form": {
+                            "is_hidden": true
+                        },
+                        "mobile_hidden": false,
+                        "align_block": "middle-xs",
+                        "settings_picture": {
+                            "maxWidthPicture": 480,
+                            "maxHeightPicture": 480
+                        },
+                        "darken": 0
+                    },
+                    "form": {
+                        "title": "CreateFunnel.Lottery.Main.TextImageCountdown.Form.Title",
+                        "subTitle": "",
+                        "buttonText": "CreateFunnel.Lottery.Main.TextImageCountdown.Form.ButtonText",
+                        "postAction": 2,
+                        "PostMessageRedirectLpId": "#ACTION_THANKYOUPAGE_LP_ID#",
+                        "postMessageText": "CreateFunnel.Lottery.Main.TextImageCountdown.Form.PostMessageText",
+                        "fields": [
+                            {
+                                "Title": "CreateFunnel.Lottery.Main.TextImageCountdown.Form.Fields.Name.Title",
+                                "TitleCrm": "CreateFunnel.Lottery.Main.TextImageCountdown.Form.Fields.Name.TitleCrm",
+                                "FieldType": 2,
+                                "Type": "text",
+                                "CustomFieldId": null,
+                                "Required": true
+                            },
+                            {
+                                "Title": "CreateFunnel.Lottery.Main.TextImageCountdown.Form.Fields.Phone.Title",
+                                "TitleCrm": "CreateFunnel.Lottery.Main.TextImageCountdown.Form.Fields.Phone.TitleCrm",
+                                "FieldType": 6,
+                                "Type": "tel",
+                                "CustomFieldId": null,
+                                "Required": true
+                            },
+                            {
+                                "Title": "CreateFunnel.Lottery.Main.TextImageCountdown.Form.Fields.Email.Title",
+                                "TitleCrm": "CreateFunnel.Lottery.Main.TextImageCountdown.Form.Fields.Email.TitleCrm",
+                                "FieldType": 5,
+                                "Type": "text",
+                                "CustomFieldId": null,
+                                "Required": true
+                            }
+                        ],
+                        "showAgreement": true,
+                        "agreementText": "CreateFunnel.Lottery.Main.TextImageCountdown.Form.AgreementText",
+                        "is_hidden": true
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.Lottery.Main.TextImageCountdown.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.Lottery.Main.TextImageCountdown.Text.Placeholder"
+                        },
+                        {
+                            "name": "picture",
+                            "type": "picture",
+                            "settings": {
+                                "src": "#PRODUCT_SCHEME_PHOTO_1#",
+                                "class": "",
+                                "type": "image"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "delimiterLineHorizontal",
+                    "settings": {
+                        "classes": ["lp-block-delimiter-line-horizontal", "color-scheme--light", "block-padding-top--15", "block-padding-bottom--15"],
+                        "color_scheme": "color-scheme--light",
+                        "padding_top": 15,
+                        "padding_bottom": 15
+                    }
+                },
+                {
+                    "name": "textCenter",
+                    "settings": {
+                        "classes": ["lp-block-text-single", "block-padding-top--45", "block-padding-bottom--45", "color-scheme--light"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "show_button2": false,
+                        "constructor_buttons_reverse": true,
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "form": {
+                            "is_hidden": true
+                        },
+                        "mobile_hidden": false,
+                        "width_in_columns": 6
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.Lottery.Main.TextCenter.Title.Placeholder"
+                        },
+                        {
+                            "name": "subtitle",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.Lottery.Main.TextCenter.Subtitle.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.Lottery.Main.TextCenter.Text.Placeholder"
+                        }
+                    ]
+                },
+
+                {
+                    "name": "delimiterLineHorizontal",
+                    "settings": {
+                        "classes": ["lp-block-delimiter-line-horizontal", "color-scheme--light", "block-padding-top--15", "block-padding-bottom--15"],
+                        "color_scheme": "color-scheme--light",
+                        "padding_top": 15,
+                        "padding_bottom": 15
+                    }
+                },
+
+                {
+                    "name": "footerSocialSimple",
+                    "settings": {
+                        "color_scheme": "color-scheme--light",
+                        "classes": ["lp-footer-social-simple", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "padding_top": 40,
+                        "padding_bottom": 40
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "CreateFunnel.Lottery.ThankYouPage",
+            "pageType": "ThankYouPage",
+            "lpPageSettings": {
+                "SeoSettings.PageTitle": "CreateFunnel.Lottery.ThankYouPage.PageTitle"
+            },
+            "blocks": [
+                {
+                    "name": "textCenter",
+                    "settings": {
+                        "classes": ["lp-block-text-single", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "show_button2": false,
+                        "constructor_buttons_reverse": true,
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "form": {
+                            "is_hidden": true
+                        },
+                        "mobile_hidden": false,
+                        "width_in_columns": 6
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.Lottery.ThankYouPage.TextCenter.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.Lottery.ThankYouPage.TextCenter.Text.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "formButton",
+                    "settings": {
+                        "color_scheme": "color-scheme--light",
+                        "classes": ["lp-block-form", "color-scheme--light", "block-padding-top--0", "block-padding-bottom--0"],
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "show_title": false,
+                        "show_subtitle": false,
+                        "show_button": true,
+                        "align_btns": "center-xs",
+                        "button": {
+                            "Name": null,
+                            "text": "CreateFunnel.Lottery.ThankYouPage.FormButton.Button.Text",
+                            "action": "Url",
+                            "action_url": "//#STORE_URL#"
+                        },
+                        "show_button2": false,
+                        "form": {
+                            "is_hidden": true
+                        },
+                        "mobile_hidden": false
+                    }
+                }
+            ]
+        }
+    ]
+}

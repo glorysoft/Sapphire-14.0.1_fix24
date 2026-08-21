@@ -1,0 +1,125 @@
+﻿{
+    "name": "ServicesThreeColumnsLinks",
+    "type": "servicesLinks",
+    "description": "Landings.Views.Blocks.Config.ServicesThreeColumnsLinks.Description",
+    "category": "Landings.Views.Blocks.Config.ServicesThreeColumnsLinks.Category",
+    "picture": "./areas/landing/frontend/images/services/servicesThreeColumnsLinks.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ServicesThreeColumnsLinks.Subblocks.Title.Placeholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ServicesThreeColumnsLinks.Subblocks.Subtitle.Placeholder"
+        }
+    ],
+    "settings": {
+        "gridColumns": {
+            "picture": true,
+            "header": true,
+            "text": true,
+            "button": true
+        },
+        "items": [
+            {
+                "picture": {
+                    "src": "areas/landing/images/services/serviceThreeColumns1.jpg"
+                },
+                "header": "Landings.Views.Blocks.Config.ServicesThreeColumnsLinks.Settings.Items.Header1",
+                "show_button": true,
+                "text": "Landings.Views.Blocks.Config.ServicesThreeColumnsLinks.Settings.Items.Text1",
+                "button": {
+                    "text": "7 000 руб",
+                    "type": 0,
+                    "target_blank": true,
+                    "size": 0,
+                    "action": "Url",
+                    "action_url": ".#",
+                    "show_button": true,
+                    "is_default_style": true,
+                    "action_form": "",
+                    "action_section": ""
+                }
+            },
+            {
+                "picture": {
+                    "src": "areas/landing/images/services/serviceThreeColumns2.jpg"
+                },
+                "header": "Landings.Views.Blocks.Config.ServicesThreeColumnsLinks.Settings.Items.Header2",
+                "show_button": true,
+                "text": "Landings.Views.Blocks.Config.ServicesThreeColumnsLinks.Settings.Items.Text2",
+                "button": {
+                    "text": "10 000 руб",
+                    "type": 0,
+                    "target_blank": true,
+                    "size": 0,
+                    "action": "Url",
+                    "action_url": ".#",
+                    "show_button": true,
+                    "is_default_style": true,
+                    "action_form": "",
+                    "action_section": ""
+                }
+            },
+            {
+                "picture": {
+                    "src": "areas/landing/images/services/serviceThreeColumns3.jpg"
+                },
+                "header": "Landings.Views.Blocks.Config.ServicesThreeColumnsLinks.Settings.Items.Header3",
+                "show_button": true,
+                "text": "Landings.Views.Blocks.Config.ServicesThreeColumnsLinks.Settings.Items.Text3",
+                "button": {
+                    "text": "5 600 руб",
+                    "type": 0,
+                    "target_blank": true,
+                    "size": 0,
+                    "action": "Url",
+                    "action_url": ".#",
+                    "show_button": true,
+                    "is_default_style": true,
+                    "action_form": "",
+                    "action_section": ""
+                }
+            }
+        ],
+        "align_btns": "center-xs",
+        "align_text": "center-xs",
+        "classes": ["lp-block-services-three-columns", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": true,
+        "show_subtitle": true,
+        "show_button": false,
+        "constructor_buttons_reverse": true,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "style": {},
+        "button": {
+            "is_default_style": true,
+            "action": "Form",
+            "action_form": "Form",
+            "text": "Landings.Views.Blocks.Config.ServicesThreeColumnsLinks.Settings.Button.Text",
+            "color": null,
+            "background_color": null,
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": null,
+            "border_radius": 0,
+            "size": "xsmall",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false
+    }
+}

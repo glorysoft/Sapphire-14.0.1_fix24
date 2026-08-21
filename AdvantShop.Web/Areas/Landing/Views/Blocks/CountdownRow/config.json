@@ -1,0 +1,58 @@
+﻿{
+    "name": "countdownRow",
+    "type": "countdown",
+    "description": "Landings.Views.Blocks.Config.CountDownRow.Description",
+    "category": "Landings.Views.Blocks.Config.CountDownRow.Category",
+    "picture": "./areas/landing/images/countdown/countdown_row_preview.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.CountDownRow.SubBlockPlasholderOne"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.CountDownRow.SubBlockPlasholderTwo"
+        }
+    ],
+    "settings": {
+        "color_scheme": "color-scheme--light",
+        "classes": ["countdown-row", "color-scheme--light", "block-padding-top--30", "block-padding-bottom--30"],
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "date": {
+            "end_date": null,
+            "types": [
+                {
+                    "id": 1,
+                    "value": "default",
+                    "name": "Landings.Views.Blocks.Config.CountDownRow.DateTypeDefault"
+                },
+                {
+                    "id": 2,
+                    "value": "loop",
+                    "name": "Landings.Views.Blocks.Config.CountDownRow.DateTypeLoop"
+                }
+            ],
+            "selectType": {
+                "value": "default"
+            }
+        },
+        "scrollToBlock": false,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "style": {},
+        "textColor": "#c3c3c3",
+        "titleColor": "#fff",
+        "mobile_hidden": false,
+        "form": {
+            "is_hidden": true
+        }
+    }
+}

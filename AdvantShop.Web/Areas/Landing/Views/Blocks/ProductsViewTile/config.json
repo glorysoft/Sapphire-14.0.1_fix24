@@ -1,0 +1,67 @@
+﻿{
+    "name": "productsViewTile",
+    "type": "productsView",
+    "description": "Landings.Views.Blocks.Config.ProductsViewTile.Description",
+    "category": "Landings.Views.Blocks.Config.ProductsViewTile.Category",
+    "picture": "./areas/landing/images/productsView/products_view_tile_preview.jpg",
+    "depends_on": ["storeClosed"],
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ProductsViewTile.SubBlockTitlePlaceholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ProductsViewTile.SubBlockSubtitlePlaceholder"
+        }
+    ],
+    "settings": {
+        "product_ids": [],
+        "show_title": false,
+        "show_subtitle": false,
+        "color_scheme": "color-scheme--light",
+        "classes": ["lp-products-view-tile", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "show_price": true,
+        "hide_photo": true,
+        "show_description": true,
+        "quickview": true,
+        "quickview_description": "briefDescription",
+        "descriptionOptions": [
+            {
+                "value": "none",
+                "name": "Landings.Views.Blocks.Config.ProductsViewTile.DescriptionOptions.None"
+            },
+            {
+                "value": "briefDescription",
+                "name": "Landings.Views.Blocks.Config.ProductsViewTile.DescriptionOptions.BriefDescription"
+            },
+            {
+                "value": "fullDescription",
+                "name": "Landings.Views.Blocks.Config.ProductsViewTile.DescriptionOptions.FullDescription"
+            }
+        ],
+        "multiSelect": false,
+        "show_buybutton": true,
+        "hide_shipping": false,
+        "background_image": null,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "button": {
+            "text": "Landings.Views.Blocks.Config.ProductsViewTile.ButtonText",
+            "action_upsell_lp_id": null
+        },
+        "darken": 0,
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "mobile_hidden": false,
+        "style": {},
+        "no_cache": true,
+        "move_not_avaliable_to_end": false,
+        "show_only_available": false
+    }
+}

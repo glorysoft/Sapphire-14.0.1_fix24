@@ -1,0 +1,13 @@
+﻿<div data-ng-if="!productAvailabilityMap.isLoadingData">
+    <div class="product-availability-map" data-ng-class="{'product-availability-map--row': productAvailabilityMap.mobileMode}">
+        <points-list-map
+            data-filters="productAvailabilityMap.warehouseFilters"
+            data-show-only-points-list-by-bounds="false"
+            data-show-all="true"
+            data-points="productAvailabilityMap.stockListData"
+            data-show-details-point="true"></points-list-map>
+    </div>
+</div>
+<div data-ng-if="productAvailabilityMap.isLoadingData" class="product-availability-map__spinner">
+    <div class="icon-spinner-before icon-animate-spin-before"></div>
+</div>

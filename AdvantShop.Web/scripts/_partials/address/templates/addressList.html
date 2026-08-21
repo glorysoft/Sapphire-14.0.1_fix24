@@ -1,0 +1,89 @@
+﻿<div>
+    <div class="ng-cloak" data-ng-if="addressList.isLoaded">
+        <div class="address-list-wrap" data-ng-class="{'address-list-wrap--in-progress icon-spinner-after-abs icon-animate-spin-after': addressList.isProgress}">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="address-list">
+                        <li class="address-list-item" data-ng-class="{'address-list-item--not-allow' : item.isAllow === false}" data-ng-repeat="item in addressList.items track by item.ContactId">
+                            <div class="row middle-xs address-list-item__inner">
+                                <div class="col-xs address-list-item__data">
+                                    <label class="address-list-change-text">
+                                <span
+                                    class="address-list-radio-wrap"
+                                    data-ng-if="addressList.type ==='change' || (addressList.type ==='viewRo' && addressList.items.length > 1)">
+                                    <input
+                                        data-ng-model="addressList.addressSelected"
+                                        data-ng-value="item"
+                                        class="custom-input-native"
+                                        type="radio"
+                                        data-ng-change="addressList.change(item)"
+                                        name="addressListChange"
+                                    />
+                                    <span class="custom-input-radio"></span>
+                                </span>
+                                        <span class="address-list-address-text">
+                                        <span data-ng-bind="item.AggregatedAddress"></span>
+                                        <span data-ng-if="item.isAllow === false"
+                                              class="address-list-address-text-error">Не можем доставить</span>
+                                    </span>
+                                    </label>
+
+                                    <div class="address-list-item__transclude" data-address-list-transclude></div>
+                                </div>
+                                <span
+                                    class="address-controls-container"
+                                    data-ng-class="{'end-xs col-xs-3 end-xs text-align-right': !addressList.compactMode, 'col-xs-12': addressList.compactMode}"
+                                    data-ng-if="addressList.type !='viewRo'">
+                            <span class="address-controls">
+                                <a
+                                    class="address-controls-item address-controls-edit"
+                                    href="javascript:void(0)"
+                                    role="link"
+                                    data-ng-if="!addressList.isLocked"
+                                    data-ng-click="addressList.edit($event, item)">
+                                    <span class="address-controls-edit-text" data-translate="Js.Address.Edit"></span>
+                                    <span class="address-controls-edit-icon"></span>
+                                </a>
+                                <a
+                                    data-ng-if="addressList.items.length > 1 && !addressList.isLocked"
+                                    class="address-controls-item cs-l-5 address-list-feature address-controls-remove"
+                                    href="javascript:void(0)"
+                                    data-ng-click="addressList.remove(item.ContactId, $index)">
+                                    <span class="address-controls-remove-text" data-translate="Js.Address.Delete"></span>
+                                    <span class="address-controls-remove-icon"></span>
+                                </a>
+                            </span>
+                        </span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="address-list-add" data-ng-if="addressList.type !='viewRo' && !addressList.isLocked">
+                        <input
+                            type="button"
+                            value="{{ ::'Js.Address.Add' | translate}}"
+                            class="btn"
+                            data-ng-class="{'btn-sm btn-success': addressList.themeAlt, 'btn-middle btn-action': !addressList.themeAlt}"
+                            data-ng-click="addressList.add()" />
+                    </div>
+                </div>
+<!--                <div class="col-xs-6" data-ng-if="addressList.isShowMap">-->
+<!--                    <div class="relative">-->
+<!--                        <div class="address-list__map"-->
+<!--                             data-ng-class="{'address-list__map&#45;&#45;hidden': !addressList.isReadyShowMap}"-->
+<!--                             data-ya-map-key="addressList.apiMapKey"-->
+<!--                             data-ya-after-init="addressList.onInitMap($target)"-->
+<!--                             data-ya-geo-object-polygons-after-init="addressList.onInitDeliveryZoneFromMap(polygons)"-->
+<!--                             data-polygon="addressList.deliveryZones"-->
+<!--                             data-points-map=""></div>-->
+<!--                        <div class="address-list__map-spinner" data-ng-if="!addressList.isReadyShowMap">-->
+<!--                            <div class="icon-spinner-before icon-animate-spin-before"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+
+        </div>
+    </div>
+    <div data-ng-if="!addressList.isLoaded" class="address-list__plug"><span class="icon-spinner-before icon-animate-spin-before"></span></div>
+    <div data-ng-if="addressList.hasFooterTransclude" class="address-list__transclude-footer-wrap js-address-list-footer-transclude cs-bg-7" data-address-list-transclude></div>
+</div>

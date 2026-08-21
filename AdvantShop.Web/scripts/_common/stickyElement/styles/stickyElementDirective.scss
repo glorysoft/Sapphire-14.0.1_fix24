@@ -1,0 +1,14 @@
+.sticky-element--initialized {
+    position: sticky;
+    overflow-anchor: none;
+}
+
+.sticky-element--initialized:where([data-top]) {
+    top: 0;
+    bottom: auto;
+}
+
+.sticky-element--initialized:where([data-bottom]) {
+    top: auto;
+    bottom: 0;
+}

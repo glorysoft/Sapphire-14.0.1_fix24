@@ -1,0 +1,39 @@
+@use '../../../../styles/settings';
+
+.compare-control-wrap {
+    display: contents;
+}
+
+.compare-control {
+    font-size: settings.$font-size-normal;
+}
+
+.compare-checkbox ~ .custom-input-text {
+    .compare-text-not-added {
+        display: inline;
+    }
+
+    .compare-text-added {
+        display: none;
+    }
+}
+
+.compare-checkbox:not(:checked){
+    cursor: pointer;
+}
+
+.compare-checkbox:checked ~ .custom-input-text {
+    .compare-text-not-added {
+        display: none;
+    }
+
+    .compare-text-added {
+        display: inline;
+    }
+}
+.compare-control__icon{
+    font-size: 1rem;
+    &:after{
+        margin: 0;
+    }
+}

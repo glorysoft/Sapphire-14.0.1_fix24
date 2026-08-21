@@ -1,0 +1,69 @@
+﻿{
+    "name": "contactsForm",
+    "type": "contacts",
+    "description": "Landings.Views.Blocks.Config.ContactsForm.Description",
+    "category": "Landings.Views.Blocks.Config.ContactsForm.Category",
+    "picture": "./areas/landing/frontend/images/contacts/contactsForm.png",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ContactsForm.SubBlockPlasholderOne"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ContactsForm.SubBlockPlasholderTwo"
+        },
+        {
+            "name": "text",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ContactsForm.SubBlockPlasholderThree"
+        }
+    ],
+    "settings": {
+        "classes": ["lp-block-contacts-form", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": true,
+        "show_subtitle": false,
+        "vk_enabled": true,
+        "vk_url": null,
+        "vk_text": "Landings.Views.Blocks.Config.ContactsForm.VkText",
+        "fb_enabled": true,
+        "fb_url": null,
+        "fb_text": "Landings.Views.Blocks.Config.ContactsForm.FbText",
+        "youtube_enabled": true,
+        "youtube_url": null,
+        "youtube_text": "Landings.Views.Blocks.Config.ContactsForm.YoutubeText",
+        "twitter_enabled": true,
+        "twitter_url": null,
+        "twitter_text": "Landings.Views.Blocks.Config.ContactsForm.TwitterText",
+        "instagram_enabled": true,
+        "instagram_url": null,
+        "instagram_text": "Landings.Views.Blocks.Config.ContactsForm.InstagramText",
+        "whatsapp_enabled": false,
+        "whatsapp_text": "Landings.Views.Blocks.Config.ContactsForm.WhatsappText",
+        "whatsapp_message": "Landings.Views.Blocks.Config.ContactsForm.WhatsappMessage",
+        "telegram_enabled": false,
+        "telegram_url": null,
+        "telegram_text": "Landings.Views.Blocks.Config.ContactsForm.TelegramText",
+        "odnoklassniki_enabled": false,
+        "odnoklassniki_url": null,
+        "odnoklassniki_text": "Landings.Views.Blocks.Config.ContactsForm.OdnoklassnikiText",
+        "background_image": null,
+        "darken": 0,
+        "background_color": "#ffffff",
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "width_in_columns": 12,
+        "style": {},
+        "form": {
+            "is_hidden": false
+        },
+        "mobile_hidden": false
+    }
+}

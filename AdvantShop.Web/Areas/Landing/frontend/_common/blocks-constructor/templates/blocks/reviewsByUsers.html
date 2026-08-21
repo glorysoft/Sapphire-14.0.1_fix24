@@ -1,0 +1,173 @@
+﻿<div>
+    <div data-tabs class="tabs tabs-horizontal tabs-lp--minimalistic">
+        <ul class="tabs-headers row center-xs start-sm">
+            <li
+                id="tabCoverFront"
+                class="tabs-header-item tabs-lp__header-item--minimalistic-slim col-xs-12 col-sm-slim"
+                data-tab-header=""
+                data-ng-class="{'tabs-header-active block-constructor-settings-link' : tabHeader.selected}">
+                <span
+                    class="tabs-header-item-link"
+                    data-ng-click="tabs.change(tabHeader)"
+                    data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+                    {{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.AppearanceTab'|translate}}
+                </span>
+            </li>
+
+            <li
+                id="reviews"
+                class="tabs-header-item tabs-lp__header-item--minimalistic-slim col-xs-12 col-sm-slim"
+                data-tab-header=""
+                data-ng-class="{'tabs-header-active block-constructor-settings-link' : tabHeader.selected}">
+                <span
+                    class="tabs-header-item-link"
+                    data-ng-click="tabs.change(tabHeader)"
+                    data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+                    {{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.ReviewsTab'|translate}}
+                </span>
+            </li>
+        </ul>
+        <div class="tabs-content">
+            <div class="tab-content" data-tab-content="tabCoverFront" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="blocks-constructor-settings-col">
+                                <div ng-include="$ctrl.modalData.generalOptionsTemplateUrl"></div>
+                                <div class="blocks-constructor-row">
+                                    <div class="blocks-constructor-row__name">
+                                        <label class="blocks-constructor-label" data-e2e="ShowRating">
+                                            <input
+                                                class="blocks-constructor-checkbox-native"
+                                                type="checkbox"
+                                                ng-model="$ctrl.modalData.settings.show_rating" />
+                                            <span class="blocks-constructor-checkbox"></span>
+                                            <span class="blocks-constructor-label-text"> {{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.ShowRating'|translate}} </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="blocks-constructor-row">
+                                    <div class="blocks-constructor-row__name">
+                                        <label class="blocks-constructor-label" data-e2e="ShowTime">
+                                            <input
+                                                class="blocks-constructor-checkbox-native"
+                                                type="checkbox"
+                                                ng-model="$ctrl.modalData.settings.show_time" />
+                                            <span class="blocks-constructor-checkbox"></span>
+                                            <span class="blocks-constructor-label-text"> {{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.ShowTime'|translate}} </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="blocks-constructor-row">
+                                    <div class="blocks-constructor-row__name">
+                                        <label class="blocks-constructor-label" data-e2e="ShowRewiew">
+                                            <input
+                                                class="blocks-constructor-checkbox-native"
+                                                type="checkbox"
+                                                ng-model="$ctrl.modalData.settings.show_without_premoderate" />
+                                            <span class="blocks-constructor-checkbox"></span>
+                                            <span class="blocks-constructor-label-text"> {{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.ShowWithoutModeration'|translate}} </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="blocks-constructor-row">
+                                    <div class="blocks-constructor-row__name">{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.ReviewsPerPage'|translate}}</div>
+                                    <input
+                                        class="blocks-constructor-input"
+                                        data-e2e="CountRewiews"
+                                        type="number"
+                                        ng-model="$ctrl.modalData.settings.items_per_page"
+                                        value="" />
+                                </div>
+                                <div class="blocks-constructor-row">
+                                    <div class="blocks-constructor-row__name">{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.AdminEmail'|translate}}</div>
+                                    <input
+                                        class="blocks-constructor-input"
+                                        data-e2e="AdminEmail"
+                                        type="text"
+                                        ng-model="$ctrl.modalData.settings.admin_email"
+                                        value="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="blocks-constructor-settings-col--alt">
+                                <div ng-include="$ctrl.modalData.generalRightOptionsTemplateUrl"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" data-tab-content="reviews" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="blocks-constructor-settings-col--alt">
+                            <lp-grid
+                                lp-id="$ctrl.modalData.landingpageId"
+                                block-id="$ctrl.modalData.blockId"
+                                source="$ctrl.modalData.settings.items"
+                                on-before-add-new-element="$ctrl.onBeforeAddNewElementReviewsByUser(entity)"
+                                data-e2e="RewiewsGrid">
+                                <lp-grid-column
+                                    main="{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.NameField'|translate}}"
+                                    type="text"
+                                    field="Name"
+                                    placeholder="'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.NamePlaceholder'|translate"
+                                    classes="'col-xs-5 col-md'"
+                                    title="{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.NameField'|translate}}"></lp-grid-column>
+                                <lp-grid-column
+                                    type="text"
+                                    field="Email"
+                                    placeholder="'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.EmailPlaceholder'|translate"
+                                    classes="'col-xs-5 col-md'"
+                                    title="Email"></lp-grid-column>
+                                <lp-grid-column
+                                    type="select"
+                                    valid-required="true"
+                                    select-data="[{label:1, value: 1},{label:2, value: 2},{label:3, value: 3},{label:4, value: 4},{label:5, value: 5}]"
+                                    select-label="label"
+                                    select-value="value"
+                                    field="Rating"
+                                    classes="'col-xs-2'"
+                                    title="{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.RatingField'|translate}}"></lp-grid-column>
+                                <lp-grid-column
+                                    type="datetime"
+                                    field="Date"
+                                    placeholder="'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.DatePlaceholder'|translate"
+                                    classes="'col-xs-9 col-md'"
+                                    title="{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.DateField'|translate}}"></lp-grid-column>
+                                <lp-grid-column type="checkbox" field="Enabled" classes="'col-xs-1'" title="{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.EnabledField'|translate}}"></lp-grid-column>
+                                <lp-grid-column
+                                    type="textarea"
+                                    field="Text"
+                                    placeholder="'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.ReviewTextPlaceholder'|translate"
+                                    classes="'col-xs-12 col-sm-4 col-md'"
+                                    title="{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.ReviewText'|translate}}"></lp-grid-column>
+
+                                <script type="text/ng-template" id="test" lp-add-group-grid>
+                                    <div class="lp-grid__sub">
+                                        <lp-grid lp-id="$ctrl.modalData.landingpageId"
+                                                 show-header="false"
+                                                 block-id="$ctrl.modalData.blockId"
+                                                 source="lpGridRow.entity.Childs"
+                                                 on-before-add-new-element="$ctrl.onBeforeAddNewElementReviewsByUser(entity)"
+                                                 data-e2e="SubRewiewsGrid">
+                                            <lp-grid-column main="{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.NameField'|translate}}" type="text" field="Name" placeholder="'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.NamePlaceholder'|translate" classes="'col-xs'" title="{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.NameField'|translate}}"></lp-grid-column>
+                                            <lp-grid-column type="text" field="Email" placeholder="'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.EmailPlaceholder'|translate" classes="'col-xs'" title="Email"></lp-grid-column>
+                                            <lp-grid-column type="select" valid-required="true" select-data="[{label:1, value: 1},{label:2, value: 2},{label:3, value: 3},{label:4, value: 4},{label:5, value: 5}]"
+                                                            select-label="label" select-value="value" field="Rating" classes="'col-xs-2'" title="{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.RatingField'|translate}}"></lp-grid-column>
+                                            <lp-grid-column type="datetime" field="Date" placeholder="'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.DatePlaceholder'|translate" classes="'col-xs'" title="{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.DateField'|translate}}"></lp-grid-column>
+                                            <lp-grid-column type="checkbox" field="Enabled" classes="'col-xs-1'" title="{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.EnabledField'|translate}}"></lp-grid-column>
+                                            <lp-grid-column type="textarea" field="Text" placeholder="'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.ReviewTextPlaceholder'|translate" classes="'col-xs-12 col-sm-4 col-md'" title="{{'Admin.Js.Landings.BlocksConstructor.ReviewsByUsers.ReplyText'|translate}}"></lp-grid-column>
+                                        </lp-grid>
+                                    </div>
+                                </script>
+                            </lp-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

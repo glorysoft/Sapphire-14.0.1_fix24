@@ -1,0 +1,55 @@
+﻿$slick-font-path: "./fonts/" !default;
+$slick-font-family: "advlp" !default;
+$slick-loader-path: "./" !default;
+$slick-arrow-color: #80909c !default;
+$slick-dot-color: black !default;
+$slick-dot-color-active: $slick-dot-color !default;
+$slick-prev-character: "\e813" !default;
+$slick-next-character: "\e802" !default;
+$slick-dot-character: "" !default;
+
+@use "../../../../../node_modules/slick-carousel/slick/slick-theme.scss" with (
+  $slick-font-path: $slick-font-path,
+  $slick-font-family: $slick-font-family,
+  $slick-loader-path: $slick-loader-path,
+  $slick-arrow-color: $slick-arrow-color,
+  $slick-dot-color: $slick-dot-color,
+  $slick-dot-color-active: $slick-dot-color-active,
+  $slick-prev-character: $slick-prev-character,
+  $slick-next-character: $slick-next-character,
+  $slick-dot-character: $slick-dot-character
+);
+
+.slick-dots {
+    li {
+        button {
+            height: 16px;
+            width: 16px;
+            cursor: pointer;
+            box-sizing: border-box;
+            border-radius: 50%;
+            border: 2px solid #dee6ed;
+        }
+    }
+
+    &.slick-active button {
+        border-color: #629fd1;
+        background-color: #629fd1;
+
+        &:before {
+            color: slick-theme.$slick-dot-color-active;
+            opacity: slick-theme.$slick-opacity-default;
+        }
+
+    }
+
+}
+
+slick{
+    [data-lazy]{
+        visibility: hidden;
+    }
+}
+.slick-slide img{
+    margin: 0 auto;
+}

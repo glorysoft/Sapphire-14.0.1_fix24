@@ -1,0 +1,437 @@
+﻿{
+    "key": "CompanySiteBePartner",
+    "templateType": "Events",
+    "sortOrder": 800,
+    "name": "Admin.Dashboard.CreateFunnel.CompanySiteBePartner.Name",
+    "description": "Admin.Dashboard.CreateFunnel.CompanySiteBePartner.Description",
+    "intent": "Admin.Dashboard.CreateFunnel.CompanySiteBePartner.Intent",
+    "advice": "Admin.Dashboard.CreateFunnel.CompanySiteBePartner.Advice",
+    "picture": "//cs71.advantshop.net/adv-static/templates/FnlCompanySiteBePartner/i/scr1_v1.jpg",
+    "video": "",
+    "scheme": "",
+    "siteCategory": "CompanySite",
+    "demoLink": "http://demo-funnel.on-advantshop.net/lp/stan-partnerom",
+    //Если выходит новая картинка, пишем _v2 и т.д
+    "screens": [
+        {
+            "title": "Admin.Dashboard.CreateFunnel.CompanySiteBePartner.Title.CollectingContacts",
+            "url": "//cs71.advantshop.net/adv-static/templates/FnlCompanySiteBePartner/i/scr1_v1.jpg"
+        }
+    ],
+    "blockLists": [],
+    "siteSettings": {
+        "SeoSettings.FontMain": "OpenSans",
+        "SeoSettings.LineHeight": "1.2",
+        "SeoSettings.ColorSchemes": "[{\"LpId\":0,\"LpBlockId\":0,\"Name\":\"CreateFunnel.CompanySiteBePartner.ColorSchemes.Light\",\"Class\":\"color-scheme--light\",\"BackgroundColor\":\"rgb(255, 255, 255)\",\"BackgroundColorAlt\":\"rgba(242, 242, 242, 0.9)\",\"TitleColor\":\"rgb(0, 0, 0)\",\"TitleBold\":\"700\",\"SubTitleColor\":\"rgb(96, 96, 96)\",\"SubTitleBold\":\"400\",\"TextColor\":\"rgb(0, 0, 0)\",\"TextColorAlt\":\"rgb(0, 0, 0)\",\"TextBold\":\"400\",\"LinkColor\":\"rgb(255, 104, 1)\",\"LinkColorHover\":\"rgba(255, 104, 1, 0.8)\",\"LinkColorActive\":\"rgba(255, 104, 1, 0.6)\",\"ButtonTextColor\":\"rgb(255, 255, 255)\",\"ButtonTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonBorderColor\":\"rgb(255, 104, 1)\",\"ButtonBorderWidth\":\"1px\",\"ButtonBorderRadius\":\"2px\",\"ButtonTextBold\":\"400\",\"ButtonBackgroundColor\":\"rgb(255, 104, 1)\",\"ButtonBackgroundColorHover\":\"rgba(255, 104, 1, 0.8)\",\"ButtonBackgroundColorActive\":\"rgba(255, 104, 1, 0.6)\",\"ButtonSecondaryTextColor\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorHover\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorActive\":\"rgb(0, 0, 0)\",\"ButtonSecondaryBorderColor\":\"rgb(218, 218, 218)\",\"ButtonSecondaryBorderWidth\":\"1px\",\"ButtonSecondaryBorderRadius\":\"2px\",\"ButtonSecondaryTextBold\":\"400\",\"ButtonSecondaryBackgroundColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBackgroundColorHover\":\"rgba(0, 0, 0, 0.1)\",\"ButtonSecondaryBackgroundColorActive\":\"rgba(0, 0, 0, 0.2)\",\"DelimiterColor\":\"rgb(226, 226, 226)\"},{\"LpId\":0,\"LpBlockId\":0,\"Name\":\"CreateFunnel.CompanySiteBePartner.ColorSchemes.Medium\",\"Class\":\"color-scheme--medium\",\"BackgroundColor\":\"#F8F8F8\",\"BackgroundColorAlt\":\"rgb(255, 255, 255)\",\"TitleColor\":\"rgb(0, 0, 0)\",\"TitleBold\":\"700\",\"SubTitleColor\":\"rgb(96, 96, 96)\",\"SubTitleBold\":\"400\",\"TextColor\":\"rgb(0, 0, 0)\",\"TextColorAlt\":\"rgb(0, 0, 0)\",\"TextBold\":\"400\",\"LinkColor\":\"rgb(255, 104, 1)\",\"LinkColorHover\":\"rgba(255, 104, 1, 0.8)\",\"LinkColorActive\":\"rgba(255, 104, 1, 0.6)\",\"ButtonTextColor\":\"rgb(255, 255, 255)\",\"ButtonTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonBorderColor\":\"rgb(255, 104, 1)\",\"ButtonBorderWidth\":\"1px\",\"ButtonBorderRadius\":\"2px\",\"ButtonTextBold\":\"400\",\"ButtonBackgroundColor\":\"rgb(255, 104, 1)\",\"ButtonBackgroundColorHover\":\"rgba(255, 104, 1, 0.8)\",\"ButtonBackgroundColorActive\":\"rgba(255, 104, 1, 0.6)\",\"ButtonSecondaryTextColor\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorHover\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorActive\":\"rgb(0, 0, 0)\",\"ButtonSecondaryBorderColor\":\"rgb(218, 218, 218)\",\"ButtonSecondaryBorderWidth\":\"1px\",\"ButtonSecondaryBorderRadius\":\"2px\",\"ButtonSecondaryTextBold\":\"400\",\"ButtonSecondaryBackgroundColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBackgroundColorHover\":\"rgba(0, 0, 0, 0.1)\",\"ButtonSecondaryBackgroundColorActive\":\"rgba(0, 0, 0, 0.2)\",\"DelimiterColor\":\"rgb(205, 205, 205)\"},{\"LpId\":0,\"LpBlockId\":0,\"Name\":\"CreateFunnel.CompanySiteBePartner.ColorSchemes.Dark\",\"Class\":\"color-scheme--dark\",\"BackgroundColor\":\"rgb(0, 0, 0)\",\"BackgroundColorAlt\":\"rgba(60, 60, 60, 1)\",\"TitleColor\":\"rgb(255, 255, 255)\",\"TitleBold\":\"700\",\"SubTitleColor\":\"rgb(232, 232, 232)\",\"SubTitleBold\":\"400\",\"TextColor\":\"rgb(255, 255, 255)\",\"TextColorAlt\":\"rgb(255, 255, 255)\",\"TextBold\":\"400\",\"LinkColor\":\"rgb(255, 255, 255)\",\"LinkColorHover\":\"rgb(204, 204, 204)\",\"LinkColorActive\":\"rgb(255, 255, 255)\",\"ButtonTextColor\":\"rgb(255, 255, 255)\",\"ButtonTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonBorderColor\":\"rgb(255, 104, 1)\",\"ButtonBorderWidth\":\"1px\",\"ButtonBorderRadius\":\"2px\",\"ButtonTextBold\":\"400\",\"ButtonBackgroundColor\":\"rgb(255, 104, 1)\",\"ButtonBackgroundColorHover\":\"rgba(255, 104, 1, 0.8)\",\"ButtonBackgroundColorActive\":\"rgba(255, 104, 1, 0.6)\",\"ButtonSecondaryTextColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonSecondaryTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBorderColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBorderWidth\":\"1px\",\"ButtonSecondaryBorderRadius\":\"2px\",\"ButtonSecondaryTextBold\":\"400\",\"ButtonSecondaryBackgroundColor\":\"rgba(255, 255, 255, 0)\",\"ButtonSecondaryBackgroundColorHover\":\"rgba(255, 255, 255, 0.2)\",\"ButtonSecondaryBackgroundColorActive\":\"rgba(255, 255, 255, 0.3)\",\"DelimiterColor\":\"rgb(255, 255, 255)\"}]"
+    },
+    "pages": [
+        {
+            "name": "CreateFunnel.CompanySiteBePartner.Main",
+            "pageType": "Main",
+            "lpPageSettings": {
+                "SeoSettings.PageTitle": "CreateFunnel.CompanySiteBePartner.Main.PageTitle"
+            },
+            "blocks": [
+                {
+                    "name": "headerCommunicationSimple",
+                    "settings": {
+                        "classes": ["lp-block-header", "color-scheme--light", "block-padding-top--0", "block-padding-bottom--0"],
+                        "color_scheme": "color-scheme--light",
+                        "show_logo": true,
+                        "show_button": false,
+                        "show_phone": false,
+                        "show_email": false,
+                        "show_menu": false,
+                        "vk_enabled": true,
+                        "fb_enabled": true,
+                        "youtube_enabled": false,
+                        "twitter_enabled": false,
+                        "instagram_enabled": true,
+                        "whatsapp_enabled": false,
+                        "telegram_enabled": false,
+                        "telegram_url": null,
+                        "odnoklassniki_enabled": false,
+                        "odnoklassniki_url": null,
+                        "menu_items": [
+                            {
+                                "text": "CreateFunnel.CompanySiteBePartner.Main.Header.Menu.BecomePartner",
+                                "href": "#BLOCK_ID_textImage#",
+                                "target": false,
+                                "class": "",
+                                "childs": []
+                            }
+                        ],
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": "#ffffff",
+                        "min_height": null,
+                        "fixedOnScroll": false,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "runDown": false,
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "show_button2": false,
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "show_on_all_landing_pages_top": false,
+                        "show_on_all_landing_pages_bottom": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "logo",
+                            "type": "logo",
+                            "settings": {
+                                "src": "areas/landing/Templates/CompanySiteBePartner/images/logo.png",
+                                "type": "image"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "textImage",
+                    "settings": {
+                        "classes": ["lp-block-text-image-reverse", "block-padding-bottom--45", "block-padding-top--0", "color-scheme--light"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": true,
+                        "show_button2": false,
+                        "constructor_buttons_reverse": true,
+                        "image_link": "",
+                        "darken": 0,
+                        "min_height": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 0,
+                        "padding_bottom": 45,
+                        "style": {
+                            "background-color": null,
+                            "color": null
+                        },
+                        "align_btns": "start-xs",
+                        "button": {
+                            "is_default_style": true,
+                            "action": "Form",
+                            "text": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Button.Text",
+                            "size": "xsmall",
+                            "action_upsell_lp_id": "",
+                            "use_many_offers": true,
+                            "action_offer_items": []
+                        },
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "align_block": "middle-xs",
+                        "settings_picture": {
+                            "maxWidthPicture": 480,
+                            "maxHeightPicture": 480
+                        },
+                        "color": null
+                    },
+                    "form": {
+                        "title": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Form.Title",
+                        "subTitle": "",
+                        "buttonText": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Form.ButtonText",
+                        "postAction": 1,
+                        "postMessageText": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Form.PostMessageText",
+                        "fields": [
+                            {
+                                "Title": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Form.Fields.Name",
+                                "TitleCrm": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Form.Fields.Name",
+                                "FieldType": 2,
+                                "Type": "text",
+                                "CustomFieldId": null,
+                                "Required": true
+                            },
+                            {
+                                "Title": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Form.Fields.Phone",
+                                "TitleCrm": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Form.Fields.Phone",
+                                "FieldType": 6,
+                                "Type": "tel",
+                                "CustomFieldId": null,
+                                "Required": true
+                            },
+                            {
+                                "Title": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Form.Fields.Email",
+                                "TitleCrm": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Form.Fields.Email",
+                                "FieldType": 5,
+                                "Type": "text",
+                                "CustomFieldId": null,
+                                "Required": true
+                            }
+                        ],
+                        "showAgreement": true,
+                        "agreementText": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Form.AgreementText",
+                        "is_hidden": true
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteBePartner.Main.TextImage.Text.Placeholder"
+                        },
+                        {
+                            "name": "picture",
+                            "type": "picture",
+                            "settings": {
+                                "src": "areas/landing/Templates/CompanySiteBePartner/images/pic.png",
+                                "type": "image"
+                            }
+                        }
+                    ]
+                },
+
+                {
+                    "name": "columnsThreeIcons",
+                    "settings": {
+                        "align_items": "start-xs",
+                        "gridColumns": {
+                            "text": true,
+                            "title": true,
+                            "icon": true
+                        },
+                        "items": [
+                            {
+                                "title": "CreateFunnel.CompanySiteBePartner.Main.ColumnsThreeIcons.Item1.Title",
+                                "text": "CreateFunnel.CompanySiteBePartner.Main.ColumnsThreeIcons.Item1.Text",
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteBePartner/images/pic1.png",
+                                    "type": "image"
+                                }
+                            },
+                            {
+                                "title": "CreateFunnel.CompanySiteBePartner.Main.ColumnsThreeIcons.Item2.Title",
+                                "text": "CreateFunnel.CompanySiteBePartner.Main.ColumnsThreeIcons.Item2.Text",
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteBePartner/images/pic2.png",
+                                    "type": "image"
+                                }
+                            },
+                            {
+                                "title": "CreateFunnel.CompanySiteBePartner.Main.ColumnsThreeIcons.Item3.Title",
+                                "text": "CreateFunnel.CompanySiteBePartner.Main.ColumnsThreeIcons.Item3.Text",
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteBePartner/images/pic3.png",
+                                    "type": "image"
+                                }
+                            }
+                        ],
+                        "classes": ["lp-block-columns-three-icons", "block-padding-top--45", "block-padding-bottom--45", "color-scheme--medium"],
+                        "color_scheme": "color-scheme--medium",
+                        "show_title": false,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "items_in_row": 3,
+                        "rows_in_block": 1,
+                        "padding_bottom": 45,
+                        "columnBackground": false,
+                        "style": {
+                            "background-color": null,
+                            "color": null
+                        },
+                        "settings_picture": { "galleryIconsEnabled": true },
+                        "align_btns": "center-xs",
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "color": null
+                    }
+                },
+                {
+                    "name": "textImageReverse",
+                    "settings": {
+                        "classes": ["lp-block-text-image-reverse", "color-scheme--light", "block-padding-top--35", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "show_button2": false,
+                        "constructor_buttons_reverse": true,
+                        "image_link": "",
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "min_height": null,
+                        "align_block": "middle-xs",
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 35,
+                        "padding_bottom": 45,
+                        "align_btns": "start-xs",
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "settings_picture": {
+                            "maxWidthPicture": 480,
+                            "maxHeightPicture": 480
+                        }
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteBePartner.Main.TextImageReverse.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteBePartner.Main.TextImageReverse.Text.Placeholder"
+                        },
+                        {
+                            "name": "picture",
+                            "type": "picture",
+                            "settings": {
+                                "src": "areas/landing/Templates/CompanySiteBePartner/images/pic4.png",
+                                "type": "image"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "textRightReviews",
+                    "settings": {
+                        "items": [
+                            {
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteBePartner/images/pic5.png",
+                                    "type": "image"
+                                },
+                                "author": "CreateFunnel.CompanySiteBePartner.Main.TextRightReviews.Item1.Author",
+                                "caption": "CreateFunnel.CompanySiteBePartner.Main.TextRightReviews.Item1.Caption",
+                                "text": "CreateFunnel.CompanySiteBePartner.Main.TextRightReviews.Item1.Text"
+                            }
+                        ],
+                        "classes": ["text-reviews", "text-left-reviews", "block-padding-bottom--45", "color-scheme--light", "block-padding-top--0"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": false,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 0,
+                        "padding_bottom": 45,
+                        "style": {
+                            "background-position": "center center",
+                            "background-attachment": "scroll",
+                            "background-color": null,
+                            "color": null
+                        },
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "width_in_columns": 12,
+                        "color": null
+                    }
+                },
+
+                {
+                    "name": "textCenter",
+                    "settings": {
+                        "classes": ["lp-block-text-single", "color-scheme--medium", "block-padding-top--60", "block-padding-bottom--60"],
+                        "color_scheme": "color-scheme--medium",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": true,
+                        "show_button2": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 60,
+                        "padding_bottom": 60,
+                        "style": {
+                            "background-color": null,
+                            "color": null
+                        },
+                        "align_btns": "center-xs",
+                        "button": {
+                            "is_default_style": true,
+                            "action": "Form",
+                            "text": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Button.Text",
+                            "size": "xsmall"
+                        },
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "width_in_columns": 8,
+                        "color": null
+                    },
+                    "form": {
+                        "title": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Form.Title",
+                        "subTitle": "",
+                        "buttonText": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Form.ButtonText",
+                        "postAction": 1,
+                        "postMessageText": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Form.PostMessageText",
+                        "fields": [
+                            {
+                                "Title": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Form.Fields.Name",
+                                "TitleCrm": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Form.Fields.Name",
+                                "FieldType": 2,
+                                "Type": "text",
+                                "CustomFieldId": null,
+                                "Required": true
+                            },
+                            {
+                                "Title": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Form.Fields.Phone",
+                                "TitleCrm": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Form.Fields.Phone",
+                                "FieldType": 6,
+                                "Type": "tel",
+                                "CustomFieldId": null,
+                                "Required": true
+                            },
+                            {
+                                "Title": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Form.Fields.Email",
+                                "TitleCrm": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Form.Fields.Email",
+                                "FieldType": 5,
+                                "Type": "text",
+                                "CustomFieldId": null,
+                                "Required": true
+                            }
+                        ],
+                        "showAgreement": true,
+                        "agreementText": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Form.AgreementText",
+                        "is_hidden": true
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteWithPrices.Main.TextCenter.Text.Placeholder"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

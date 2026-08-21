@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "_LayoutMaster.cshtml";
+    Html.AddAsset("user");
+}
+
+<div class="user-layout">
+    <header class="user-layout__header">
+        <div class="user-layout__header-inner user-layout--stretch-limited">
+            <div class="user-layout__header-logo">
+                @Html.Action("Logo", "Common")
+            </div>
+            <div class="user-layout__header-close">
+                @Html.Action("CloseTrigger", "User")
+            </div>
+        </div>
+    </header>
+    <main class="user-layout__body user-layout__body--center">
+        <div class="user-layout--stretch-limited">@RenderBody()</div>
+    </main>
+    <footer class="user-layout__footer cs-bg-4">
+        <div class="user-layout--stretch-limited">
+            <div class="user-layout__footer-inner">
+                <div class="user-layout__footer-copyright footer__copyright">@Html.Action("Copyright", "Common")</div>
+                <div class="user-layout__footer-rightbottom">@Html.StaticBlock("RightBottom")</div>
+            </div>
+        </div>
+    </footer>
+</div>

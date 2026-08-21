@@ -1,0 +1,211 @@
+@using AdvantShop.Core.Services.CMS
+@model AdvantShop.ViewModel.Home.CarouselViewModel
+
+@{
+    var isMultipleSlides = Model.Sliders.Count > 1;
+    var advancedCarouselSettingsEnabled = FeaturesService.IsEnabled(EFeature.AdvancedCarouselSettings);
+    var imageWidth = SettingsDesign.CarouselMobileWidth;
+    var imageHeight = SettingsDesign.CarouselMobileHeight;
+}
+
+@helper CarouselImageOrVideo(Carousel slider, int i, int imageWidth, int imageHeight, bool enabledAdvancedFeatures)
+{
+    if (enabledAdvancedFeatures && slider.IsVideo && slider.Video != null)
+    {
+        <video class="carousel-slide-media"
+               width="@(imageWidth)"
+               height="@(imageHeight)" muted playsinline
+               @Html.Raw(i == 0 ? "src" : "data-src")="@slider.Video.VideoSrc()"
+               @Html.Raw(i == 0 ? "preload=\"metadata\"" : "preload=\"none\"")>
+            Ваш браузер не поддерживает тег
+            <code>video</code>.
+        </video>
+    }
+    else
+    {
+        <img width="@(imageWidth)"
+             height="@(imageHeight)"
+             @Html.Raw(i == 0 ? "fetchpriority=\"high\" src" : "src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" data-src")="@slider.Picture.ImageSrc()"
+             class="carousel-slide-media @(i != 0 ? "carousel-placeholder" : "")"
+             alt="@Html.Encode(slider.Picture.Description)"
+             @Html.InplaceImageCarousel(slider.CarouselId, slider.CarouselId == 0 && !slider.Enabled)/>
+    }
+}
+
+@helper Slide(Carousel slider, int i, int imageWidth, int imageHeight, bool enabledAdvancedFeatures)
+{
+    var slideObscuring = "";
+
+    if (enabledAdvancedFeatures)
+    {
+        slideObscuring = "--carousel-slide-filter:brightness(" + (100 - slider.Obscuring) + "%" + ")";
+    }
+
+    if (!SettingsDesign.OnePageCatalog && slider.Url.IsNotEmpty())
+    {
+        <a href="@(slider.Url)" class="carousel-main-link" @Html.Raw(slider.Blank ? "target=\"_blank\"" : string.Empty)
+           style="@slideObscuring">
+            @CarouselImageOrVideo(slider, i, imageWidth, imageHeight, enabledAdvancedFeatures)
+            @if (enabledAdvancedFeatures)
+            {
+                @Additional(slider)
+            }
+        </a>
+    }
+    else
+    {
+        <span class="carousel-main-link-noop"
+              style="@slideObscuring">
+            @CarouselImageOrVideo(slider, i, imageWidth, imageHeight, enabledAdvancedFeatures)
+            @if (enabledAdvancedFeatures)
+            {
+                @Additional(slider)
+            }
+        </span>
+    }
+}
+
+@helper Additional(Carousel slider)
+{
+    if (slider.Text != null || (slider.Buttons != null && slider.Buttons.Count > 0))
+    {
+        <div class="carousel-text-block-wrap visibility-hidden @(slider.Text != null ? slider.Text.CssClassText : string.Empty)"
+             data-text-scale-limit
+             style="--carousel-text-block-margin-top:@(slider.MarginTop)px;
+                    --carousel-text-block-margin-right:@(slider.MarginRight)px;
+                    --carousel-text-block-margin-bottom:@(slider.MarginBottom)px;
+                    --carousel-text-block-margin-left:@(slider.MarginLeft)px;">
+            <div class="carousel-text-block"
+                 data-text-scale-observer>
+                @if (slider.Text != null && slider.Text.Enabled)
+                {
+                    <div class="carousel-text-block__inner">
+                        @if (slider.Text.Title.IsNotEmpty())
+                        {
+                            <div class="carousel-text-block__title"
+                                 data-text-scale="{fontSizeMax: @slider.Text.TitleSize}"
+                                 data-text-scale-scope-events="['init','onGotoStart']"
+                                 style="@(slider.Text.TitleSize != 0 ? "--carousel-text-block-title-font-size:" + slider.Text.TitleSize + "px;" : string.Empty)
+                                 @(slider.Text.ColorCode.IsNotEmpty() ? "--carousel-text-block-title-color: #" + slider.Text.ColorCode + ";" : string.Empty)
+                                 @(slider.Text.TitleLineHeight != 0 ? "--carousel-text-block-title-line-height:" + slider.Text.TitleLineHeight.ToString().Replace(',', '.') + ";" : string.Empty)">
+                                @Html.Raw(slider.Text.Title)
+                            </div>
+                        }
+
+                        @if (slider.Text.Text.IsNotEmpty())
+                        {
+                            <div class="carousel-text-block__text"
+                                 data-text-scale="{fontSizeMax: @slider.Text.TextSize}"
+                                 data-text-scale-scope-events="['init','onGotoStart']"
+                                 style="@(slider.Text.TitleSize != 0 ? "--carousel-text-block-text-font-size:" + slider.Text.TextSize + "px;" : string.Empty)
+                                 @(slider.Text.ColorCode.IsNotEmpty() ? "--carousel-text-block-text-color: #" + slider.Text.ColorCode + ";" : string.Empty)
+                                 @(slider.Text.TitleLineHeight != 0 ? "--carousel-text-block-text-line-height:" + slider.Text.TextLineHeight.ToString().Replace(',', '.') : string.Empty)">
+                                @Html.Raw(slider.Text.Text.Replace("\n", "<br />"))
+                            </div>
+                        }
+                    </div>
+                }
+
+                <div class="carousel-buttons-block">
+                    @foreach (var button in slider.Buttons)
+                    {
+                        if (button.Enabled)
+                        {
+                            var buttonBackgroundColor = !button.UseStoreColorScheme && button.ButtonColorCode.IsNotEmpty() 
+                                ? "background-color: #" + button.ButtonColorCode + ";" : string.Empty;
+                            var buttonColor = !button.UseStoreColorScheme && button.TextColorCode.IsNotEmpty()
+                                ?  "color: #" + button.TextColorCode + ";" : string.Empty;
+                            <a href="@(button.Url.IsNotEmpty() ? button.Url : string.Empty)"
+                               class="btn btn-middle btn--adaptive btn-action carousel-button"
+                               @Html.Raw(button.Blank ? "target=\"_blank\"" : string.Empty)
+                               style="@buttonBackgroundColor @buttonColor">
+                                @button.Text
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+    <div class="carousel carousel-main--mobile">
+        <div class="carousel-inner carousel-inner--min-height-mobile">
+            <div data-carousel
+                 class="carousel-main-list @(isMultipleSlides ? "carousel-main-list--with-clones" : "")"
+                 data-stretch="@Model.Options.Stretch.ToLowerString()"
+                 data-is-vertical="@Model.Options.IsVertical.ToLowerString()"
+                 data-scroll-count="@Model.Options.ScrollCount"
+                 data-index-active="@Model.Options.IndexActive"
+                 data-nav="@Model.Options.Nav.ToLowerString()"
+                 data-nav-position="@Model.Options.NavPosition"
+                 data-prev-class="@Model.Options.PrevClass"
+                 data-next-class="@Model.Options.NextClass"
+                 data-prev-icon="@Model.Options.PrevIcon"
+                 data-next-icon="@Model.Options.NextIcon"
+                 data-prev-icon-vertical="@Model.Options.PrevIconVertical"
+                 data-next-icon-vertical="@Model.Options.NextIconVertical"
+                 data-dots="@Model.Options.Dots.ToLowerString()"
+                 data-dots-class="@Model.Options.DotsClass"
+                 data-dots-item-class="@Model.Options.DotsItemClass"
+                 data-dots-item-selected-class="@Model.Options.DotsItemSelectedClass"
+                 data-dots-item-inner-selected-class="@Model.Options.DotsItemInnerSelectedClass"
+                 data-speed="@Model.Options.Speed"
+                 data-auto="@Model.Options.Auto.ToLowerString()"
+                 data-auto-pause="@Model.Options.AutoPause"
+                 data-visible-max="@Model.Options.VisibleMax"
+                 data-visible-min="@Model.Options.VisibleMin"
+                 data-height-auto="@Model.Options.HeightAuto.ToLowerString()"
+                 data-carousel-class="@Model.Options.CarouselClass"
+                 data-item-select-class="@Model.Options.ItemSelectClass"
+                 data-item-active-class="@Model.Options.ItemActiveClass"
+                 data-item-select="@Model.Options.ItemSelect"
+                 data-filter-fn="@Model.Options.FilterFn"
+                 data-init-fn="@Model.Options.InitFn"
+                 data-init-on-load="@Model.Options.InitOnLoad.ToLowerString()"
+                 data-load="@Model.Options.Load.ToLowerString()"
+                 data-initilaze-to="@Model.Options.InitilazeTo"
+                 data-as-nav-for="@Model.Options.AsNavFor"
+                 data-scroll-nav="@Model.Options.ScrollNav.ToLowerString()"
+                 data-on-goto-start="@Model.Options.OnGotoStart"
+                 data-on-goto-finish="@Model.Options.OnGotoFinish"
+                 data-on-update="@Model.Options.OnUpdate"
+                 data-on-calc="@Model.Options.OnCalc"
+                 data-drag-container="@Model.Options.DragContainer"
+                 data-responsive="@(Model.Options.Responsive != null ? Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Options.Responsive)) : null)">
+                @{
+                    int i = 0;
+                }
+                @if (isMultipleSlides)
+                {
+                    <div class="carousel-item carousel-main-item js-carousel-clone" data-carousel-slide>
+                        @Slide(Model.Sliders.Last(), Model.Sliders.Count - 1, imageWidth, imageHeight, advancedCarouselSettingsEnabled)
+                    </div>
+                }
+                @foreach (var slider in Model.Sliders)
+                {
+                    <div class="carousel-main-item" data-carousel-slide>
+                        @Slide(slider, i, imageWidth, imageHeight, advancedCarouselSettingsEnabled)
+                    </div>
+                    i++;
+                }
+                @if (isMultipleSlides)
+                {
+                    <div class="carousel-item carousel-main-item js-carousel-clone" data-carousel-slide>
+                        @Slide(Model.Sliders.First(), i, imageWidth, imageHeight, advancedCarouselSettingsEnabled)
+                    </div>
+                }
+            </div>
+        </div>
+        @if (Model.Sliders.Count > 1)
+        {
+            <ul class="carousel-dots carousel-mobile-dots">
+                @for (var j = 0; j < Model.Sliders.Count; j++)
+                {
+                    <li class="carousel-dots-item @(j == 0 ? "carousel-dots-selected" : "")" data-index="@j"><i
+                            class="carousel-dots-item-inner cs-bg-i-11 @(j == 0 ? "cs-selected" : "")"></i></li>
+                }
+            </ul>
+        }
+    </div>

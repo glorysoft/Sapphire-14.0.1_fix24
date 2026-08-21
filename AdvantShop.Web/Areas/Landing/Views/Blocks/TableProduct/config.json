@@ -1,0 +1,77 @@
+﻿{
+    "name": "tableProduct",
+    "type": "text",
+    "description": "Landings.Views.Blocks.Config.TableProduct.Description",
+    "category": "Landings.Views.Blocks.Config.TableProduct.Category",
+    "picture": "./areas/landing/images/productsView/table_product_preview.jpg",
+    "subblocks": [
+        {
+            "name": "header",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TableProduct.Header.Placeholder"
+        },
+        {
+            "name": "columnName1",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TableProduct.ColumnName1.Placeholder"
+        },
+        {
+            "name": "columnName2",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TableProduct.ColumnName2.Placeholder"
+        },
+        {
+            "name": "productName",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TableProduct.ProductName.Placeholder"
+        },
+        {
+            "name": "price",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TableProduct.Price.Placeholder"
+        },
+        {
+            "name": "shippingCost",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TableProduct.ShippingCost.Placeholder"
+        },
+        {
+            "name": "total",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TableProduct.Total.Placeholder"
+        }
+    ],
+    "settings": {
+        "classes": ["lp-block-table-product", "color-scheme--light", "block-padding-top--25", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_button": false,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 25,
+        "padding_bottom": 45,
+        "style": {},
+        "align_btns": "center-xs",
+        "align_items": "start-xs",
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.TableProduct.Button.Text",
+            "size": "xsmall",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false,
+        "width_in_columns": 12
+    }
+}

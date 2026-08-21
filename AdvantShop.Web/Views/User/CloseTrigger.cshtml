@@ -1,0 +1,34 @@
+﻿@model string
+
+@if (SettingsDesign.IsMobileTemplate)
+{
+    <a href="@Model" 
+       class="mobile-header__user-close-link header-link"
+       aria-label="@T("Mobile.UserLayout.Close.AriaLabel")">
+        <svg version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink"
+             width="18"
+             height="18"
+             viewBox="0 0 220.176 220.176"
+             xml:space="preserve"
+             class="mobile-header__icon mobile-header__user-close-icon"
+             fill="currentColor">
+            <path
+                d="M131.577,110.084l84.176-84.146c5.897-5.928,5.897-15.565,0-21.492
+                   c-5.928-5.928-15.595-5.928-21.492,0l-84.176,84.146L25.938,4.446
+                   c-5.928-5.928-15.565-5.928-21.492,0s-5.928,15.565,0,21.492
+                   l84.146,84.146L4.446,194.26c-5.928,5.897-5.928,15.565,0,21.492
+                   c5.928,5.897,15.565,5.897,21.492,0l84.146-84.176
+                   l84.176,84.176c5.897,5.897,15.565,5.897,21.492,0
+                   c5.897-5.928,5.897-15.595,0-21.492L131.577,110.084z" />
+        </svg>
+    </a>
+}
+else
+{
+    <a class="user-layout__trigger-close"
+       href="@Model"
+       aria-label="@T("UserLayout.Close.AriaLabel")">
+    </a>
+}

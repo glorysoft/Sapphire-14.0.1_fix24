@@ -1,0 +1,27 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.APISettingsModel
+
+<div class="api-item post">
+    <div class="api-item__header" ng-click="settings.showDetails($event)">
+        <span class="method">POST</span>
+        <span class="path">/api/metrics</span>
+        <span class="description">@T("Admin.SettingsApi.Index.Metrics.SendDeviceInfo")</span>
+    </div>
+    <div class="details">
+        <div class="m-b">
+            POST @Model.GetApiUrl("/api/metrics")
+        </div>
+        
+        <div class="m-t m-b-xs">
+            <h3>@T("Admin.SettingsApi.Index.Order.SampleAnswer")</h3>
+        </div>
+        <pre class="m-t-sm">{
+    "status": "ok"
+}</pre>     
+        <div class="m-t m-b-xs">
+            <h3>@T("Admin.SettingsApi.Index.Order.SampleAnswerError")</h3>
+        </div>
+        <pre class="m-t-sm">{
+    "status": "error"
+}</pre>
+    </div>
+</div>

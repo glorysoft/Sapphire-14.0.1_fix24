@@ -1,0 +1,117 @@
+@use '../settings';
+@use '../functions/util';
+
+.form-field-name,
+.form-field-input {
+    display: block;
+    font-size: settings.$font-size-normal;
+}
+
+.form-field-name-alt,
+.form-field-input-alt {
+    margin-bottom: util.rem-calc(5px);
+    display: block;
+
+    /* line-height: 1; */
+}
+
+.form-field-name {
+    padding-right: settings.$padding-base;
+    font-size: settings.$font-size-normal;
+}
+
+.form-field {
+    margin-bottom: settings.$margin-value-base;
+    display: block;
+}
+
+.form-title {
+    padding: util.rem-calc(15px) util.rem-calc(25px);
+    margin: 0;
+    font-size: settings.$font-size-base;
+}
+
+.form-content {
+    margin: 0 util.rem-calc(25px);
+    padding-bottom: util.rem-calc(30px);
+}
+
+.form-input-title {
+    padding-top: util.rem-calc(21px);
+    margin-bottom: util.rem-calc(10px);
+    font-size: settings.$font-size-normal;
+
+    &.moMarginTop {
+        margin-top: 0;
+    }
+
+    &.moMarginBottom {
+        margin-bottom: 0;
+    }
+}
+
+.form-input-value {
+    margin-bottom: util.rem-calc(20px);
+}
+
+.input-required {
+    position: relative;
+    display: inline-block;
+
+    &::after {
+        content: '*';
+        position: absolute;
+        top: 0;
+        color: red;
+        left: 100%;
+    }
+
+    &.form-field-name::after {
+        right: 0;
+        left: auto;
+    }
+}
+
+.input-required__rel.input-required::after {
+    position: relative;
+    margin-left: 4px;
+}
+
+.form-buttons-block {
+    padding-left: util.rem-calc(5px);
+    margin-top: util.rem-calc(20px);
+}
+
+.form-required-explanation {
+    display: inline-block;
+    float: right;
+    font-size: util.rem-calc(12px);
+    color: #acadae;
+    position: relative;
+
+    &::after {
+        content: '*';
+        position: absolute;
+        top: 0;
+        color: red;
+        left: -12px;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+    }
+}
+
+.form-legend {
+    font-size: settings.$font-size-xmedium;
+    font-weight: bold;
+    margin-bottom: settings.$margin-value-base;
+}
+
+.form-addon-text .title {
+    font-size: settings.$font-size-xmedium;
+    padding: 0 0 util.rem-calc(10px) 0;
+}
+
+.text-required {
+    color: red;
+}

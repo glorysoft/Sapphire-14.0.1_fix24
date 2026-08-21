@@ -1,0 +1,198 @@
+@use '../../../../styles/settings';
+@use '../../../../styles/functions/util';
+
+$quickviewArrowWidth: util.rem-calc(60px);
+
+.quickview-arrows-prev,
+.quickview-arrows-next {
+    font-size: util.rem-calc(40px);
+    position: absolute;
+    background: none;
+    border: 0;
+    box-sizing: border-box;
+    width: $quickviewArrowWidth;
+    display: flex;
+    top: -43px;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    justify-content: center;
+
+    &:focus {
+        outline: none;
+    }
+
+    &::before {
+        text-shadow: 0 0 5px rgb(0 0 0 / 70%);
+        margin: 0;
+    }
+}
+
+.quickview-arrows-prev {
+    margin-left: -50px;
+}
+
+.quickview-arrows-next {
+    margin-left: 50px;
+}
+
+@media (width >= 1180px) {
+    .quickview-arrows-prev,
+    .quickview-arrows-next {
+        font-size: util.rem-calc(50px);
+        top: 50%;
+        left: auto;
+        transform: translateY(-50%);
+    }
+
+    .quickview-arrows-next {
+        left: 100%;
+        margin-left: settings.$margin-value-base;
+    }
+
+    .quickview-arrows-prev {
+        right: 100%;
+        margin-left: auto;
+        margin-right: settings.$margin-value-base;
+    }
+}
+
+.adv-modal .modal-quickview,
+.adv-modal .adv-modal-inner.modal-quickview {
+    max-width: min(100vw, #{settings.$max-width});
+    width: 100%;
+    height: auto; /* не подгружает контент в айфоне поэтому auto */
+}
+
+.modal-quickview {
+    min-height: 540px;
+
+    .details-availability,
+    .details-rating {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .details-rating {
+        margin-left: settings.$margin-value-base;
+    }
+}
+
+.is-mobile .modal-quickview {
+    .details-rating {
+        margin: 5px 0 10px;
+    }
+
+    .gallery-photos-slider {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.quickview-loading-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (device-width >= 768px) and (device-width <= 1024px) and (height >= 768px) {
+    .adv-modal .modal-quickview {
+        max-width: settings.$min-width - (($quickviewArrowWidth + settings.$margin-value-base) * 2);
+        min-width: settings.$min-width - (($quickviewArrowWidth + settings.$margin-value-base) * 2);
+    }
+}
+
+[data-quickview-trigger] {
+    cursor: pointer;
+}
+
+.product-card--quickview-onepagecatalog {
+    .details-tabs .tabs-header-item {
+        padding: 10px;
+    }
+
+    .details-tabs .tabs-header-item-link {
+        font-size: util.rem-calc(16px);
+    }
+
+    .details-tabs .tabs-content {
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 13px;
+    }
+}
+
+.product-card-panel-float-right {
+    float: right;
+    margin-left: 10px;
+
+    .block-exuding-row.details-compare {
+        border-bottom: 0;
+    }
+
+    .compare-control,
+    .wishlist-control {
+        border-radius: 5px;
+        padding: 10px;
+        display: flex;
+        margin-bottom: 5px;
+        line-height: 1;
+    }
+
+    .compare-control:not(.compare-state-add),
+    .wishlist-control:not(.wishlist-state-add) {
+        cursor: pointer;
+    }
+}
+
+.mobile-version {
+    .modal-quickview {
+        .bonus-string-sum {
+            height: auto;
+            margin-top: 0;
+
+            &-value {
+                display: block;
+            }
+        }
+    }
+
+    .adv-modal {
+        &--floating-animation {
+            &:has(*[data-ng-if="!quickview.contentLoaded"]) {
+                .adv-modal-bottom {
+                    padding: 0;
+                }
+            }
+
+            .quickview-loading-text {
+                position: static;
+                transform: none;
+            }
+
+            .modal-quickview {
+
+
+                .block-exuding-row:not(:has(*)) {
+                    padding: 0;
+                }
+            }
+        }
+
+        &-bottom {
+            position: sticky;
+            left: 0;
+            right: 0;
+            z-index: 35;
+            background: #fff;
+            padding: 15px;
+            bottom: 0
+        }
+
+        .quickview-arrows-prev,
+        .quickview-arrows-next{
+            display: none !important;
+        }
+    }
+}

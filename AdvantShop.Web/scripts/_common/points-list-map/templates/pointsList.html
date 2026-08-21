@@ -1,0 +1,110 @@
+﻿<div
+    class="points-list"
+    data-ng-switch="$ctrl.isShowPlug"
+    data-ng-class="{'points-list--only-active': $ctrl.onlyActivePoint, 'points-list--plug': $ctrl.isShowPlug}">
+    <div data-ng-switch-when="true" class="points-list__plug" data-ng-if="$ctrl.isShowPlug">
+        <span class="icon-spinner-before icon-animate-spin-before"></span>
+    </div>
+    <div data-ng-switch-default="" data-ng-switch="$ctrl.activePoint != null && $ctrl.showDetailsPoint && $ctrl.points.length > 0">
+        <ul class="points-list__items" data-ng-switch-default>
+            <li
+                class="points-list__item cs-br-1"
+                data-ng-repeat="point in $ctrl.points track by $index"
+                data-ng-class="{'ng-hide': $ctrl.onlyActivePoint && $ctrl.activePoint !== point, 'points-list__item--active': $ctrl.activePoint === point, 'points-list__item--selectable': $ctrl.isSelect && !$ctrl.showDetailsPoint }"
+                data-ng-click="$ctrl.isSelect && !$ctrl.showDetailsPoint ? $ctrl.handleSelect(point) : $ctrl.handleClickPoint(point, $index)">
+                <span class="points-list__point-name" data-ng-if="point.store.name" data-ng-bind="point.store.name"></span>
+                <div class="points-list__point-info">
+                    <address class="points-list__point-address cs-t-3" data-ng-if="point.store.address" data-ng-bind="point.store.address"></address>
+                    <div
+                        class="points-list__address-comment cs-t-3"
+                        data-ng-if="point.store.addressComment"
+                        data-ng-bind="point.store.addressComment"></div>
+
+                    <div class="points-list__work-time" data-ng-if="point.store.workTime.length">
+                        <div data-ng-repeat="time in point.store.workTime track by $index" data-ng-bind="time"></div>
+                    </div>
+                    <div
+                        class="points-list__product-availability-count"
+                        data-ng-style="{'color': '#' + point.store.stockColor}"
+                        data-ng-if="point.store.stock != null">
+                        {{'Js.PointsList.Available' | translate}}: <span data-ng-bind="point.store.stock"></span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="points-list__details-point point-details" data-ng-switch-when="true">
+            <div class="point-details__inner cs-br-1 m-b-md">
+                <div class="point-details__back-to-list" data-ng-click="$ctrl.backToList()">
+                    <button type="button" class="btn btn-small btn-action point-details__back-to-list-btn">
+                        <svg
+                            class="point-details__back-to-list-arrow"
+                            width="15"
+                            height="15"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 451.847 451.847">
+                            <path
+                                d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path>
+                        </svg>
+                    </button>
+                    {{'Js.WarehousesList.Back' | translate}}
+                </div>
+
+                <header class="point-details__header" data-ng-switch="$ctrl.activePoint.store.url != null">
+                    <a
+                        data-ng-switch-when="true"
+                        data-ng-href="{{$ctrl.activePoint.store.url}}"
+                        data-ng-bind="$ctrl.activePoint.store.name"
+                        data-ng-if="$ctrl.activePoint.store.name"
+                        class="point-details__point-name">
+                    </a>
+                    <div
+                        data-ng-switch-default=""
+                        class="point-details__point-name"
+                        data-ng-bind="$ctrl.activePoint.store.name"
+                        data-ng-if="$ctrl.activePoint.store.name"></div>
+                    <address
+                        class="point-details__point-address cs-t-3"
+                        data-ng-if="$ctrl.activePoint.store.address"
+                        data-ng-bind="$ctrl.activePoint.store.address"></address>
+                </header>
+                <div
+                    class="points-list__address-comment cs-t-3"
+                    data-ng-if="$ctrl.activePoint.store.addressComment"
+                    data-ng-bind="$ctrl.activePoint.store.addressComment"></div>
+                <p
+                    class="point-details__description"
+                    data-ng-if="$ctrl.activePoint.store.description"
+                    data-ng-bind="$ctrl.activePoint.store.description"></p>
+                <div class="point-details__work-time" data-ng-if="$ctrl.activePoint.store.workTime.length">
+                    <span data-ng-repeat="time in $ctrl.activePoint.store.workTime track by $index" data-ng-bind="time"></span>
+                </div>
+                <div
+                    class="point-details__product-availability-count"
+                    data-ng-style="{'color': '#' + $ctrl.activePoint.store.stockColor}"
+                    data-ng-if="$ctrl.activePoint.store.stock != null">
+                    {{'Js.PointsList.Available' | translate}}: <span data-ng-bind="$ctrl.activePoint.store.stock"></span>
+                </div>
+                <a
+                    data-ng-href="{{$ctrl.activePoint.store.url}}"
+                    class="point-details__more"
+                    data-ng-if="$ctrl.activePoint.store.name && $ctrl.activePoint.store.url != null"
+                    >{{'Js.PointsList.More' | translate}}</a
+                >
+
+                <button
+                    type="button"
+                    data-ng-if="$ctrl.isSelect"
+                    data-ng-click="$ctrl.handleSelect($ctrl.activePoint)"
+                    class="btn btn-small btn-action point-details__select">
+                    {{'Js.PointsList.Pick' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div
+        data-ng-switch-default=""
+        class="points-list__empty"
+        data-ng-if="!$ctrl.points.length"
+        data-ng-bind="'Js.PointsList.Empty' | translate"></div>
+</div>

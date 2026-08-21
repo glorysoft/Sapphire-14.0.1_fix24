@@ -1,0 +1,40 @@
+﻿{
+    "name": "formCenter",
+    "type": "form",
+    "description": "Landings.Views.Blocks.Config.FormCenter.Description",
+    "category": "Landings.Views.Blocks.Config.FormCenter.Category",
+    "picture": "./areas/landing/images/forms/formCenter.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.FormCenter.SubBlockPlasholderOne"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.FormCenter.SubBlockPlasholderTwo"
+        }
+    ],
+    "settings": {
+        "color_scheme": "color-scheme--light",
+        "classes": ["lp-block-form-center", "color-scheme--light", "block-padding-top--85", "block-padding-bottom--85"],
+        "background_image": null,
+        "background_color": null,
+        "darken": 0,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 85,
+        "padding_bottom": 85,
+        "style": {},
+        "show_title": false,
+        "show_subtitle": false,
+        "form": {
+            "is_hidden": false,
+            "SubTitle": "Landings.Views.Blocks.Config.FormCenter.FormSubTitle"
+        },
+        "mobile_hidden": false
+    }
+}

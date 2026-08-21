@@ -1,0 +1,96 @@
+﻿<div class="cart-full-summary">
+    <div class="cart-full-summary__buttons" data-ng-if="::cartFullSummary.cartData.ShowConfirmButtons && cartFull.showOnlyItems !== true">
+        <a
+            data-ng-href="{{cartFullSummary.cartData.Valid == ''? 'checkout':''}}"
+            data-ng-class="{'btn-disabled': cartFullSummary.cartData.Valid != ''}"
+            class="btn btn-middle btn-submit cart-full-summary__checkout-btn">
+            {{ ::'Js.Cart.Checkout' | translate }}
+        </a>
+        <button
+            type="button"
+            class="btn btn-middle btn-action cart-full-summary__buy-one-click-btn"
+            data-ng-show="cartFullSummary.cartData.ShowBuyInOneClick && cartFullSummary.cartData.Valid === ''"
+            data-buy-one-click-trigger
+            data-buy-one-click-modal="modalBuyOneClickInCart">
+            <span data-ng-bind="cartFullSummary.cartData.BuyInOneClickText"></span>
+            <div
+                id="modalBuyOneClickInCart"
+                class="modal ng-hide"
+                data-modal-control
+                data-modal-class="buy-one-click-dialog"
+                data-callback-close="buyOneClickTrigger.modalCallbackClose(modalScope)">
+                <div data-modal-header class="modal-header">{{ ::'Js.Cart.BuyOneClickHeader' | translate }}</div>
+                <div class="modal-content">
+                    <div
+                        data-buy-one-click-form="true"
+                        data-form-init="buyOneClickTrigger.formInit(form)"
+                        data-success-fn="buyOneClickTrigger.successFn(result)"
+                        data-order-type="OneClick"
+                        data-page="Cart"
+                        data-enable-phone-mask="cartFullSummary.cartData.EnablePhoneMask"></div>
+                </div>
+            </div>
+        </button>
+    </div>
+
+    <div class="cart-full-summary__info" data-ng-if="::cartFullSummary.showOnlyItems !== true">
+        <div class="cart-full-summary__coupon" data-ng-if="cartFullSummary.cartData.CouponInputVisible">
+            <div class="cart-full-summary__coupon-text">
+                {{ ::(cartFullSummary.cartData.IsDefaultCustomerGroup ? 'Js.Cart.CouponCode' : 'Js.Cart.CertificateCode') | translate }}
+            </div>
+            <div data-cards-form data-apply-fn="cartFullSummary.refresh()"></div>
+        </div>
+        <div class="cart-full-summary__bonus bonus-card-icon bonus-card-block-inline" data-ng-if="cartFullSummary.cartData.BonusPlus != null">
+            <span class="cart-full-summary__bonus-inner">
+                <span class="cart-full-summary__bonus-name">{{ ::'Js.Cart.BonusPlus.Name' | translate }}:</span>
+                <span class="cart-full-summary__bonus-value">+<span data-ng-bind="cartFullSummary.cartData.BonusPlus"></span></span>
+            </span>
+        </div>
+
+        <div
+            class="cart-full-summary__row"
+            data-ng-if="cartFullSummary.cartData.TotalProductPrice != null"
+            data-ng-show="cartFullSummary.cartData.TotalPrice != cartFullSummary.cartData.TotalProductPrice">
+            <span class="cart-full-summary__price-item-name"> {{ ::'Js.Cart.Sum' | translate }}: </span>
+            <span class="cart-full-summary__price-item-value" data-ng-bind="cartFullSummary.cartData.TotalProductPrice"></span>
+        </div>
+        <div
+            data-ng-if="cartFullSummary.cartData.DiscountPrice != null"
+            class="cart-full-summary__row"
+            data-ng-show="cartFullSummary.cartData.DiscountPrice != null">
+            <span class="cart-full-summary__price-item-name"> {{ ::'Js.Cart.Discount' | translate }}: </span>
+            <span class="cart-full-summary__price-item-value" data-ng-bind="cartFullSummary.cartData.DiscountPrice"></span>
+        </div>
+        <div data-ng-if="cartFullSummary.cartData.Certificate != null" class="cart-full-summary__row">
+            <span class="cart-full-summary__price-item-name"> {{ ::'Js.Cart.Certificate' | translate }}: </span>
+            <span class="cart-full-summary__price-item-value">
+                - <span data-ng-bind="cartFullSummary.cartData.Certificate"></span>
+                <a href="javascript:void(0)" data-cards-remove data-type="certificate" data-apply-fn="cartFullSummary.refresh()"></a>
+            </span>
+        </div>
+        <div data-ng-if="cartFullSummary.cartData.Coupon != null" class="cart-full-summary__row">
+            <span class="cart-full-summary__price-item-name">
+                <span data-ng-bind="::'Js.Cart.Coupon' | translate"></span> (<span data-ng-bind="cartFullSummary.cartData.Coupon.Code"></span>):
+            </span>
+            <span class="cart-full-summary__price-item-value cart-full-summary__price-item-value--coupon">
+                -
+                <span data-ng-bind="cartFullSummary.cartData.Coupon.Price"></span>
+                <span data-ng-if="cartFullSummary.cartData.Coupon.Percent != null">
+                    (<span data-ng-bind="cartFullSummary.cartData.Coupon.Percent"></span> %)
+                </span>
+                <help-trigger
+                    data-placement="top auto"
+                    data-classes="cartFullSummary.cssClassForPopoverHelpTrigger"
+                    class="ng-cloak cart-full-help-trigger"
+                    data-use-template="true">
+                    <span data-ng-bind-html="'Js.Cart.CouponErrorMsg'|translate"></span>
+                </help-trigger>
+                <a href="javascript:void(0)" data-cards-remove data-type="coupon" data-apply-fn="cartFullSummary.refresh()"></a>
+            </span>
+        </div>
+    </div>
+    <div class="cart-full-summary__row cart-full-summary__total" data-ng-if="::cartFullSummary.showOnlyItems !== true">
+        <span class="cart-full-summary__result-block-name cart-full-summary__total-name"> {{ ::'Js.Cart.Total' | translate }}: </span>
+        <span class="cart-full-summary__result-block-price cart-full-summary__total-value" data-ng-bind="cartFullSummary.cartData.TotalPrice"></span>
+    </div>
+</div>

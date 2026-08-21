@@ -1,0 +1,95 @@
+@use '../settings';
+@use '../functions/util';
+@use '../functions/prefixer';
+
+$block-margin: 0 0 settings.$margin-value-alt 0 !default;
+$block-head-margin: 0 0 util.rem-calc(20px) 0 !default;
+$block-content-margin: 0 !default;
+$block-alt-margin: 0 0 settings.$margin-value-alt 0 !default;
+$block-alt-head-margin: 0 0 util.rem-calc(15px) 0 !default;
+$block-alt-content-margin: 0 !default;
+
+.block {
+    margin: $block-margin;
+}
+
+.block-alt {
+    margin: $block-alt-margin;
+    padding: util.rem-calc(21px) util.rem-calc(25px);
+
+    @include prefixer.box-sizing(border-box);
+
+    border-radius: settings.$border-radius-base;
+}
+
+.block-alt .title {
+    font-size: util.rem-calc(18px);
+    padding-bottom: util.rem-calc(15px);
+}
+
+.block-head {
+    margin: $block-head-margin;
+}
+
+.block-alt-head {
+    margin: $block-alt-head-margin;
+    font-size: settings.$font-size-xmedium;
+}
+
+.block-content {
+    margin: $block-content-margin;
+    font-size: util.rem-calc(13px);
+}
+
+.block-alt-content {
+    margin: $block-alt-content-margin;
+    font-size: settings.$font-size-medium;
+}
+
+.name-value-blocks {
+    font-size: settings.$font-size-medium;
+
+    .name-value-block {
+        margin-bottom: util.rem-calc(28px);
+    }
+
+    .block-value,
+    .block-name {
+        margin-bottom: util.rem-calc(5px);
+    }
+
+    .block-name {
+        font-weight: bold;
+    }
+}
+
+.name-value-list-block {
+    .list-title {
+        font-size: settings.$font-size-large;
+        margin-bottom: util.rem-calc(10px);
+    }
+
+    .list-name,
+    .list-value {
+        font-size: util.rem-calc(16px);
+        margin-bottom: util.rem-calc(15px);
+    }
+
+    .list-name {
+        color: #b3b4b7;
+    }
+}
+
+.block-exuding {
+    border-radius: settings.$border-radius-base;
+    margin-bottom: settings.$margin-value-base;
+}
+
+.block-exuding-row {
+    padding: util.rem-calc(15px) util.rem-calc(15px);
+    border-bottom: util.rem-calc(1px) #e9e9e9 solid;
+
+    &:last-child {
+        border-bottom-width: 0;
+    }
+}

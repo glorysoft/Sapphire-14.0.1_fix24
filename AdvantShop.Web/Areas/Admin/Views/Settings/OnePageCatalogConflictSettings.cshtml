@@ -1,0 +1,184 @@
+﻿@model AdvantShop.Web.Admin.ViewModels.Settings.OnePageCatalogConfictSettings
+@{
+        bool isMobile = SettingsDesign.IsMobileTemplate;
+}
+
+@if (Model.ShowSettingSearchBlockLocation)
+{
+        <div class="form-group setting__form-group">
+                <div class="row middle-xs control-label @(isMobile ? "flex-nowrap" : "")">
+                        <div class="col-xs-slim col-md-5 col-wl-4 @(isMobile ? "flex-shrink-1" : "")">
+                                <label for="TurnOffSearchBlockLocation"
+                                       class="setting__font-weight--xs">
+                                        Поиск
+                                </label>
+                        </div>
+                        <div class="relative col-xs-slim relative flex middle-xs first-xs last-md @(isMobile ? "p-r-xs" : "")">
+                                <label class="adv-checkbox-label flex">
+                                        @Html.CheckBoxFor(x => x.TurnOffSearchBlockLocation,
+                                                new
+                                                {
+                                                        id = "TurnOffSearchBlockLocation", @class = "adv-checkbox-input input-alt-mobile",
+                                                        ng_model = "$ctrl.data.TurnOffSearchBlockLocation"
+                                                })
+                                        <span class="adv-checkbox-emul"
+                                              data-e2e="TurnOffSearchBlockLocation"></span>
+                                </label>
+                        </div>
+                </div>
+        </div>
+}
+@if (Model.ShowSettingSearchByCategories)
+{
+        <div class="form-group setting__form-group">
+                <div class="row middle-xs control-label @(isMobile ? "flex-nowrap" : "")">
+                        <div class="col-xs-slim col-md-5 col-wl-4 @(isMobile ? "flex-shrink-1" : "")">
+                                <label for="TurnOffSearchByCategories"
+                                       class="setting__font-weight--xs">
+                                        Поиск по категориям товаров
+                                </label>
+                        </div>
+                        <div class="relative col-xs-slim relative flex middle-xs first-xs last-md @(isMobile ? "p-r-xs" : "")">
+                                <label class="adv-checkbox-label flex">
+                                        @Html.CheckBoxFor(x => x.TurnOffSearchByCategories,
+                                                new
+                                                {
+                                                        id = "TurnOffSearchByCategories", @class = "adv-checkbox-input input-alt-mobile",
+                                                        ng_model = "$ctrl.data.TurnOffSearchByCategories"
+                                                })
+                                        <span class="adv-checkbox-emul"
+                                              data-e2e="TurnOffSearchByCategories"></span>
+                                </label>
+                        </div>
+                </div>
+        </div>
+}
+@if (Model.ShowSettingShowShippingsMethodsInDetails)
+{
+        <div class="form-group setting__form-group">
+                <div class="row middle-xs control-label @(isMobile ? "flex-nowrap" : "")">
+                        <div class="col-xs-slim col-md-5 col-wl-4 @(isMobile ? "flex-shrink-1" : "")">
+                                <label for="TurnOffShowShippingsMethodsInDetails"
+                                       class="setting__font-weight--xs">
+                                        Доставки в карточке товара
+                                </label>
+                        </div>
+                        <div class="relative col-xs-slim relative flex middle-xs first-xs last-md @(isMobile ? "p-r-xs" : "")">
+                                <label class="adv-checkbox-label flex">
+                                        @Html.CheckBoxFor(x => x.TurnOffShowShippingsMethodsInDetails,
+                                                new
+                                                {
+                                                        id = "TurnOffShowShippingsMethodsInDetails", @class = "adv-checkbox-input input-alt-mobile",
+                                                        ng_model = "$ctrl.data.TurnOffShowShippingsMethodsInDetails"
+                                                })
+                                        <span class="adv-checkbox-emul"
+                                              data-e2e="TurnOffShowShippingsMethodsInDetails"></span>
+                                </label>
+                        </div>
+                </div>
+        </div>
+}
+
+@if (Model.ShowSettingDisplayCategoriesInBottomMenu)
+{
+        <div class="form-group setting__form-group">
+                <div class="row middle-xs control-label @(isMobile ? "flex-nowrap" : "")">
+                        <div class="col-xs-slim col-md-5 col-wl-4 @(isMobile ? "flex-shrink-1" : "")">
+                                <label for="TurnOffDisplayCategoriesInBottomMenu"
+                                       class="setting__font-weight--xs">
+                                        Катеригории в нижнем меню
+                                </label>
+                        </div>
+                        <div class="relative col-xs-slim relative flex middle-xs first-xs last-md @(isMobile ? "p-r-xs" : "")">
+                                <label class="adv-checkbox-label flex">
+                                        @Html.CheckBoxFor(x => x.TurnOffDisplayCategoriesInBottomMenu,
+                                                new
+                                                {
+                                                        id = "TurnOffDisplayCategoriesInBottomMenu", @class = "adv-checkbox-input input-alt-mobile",
+                                                        ng_model = "$ctrl.data.TurnOffDisplayCategoriesInBottomMenu"
+                                                })
+                                        <span class="adv-checkbox-emul"
+                                              data-e2e="TurnOffDisplayCategoriesInBottomMenu"></span>
+                                </label>
+                        </div>
+                </div>
+        </div>
+}
+
+@if (Model.ShowSettingEnableCompareProducts)
+{
+        <div class="form-group setting__form-group">
+                <div class="row middle-xs control-label @(isMobile ? "flex-nowrap" : "")">
+                        <div class="col-xs-slim col-md-5 col-wl-4 @(isMobile ? "flex-shrink-1" : "")">
+                                <label for="TurnOffEnableCompareProducts"
+                                       class="setting__font-weight--xs">
+                                        Сравнение товаров
+                                </label>
+                        </div>
+                        <div class="relative col-xs-slim relative flex middle-xs first-xs last-md @(isMobile ? "p-r-xs" : "")">
+                                <label class="adv-checkbox-label flex">
+                                        @Html.CheckBoxFor(x => x.TurnOffEnableCompareProducts,
+                                                new
+                                                {
+                                                        id = "TurnOffEnableCompareProducts", @class = "adv-checkbox-input input-alt-mobile",
+                                                        ng_model = "$ctrl.data.TurnOffEnableCompareProducts"
+                                                })
+                                        <span class="adv-checkbox-emul"
+                                              data-e2e="TurnOffEnableCompareProducts"></span>
+                                </label>
+                        </div>
+                </div>
+        </div>
+}
+
+@if (Model.ShowSettingProductReviewsVisibility)
+{
+        <div class="form-group setting__form-group">
+                <div class="row middle-xs control-label @(isMobile ? "flex-nowrap" : "")">
+                        <div class="col-xs-slim col-md-5 col-wl-4 @(isMobile ? "flex-shrink-1" : "")">
+                                <label for="TurnOffMainPageProductReviewsVisibility"
+                                       class="setting__font-weight--xs">
+                                        Отзывы на главной странице
+                                </label>
+                        </div>
+                        <div class="relative col-xs-slim relative flex middle-xs first-xs last-md @(isMobile ? "p-r-xs" : "")">
+                                <label class="adv-checkbox-label flex">
+                                        @Html.CheckBoxFor(x => x.TurnOffProductReviewsVisibility,
+                                                new
+                                                {
+                                                        id = "TurnOffMainPageProductReviewsVisibility", @class = "adv-checkbox-input input-alt-mobile",
+                                                        ng_model = "$ctrl.data.TurnOffMainPageProductReviewsVisibility"
+                                                })
+                                        <span class="adv-checkbox-emul"
+                                              data-e2e="TurnOffMainPageProductReviewsVisibility"></span>
+                                </label>
+                        </div>
+                </div>
+        </div>
+}
+
+@if (Model.ShowSettingBuyInOneClick)
+{
+        <div class="form-group setting__form-group">
+                <div class="row middle-xs control-label @(isMobile ? "flex-nowrap" : "")">
+                        <div class="col-xs-slim col-md-5 col-wl-4 @(isMobile ? "flex-shrink-1" : "")">
+                                <label for="TurnOffBuyInOneClick"
+                                       class="setting__font-weight--xs">
+                                        Купить в один клик
+                                </label>
+                        </div>
+                        <div class="relative col-xs-slim relative flex middle-xs first-xs last-md @(isMobile ? "p-r-xs" : "")">
+                                <label class="adv-checkbox-label flex">
+                                        @Html.CheckBoxFor(x => x.TurnOffBuyInOneClick,
+                                                new
+                                                {
+                                                        id = "TurnOffBuyInOneClick", @class = "adv-checkbox-input input-alt-mobile",
+                                                        ng_model = "$ctrl.data.TurnOffBuyInOneClick"
+                                                })
+                                        <span class="adv-checkbox-emul"
+                                              data-e2e="TurnOffBuyInOneClick"></span>
+                                </label>
+                        </div>
+                </div>
+        </div>
+}

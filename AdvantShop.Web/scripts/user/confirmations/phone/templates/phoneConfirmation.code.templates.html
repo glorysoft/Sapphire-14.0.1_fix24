@@ -1,0 +1,14 @@
+<div data-ng-if="!($ctrl.codeConfirmed
+                 && $ctrl.confirmedPhone != null
+                 && $ctrl.confirmedPhone !== ''
+                 && $ctrl.confirmedPhone === $ctrl.phone)
+                 && $ctrl.isInitialized">
+    <code-input data-count="$ctrl.phoneCodeLength"
+                data-require-send-code="true"
+                data-send-text="$ctrl.sendCodeText"
+                data-description="$ctrl.codeDescription"
+                data-send-code-delay="$ctrl.countdownSeconds"
+                data-on-complete-filling="$ctrl.confirmCode(code)"
+                data-on-send-code="$ctrl.sendCode()">
+    </code-input>
+</div>

@@ -1,0 +1,122 @@
+﻿@using AdvantShop.ViewCommon
+@using Quartz.Util
+@model CartAddViewModel
+
+@{
+    string partialName = Model.PartialName ?? "_CartAddText";
+    if (Model.ChooseAction.HasValue)
+    {
+        Model.ChooseAction = SettingsDesign.OnePageCatalog ? eChooseAction.QuickView : Model.ChooseAction;
+    }
+    else
+    {
+        Model.ChooseAction = SettingsDesign.OnePageCatalog || SettingsCatalog.ShowQuickView ? eChooseAction.QuickView : eChooseAction.Redirect;
+    }
+
+    string btnText = Model.AllowAddProductToCart.HasValue && !Model.AllowAddProductToCart.Value ? Model.ChooseBtnContent : Model.BtnContent;
+    string cartAddWidthDefault = Model.CartAddType == SettingsDesign.eCartAddTypeButton.WithSpinbox ? SettingsDesign.CartAddBlockWidth : "auto";
+    string ngBtnText = !Model.NgBtnText.IsNullOrWhiteSpace() ? "data-ng-bind=\"" + Model.NgBtnText + (btnText.IsNotEmpty() ? " || '" + btnText + "'" : "") + "\"" : "";
+}
+<div class="cart-add-container" style="--cart-add-width: @(Model.CartAddBlockWidth ?? cartAddWidthDefault)">
+@if (Model.AllowAddProductToCart.HasValue && !Model.AllowAddProductToCart.Value)
+{
+    var quickViewTrigger = "data-quickview-trigger data-product-id=\"" + Model.ProductId + "\" data-color-id=\"productViewItem.getSelectedColorId()\"";
+    var linkOrQuickViewTrigger = @Html.Raw(Model.ChooseAction == eChooseAction.QuickView ? quickViewTrigger : "data-ng-href=\"" + Model.NgHref + "\" href=\"" + Model.Href + "\"");
+
+    <a class="cart-add cart-add--simple @(Model.Classes) @(Model.Size != CardAddSize.None ? "btn-" + Model.Size.ToString().ToLower() : String.Empty)"
+       @Html.Raw(linkOrQuickViewTrigger)
+       @(!Model.Title.IsNullOrWhiteSpace() ? "title=" + Model.Title : "")
+       @Html.Raw(ngBtnText)>
+        @Html.Partial(partialName, new Dictionary<string, string>() { { "text", btnText } })
+    </a>
+}
+else
+{
+    if (Model.CartAddType.HasValue == false || Model.CartAddType == SettingsDesign.eCartAddTypeButton.Classic)
+    {
+        <button type="button"
+                class="cart-add cart-add--simple @Model.Classes @(Model.Size != CardAddSize.None ? "btn-" + Model.Size.ToString().ToLower() : String.Empty)"
+                @Html.RenderCartAddAttributes(Model)
+                data-ng-click="cartAdd.addItem($event)"
+                @(!Model.Title.IsNullOrWhiteSpace() ? "title=" + Model.Title : "")
+                @Html.Raw(!Model.NgDisabled.IsNullOrWhiteSpace() ? "data-ng-disabled=\"" + Model.NgDisabled + "\"" : "")
+                @Html.Raw(ngBtnText)>
+            @Html.Partial(partialName, new Dictionary<string, string>() { { "text", btnText } })
+        </button>
+    }
+    else if (Model.CartAddType == SettingsDesign.eCartAddTypeButton.WithSpinbox)
+    {
+        <div class="cart-add cart-add--with-spinbox cart-add--with-spinbox-theme-standart full-width"
+             data-ng-class="['cart-add--with-spinbox-state-' + cartAdd.state]"
+             @Html.RenderCartAddAttributes(Model)
+             data-ng-init="product.addChangeSizeAndColorCallback(cartAdd.checkSizeAndColor)"
+             data-step-spinbox="@(Model.NgStepSpinbox ?? Model.StepSpinbox.ToInvariantString())"
+             data-max-step-spinbox="@(Model.NgMaxStepSpinbox ?? (Model.SpinboxMax.HasValue ? Model.SpinboxMax.Value.ToInvariantString() : ""))"
+             data-min-step-spinbox="@(Model.NgMinStepSpinbox ?? Model.SpinboxMin.ToInvariantString())">
+
+            <div class="full-height cart-add__inner" data-ng-switch="cartAdd.state">
+                    <div data-ng-switch-when="update" class="cart-add__spinbox-block ng-cloak">
+                        <div data-spinbox=""
+                             data-value="cartAdd.productCartData.Amount"
+                             data-allow-zero="false"
+                             data-input-classes="'cart-add__spinbox-input lp-input'"
+                             data-input-class-size="'@(Model.Size != CardAddSize.None ? "input-" + Model.Size.ToString().ToLower() : String.Empty)'"
+                             data-proxy="cartAdd.productCartData.ShoppingCartItemId"
+                             data-update-fn="cartAdd.updateAmount(value, proxy)"
+                             data-step="cartAdd.productCartData.Multiplicity"
+                             data-max="cartAdd.productCartData.MaxAmount"
+                             data-debounce="false"
+                             data-min="0">
+                        </div>
+                    </div>
+                    <button data-ng-switch-when="loading"
+                            data-ladda="0"
+                            class="ng-cloak full-height full-width cart-add__button-loading @(Model.Size != CardAddSize.None ? "btn-" + Model.Size.ToString().ToLower() : String.Empty) @Model.Classes">
+                        @* nbsp for height button  *@
+                        &nbsp;
+                    </button>
+                    <button data-ng-switch-when="add"
+                            type="button"
+                            data-ng-click="cartAdd.addItem($event)"
+                            class="cart-add__button-add @(Model.Size != CardAddSize.None ? "btn-" + Model.Size.ToString().ToLower() : String.Empty) @Model.Classes"
+                            @Html.Raw(!Model.NgDisabled.IsNullOrWhiteSpace() ? "data-ng-disabled=\"" + Model.NgDisabled + "\"" : "")
+                            @Html.Raw(ngBtnText)>
+                        @Html.Partial(partialName, new Dictionary<string, string>() { { "text", btnText } })
+                    </button>
+     
+            </div>
+        </div>
+    }
+    else if (Model.CartAddType == SettingsDesign.eCartAddTypeButton.SeparateWithSpinbox)
+    {
+        <div class="cart-add cart-add--separate-with-spinbox full-width"
+             @Html.RenderCartAddAttributes(Model)
+             data-ng-init="product.addChangeSizeAndColorCallback(cartAdd.checkSizeAndColor)"
+             data-step-spinbox="@(Model.NgStepSpinbox != null ? Model.NgStepSpinbox + " != undefined ? " + Model.NgStepSpinbox + ":" : "")@Model.StepSpinbox.ToInvariantString()"
+             data-max-step-spinbox="@(Model.NgMaxStepSpinbox != null ? Model.NgMaxStepSpinbox + " != undefined ? " + Model.NgMaxStepSpinbox + ":" : "")@(Model.SpinboxMax > 0 ? Model.SpinboxMax.ToInvariantString() : "null")"
+             data-min-step-spinbox="@(Model.NgMinStepSpinbox != null ? Model.NgMinStepSpinbox + " != undefined ? " + Model.NgMinStepSpinbox + ":" : "")@Model.SpinboxMin.ToInvariantString()">
+            <div class="cart-add__spinbox"
+                 data-spinbox=""
+                 data-value="cartAdd.data.amount"
+                 data-proxy="cartAdd.data"
+                 data-allow-zero="false"
+                 data-update-fn="cartAdd.data.amount = value"
+                 data-input-classes="'cart-add__spinbox-input lp-input'"
+                 data-input-class-size="'@(Model.Size != CardAddSize.None ? "input-" + Model.Size.ToString().ToLower() : String.Empty)'"
+                 data-step="cartAdd.data.stepSpinbox"
+                 data-max="cartAdd.data.maxStepSpinbox"
+                 data-debounce="false"
+                 data-min="cartAdd.data.minStepSpinbox">
+            </div>
+            <button type="button"
+                    class="cart-add--simple @Model.Classes @(Model.Size != CardAddSize.None ? "btn-" + Model.Size.ToString().ToLower() : String.Empty)"
+                    data-ng-click="cartAdd.addItem($event)"
+                    @(!Model.Title.IsNullOrWhiteSpace() ? "title=" + Model.Title : "")
+                    @Html.Raw(!Model.NgDisabled.IsNullOrWhiteSpace() ? "data-ng-disabled=\"" + Model.NgDisabled + "\"" : "")
+                    @Html.Raw(ngBtnText)>
+                    @Html.Partial(partialName, new Dictionary<string, string>() { { "text", btnText } })
+            </button>
+        </div>
+    }
+}
+</div>

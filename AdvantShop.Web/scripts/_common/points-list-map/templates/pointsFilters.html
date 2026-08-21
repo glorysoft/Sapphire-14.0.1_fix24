@@ -1,0 +1,27 @@
+﻿<div class="points-filters">
+    <div
+        data-ng-switch="filter.formControl.type"
+        class="points-filters__inner"
+        data-ng-repeat="filter in $ctrl.filters track by $index"
+        data-ng-init="$ctrl.initSelectValue(filter)">
+        <div data-ng-switch-when="select" data-ng-if="filter.formControl.values.length > 1">
+            <label
+                data-ng-attr-for="mapFilter-{{$index}}"
+                class="points-filters__label"
+                data-ng-if="filter.formControl.label"
+                data-ng-bind="filter.formControl.label | translate"></label>
+            <label class="select-custom cs-t-4 icon-down-open-after-abs">
+                <select
+                    aria-label="{{filter.formControl.label | translate}}"
+                    name="{{filter.formControl.name}}"
+                    class="cs-bg-2 points-filters__control"
+                    data-ng-attr-id="mapFilter-{{$index}}"
+                    data-disabled-autobind
+                    data-ng-change="$ctrl.onChangeFilter(filter)"
+                    data-ng-model="filter.value">
+                    <option data-ng-repeat="value in filter.formControl.values" data-ng-value="value" data-ng-bind="value.name || value"></option>
+                </select>
+            </label>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿{
+    "name": "map",
+    "type": "map",
+    "description": "Landings.Views.Blocks.Config.Map.Description",
+    "category": "Landings.Views.Blocks.Config.Map.Category",
+    "picture": ".",
+    "subblocks": [
+        {
+            "name": "map",
+            "description": "Landings.Views.Blocks.Config.Map.SubBlockMapDescription",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Map.SubBlockMapPlaceholder",
+            "settings": {}
+        },
+        {
+            "name": "text",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Map.SubBlockTextPlaceholder",
+            "settings": {}
+        }
+    ],
+    "settings": {
+        "classes": ["lp-block-map", "block-padding-top--45", "block-padding-bottom--45"],
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "style": {
+            "background-attachment": "scroll"
+        },
+        "mobile_hidden": false
+    }
+}

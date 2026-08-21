@@ -1,0 +1,75 @@
+﻿@using Newtonsoft.Json
+@model AdvantShop.Models.Warehouse.WarehouseModel
+@{
+    Html.AddAsset("warehouse"); 
+    var yaMapsKey = SettingsDesign.YandexMapApiKey;
+    var isMobile = SettingsDesign.IsMobileTemplate;
+}
+
+
+<div class="warehouse-page desktop-col-p-v">
+    @if (isMobile)
+    {
+        <div class="warehouses__title page-title cs-bg-4--mobile">
+            <h1 class="main-title" @Html.InplaceMeta(Model.Id, AdvantShop.SEO.MetaType.PageWarehouses)>@Html.GetPageH1()</h1>
+        </div>
+    }
+    else
+    {
+        <div class="page-title-row details-title-row">
+            <div class="details-title page-title" @Html.InplaceMeta(Model.Id, AdvantShop.SEO.MetaType.PageWarehouses)>
+                <h1>@Html.GetPageH1()</h1>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-xs-12">
+            @Html.Action("BreadCrumbs", "Common", new { breadCrumbs = Model.BreadCrumbs })
+        </div>
+    </div>
+    
+    <div class="mobile-content-padding">
+        <div class="warehouse-page__inner">
+            @if (!string.IsNullOrEmpty(yaMapsKey))
+            {
+                var coords = @JsonConvert.SerializeObject(Model.Geometry.Coordinates);
+                <points-map
+                    class="warehouse-page__map"
+                    data-points="[{type:'Feature', geometry: {type: '@Model.Geometry.Type', coordinates: @coords}}]"
+                    data-ya-map-key="'@yaMapsKey'"
+                    data-ya-center="@coords"
+                    data-ya-collection-option="{preset:'islands#redIcon'}"
+                    data-ya-zoom="16"
+                    data-show-all="false"
+                    data-ya-options="{suppressMapOpenBlock: true}"
+                    data-ya-controls="zoomControl">
+                </points-map>
+            }
+
+            <div class="warehouse-page__info">
+                @if (!string.IsNullOrEmpty(Model.Address))
+                {
+                    <address class="warehouse-page__address">@Model.Address</address>
+                }
+                @if (!string.IsNullOrEmpty(Model.Description))
+                {
+                    <div class="warehouse-page__description  cs-t-3">@Model.Description</div>
+                }
+                @if (!string.IsNullOrEmpty(Model.AddressComment))
+                {
+                    <div class="warehouse-page__comment  cs-t-3">@Model.AddressComment</div>
+                }
+                @if (Model.TimeOfWorkList.Length > 0)
+                {
+                    <div class="warehouse-page__time-of-work">
+                        @foreach (var dayOfWeek in Model.TimeOfWorkList)
+                        {
+                            <span>@dayOfWeek</span>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

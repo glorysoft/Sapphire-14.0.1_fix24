@@ -1,0 +1,74 @@
+﻿{
+    "name": "exitForm",
+    "type": "exit",
+    "description": "Landings.Views.Blocks.Config.ExitForm.Description",
+    "category": "Landings.Views.Blocks.Config.ExitForm.Category",
+    "picture": "./areas/landing/images/exit/exitForm_preview.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ExitForm.SubBlockPlasholderOne"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ExitForm.SubBlockPlasholderTwo"
+        },
+        {
+            "name": "text",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ExitForm.SubBlockPlasholderThree"
+        }
+    ],
+    "settings": {
+        "classes": ["lp-block-exit-popup-form", "color-scheme--light"],
+        "color_scheme": "color-scheme--light",
+        "show_title": true,
+        "show_subtitle": false,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "style": {},
+        "show_button": false,
+        "button": {
+            "is_default_style": true,
+            "action": "ModalClose",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.ExitForm.ButtonText",
+            "size": "xsmall",
+            "type": "Link",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": false,
+            "SubTitle": "",
+            "Title": "",
+            "ShowAgreement": false,
+            "ButtonText": "Landings.Views.Blocks.Config.ExitForm.FormButtonText",
+            "Fields": [
+                {
+                    "CustomFieldId": null,
+                    "FieldType": 5,
+                    "Required": true,
+                    "Title": "Landings.Views.Blocks.Config.ExitForm.FormFieldEmailTitle",
+                    "TitleCrm": "Email",
+                    "Type": "text"
+                }
+            ]
+        },
+        "mobile_hidden": false,
+        "ouibounce": {
+            "delay": 100
+        }
+    }
+}

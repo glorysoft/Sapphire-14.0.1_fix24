@@ -1,0 +1,19 @@
+﻿@media screen and (max-width: 750px) {
+    .widget__header {
+        position: absolute;
+        bottom: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .widget__list {
+        left: 0;
+        right: 0;
+        top: 100dvh !important;
+    }
+
+    .widget__list-button {
+        bottom: 89px !important;
+    }
+}

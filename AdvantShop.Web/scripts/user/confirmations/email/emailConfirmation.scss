@@ -1,0 +1,13 @@
+﻿.email-confirmation {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+
+    &__email-not-confirmed {
+        color: #f15959;
+    }
+
+    &__email-confirmed {
+        color: #04ab1a;
+    }
+}

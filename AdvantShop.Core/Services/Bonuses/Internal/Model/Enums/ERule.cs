@@ -1,0 +1,28 @@
+﻿using AdvantShop.Core.Common.Attributes;
+
+namespace AdvantShop.Core.Services.Bonuses.Internal.Model.Enums
+{
+    public enum ERule: short
+    {
+        //None = 0,
+        
+        [Localize("Core.Bonuses.ERule.BirthDay")]
+        BirthDay = 1,
+        
+        [Localize("Core.Bonuses.ERule.CancellationsBonus")]
+        CancellationsBonus = 2,
+
+        [Localize("Core.Bonuses.ERule.NewCard")]
+        NewCard = 3,
+        
+        [Localize("Core.Bonuses.ERule.ChangeGrade")]
+        ChangeGrade = 4,
+
+        [Localize("Core.Bonuses.ERule.CleanExpiredBonus")]
+        CleanExpiredBonus = 5,
+
+        [Localize("Core.Bonuses.ERule.PostingReview")]
+        PostingReview = 6
+
+    }
+}

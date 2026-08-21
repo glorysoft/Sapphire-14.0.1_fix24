@@ -1,0 +1,10 @@
+<div data-is-mobile
+     class="cart-mini-block js-cart-mini-block"
+     data-ng-if="cartMiniPopup.isVisibleCart === true || cartMiniPopup.isMobile === true"
+     data-ng-class="{'cart-mini-fixed': cartMiniPopup.isCartMiniFixed}"
+     data-window-click="!cartMiniPopup.isMobile ? cartMiniPopup.clickOut(event) : null"
+     data-ng-style="{'left': cartMiniPopup.isCartMiniFixed === true ? cartMiniPopup.staticPosition.left : 'auto', 'width': cartMiniPopup.isCartMiniFixed === true ? cartMiniPopup.staticPosition.width : 'auto'}">
+    <div data-window-scroll="!cartMiniPopup.isMobile ? cartMiniPopup.windowScroll(event) : null">
+        <div class="js-cart-mini-transclude"></div>
+    </div>
+</div>

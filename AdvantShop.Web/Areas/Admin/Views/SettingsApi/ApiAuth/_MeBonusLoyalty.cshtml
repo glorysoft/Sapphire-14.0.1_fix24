@@ -1,0 +1,28 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.APISettingsModel
+
+<div class="api-item post">
+    <div class="api-item__header" ng-click="settings.showDetails($event)">
+        <span class="method">POST</span>
+        <span class="path">/api/bonus/cards/me/add</span>
+        <span class="description">@T("Admin.SettingsApiAuth.Index.BonusSystem.CreateBonusCard")</span>
+    </div>
+    <div class="details">
+        <div class="m-b">
+            POST @Model.GetApiAuthUrl("/api/bonus/cards/me/add")
+        </div>
+        <h3 class="m-t-sm">@T("Admin.SettingsApiAuth.Index.ApiAuth.ExampleAnswer")</h3>
+        <pre class="m-t-sm">{
+    "number": "12-34",    // номер бонусной карты, может отсутствовать    (string)
+    "bonuses": 10,        // кол-во бонусов, может быть null              (decimal?)
+}
+</pre>
+        <div class="m-t-sm">
+            <h3>@T("Admin.SettingsApiAuth.Index.ApiAuth.ExampleAnswerError")</h3>
+            <pre class="m-t-sm">{
+    "status": "error",
+    "errors": "У покупателя уже есть бонусная карта"
+}
+</pre>
+        </div>
+    </div>
+</div>

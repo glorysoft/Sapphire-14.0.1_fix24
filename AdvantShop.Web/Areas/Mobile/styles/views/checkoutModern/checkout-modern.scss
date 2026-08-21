@@ -1,0 +1,20 @@
+﻿.checkout-page {
+    .checkout-cart {
+        padding-inline: 0;
+        &-items {
+            &__wrap {
+                padding-inline: 15px;
+            }
+        }
+
+        .cart-full-product {
+            padding: 8px;
+            grid-template-columns: none !important;
+            &__info--two-cols {
+                grid-template-columns: auto 1fr;
+            }
+        }
+
+    }
+}
+

@@ -1,0 +1,106 @@
+﻿{
+    "name": "columnsWithPicture",
+    "type": "image",
+    "description": "Landings.Views.Blocks.Config.ColumnsWithPicture.Description",
+    "category": "Landings.Views.Blocks.Config.ColumnsWithPicture.Category",
+    "picture": "./areas/landing/frontend/images/columns/columnsWithPicture.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsWithPicture.SubBlockPlasholderOne"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsWithPicture.SubBlockPlasholderTwo"
+        },
+        {
+            "name": "header1",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsWithPicture.HeaderOne"
+        },
+        {
+            "name": "header2",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsWithPicture.HeaderTwo"
+        },
+        {
+            "name": "header3",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsWithPicture.HeaderThree"
+        },
+        {
+            "name": "header4",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsWithPicture.HeaderFour"
+        },
+        {
+            "name": "text1",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsWithPicture.TextOne"
+        },
+        {
+            "name": "text2",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsWithPicture.TextTwo"
+        },
+        {
+            "name": "text3",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsWithPicture.TextThree"
+        },
+        {
+            "name": "text4",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsWithPicture.TextFour"
+        },
+        {
+            "name": "picture",
+            "type": "picture",
+            "settings": {
+                "src": "areas/landing/images/columns/columns_with_picture.jpg",
+                "class": ""
+            }
+        }
+    ],
+    "settings": {
+        "classes": ["lp-block-columns-with-picture", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": true,
+        "show_subtitle": true,
+        "show_button": false,
+        "constructor_buttons_reverse": true,
+        "image_link": "",
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "style": {},
+        "align_btns": "center-xs",
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.ColumnsWithPicture.ButtonText",
+            "size": "xsmall",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false,
+        "settings_picture": {
+            "maxWidthPicture": 490,
+            "maxHeightPicture": 490
+        }
+    }
+}

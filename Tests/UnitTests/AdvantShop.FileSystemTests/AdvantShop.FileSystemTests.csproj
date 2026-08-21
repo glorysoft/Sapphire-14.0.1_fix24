@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <OutputType>Library</OutputType>
+        <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+        <Title>AdvantShop.FileSystemTests</Title>
+        <Company>AdvantShop</Company>
+        <Product>AdvantShop</Product>
+        <Copyright>Copyright © AdvantShop 2023</Copyright>
+        <AssemblyVersion>13.0.0</AssemblyVersion>
+        <FileVersion>13.0.0</FileVersion>
+        <Version>13.0.0</Version>
+        <ApplicationIcon />
+        <StartupObject />
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Azure.Core" Version="1.51.1" />
+        <PackageReference Include="ByteSize" Version="2.1.2" />
+        <PackageReference Include="Microsoft.ApplicationInsights" Version="3.0.0" />
+        <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.3" />
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.Abstractions" Version="10.0.3" />
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="10.0.3" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.3" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.3" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="10.0.3" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+        <PackageReference Include="Microsoft.Testing.Extensions.Telemetry" Version="2.1.0" />
+        <PackageReference Include="Microsoft.Testing.Extensions.TrxReport.Abstractions" Version="2.1.0" />
+        <PackageReference Include="Microsoft.Testing.Extensions.VSTestBridge" Version="2.1.0" />
+        <PackageReference Include="Microsoft.Testing.Platform.MSBuild" Version="2.1.0" />
+        <PackageReference Include="NetVips" Version="3.2.0" />
+        <PackageReference Include="NetVips.Native" Version="8.18.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+        <PackageReference Include="NUnit" Version="4.4.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="6.1.0" />
+        <PackageReference Include="OpenTelemetry" Version="1.15.0" />
+        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.15.0" />
+        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="10.0.3" />
+        <PackageReference Include="System.Memory.Data" Version="10.0.3" />
+        <PackageReference Include="System.Reflection.Metadata" Version="10.0.3" />
+        <PackageReference Include="System.Text.Encoding.CodePages" Version="10.0.3" />
+        <PackageReference Include="System.Text.Encodings.Web" Version="10.0.3" />
+        <PackageReference Include="System.Text.Json" Version="10.0.3" />
+        <PackageReference Include="UTF.Unknown" Version="2.6.0" />
+    </ItemGroup>
+
+</Project>

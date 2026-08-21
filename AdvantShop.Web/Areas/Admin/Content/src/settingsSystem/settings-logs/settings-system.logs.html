@@ -1,0 +1,310 @@
+﻿<div bs-modifiable="false" is-mobile>
+    <div ng-switch="$ctrl.viewMode">
+        <div ng-switch-when="list">
+            <div class="sticky-page-name">
+                <div class="page-name-block sticky-page-name-inner">
+                    <div ng-if="!isMobile.value" class="page-name-block-item-main">
+                        <h1 class="page-name-block-text sticky-page-name-text">{{'Admin.Js.SettingsSystem.ErrorLog' | translate}}</h1>
+                    </div>
+                    <div class="page-name-block-item-additional">
+                        <button
+                            class="btn btn-sm btn-success btn--margin-left btn-success"
+                            type="button"
+                            ng-class="{'btn-default setting__btn-defaul': $ctrl.type === $ctrl.enumTypes.err500}"
+                            ng-click="$ctrl.changeType($ctrl.enumTypes.err500)">
+                            {{'Admin.Js.SettingsSystem.ApplicationErrorLog' | translate}}
+                        </button>
+                        <button
+                            class="btn btn-sm btn-success btn--margin-left btn-success"
+                            type="button"
+                            ng-class="{'btn-default setting__btn-default': $ctrl.type === $ctrl.enumTypes.errHTTP}"
+                            ng-click="$ctrl.changeType($ctrl.enumTypes.errHTTP)">
+                            {{'Admin.Js.SettingsSystem.OtherErrors' | translate}}
+                        </button>
+
+                        <button
+                            class="btn btn-sm btn-success btn--margin-left btn-success"
+                            type="button"
+                            ng-class="{'btn-default setting__btn-default': $ctrl.type === $ctrl.enumTypes.warn}"
+                            ng-click="$ctrl.changeType($ctrl.enumTypes.warn)">
+                            {{'Admin.Js.SettingsSystem.Warn' | translate}}
+                        </button>
+
+                        <button
+                            class="btn btn-sm btn-success btn--margin-left btn-success"
+                            type="button"
+                            ng-class="{'btn-default setting__btn-default': $ctrl.type === $ctrl.enumTypes.info}"
+                            ng-click="$ctrl.changeType($ctrl.enumTypes.info)">
+                            {{'Admin.Js.SettingsSystem.Info' | translate}}
+                        </button>
+
+                        <button
+                            class="btn btn-sm btn-success btn--margin-left btn-success"
+                            type="button"
+                            ng-class="{'btn-default setting__btn-default': $ctrl.type === $ctrl.enumTypes.errModule}"
+                            ng-click="$ctrl.changeType($ctrl.enumTypes.errModule)">
+                            {{'Admin.Js.SettingsSystem.ErrModule' | translate}}
+                        </button>
+
+                        <button
+                            class="btn btn-sm btn-success btn--margin-left btn-success"
+                            type="button"
+                            ng-class="{'btn-default setting__btn-default': $ctrl.type ===  'jobs'}"
+                            ng-click="$ctrl.changeType('jobs')">
+                            {{'Admin.Js.SettingsSystem.ScheduledTasks' | translate}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="$ctrl.type != 'jobs'">
+                <a class="ng-cloak p-b-xs pull-right" ng-if="$ctrl.sa" href="" ng-click="$ctrl.removeLogs($ctrl.type)"> Удалить логи </a>
+                <table class="table table-striped table-logs" ng-if="!isMobile.value">
+                    <tr>
+                        <th class="table-logs-head-date" style="width: 122px">{{'Admin.Js.SettingsSystem.Date' | translate}}</th>
+                        <th class="table-logs-head-error">{{'Admin.Js.SettingsSystem.Error' | translate}}</th>
+                        <th class="table-logs-head-button"></th>
+                    </tr>
+                    <tr ng-repeat="error in $ctrl.data.DataItems track by $index">
+                        <td ng-bind="error.DateTimeFormatted"></td>
+                        <td>
+                            <div
+                                ng-bind="error.ErrorMessage"
+                                ng-if="error.ErrorMessage != null && error.ErrorMessage != 'none'"
+                                class="bold m-b-sm word-break"></div>
+                            <div class="table-logs-item-stack">
+                                <input class="table-logs-overflow-state" type="checkbox" id="tableLogs_{{$index}}" />
+                                <span class="table-logs-overflow" ng-bind="error.Message"></span>
+                                <label class="table-logs-overflow-trigger" for="tableLogs_{{$index}}">
+                                    <span class="link table-logs-overflow-open">{{'Admin.Js.SettingsSystem.Expand' | translate}}</span>
+                                    <span class="link table-logs-overflow-close">{{'Admin.Js.SettingsSystem.Hide' | translate}}</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td class="table-logs-button">
+                            <button type="button" class="btn btn-success btn-sm" ng-click="$ctrl.goToDetails($ctrl.type, error.DateTime, $ctrl.page)">
+                                {{'Admin.Js.SettingsSystem.MoreInfo' | translate}}
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <div ng-if="isMobile.value" class="m-t-md">
+                    <div ng-repeat="error in $ctrl.data.DataItems track by $index" class="card m-b-sm" style="display: block">
+                        <div class="row">
+                            <div class="col-xs-3">{{'Admin.Js.SettingsSystem.Date' | translate}}</div>
+                            <div class="col-xs-9">{{'Admin.Js.SettingsSystem.Error' | translate}}</div>
+                        </div>
+                        <div class="row">
+                            <div ng-bind="error.DateTimeFormatted" class="col-xs-3 m-t-xs"></div>
+                            <div class="col-xs-9 m-t-xs">
+                                <div class="" ng-bind="error.ErrorMessage">
+                                    <div ng-if="error.ErrorMessage != null && error.ErrorMessage != 'none'"></div>
+                                </div>
+                                <div class="m-t-xs">
+                                    <input class="table-logs-overflow-state" type="checkbox" id="tableLogs_{{$index}}" />
+                                    <span class="table-logs-overflow" ng-bind="error.Message"></span>
+                                    <label class="table-logs-overflow-trigger" for="tableLogs_{{$index}}">
+                                        <span class="link table-logs-overflow-open">{{'Admin.Js.SettingsSystem.Expand' | translate}}</span>
+                                        <span class="link table-logs-overflow-close">{{'Admin.Js.SettingsSystem.Hide' | translate}}</span>
+                                    </label>
+                                    <div class="m-t-sm">
+                                        <button
+                                            type="button"
+                                            class="btn btn-success btn-sm"
+                                            ng-click="$ctrl.goToDetails($ctrl.type, error.DateTime, $ctrl.page)">
+                                            {{'Admin.Js.SettingsSystem.MoreInfo' | translate}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-class="{'pull-left': isMobile.value}">
+                    <div
+                        uib-pagination
+                        total-items="$ctrl.data.TotalItemsCount"
+                        items-per-page="$ctrl.data.TotalItemsCount / $ctrl.data.TotalPageCount"
+                        ng-model="$ctrl.data.PageIndex"
+                        ng-change="$ctrl.changePagination($ctrl.data.PageIndex)"
+                        max-size="4"
+                        previous-text="&lsaquo;"
+                        next-text="&rsaquo;"
+                        first-text="&laquo;"
+                        last-text="&raquo;"
+                        boundary-links="true"
+                        force-ellipses="true"></div>
+                </div>
+            </div>
+            <div ng-if="$ctrl.type == 'jobs'">
+                <!--{{$ctrl.jobs}}-->
+                <style>
+                    .shedulerjob-item {
+                        border-bottom: 1px solid #e7eaec;
+                        padding: 10px 0 10px 10px;
+                    }
+
+                    .shedulerjob-item .row {
+                        padding-bottom: 3px;
+                    }
+                </style>
+
+                <div data-ng-if="$ctrl.logViewType == $ctrl.enumJobsTypes.scheduler">
+                    <div class="row middle-xs" ng-class="{'m-b-md': isMobile.value}">
+                        <h2 class="col-xs-12 col-md-slim setting__subtitle">Расписание задач</h2>
+                        <a class="col-xs-12 col-md-slim" ng-click="$ctrl.changeLogsViewType($ctrl.enumJobsTypes.runs)"> Перейти к логам задач </a>
+                    </div>
+                    <div
+                        ng-class="{'card card--gap-row-sm card--p-18 card--block m-b-sm': isMobile.value, 'shedulerjob-item' : !isMobile.value}"
+                        ng-repeat="item in $ctrl.jobs">
+                        <div class="row">
+                            <div class="col-xs-4 col-md-2">Название:</div>
+                            <div class="col-xs-8 col-md bold" ng-bind="item.JobName"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-md-2">Группа:</div>
+                            <div class="col-xs-8 col-md" ng-bind="item.Group"></div>
+                        </div>
+                        <div class="row" ng-if="item.JobDescription != null && item.JobDescription.length > 0">
+                            <div class="col-xs-4 col-md-2">Описание:</div>
+                            <div class="col-xs-8 col-md" ng-bind="item.JobDescription"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-md-2">Данные:</div>
+                            <div class="col-xs-8 col-md">
+                                <span class="word-break" ng-bind="item.JobDataMap"></span>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="item.TriggerName != item.JobName">
+                            <div class="col-xs-4 col-md-2">Тригер имя:</div>
+                            <div class="col-xs-8 col-md" ng-bind="item.TriggerName"></div>
+                        </div>
+                        <div class="row" ng-if="item.TriggerGroup != item.Group">
+                            <div class="col-xs-4 col-md-2">Тригер группа:</div>
+                            <div class="col-xs-8 col-md" ng-bind="item.TriggerGroup"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-md-2">Тригер состояние:</div>
+                            <div class="col-xs-8 col-md" ng-bind="item.TriggerState"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-md-2">Следующий запуск:</div>
+                            <div class="col-xs-8 col-md" ng-bind="item.NextFireTime"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-md-2">Предыдущий запуск:</div>
+                            <div class="col-xs-8 col-md" ng-bind="item.PreviousFireTime"></div>
+                        </div>
+                    </div>
+                </div>
+                <div data-ng-if="$ctrl.logViewType == $ctrl.enumJobsTypes.runs">
+                    <div class="row middle-xs" ng-class="{'m-b-md': isMobile.value}">
+                        <h2 class="col-xs-12 col-md-slim setting__subtitle">Лог задач</h2>
+                        <a
+                            ng-class="{'m-b-xs': isMobile.value}"
+                            class="col-xs-slim"
+                            ng-click="$ctrl.changeLogsViewType($ctrl.enumJobsTypes.scheduler)">
+                            Вернуться к расписанию
+                        </a>
+                        <a class="col-xs-12 col-md-slim" ng-click="$ctrl.jobRunsGridExport()"> Экспортировать в CSV </a>
+                    </div>
+                    <ui-grid-custom
+                        grid-unique-id="jobRunsGrid"
+                        grid-row-identificator="'Id'"
+                        grid-on-init="$ctrl.jobRunsGridOnInit(grid)"
+                        grid-options="$ctrl.jobRunsGridOptions"
+                        grid-params="$ctrl.jobRunsGridParams"
+                        grid-url="'settingsSystem/getJobRuns'"
+                        grid-extend-ctrl="$ctrl"
+                        grid-swipe-line="true">
+                        <ui-grid-custom-override-control class="ng-cloak">
+                            <div class="card card--gap-row-sm card--p-18">
+                                <div class="row m-b-xs" ng-repeat="(key, value) in row.entity">
+                                    <div class="col-xs-4">{{key}} :</div>
+                                    <div style="word-break: break-all" class="col-xs-8">{{value}}</div>
+                                </div>
+                            </div>
+                        </ui-grid-custom-override-control>
+                    </ui-grid-custom>
+                </div>
+                <div data-ng-if="$ctrl.logViewType == $ctrl.enumJobsTypes.runLogs">
+                    <h3 class="setting__subtitle">Лог событий задачи {{$ctrl.selectedJobRun.Id}} of {{$ctrl.selectedJobRun.Name}}</h3>
+                    <div class="row middle-xs" style="padding-bottom: 1rem">
+                        <a class="col-xs-12 col-md-slim" ng-click="$ctrl.changeLogsViewType($ctrl.enumJobsTypes.runs)"> Вернуться к логу задач </a>
+                        <a class="col-xs-12 col-md-slim" ng-click="$ctrl.jobRunLogGridExport()"> Экспортировать в CSV </a>
+                    </div>
+                    <ui-grid-custom
+                        grid-unique-id="jobRunLogGrid"
+                        grid-row-identificator="'Id'"
+                        grid-on-init="$ctrl.jobRunLogGridOnInit(grid)"
+                        grid-options="$ctrl.jobRunLogGridOptions"
+                        grid-url="'settingsSystem/getJobRunLog'"
+                        grid-params="{jobRunId: $ctrl.selectedJobRun.Id}"
+                        grid-extend-ctrl="$ctrl">
+                    </ui-grid-custom>
+                </div>
+            </div>
+        </div>
+        <div ng-switch-when="details">
+            <div class="sticky-page-name">
+                <div class="page-name-block sticky-page-name-inner">
+                    <div class="page-name-block-item-main">
+                        <h1 ng-if="!isMobile.value" class="page-name-block-text sticky-page-name-text">
+                            {{'Admin.Js.SettingsSystem.ErrorLog' | translate}}
+                        </h1>
+                        <h4>{{'Admin.Js.SettingsSystem.DetailedView' | translate}}</h4>
+                    </div>
+                    <div class="page-name-block-item-additional">
+                        <a href="javascript:void(0)" class="link" ng-class="{'m-b-md': isMobile.value}" ng-click="$ctrl.goToList()"
+                            >{{'Admin.Js.SettingsSystem.ReturnBack' | translate}}</a
+                        >
+                        <button
+                            class="btn btn-sm btn-success btn--margin-left btn-success"
+                            type="button"
+                            ng-disabled="$ctrl.dataDetails[$ctrl.enumFields.exception] == null"
+                            ng-class="{'btn-default setting__btn-default': $ctrl.field === $ctrl.enumFields.exception}"
+                            ng-click="$ctrl.changeField($ctrl.enumFields.exception)">
+                            {{'Admin.Js.SettingsSystem.CommonData' | translate}}
+                        </button>
+                        <button
+                            class="btn btn-sm btn-success btn--margin-left btn-success"
+                            type="button"
+                            ng-disabled="$ctrl.dataDetails[$ctrl.enumFields.request] == null"
+                            ng-class="{'btn-default setting__btn-default': $ctrl.field === $ctrl.enumFields.request}"
+                            ng-click="$ctrl.changeField($ctrl.enumFields.request)">
+                            {{'Admin.Js.SettingsSystem.Query' | translate}}
+                        </button>
+                        <button
+                            class="btn btn-sm btn-success btn--margin-left btn-success"
+                            type="button"
+                            ng-disabled="$ctrl.dataDetails[$ctrl.enumFields.browser] == null"
+                            ng-class="{'btn-default setting__btn-default': $ctrl.field === $ctrl.enumFields.browser}"
+                            ng-click="$ctrl.changeField($ctrl.enumFields.browser)">
+                            {{'Admin.Js.SettingsSystem.Browser' | translate}}
+                        </button>
+                        <button
+                            class="btn btn-sm btn-success btn--margin-left btn-success"
+                            type="button"
+                            ng-disabled="$ctrl.dataDetails[$ctrl.enumFields.session] == null"
+                            ng-class="{'btn-default setting__btn-default': $ctrl.field === $ctrl.enumFields.session}"
+                            ng-click="$ctrl.changeField($ctrl.enumFields.session)">
+                            {{'Admin.Js.SettingsSystem.Session' | translate}}
+                        </button>
+                    </div>
+                </div>
+                <table class="table table-striped table-logs-details" ng-if="!isMobile.value">
+                    <tr ng-repeat="(key, value) in $ctrl.dataDetails[$ctrl.field].ColectionData">
+                        <td class="text-floating table-logs-details-key" ng-bind="key"></td>
+                        <td class="text-floating" ng-bind="$ctrl.serializeFieldValue(value)" data-highlight style="white-space: pre-line"></td>
+                    </tr>
+                </table>
+                <div ng-if="isMobile.value">
+                    <div class="card m-t-sm" style="display: block" ng-repeat="(key, value) in $ctrl.dataDetails[$ctrl.field].ColectionData">
+                        <div class="bold" ng-bind="key"></div>
+                        <div ng-bind="$ctrl.serializeFieldValue(value)" data-highlight></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

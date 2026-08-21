@@ -1,0 +1,42 @@
+﻿@using AdvantShop.Core.Services.Bonuses
+@{
+    Layout = "~/Areas/Admin/Templates/AdminV3/Views/Shared/_Layout.cshtml";
+    var isMobile = SettingsDesign.IsMobileTemplate;
+    var showPopup = !BonusSystem.IsInternal;
+    if (showPopup)
+    {
+        Html.AddAsset("bonusSystemInactive");
+    }
+}
+
+@if (!isMobile)
+{
+    @section TopContent {
+        <div class="balance__padding-page balance__padding-page--bg-white">
+            <div class="main-panel-page">
+                <div class="sticky-page-name p-b-n" sticky sticky-top="0">
+                    <div class="page-name-block sticky-page-name-inner">
+                        <div class="page-name-block-item-main">
+                            <h1 class="page-name-block-text page-name-block-text--bigger sticky-page-name-text m-b-xs">
+                                @T("Admin.BonusSystem.BonusSystemLayout.BonusProgram")
+                            </h1>
+                        </div>
+                        @if (IsSectionDefined("BlockAdditional"))
+                        {
+                            <div class="page-name-block-item-additional">
+                                @RenderSection("BlockAdditional", false)
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@if (showPopup)
+{
+    <div data-ng-controller="BonusSystemInactiveCtrl as bonusSystemInactive" data-ng-init="bonusSystemInactive.showPopupInactive()"></div>
+}
+
+@RenderBody()

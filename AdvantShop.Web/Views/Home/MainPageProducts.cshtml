@@ -1,0 +1,52 @@
+﻿@using AdvantShop.Catalog
+@using AdvantShop.Helpers
+@model AdvantShop.ViewModel.Home.MainPageProductsViewModel
+
+@Html.RenderModules("mainpage_products_before")
+<div class="products-specials-container" id="homeMainPageProducts">
+    @foreach (var productList in Model.ProductLists)
+    {
+        if (productList.Products.Count > 0)
+        {
+            var cssClass = "";
+
+            if (productList.Type == EProductOnMain.Best)
+            {
+                cssClass = "products-specials-best-h";
+            }else if (productList.Type == EProductOnMain.New || productList.Type == EProductOnMain.NewArrivals)
+            {
+                cssClass = "products-specials-new-h";
+            }else if (productList.Type == EProductOnMain.Sale)
+            {
+                cssClass = "products-specials-discount-h";
+            }
+                    
+            <article class="products-specials-block products-specials-list cs-br-1">
+                <header class="products-specials-header">
+                    <div
+                        @Html.Raw(SettingsDesign.OnePageCatalog && productList.UrlPath.IsNotEmpty() ? "id=\"" + StringHelper.ToAnchor(productList.UrlPath) + "\"" : "")
+                        class="h2 h-inline @cssClass">
+                        @Html.Raw(productList.Title)
+                    </div>
+                    @{
+                        var routeParams = new
+                        {
+                            type = productList.Type.ToString().ToLower(),
+                            list = productList.Type == EProductOnMain.List ? productList.UrlPath : null
+                        };
+                    }
+                    @if (!SettingsDesign.OnePageCatalog)
+                    {
+                        <a href="@Url.AbsoluteRouteUrl("ProductList", routeParams)" class="products-specials-more">
+                            @Html.Raw(productList.LinkText)
+                        </a>
+                    }
+                </header>
+                <div class="products-view products-view-tile row">
+                    @Html.Partial("_ProductView", productList)
+                </div>
+            </article>
+        }
+    }
+</div>
+@Html.RenderModules("mainpage_products")

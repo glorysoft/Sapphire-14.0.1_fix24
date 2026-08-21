@@ -1,0 +1,74 @@
+﻿{
+    "name": "textFullWidth",
+    "type": "text",
+    "description": "Landings.Views.Blocks.Config.TextFullWidth.Description",
+    "category": "Landings.Views.Blocks.Config.TextFullWidth.Category",
+    "picture": "./areas/landing/images/texts/textFullWidth.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TextFullWidth.Subblocks.Title.Placeholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TextFullWidth.Subblocks.Subtitle.Placeholder"
+        },
+        {
+            "name": "text",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TextFullWidth.Subblocks.Text.Placeholder"
+        }
+    ],
+    "settings": {
+        "classes": ["lp-block-text-slim-single-left", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": true,
+        "show_subtitle": false,
+        "show_button": false,
+        "show_button2": false,
+        "constructor_buttons_reverse": true,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "style": {},
+        "align_btns": "start-xs",
+        "align_items": "start-xs",
+        "align_text": "start-xs",
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.TextFullWidth.Settings.Button.Text",
+            "size": "xsmall",
+            "style": {}
+        },
+        "button2": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.TextFullWidth.Settings.Button2.Text",
+            "size": "xsmall",
+            "type": "Secondary",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false,
+        "width_in_columns": 12
+    }
+}

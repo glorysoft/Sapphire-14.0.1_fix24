@@ -1,0 +1,51 @@
+﻿{
+    "name": "coverFormSlim",
+    "type": "cover",
+    "description": "Landings.Views.Blocks.Config.CoverFormSlim.Description",
+    "category": "Landings.Views.Blocks.Config.CoverFormSlim.Category",
+    "picture": "./areas/landing/images/covers/cover_form_slim_preview.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.CoverFormSlim.SubBlockPlasholderOne"
+        },
+        {
+            "name": "text",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.CoverFormSlim.SubBlockPlasholderTwo"
+        }
+    ],
+    "settings": {
+        "color_scheme": "color-scheme--dark",
+        "classes": [
+            "cover-form-video-left",
+            "lp-block-cover-text-form-slim",
+            "lp-block-cover",
+            "color-scheme--dark",
+            "block-padding-top--150",
+            "block-padding-bottom--150"
+        ],
+        "background_image": "./areas/landing/images/covers/cover_text_form_slim.jpg",
+        "background_color": null,
+        "darken": 0.6,
+        "color": "rgb(255, 255, 255)",
+        "scrollToBlock": false,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "full_height": false,
+        "padding_top": 160,
+        "padding_bottom": 160,
+        "style": {
+            "background-image": "url('./areas/landing/images/covers/cover_text_form_slim.jpg')",
+            "box-shadow": "200vh 200vw 0 rgba(0,0,0, 0.6) inset"
+        },
+        "mobile_hidden": false,
+        "width_in_columns": 12,
+        "form": {
+            "is_hidden": false
+        }
+    }
+}

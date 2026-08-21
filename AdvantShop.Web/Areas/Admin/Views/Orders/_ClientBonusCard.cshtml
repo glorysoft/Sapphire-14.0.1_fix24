@@ -1,0 +1,77 @@
+﻿@model AdvantShop.Web.Admin.Models.Orders.OrdersEdit.OrderModel
+
+<div class="ibox category-block block-additional-parameters">
+    <div class="ibox-content category-content block-additional-parameters-content p-r-lg border_none">
+        <div class="clear">
+            <div class="order__subblock-title pull-left">@T("Admin.Orders.ClientBonuseCard.Bonuses")</div>
+        </div>
+        @if (Model.InternalBonusCard != null && Model.BonusesIsInternal)
+        {
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-value m-b-xs">
+                    <span>@T("Admin.Orders.ClientBonusCard.CardNumber")</span>
+                    <span>
+                        <a data-e2e="numberBonusCart" target="_blank" href="@Url.AbsoluteActionUrl("Edit", "Cards", new { id = Model.InternalBonusCard.CardId })">@Model.InternalBonusCard.CardNumber</a>
+                        @if (Model.InternalBonusCard.Blocked)
+                        {
+                            <span class="link-danger">@T("Admin.Orders.ClientBonusCard.CardBlocked")</span>
+                        }
+                    </span>
+                </div>
+                <div class="block-additional-parameters-value m-b-xs">
+                    <span>@T("Admin.Orders.ClientBonusCard.Grade")</span>
+                    <span>@Model.InternalBonusCard.Grade.Name @Model.InternalBonusCard.Grade.BonusPercent.ToInvatiant()%</span>
+                </div>
+                <div class="block-additional-parameters-value" data-e2e="percentBonus">
+                    <span>@T("Admin.Orders.ClientBonusCard.Balance")</span>
+                    <span>@Model.InternalBonusCard.BonusesTotalAmountFormatted</span>
+                </div>
+            </div>
+        }
+        else if (Model.BonusCard != null)
+        {
+            <div class="block-additional-parameters-row">
+                <div class="block-additional-parameters-value m-b-xs">
+                    <span>@T("Admin.Orders.ClientBonusCard.CardNumber")</span>
+                    <span>@Model.BonusCard.Number</span>
+                </div>
+                @if (Model.BonusCard.Bonuses.HasValue)
+                {
+                    <div class="block-additional-parameters-value" data-e2e="percentBonus">
+                        <span>@T("Admin.Orders.ClientBonusCard.Balance")</span>
+                        <span>@(((float)Model.BonusCard.Bonuses).SimpleRoundPrice().FormatBonuses())</span>
+                    </div>
+                }
+            </div>
+        }
+        else if (Model.Customer != null)
+        {
+            if (Model.BonusesIsInternal)
+            {
+                <ui-modal-trigger data-controller="'ModalAddCardCtrl'" controller-as="ctrl" size="md" backdrop="static"
+                                  template-url="@Html.GetAssetPath("addcard.html")"
+                                  data-resolve="{params:{customerId:'@Model.Customer.Id', firstName:'@Model.Customer.FirstName', lastName:'@Model.Customer.LastName', noredirect:true}}"
+                                  data-on-close="order.updateOrderBonusCard()">
+                    <a data-e2e="AddCard" class="btn btn-sm btn-success btn--margin-left" href="">
+                        <span class="fa fa-plus"></span>
+                        @T("Admin.Cards.Index.AddCard")
+                    </a>
+                </ui-modal-trigger>
+            }
+            else
+            {
+                <a ng-controller="ExternalBonusSystemCtrl as exBonusSystem" data-ng-click="exBonusSystem.createCard('@Model.Customer.Id', true)" data-e2e="AddCard" class="btn btn-sm btn-success btn--margin-left" href="">
+                    <span class="fa fa-plus"></span>
+                    @T("Admin.Cards.Index.AddCard")
+                </a>
+            }
+        }
+        else
+        {
+            <div>
+                @T("Admin.Orders.ClientBonusCard.CreateUser")
+            </div>
+        }
+        @Html.RenderModules("admin_order_bonus_card", new { customer = Model.Customer })
+    </div>
+</div>

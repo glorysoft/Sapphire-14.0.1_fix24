@@ -1,0 +1,114 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.ShippingMethods.PointDeliveryShippingAdminModel
+
+
+@{
+    var isMobile = SettingsDesign.IsMobileTemplate;
+    var availableWarehouses = AdvantShop.Saas.SaasDataService.IsEnabledFeature(saas => saas.HasWarehouses);
+}
+
+<div class="form-group row middle-xs setting__form-group">
+    <div class="flex-grow-n setting__label @(isMobile ? "col-xs-12" : "col-fixed-size-md")">
+        <span class="text-required">@T("Admin.ShippingMethods.PointDelivery.PriceOfDelivery")</span>
+    </div>
+    <div class="col-xs-12 col-md-6 relative setting--m-t-sm @(!isMobile ? "" : "flex middle-xs")">
+        @if (Model.CurrencySymbol.IsNotEmpty())
+        {
+            <div class="input-group setting__price-margin-in-numbers">
+                @Html.TextBoxFor(x => x.ShippingPrice, new { @class = "form-control", ng_model = "shippingMethod.Params.ShippingPrice", required = "required", validation_input_text = T("Admin.ShippingMethods.PointDelivery.PriceOfDelivery") })
+                <div class="input-group-btn">
+                    <span class="btn btn-default"><span>@Model.CurrencySymbol</span></span>
+                </div>
+            </div>
+        }
+        else
+        {
+            @Html.TextBoxFor(x => x.ShippingPrice, new { @class = "form-control", ng_model = "shippingMethod.Params.ShippingPrice", required = "required", validation_input_text = T("Admin.ShippingMethods.PointDelivery.PriceOfDelivery") })
+        }
+        <help-trigger class="ng-cloak help-trigger-icon-abs @(!isMobile ? "" : "m-l-sm p-l-xs")" data-title="@T("Admin.ShippingMethods.PointDelivery.CostOfDelivery")">
+            @*@T("Admin.ShippingMethods.PointDelivery.CostOfDeliveryPriceInBaseCurrency")<br><br>*@
+            @T("Admin.ShippingMethods.PointDelivery.ForExample100")<br><br>
+            @T("Admin.ShippingMethods.PointDelivery.IfSelfDeliveryIsFree")
+        </help-trigger>
+    </div>
+</div>
+
+
+<div class="form-group row middle-xs setting__form-group">
+    <div class="flex-grow-n setting__label @(isMobile ? "col-xs-12" : "col-fixed-size-md")">
+        @T("Admin.ShippingMethods.PointDelivery.DeliveryTime")
+    </div>
+    <div class="col-xs-12 col-md-6 relative setting--m-t-sm @(!isMobile ? "" : "flex middle-xs")">
+        @Html.TextBoxFor(x => x.DeliveryTime, new { @class = "form-control input-alt", ng_model = "shippingMethod.Params.DeliveryTime" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs @(!isMobile ? "" : "m-l-sm p-l-xs")" data-title="@T("Admin.ShippingMethods.PointDelivery.DeliveryTime")">
+            @T("Admin.ShippingMethods.PointDelivery.DeliveryTimeAsPeriodOfTime")<br><br>
+            @T("Admin.ShippingMethods.PointDelivery.ForExample2Days")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    <div class="flex-grow-n setting__label @(isMobile ? "col-xs-12" : "col-fixed-size-md")">
+        <span class="text-required">Вид отображения</span>
+    </div>
+    <div class="col-xs-12 col-md-6 relative setting--m-t-sm">
+        @Html.DropDownListFor(x => x.TypePoints, Model.ListTypePoints, new { ng_model = "shippingMethod.Params.TypePoints", @class = "form-control input-alt", required = "required", validation_input_text = "Вид отображения" })
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group" ng-if="shippingMethod.Params.TypePoints == '0'">
+    <div class="flex-grow-n setting__label @(isMobile ? "col-xs-12" : "col-fixed-size-md")">
+        <span class="text-required">@T("Admin.ShippingMethods.PointDelivery.PointListTitle")</span>
+    </div>
+    <div class="col-xs-12 col-md-6 relative setting--m-t-sm @(!isMobile ? "" : "flex middle-xs")">
+        @Html.TextBoxFor(x => x.PointListTitle, new { @class = "form-control input-alt", ng_model = "shippingMethod.Params.PointListTitle", required = "required", validation_input_text = T("Admin.ShippingMethods.PointDelivery.PointListTitle") })
+        <help-trigger class="ng-cloak help-trigger-icon-abs @(!isMobile ? "" : "m-l-sm p-l-xs")" data-title="@T("Admin.ShippingMethods.PointDelivery.PointListTitle")">
+            @T("Admin.ShippingMethods.PointDelivery.PointListTitleHint")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group" ng-if="shippingMethod.Params.TypePoints == '1'">
+    <div class="flex-grow-n setting__label @(isMobile ? "col-xs-12" : "col-fixed-size-md")">
+        <span class="text-required">API-ключ яндекс.карт</span>
+    </div>
+    <div class="col-xs-12 col-md-6 relative setting--m-t-sm @(!isMobile ? "" : "flex middle-xs")">
+        @Html.TextBoxFor(x => x.YaMapsApiKey, new { @class = "form-control input-alt", ng_model = "shippingMethod.Params.YaMapsApiKey", required = "required", validation_input_text = "API-ключ яндекс.карт" })
+        <help-trigger class="ng-cloak help-trigger-icon-abs @(!isMobile ? "" : "m-l-sm p-l-xs")" data-title="API-ключ яндекс.карт">
+            @T("Admin.ShippingMethods.Shared.HowGetYandexMapKey")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    @if (!isMobile)
+    {
+        <div class="flex-grow-n setting__label col-fixed-size-md">
+            <span>@T("Admin.ShippingMethods.PointDelivery.HideNotAvailableWarehouses")</span>
+        </div>
+    }
+    <div class="col-xs-12 col-md-6 relative setting--m-t-sm @(!isMobile ? "" : "flex middle-xs")">
+        <label class="adv-checkbox-label form-label-block">
+            @Html.CheckBoxFor(x => x.HideNotAvailableWarehouses, new { ng_model = "shippingMethod.Params.HideNotAvailableWarehouses", ng_init = "shippingMethod.Params.HideNotAvailableWarehouses=" + Model.HideNotAvailableWarehouses.ToLowerString(), @class = "adv-checkbox-input" })
+            <span class="adv-checkbox-emul" data-e2e="HideNotAvailableWarehouses"></span>
+            @if (isMobile)
+            {
+                <span>
+                    @T("Admin.ShippingMethods.PointDelivery.HideNotAvailableWarehouses")
+                </span>
+            }
+            <help-trigger data-title="@T("Admin.ShippingMethods.PointDelivery.HideNotAvailableWarehouses")">
+                @T("Admin.ShippingMethods.PointDelivery.HideNotAvailableWarehousesHint")
+            </help-trigger>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row setting__form-group">
+    <div class="flex-grow-n setting__label @(isMobile ? "col-xs-12" : "col-fixed-size-md")">
+        <span class="text-required">@T("Admin.ShippingMethods.PointDelivery.SelfDeliveryPoints")</span>
+    </div>
+    <div class="col-xs-12 col-md-6 relative setting--m-t-sm @(!isMobile ? "" : "flex middle-xs")" in-view="$inview ? shippingMethod.pointDeliveryShowed = true : null">
+        <point-delivery style="@(isMobile ? "width:100%;" : "")" method-id="@Model.ShippingMethodId" points="@Model.PointsJson" warehouses-active="@availableWarehouses.ToLowerString()" ng-if="shippingMethod.pointDeliveryShowed">
+        </point-delivery>
+    </div>
+</div>

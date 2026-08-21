@@ -1,0 +1,20 @@
+﻿@model AdvantShop.Web.Admin.Models.Services.BonusSystemModel
+@{
+    Html.AddAsset("bonusSystemInactive");
+}
+<style>
+    .content-container > .nav-tabs {display: none !important;}
+</style>
+<div class="inbox" data-ng-controller="BonusSystemInactiveCtrl as bonusSystemInactive">
+    <div class="ibox-content text-center">
+        <div class="page-name-block-item-main">
+            <h2 class="sticky-page-name-text inline">@T("Admin.GetBonusSystem.Header")</h2>                    
+        </div>
+        <div class="m-t-sm m-b-md-h">
+            @T("Admin.GetBonusSystem.Message", Model.BonusSystemName)
+        </div>
+        <div>
+            <a class="btn btn-sm btn-success" ng-click="bonusSystemInactive.activateBonusSystem('@Model.BonusSystemKey', '@Model.BonusSystemName')">@T("Admin.GetBonusSystem.ButtonActivate", Model.BonusSystemName)</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1662 @@
+﻿{
+    "key": "CompanySiteCourse",
+    "templateType": "Events",
+    //"category": "CollectContacts",
+    "sortOrder": 600,
+    "name": "Admin.Dashboard.CreateFunnel.CompanySiteCourse.Name",
+    "description": "Admin.Dashboard.CreateFunnel.CompanySiteCourse.Description",
+    "intent": "",
+    "advice": "",
+    "picture": "//cs71.advantshop.net/adv-static/templates/FnlCompanySiteCourse/i/scr1_v1.png",
+    "video": "https://www.youtube.com/watch?v=5lRn9PpFXQs",
+    "scheme": "//cs71.advantshop.net/adv-static/templates/FnlCompanySiteCourse/i/scheme_v1.jpg",
+    "siteCategory": "ProductSinglePages",
+    "demoLink": "http://demo-funnel.on-advantshop.net/lp/prodazha-kursa",
+    "screens": [
+        {
+            "title": "Admin.Dashboard.CreateFunnel.CompanySiteCourse.Title.SellingCourse",
+            "url": "//cs71.advantshop.net/adv-static/templates/FnlCompanySiteCourse/i/scr1_v1.png"
+        },
+        {
+            "title": "Admin.Dashboard.CreateFunnel.CompanySiteCourse.Title.ThankPage",
+            "url": "//cs71.advantshop.net/adv-static/templates/FnlCompanySiteCourse/i/scr2_v1.png"
+        },
+        {
+            "title": "Admin.Dashboard.CreateFunnel.CompanySiteCourse.Title.CourseOffice",
+            "url": "//cs71.advantshop.net/adv-static/templates/FnlCompanySiteCourse/i/scr3_v1.png"
+        },
+        {
+            "title": "Admin.Dashboard.CreateFunnel.CompanySiteCourse.Title.ExampleInternalPage",
+            "url": "//cs71.advantshop.net/adv-static/templates/FnlCompanySiteCourse/i/scr4_v1.png"
+        }
+    ],
+    "blockLists": [],
+    "siteSettings": {
+        "SeoSettings.FontMain": "OpenSans",
+        "SeoSettings.ColorSchemes": "[{\"LpId\":0,\"LpBlockId\":0,\"Name\":\"CreateFunnel.CompanySiteCourse.ColorSchemes.Light\",\"Class\":\"color-scheme--light\",\"BackgroundColor\":\"rgb(255, 255, 255)\",\"BackgroundColorAlt\":\"rgba(242, 242, 242, 0.9)\",\"TitleColor\":\"rgb(0, 0, 0)\",\"TitleBold\":\"800\",\"SubTitleColor\":\"rgb(96, 96, 96)\",\"SubTitleBold\":\"600\",\"TextColor\":\"rgb(0, 0, 0)\",\"TextColorAlt\":\"rgb(0, 0, 0)\",\"TextBold\":\"400\",\"LinkColor\":\"rgb(23, 121, 250)\",\"LinkColorHover\":\"rgb(4, 89, 200)\",\"LinkColorActive\":\"rgb(23, 121, 250)\",\"ButtonTextColor\":\"rgb(255, 255, 255)\",\"ButtonTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonBorderColor\":\"rgb(50, 81, 158)\",\"ButtonBorderWidth\":\"1px\",\"ButtonBorderRadius\":\"25px\",\"ButtonTextBold\":\"600\",\"ButtonBackgroundColor\":\"rgb(50, 81, 158)\",\"ButtonBackgroundColorHover\":\"rgba(50, 81, 158, 0.8)\",\"ButtonBackgroundColorActive\":\"rgba(50, 81, 158, 0.6)\",\"ButtonSecondaryTextColor\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorHover\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorActive\":\"rgb(0, 0, 0)\",\"ButtonSecondaryBorderColor\":\"rgb(218, 218, 218)\",\"ButtonSecondaryBorderWidth\":\"1px\",\"ButtonSecondaryBorderRadius\":\"25px\",\"ButtonSecondaryTextBold\":\"600\",\"ButtonSecondaryBackgroundColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBackgroundColorHover\":\"rgba(0, 0, 0, 0.1)\",\"ButtonSecondaryBackgroundColorActive\":\"rgba(0, 0, 0, 0.2)\",\"DelimiterColor\":\"rgb(226, 226, 226)\"},{\"LpId\":0,\"LpBlockId\":0,\"Name\":\"CreateFunnel.CompanySiteCourse.ColorSchemes.Medium\",\"Class\":\"color-scheme--medium\",\"BackgroundColor\":\"rgb(248, 248, 248)\",\"BackgroundColorAlt\":\"rgb(255, 255, 255)\",\"TitleColor\":\"rgb(0, 0, 0)\",\"TitleBold\":\"700\",\"SubTitleColor\":\"rgb(96, 96, 96)\",\"SubTitleBold\":\"600\",\"TextColor\":\"rgb(0, 0, 0)\",\"TextColorAlt\":\"rgb(0, 0, 0)\",\"TextBold\":\"400\",\"LinkColor\":\"rgb(23, 121, 250)\",\"LinkColorHover\":\"rgb(4, 89, 200)\",\"LinkColorActive\":\"rgb(23, 121, 250)\",\"ButtonTextColor\":\"rgb(255, 255, 255)\",\"ButtonTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonBorderColor\":\"rgba(50, 81, 158)\",\"ButtonBorderWidth\":\"1px\",\"ButtonBorderRadius\":\"25px\",\"ButtonTextBold\":\"600\",\"ButtonBackgroundColor\":\"rgb(50, 81, 158)\",\"ButtonBackgroundColorHover\":\"rgba(50, 81, 158, 0.8)\",\"ButtonBackgroundColorActive\":\"rgba(50, 81, 158, 0.6)\",\"ButtonSecondaryTextColor\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorHover\":\"rgb(0, 0, 0)\",\"ButtonSecondaryTextColorActive\":\"rgb(0, 0, 0)\",\"ButtonSecondaryBorderColor\":\"rgb(218, 218, 218)\",\"ButtonSecondaryBorderWidth\":\"1px\",\"ButtonSecondaryBorderRadius\":\"25px\",\"ButtonSecondaryTextBold\":\"600\",\"ButtonSecondaryBackgroundColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBackgroundColorHover\":\"rgba(0, 0, 0, 0.1)\",\"ButtonSecondaryBackgroundColorActive\":\"rgba(0, 0, 0, 0.2)\",\"DelimiterColor\":\"rgb(205, 205, 205)\"},{\"LpId\":0,\"LpBlockId\":0,\"Name\":\"CreateFunnel.CompanySiteCourse.ColorSchemes.Dark\",\"Class\":\"color-scheme--dark\",\"BackgroundColor\":\"rgb(0, 0, 0)\",\"BackgroundColorAlt\":\"rgba(60, 60, 60, 1)\",\"TitleColor\":\"rgb(255, 255, 255)\",\"TitleBold\":\"700\",\"SubTitleColor\":\"rgb(232, 232, 232)\",\"SubTitleBold\":\"600\",\"TextColor\":\"rgb(255, 255, 255)\",\"TextColorAlt\":\"rgb(255, 255, 255)\",\"TextBold\":\"400\",\"LinkColor\":\"rgb(255, 255, 255)\",\"LinkColorHover\":\"rgb(204, 204, 204)\",\"LinkColorActive\":\"rgb(255, 255, 255)\",\"ButtonTextColor\":\"rgb(255, 255, 255)\",\"ButtonTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonBorderColor\":\"rgb(50, 81, 158)\",\"ButtonBorderWidth\":\"1px\",\"ButtonBorderRadius\":\"25px\",\"ButtonTextBold\":\"600\",\"ButtonBackgroundColor\":\"rgb(50, 81, 158)\",\"ButtonBackgroundColorHover\":\"rgba(50, 81, 158, 0.8)\",\"ButtonBackgroundColorActive\":\"rgba(50, 81, 158, 0.6)\",\"ButtonSecondaryTextColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryTextColorHover\":\"rgb(255, 255, 255)\",\"ButtonSecondaryTextColorActive\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBorderColor\":\"rgb(255, 255, 255)\",\"ButtonSecondaryBorderWidth\":\"1px\",\"ButtonSecondaryBorderRadius\":\"25px\",\"ButtonSecondaryTextBold\":\"400\",\"ButtonSecondaryBackgroundColor\":\"rgba(255, 255, 255, 0)\",\"ButtonSecondaryBackgroundColorHover\":\"rgba(255, 255, 255, 0.2)\",\"ButtonSecondaryBackgroundColorActive\":\"rgba(255, 255, 255, 0.3)\",\"DelimiterColor\":\"rgb(255, 255, 255)\"}]",
+        "SeoSettings.LineHeight": "1.4",
+        "AuthSettings.RequireAuth": "True"
+    },
+    "pages": [
+        {
+            "name": "CreateFunnel.CompanySiteCourse.Main",
+            "pageType": "Main",
+            "lpPageSettings": {
+                "SeoSettings.PageTitle": "CreateFunnel.CompanySiteCourse.Main.PageTitle",
+                "SeoSettings.AllowAccess": "True"
+            },
+            "blocks": [
+                {
+                    "name": "header",
+                    "settings": {
+                        "classes": ["lp-block-header", "color-scheme--light", "block-padding-top--0", "block-padding-bottom--0"],
+                        "color_scheme": "color-scheme--light",
+                        "show_logo": true,
+                        "show_button": true,
+                        "show_phone": false,
+                        "show_email": false,
+                        "show_menu": true,
+                        "vk_enabled": true,
+                        "fb_enabled": true,
+                        "youtube_enabled": false,
+                        "twitter_enabled": false,
+                        "instagram_enabled": true,
+                        "whatsapp_enabled": false,
+                        "telegram_enabled": false,
+                        "odnoklassniki_enabled": false,
+                        "menu_items": [],
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": "#ffffff",
+                        "fixedOnScroll": false,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "runDown": false,
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "mobile_hidden": false,
+                        "button": {
+                            "text": "CreateFunnel.CompanySiteCourse.Main.Header.Button.Text",
+                            "action": "Section",
+                            "action_section": "#BLOCK_ID_servicesThreeColumnsLinks#"
+                        },
+                        "show_button2": true,
+                        "button2": {
+                            "is_default_style": false,
+                            "action": "Url",
+                            "action_url": "",
+                            "action_url_lp_id": "#ACTION_MAIN_2_LP_ID#",
+                            "text": "CreateFunnel.CompanySiteCourse.Main.Header.ButtonTwo.Text",
+                            "type": "Secondary",
+                            "target_blank": true
+                        },
+                        "form": { "is_hidden": true },
+                        "show_on_all_landing_pages_top": false,
+                        "show_on_all_landing_pages_bottom": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "logo",
+                            "type": "logo",
+                            "settings": {
+                                "src": "areas/landing/Templates/CompanySiteCourse/images/logo_main.png",
+                                "type": "image"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "textImage",
+                    "settings": {
+                        "classes": ["lp-block-text-image-reverse", "color-scheme--light", "block-padding-top--35", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": true,
+                        "show_button2": false,
+                        "constructor_buttons_reverse": true,
+                        "image_link": "",
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 35,
+                        "padding_bottom": 45,
+                        "style": {},
+                        "align_btns": "start-xs",
+                        "button": {
+                            "is_default_style": true,
+                            "action": "Section",
+                            "action_section": "#BLOCK_ID_servicesThreeColumnsLinks#",
+                            "text": "CreateFunnel.CompanySiteCourse.Main.TextImage.Button.Text",
+                            "size": "xsmall"
+                        },
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "align_block": "middle-xs",
+                        "settings_picture": {
+                            "maxWidthPicture": 480,
+                            "maxHeightPicture": 480
+                        }
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.TextImage.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.TextImage.Text.Placeholder"
+                        },
+                        {
+                            "name": "picture",
+                            "type": "picture",
+                            "settings": {
+                                "src": "areas/landing/Templates/CompanySiteCourse/images/pic01.png",
+                                "class": "",
+                                "type": "image"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "titleLeftTextRight",
+                    "settings": {
+                        "classes": ["lp-block-title-left-text-right", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.TitleLeftTextRight.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.TitleLeftTextRight.Text.Placeholder"
+                        }
+                    ]
+                },
+
+                {
+                    "name": "columnsThreeIcons",
+                    "settings": {
+                        "align_items": "start-xs",
+                        "gridColumns": {
+                            "text": true,
+                            "title": true,
+                            "icon": true
+                        },
+                        "items": [
+                            {
+                                "title": "",
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ColumnsThreeIcons.Items.First.Text",
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic02.png",
+                                    "type": "image"
+                                }
+                            },
+                            {
+                                "title": "",
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ColumnsThreeIcons.Items.Second.Text",
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic03.png",
+                                    "type": "image"
+                                }
+                            },
+                            {
+                                "title": "",
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ColumnsThreeIcons.Items.Third.Text",
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic04.png",
+                                    "type": "image"
+                                }
+                            }
+                        ],
+                        "classes": ["lp-block-columns-three-icons", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "items_in_row": 3,
+                        "rows_in_block": 1,
+                        "padding_bottom": 45,
+                        "columnBackground": false,
+                        "style": {},
+                        "settings_picture": { "galleryIconsEnabled": true },
+                        "align_btns": "start-xs",
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.ColumnsThreeIcons.Title.Placeholder"
+                        }
+                    ]
+                },
+
+                {
+                    "name": "servicesThreeColumnsLinks",
+                    "settings": {
+                        "gridColumns": {
+                            "picture": true,
+                            "header": true,
+                            "text": true,
+                            "button": true
+                        },
+                        "items": [
+                            {
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic05.png",
+                                    "type": "image"
+                                },
+                                "header": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Items.First.Header",
+                                "show_button": true,
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Items.First.Text",
+                                "button": {
+                                    "text": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Items.First.Button.Text",
+                                    "type": 0,
+                                    "action": "Form",
+                                    "show_button": true,
+                                    "action_form": ""
+                                }
+                            },
+                            {
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic06.png",
+                                    "type": "image"
+                                },
+                                "header": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Items.Second.Header",
+                                "show_button": true,
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Items.Second.Text",
+                                "button": {
+                                    "text": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Items.Second.Button.Text",
+                                    "type": 0,
+                                    "size": 0,
+                                    "action": "Form",
+                                    "show_button": true,
+                                    "action_form": ""
+                                }
+                            },
+                            {
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic07.png",
+                                    "type": "image"
+                                },
+                                "header": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Items.Third.Header",
+                                "show_button": true,
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Items.Third.Text",
+                                "button": {
+                                    "text": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Items.Third.Button.Text",
+                                    "type": 0,
+                                    "size": 0,
+                                    "action": "Form",
+                                    "show_button": true,
+                                    "action_form": ""
+                                }
+                            }
+                        ],
+                        "align_btns": "center-xs",
+                        "align_text": "center-xs",
+                        "classes": ["lp-block-services-three-columns", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": true,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "button": {
+                            "is_default_style": true,
+                            "action": "Form",
+                            "action_form": "",
+                            "text": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Button.Text"
+                        },
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false
+                    },
+                    "form": {
+                        "title": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Form.Title",
+                        "subTitle": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Form.SubTitle",
+                        "buttonText": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Form.ButtonText",
+                        "postAction": 2,
+                        "postMessageText": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Form.PostMessageText",
+                        "PostMessageRedirectLpId": "#ACTION_THANKYOUPAGE_LP_ID#",
+                        "fields": [
+                            {
+                                "Title": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Form.Fields.Name.Title",
+                                "TitleCrm": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Form.Fields.Name.TitleCrm",
+                                "FieldType": 2,
+                                "Type": "text",
+                                "CustomFieldId": null,
+                                "Required": true
+                            },
+                            {
+                                "Title": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Form.Fields.Phone.Title",
+                                "TitleCrm": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Form.Fields.Phone.TitleCrm",
+                                "FieldType": 6,
+                                "Type": "tel",
+                                "CustomFieldId": null,
+                                "Required": true
+                            },
+                            {
+                                "Title": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Form.Fields.Email.Title",
+                                "TitleCrm": "Email",
+                                "FieldType": 5,
+                                "Type": "text",
+                                "CustomFieldId": null,
+                                "Required": true
+                            }
+                        ],
+                        "showAgreement": true,
+                        "agreementText": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Form.AgreementText",
+                        "is_hidden": true
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.ServicesThreeColumnsLinks.Title.Placeholder"
+                        }
+                    ]
+                },
+
+                {
+                    "name": "scheduleWithTitle",
+                    "settings": {
+                        "items": [
+                            {
+                                "name": "Week 1",
+                                "title": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Items.First.Title",
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Items.First.Text"
+                            },
+                            {
+                                "name": "Week 2",
+                                "title": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Items.Second.Title",
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Items.Second.Text"
+                            },
+                            {
+                                "name": "Week 3",
+                                "title": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Items.Third.Title",
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Items.Third.Text"
+                            },
+                            {
+                                "name": "Week 4",
+                                "title": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Items.Fourth.Title",
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Items.Fourth.Text"
+                            },
+                            {
+                                "name": "Week 5",
+                                "title": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Items.Fifth.Title",
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Items.Fifth.Text"
+                            },
+                            {
+                                "name": "Week 6",
+                                "title": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Items.Sixth.Title",
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Items.Sixth.Text"
+                            }
+                        ],
+                        "classes": ["lp-block-schedule-with-title", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "align_btns": "center-xs",
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "settings_picture": { "cropper_params": { "aspectRatio": "1" } },
+                        "width_in_columns": 10
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Title.Placeholder"
+                        },
+                        {
+                            "name": "subtitle",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Subtitle.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.ScheduleWithTitle.Text.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "columnsFAQ",
+                    "settings": {
+                        "gridColumns": {
+                            "text": true,
+                            "title": true,
+                            "icon": true
+                        },
+                        "items": [
+                            {
+                                "title": "CreateFunnel.CompanySiteCourse.Main.ColumnsFAQ.Items.First.Title",
+                                "text": "",
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/list1.jpg",
+                                    "type": "image"
+                                }
+                            },
+                            {
+                                "title": "CreateFunnel.CompanySiteCourse.Main.ColumnsFAQ.Items.Second.Title",
+                                "text": "",
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/list2.jpg",
+                                    "type": "image"
+                                }
+                            },
+                            {
+                                "title": "CreateFunnel.CompanySiteCourse.Main.ColumnsFAQ.Items.Third.Title",
+                                "text": "",
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/list3.jpg",
+                                    "type": "image"
+                                }
+                            },
+                            {
+                                "title": "CreateFunnel.CompanySiteCourse.Main.ColumnsFAQ.Items.Fourth.Title",
+                                "text": "",
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/list4.jpg",
+                                    "type": "image"
+                                }
+                            }
+                        ],
+                        "classes": ["lp-block-columns-faq", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "align_items": "start-xs",
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "style": {},
+                        "settings_picture": { "galleryIconsEnabled": true },
+                        "align_btns": "center-xs",
+                        "width_in_columns": 12,
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.ColumnsFAQ.Title.Placeholder"
+                        },
+                        {
+                            "name": "subtitle",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.ColumnsFAQ.Subtitle.Placeholder"
+                        },
+                        {
+                            "name": "header",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.ColumnsFAQ.Header.Placeholder"
+                        }
+                    ]
+                },
+
+                {
+                    "name": "teamDetails",
+                    "settings": {
+                        "classes": ["lp-block-team-details", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "align_btns": "start-xs",
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.TeamDetails.Title.Placeholder"
+                        },
+                        {
+                            "name": "picture",
+                            "type": "picture",
+                            "settings": {
+                                "src": "areas/landing/Templates/CompanySiteCourse/images/pic08.png",
+                                "class": "",
+                                "type": "image"
+                            }
+                        },
+                        {
+                            "name": "header",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.TeamDetails.Header.Name"
+                        },
+                        {
+                            "name": "header",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.TeamDetails.Header.Role"
+                        },
+                        {
+                            "name": "header",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.TeamDetails.Header.Description"
+                        }
+                    ]
+                },
+                {
+                    "name": "reviewsVerticalList",
+                    "settings": {
+                        "items": [
+                            {
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic09.png",
+                                    "type": "image"
+                                },
+                                "author": "CreateFunnel.CompanySiteCourse.Main.ReviewsVerticalList.Items.First.Author",
+                                "caption": "",
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ReviewsVerticalList.Items.First.Text"
+                            },
+                            {
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic010.png",
+                                    "type": "image"
+                                },
+                                "author": "CreateFunnel.CompanySiteCourse.Main.ReviewsVerticalList.Items.Second.Author",
+                                "caption": "",
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ReviewsVerticalList.Items.Second.Text"
+                            },
+                            {
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic011.png",
+                                    "type": "image"
+                                },
+                                "author": "CreateFunnel.CompanySiteCourse.Main.ReviewsVerticalList.Items.Third.Author",
+                                "text": "CreateFunnel.CompanySiteCourse.Main.ReviewsVerticalList.Items.Third.Text"
+                            }
+                        ],
+                        "classes": ["reviews-vertical-list", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "width_in_columns": 12
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.ReviewsVerticalList.Title.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "formSubscribe",
+                    "settings": {
+                        "color_scheme": "color-scheme--medium",
+                        "classes": ["lp-block-form-subscribe", "color-scheme--medium", "block-padding-top--35", "block-padding-bottom--35"],
+                        "background_image": null,
+                        "background_color": null,
+                        "darken": 0,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 35,
+                        "padding_bottom": 35,
+                        "show_title": false,
+                        "show_subtitle": false,
+                        "style": {
+                            "background-color": null,
+                            "color": null
+                        },
+                        "form": {
+                            "is_hidden": false,
+                            "Title": "CreateFunnel.CompanySiteCourse.Main.FormSubscribe.Form.Title",
+                            "Fields": [
+                                {
+                                    "CustomFieldId": null,
+                                    "FieldType": 5,
+                                    "Title": "CreateFunnel.CompanySiteCourse.Main.FormSubscribe.Form.Fields.Email.Title",
+                                    "TitleCrm": "Email",
+                                    "Type": "text",
+                                    "Required": true
+                                }
+                            ],
+                            "ButtonText": "CreateFunnel.CompanySiteCourse.Main.FormSubscribe.Form.ButtonText"
+                        },
+                        "mobile_hidden": false
+                    },
+                    "form": {
+                        "title": "CreateFunnel.CompanySiteCourse.Main.FormSubscribe.Form.TitleHTML",
+                        "subTitle": "",
+                        "buttonText": "CreateFunnel.CompanySiteCourse.Main.FormSubscribe.Form.ButtonTextHTML",
+                        "postAction": 1,
+                        "postMessageText": "CreateFunnel.CompanySiteCourse.Main.FormSubscribe.Form.PostMessageText",
+                        "PostMessageRedirectLpId": "#ACTION_THANKYOUPAGE_LP_ID#",
+                        "fields": [
+                            {
+                                "Title": "CreateFunnel.CompanySiteCourse.Main.FormSubscribe.Form.Fields.Name.Title",
+                                "TitleCrm": "CreateFunnel.CompanySiteCourse.Main.FormSubscribe.Form.Fields.Name.TitleCrm",
+                                "FieldType": 2,
+                                "Type": "text",
+                                "CustomFieldId": null,
+                                "Required": true
+                            },
+                            {
+                                "Title": "CreateFunnel.CompanySiteCourse.Main.FormSubscribe.Form.Fields.Phone.Title",
+                                "TitleCrm": "CreateFunnel.CompanySiteCourse.Main.FormSubscribe.Form.Fields.Phone.TitleCrm",
+                                "FieldType": 6,
+                                "Type": "tel",
+                                "CustomFieldId": null,
+                                "Required": true
+                            }
+                        ],
+                        "showAgreement": false,
+                        "agreementText": "CreateFunnel.CompanySiteCourse.Main.FormSubscribe.Form.AgreementText",
+                        "is_hidden": true
+                    }
+                },
+
+                {
+                    "name": "servicesAccordion",
+                    "settings": {
+                        "items": [
+                            {
+                                "header": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Items.First.Header",
+                                "content_items": [
+                                    {
+                                        "description": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Items.First.Description",
+                                        "price": "",
+                                        "show_price": false
+                                    }
+                                ]
+                            },
+                            {
+                                "header": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Items.Second.Header",
+                                "content_items": [
+                                    {
+                                        "description": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Items.Second.Description"
+                                    }
+                                ]
+                            },
+                            {
+                                "header": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Items.Third.Header",
+                                "content_items": [
+                                    {
+                                        "description": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Items.Third.Description"
+                                    }
+                                ]
+                            },
+                            {
+                                "header": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Items.Fourth.Header",
+                                "content_items": [
+                                    {
+                                        "description": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Items.Fourth.Description"
+                                    }
+                                ]
+                            },
+                            {
+                                "header": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Items.Fifth.Header",
+                                "content_items": [
+                                    {
+                                        "description": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Items.Fifth.Description"
+                                    }
+                                ]
+                            },
+                            {
+                                "header": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Items.Sixth.Header",
+                                "content_items": [
+                                    {
+                                        "description": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Items.Sixth.Description"
+                                    }
+                                ]
+                            }
+                        ],
+                        "classes": ["lp-block-services-accordion", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "align_btns": "center-xs",
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "style_custom": {
+                            "color-scheme--light": {
+                                "background_color_active": "rgb(255, 255, 255)"
+                            },
+                            "color-scheme--medium": {
+                                "background_color_active": "rgb(255, 255, 255)"
+                            },
+                            "color-scheme--dark": {
+                                "background_color_active": "rgb(148, 148, 148)"
+                            },
+                            "color-scheme--custom": {
+                                "background_color_active": "rgb(255, 255, 255)"
+                            }
+                        },
+                        "first_tab_open": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.ServicesAccordion.Title.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "footerSocial",
+                    "settings": {
+                        "classes": ["lp-footer-social", "block-padding-top--45", "block-padding-bottom--45", "color-scheme--dark"],
+                        "color_scheme": "color-scheme--dark",
+                        "vk_enabled": true,
+                        "fb_enabled": true,
+                        "youtube_enabled": false,
+                        "twitter_enabled": false,
+                        "instagram_enabled": true,
+                        "whatsapp_enabled": false,
+                        "telegram_enabled": false,
+                        "odnoklassniki_enabled": false,
+                        "background_image": null,
+                        "background_color": null,
+                        "background_fixed": false,
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "darken": 0,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "mobile_hidden": false,
+                        "show_on_all_landing_pages_top": false,
+                        "show_on_all_landing_pages_bottom": false,
+                        "style": {
+                            "background-color": null,
+                            "color": null
+                        },
+                        "color": null
+                    },
+                    "subblocks": [
+                        {
+                            "name": "copyright",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.FooterSocial.Copyright.Placeholder"
+                        },
+                        {
+                            "name": "address",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.Main.FooterSocial.Address.Placeholder"
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "name": "CreateFunnel.CompanySiteCourse.ThankYouPage",
+            "pageType": "ThankYouPage",
+            "lpPageSettings": {
+                "SeoSettings.PageTitle": "CreateFunnel.CompanySiteCourse.ThankYouPage.PageTitle",
+                "SeoSettings.AllowAccess": "True"
+            },
+            "blocks": [
+                {
+                    "name": "header",
+                    "settings": {
+                        "classes": ["lp-block-header", "color-scheme--light", "block-padding-top--0", "block-padding-bottom--0"],
+                        "color_scheme": "color-scheme--light",
+                        "show_logo": true,
+                        "show_button": true,
+                        "show_phone": false,
+                        "show_email": false,
+                        "show_menu": true,
+                        "vk_enabled": true,
+                        "fb_enabled": true,
+                        "youtube_enabled": false,
+                        "twitter_enabled": false,
+                        "instagram_enabled": true,
+                        "whatsapp_enabled": false,
+                        "telegram_enabled": false,
+                        "odnoklassniki_enabled": false,
+                        "menu_items": [],
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": "#ffffff",
+                        "fixedOnScroll": false,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "runDown": false,
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "mobile_hidden": false,
+                        "button": {
+                            "Name": null,
+                            "text": "CreateFunnel.CompanySiteCourse.ThankYouPage.Header.Button.Text",
+                            "action": "Url",
+                            "action_url_lp_id": "#ACTION_MAIN_LP_ID#"
+                        },
+                        "show_button2": true,
+                        "button2": {
+                            "is_default_style": false,
+                            "action": "Url",
+                            "action_url": "",
+                            "action_url_lp_id": "#ACTION_MAIN_2_LP_ID#",
+                            "text": "CreateFunnel.CompanySiteCourse.ThankYouPage.Header.Button2.Text",
+                            "type": "Secondary",
+                            "target_blank": true
+                        },
+                        "form": { "is_hidden": true },
+                        "show_on_all_landing_pages_top": false,
+                        "show_on_all_landing_pages_bottom": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "logo",
+                            "type": "logo",
+                            "settings": {
+                                "src": "areas/landing/Templates/CompanySiteCourse/images/logo_main.png",
+                                "type": "image"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "textCenter",
+                    "settings": {
+                        "classes": ["lp-block-text-single", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "show_button2": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "align_btns": "center-xs",
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "width_in_columns": 8
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.ThankYouPage.TextCenter.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.ThankYouPage.TextCenter.Text.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "contactsButtonsSocialsAlt",
+                    "settings": {
+                        "classes": [
+                            "lp-block-contacts-buttons-socials-alt",
+                            "color-scheme--light",
+                            "block-padding-bottom--45",
+                            "block-padding-top--0"
+                        ],
+                        "color_scheme": "color-scheme--light",
+                        "vk_enabled": true,
+                        "fb_enabled": true,
+                        "youtube_enabled": true,
+                        "twitter_enabled": true,
+                        "instagram_enabled": true,
+                        "whatsapp_enabled": false,
+                        "viber_enabled": false,
+                        "telegram_enabled": false,
+                        "odnoklassniki_enabled": false,
+                        "call_enabled": false,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": "#ffffff",
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "align_items": "center-xs",
+                        "padding_top": 0,
+                        "padding_bottom": 45,
+                        "mobile_hidden": false
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "CreateFunnel.CompanySiteCourse.CourseCabinet",
+            "pageType": "MainSecond",
+            "lpPageSettings": {
+                "SeoSettings.PageTitle": "CreateFunnel.CompanySiteCourse.CourseCabinet.PageTitle"
+            },
+            "blocks": [
+                {
+                    "name": "headerBurger",
+                    "settings": {
+                        "classes": ["lp-block-header-burger", "color-scheme--medium"],
+                        "color_scheme": "color-scheme--medium",
+                        "type_menu": "burger",
+                        "show_logo": true,
+                        "show_button": false,
+                        "show_phone": false,
+                        "show_email": false,
+                        "show_menu": true,
+                        "vk_enabled": true,
+                        "fb_enabled": true,
+                        "youtube_enabled": false,
+                        "twitter_enabled": false,
+                        "instagram_enabled": true,
+                        "whatsapp_enabled": false,
+                        "telegram_enabled": false,
+                        "odnoklassniki_enabled": false,
+                        "menu_items": [
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Home.Text",
+                                "href": "#ACTION_MAIN_1_LP_URL#",
+                                "target": false,
+                                "class": "",
+                                "childs": []
+                            },
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week1.Text",
+                                "href": "",
+                                "target": false,
+                                "class": "",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week1.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week1.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week1.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week1.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week2.Text",
+                                "href": "",
+                                "target": false,
+                                "class": "",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week2.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week2.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week2.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week2.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week3.Text",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week3.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week3.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week3.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week3.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week4.Text",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week4.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week4.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week4.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.HeaderBurger.MenuItems.Week4.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    }
+                                ]
+                            }
+                        ],
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "style": {
+                            "background-attachment": "scroll",
+                            "background-color": null,
+                            "color": null
+                        },
+                        "show_button2": false,
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "show_on_all_landing_pages_top": false,
+                        "show_on_all_landing_pages_bottom": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "logo",
+                            "type": "logo",
+                            "settings": {
+                                "src": "areas/landing/Templates/CompanySiteCourse/images/logo.png",
+                                "type": "image"
+                            }
+                        }
+                    ]
+                },
+
+                {
+                    "name": "columnsMenu",
+                    "settings": {
+                        "menu_items": [
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week1.Text",
+                                "href": "",
+                                "target": false,
+                                "class": "",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week1.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#",
+                                        "target": false
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week1.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#",
+                                        "target": false
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week1.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#",
+                                        "target": false
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week1.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#",
+                                        "target": false
+                                    }
+                                ],
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic1.png",
+                                    "type": "image"
+                                }
+                            },
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week2.Text",
+                                "href": "",
+                                "target": false,
+                                "class": "",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week2.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#",
+                                        "target": false
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week2.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#",
+                                        "target": false
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week2.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#",
+                                        "target": false
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week2.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#",
+                                        "target": false
+                                    }
+                                ],
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic2.png",
+                                    "type": "image"
+                                }
+                            },
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week3.Text",
+                                "href": "",
+                                "target": false,
+                                "class": "",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week3.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#",
+                                        "target": false
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week3.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#",
+                                        "target": false
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week3.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#",
+                                        "target": false
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week3.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#",
+                                        "target": false
+                                    }
+                                ],
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic3.png",
+                                    "type": "image"
+                                }
+                            },
+                            {
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic4.png",
+                                    "type": "image"
+                                },
+                                "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week4.Text",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week4.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week4.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week4.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week4.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    }
+                                ]
+                            },
+                            {
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic5.png",
+                                    "type": "image"
+                                },
+                                "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week5.Text",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week5.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week5.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week5.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week5.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    }
+                                ]
+                            },
+                            {
+                                "picture": {
+                                    "src": "areas/landing/Templates/CompanySiteCourse/images/pic6.png",
+                                    "type": "image"
+                                },
+                                "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week6.Text",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week6.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week6.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week6.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.CourseCabinet.ColumnsMenu.MenuItems.Week6.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    }
+                                ]
+                            }
+                        ],
+                        "classes": ["columns-menu", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "color_scheme": "color-scheme--light",
+                        "show_title": false,
+                        "show_subtitle": false,
+                        "items_in_row": 3,
+                        "hide_photo": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "style": {},
+                        "align_items": "start-xs",
+                        "align_text": "start-xs",
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "CreateFunnel.CompanySiteCourse.ExampleInternalPage",
+            "pageType": "MainThird",
+            "lpPageSettings": {
+                "SeoSettings.PageTitle": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.PageTitle"
+            },
+            "blocks": [
+                {
+                    "name": "headerBurger",
+                    "settings": {
+                        "classes": ["lp-block-header-burger", "color-scheme--medium"],
+                        "color_scheme": "color-scheme--medium",
+                        "type_menu": "burger",
+                        "show_logo": true,
+                        "show_button": false,
+                        "show_phone": false,
+                        "show_email": false,
+                        "show_menu": true,
+                        "vk_enabled": true,
+                        "fb_enabled": true,
+                        "youtube_enabled": false,
+                        "twitter_enabled": false,
+                        "instagram_enabled": true,
+                        "whatsapp_enabled": false,
+                        "telegram_enabled": false,
+                        "odnoklassniki_enabled": false,
+                        "menu_items": [
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Home.Text",
+                                "href": "/lp/sait-kursa",
+                                "target": false,
+                                "class": "",
+                                "childs": []
+                            },
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week1.Text",
+                                "href": "",
+                                "target": false,
+                                "class": "",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week1.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week1.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week1.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week1.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week2.Text",
+                                "href": "",
+                                "target": false,
+                                "class": "",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week2.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week2.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week2.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week2.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week3.Text",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week3.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week3.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week3.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week3.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week4.Text",
+                                "childs": [
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week4.Intro.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week4.Tips.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week4.Alphabet.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    },
+                                    {
+                                        "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.HeaderBurger.MenuItems.Week4.Pronouns.Text",
+                                        "href": "#ACTION_MAIN_3_LP_URL#"
+                                    }
+                                ]
+                            }
+                        ],
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "style": {
+                            "background-attachment": "scroll",
+                            "background-color": null,
+                            "color": null
+                        },
+                        "show_button2": false,
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "show_on_all_landing_pages_top": false,
+                        "show_on_all_landing_pages_bottom": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "logo",
+                            "type": "logo",
+                            "settings": {
+                                "src": "areas/landing/Templates/CompanySiteCourse/images/logo.png",
+                                "type": "image"
+                            }
+                        }
+                    ]
+                },
+
+                {
+                    "name": "video",
+                    "settings": {
+                        "color_scheme": "color-scheme--light",
+                        "classes": ["lp-block-video", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "urlVideo": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "heightVideo": null,
+                        "widthVideo": null,
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "style": { "background-attachment": "scroll" },
+                        "mobile_hidden": false
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.Video.Title.Placeholder"
+                        },
+                        {
+                            "name": "video",
+                            "type": "video",
+                            "settings": {
+                                "urlVideo": "https://www.youtube.com/watch?v=JO8D7FAQbi0&t=358s ",
+                                "autoplayVideo": false,
+                                "asBackground": false,
+                                "insertionMethod": "link",
+                                "upload": { "urlVideo": null }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "textSingleSlimLeft",
+                    "settings": {
+                        "classes": ["lp-block-text-slim-single-left", "block-padding-top--45", "block-padding-bottom--45", "color-scheme--medium"],
+                        "color_scheme": "color-scheme--medium",
+                        "show_title": true,
+                        "show_subtitle": false,
+                        "show_button": false,
+                        "show_button2": false,
+                        "constructor_buttons_reverse": true,
+                        "background_image": null,
+                        "darken": 0,
+                        "background_color": null,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 45,
+                        "padding_bottom": 45,
+                        "style": {
+                            "background-color": null,
+                            "color": null
+                        },
+                        "align_btns": "start-xs",
+                        "align_items": "start-xs",
+                        "align_text": "start-xs",
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false,
+                        "width_in_columns": 12,
+                        "color": null
+                    },
+                    "subblocks": [
+                        {
+                            "name": "title",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.TextSingleSlimLeft.Title.Placeholder"
+                        },
+                        {
+                            "name": "text",
+                            "type": "html",
+                            "placeholder": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.TextSingleSlimLeft.Text.Placeholder"
+                        }
+                    ]
+                },
+                {
+                    "name": "formButton",
+                    "settings": {
+                        "color_scheme": "color-scheme--light",
+                        "classes": ["lp-block-form", "color-scheme--light", "block-padding-bottom--40", "block-padding-top--40"],
+                        "background_image": null,
+                        "background_color": null,
+                        "darken": 0,
+                        "background_settings": {
+                            "background_fixed": false,
+                            "parallax": false
+                        },
+                        "padding_top": 40,
+                        "padding_bottom": 40,
+                        "show_title": false,
+                        "show_subtitle": false,
+                        "show_button": true,
+                        "align_btns": "center-xs",
+                        "button": {
+                            "Name": null,
+                            "text": "CreateFunnel.CompanySiteCourse.ExampleInternalPage.FormButton.Button.Text",
+                            "action": "Url",
+                            "action_url": "#ACTION_MAIN_3_LP_URL#"
+                        },
+                        "show_button2": false,
+                        "form": { "is_hidden": true },
+                        "mobile_hidden": false
+                    }
+                }
+            ]
+        }
+    ]
+}

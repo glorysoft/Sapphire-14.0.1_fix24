@@ -1,0 +1,37 @@
+﻿@using AdvantShop.Core.Services.Configuration.Settings
+@using AdvantShop.Core.Services.Configuration.Settings.Enums
+@{
+    Layout = "_LayoutEmpty.cshtml";
+    Html.AddAsset("user");
+
+    var from = Request.QueryString["from"];
+
+    if (string.IsNullOrWhiteSpace(from))
+    {
+        from = Url.AbsoluteActionUrl("Index", "Home");
+    }
+}
+
+<div class="user-layout">
+    <header id="header"
+            class="mobile-header cs-bg-1 cs-t-8 mobile-header--@(SettingsMobile.HeaderStyle.ToLower())"
+            data-sticky-element>
+        @if (SettingsMain.StoreAccessMode == EStoreAccessMode.All)
+        {
+            <div class="mobile-header__icon" style="width: 18px;"></div>
+        }
+        <div class="mobile-header__item mobile-header__logo-block">
+            @Html.Action("Logo", "Home", new { area = "mobile" })
+        </div>
+        <div class="mobile-header__item mobile-header__user-close-block">
+            @Html.Action("CloseTrigger", "User")
+        </div>
+    </header>
+    <div class="mobile-body">
+        @RenderBody()
+    </div>
+    <footer id="footer" class="cs-bg-3">
+        @Html.Action("Copyright", "Common", new { area = "" })
+    </footer>
+</div>
+

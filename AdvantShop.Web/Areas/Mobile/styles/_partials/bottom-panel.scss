@@ -1,0 +1,134 @@
+.bottom-panel {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    z-index: 100;
+
+    &--theme-default {
+        background: #fff;
+        border-top: 1px solid #d9d9d9;
+    }
+
+    &--theme-alternative {
+        padding: 14px;
+    }
+
+    &__menu-link {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        height: 46px;
+
+        &:focus,
+        &:hover,
+        &:active {
+            text-decoration: none;
+        }
+
+        .mobile-header__cart-count,
+        .mobile-header__wishlist-count {
+            top: -2px;
+            right: 10%;
+            font-size: 10px;
+            min-width: 17px;
+            min-height: 17px;
+            color: #fff !important;
+        }
+    }
+
+    &__menu-block {
+        display: flex;
+        justify-content: space-between;
+
+        &--theme-default {
+            padding: 5px 16px 10px;
+            align-items: center;
+        }
+
+        &--theme-alternative {
+            gap: 8px;
+            align-items: stretch;
+        }
+    }
+
+    &__menu-icon {
+        text-align: center;
+        position: relative;
+    }
+
+    &__menu-descr {
+        font-weight: normal;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    &--theme-alternative .bottom-panel__menu-item--cart {
+        flex-grow: 1;
+    }
+
+    .cs-l-6:hover {
+        color: inherit;
+    }
+}
+
+.color-gray {
+    color: #4b4f58;
+}
+
+.bottom-panel__btn {
+    &--theme-alternative {
+        display: flex;
+        height: 100%;
+        align-items: center;
+    }
+}
+
+.bottom-panel-btn-cart {
+    &--theme-alternative {
+        justify-content: space-between;
+        text-transform: none;
+    }
+
+    &__text {
+        &--theme-alternative {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__icon {
+        &--theme-alternative {
+            position: relative;
+            display: flex;
+            gap: 8px;
+            height: 24px;
+
+            svg {
+                position: relative;
+                top: -3px;
+            }
+        }
+    }
+
+    &__icon-value {
+        &--theme-alternative {
+            position: absolute;
+            inset: 7px 0 0;
+            display: flex;
+            font-size: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.bottom-panel-btn-cart__icon--cart{
+    margin-top: -7px;
+}
+.bottom-panel-btn-cart__text{
+    gap: 5px;
+}

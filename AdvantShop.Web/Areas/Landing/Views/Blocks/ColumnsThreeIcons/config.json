@@ -1,0 +1,97 @@
+﻿{
+    "name": "columnsThreeIcons",
+    "type": "column",
+    "description": "Landings.Views.Blocks.Config.ColumnsThreeIcons.Description",
+    "category": "Landings.Views.Blocks.Config.ColumnsThreeIcons.Category",
+    "picture": "./areas/landing/frontend/images/columns/columnsThreeIcons.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsThreeIcons.SubBlockPlasholderOne"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsThreeIcons.SubBlockPlasholderTwo"
+        }
+    ],
+    "settings": {
+        "align_items": "center-xs",
+        "gridColumns": {
+            "text": true,
+            "title": true,
+            "icon": true
+        },
+        "items": [
+            {
+                "title": "Landings.Views.Blocks.Config.ColumnsThreeIcons.ItemTitleOne",
+                "text": "Landings.Views.Blocks.Config.ColumnsThreeIcons.ItemTextOne",
+                "picture": {
+                    "src": "areas/landing/images/columns/good-review.png",
+                    "type": "image"
+                }
+            },
+            {
+                "title": "Landings.Views.Blocks.Config.ColumnsThreeIcons.ItemTitleTwo",
+                "text": "Landings.Views.Blocks.Config.ColumnsThreeIcons.ItemTextTwo",
+                "picture": {
+                    "src": "areas/landing/images/columns/love.png",
+                    "type": "image"
+                }
+            },
+            {
+                "title": "Landings.Views.Blocks.Config.ColumnsThreeIcons.ItemTitleThree",
+                "text": "Landings.Views.Blocks.Config.ColumnsThreeIcons.ItemTextThree",
+                "picture": {
+                    "src": "areas/landing/images/columns/megaphone.png",
+                    "type": "image"
+                }
+            }
+        ],
+        "classes": ["lp-block-columns-three-icons", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": true,
+        "show_subtitle": false,
+        "show_button": false,
+        "constructor_buttons_reverse": true,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "items_in_row": 3,
+        "rows_in_block": 1,
+        "padding_bottom": 45,
+        "columnBackground": false,
+        "style": {},
+        "settings_picture": {
+            "galleryIconsEnabled": true
+        },
+        "align_btns": "center-xs",
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "color": null,
+            "background_color": null,
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": null,
+            "border_radius": 0,
+            "text": "Landings.Views.Blocks.Config.ColumnsThreeIcons.ButtonText",
+            "size": "xsmall",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false
+    }
+}

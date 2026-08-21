@@ -1,0 +1,10 @@
+﻿{
+    "name": "reference",
+    "type": "reference",
+    "description": "Landings.Views.Blocks.Config.Reference.Description",
+    "category": "Html",
+    "picture": "./areas/landing/images/reference/reference_preview.jpg",
+    "settings": {
+        "blockId": ""
+    }
+}

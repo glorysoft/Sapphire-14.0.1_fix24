@@ -1,0 +1,31 @@
+﻿.warehouse-page {
+    &__inner {
+        display: grid;
+        row-gap: 20px;
+        padding-bottom: 20px;
+    }
+
+    .points-map {
+        --height-map: 377px;
+    }
+
+    &__address {
+        font-size: 22px;
+        font-weight: normal;
+        line-height: 1.2;
+        font-style: normal;
+    }
+
+    &__info {
+        display: grid;
+        row-gap: 12px;
+    }
+
+    &__time-of-work,
+    &__comment,
+    &__description {
+        font-size: 16px;
+        line-height: 1.2;
+        font-weight: normal;
+    }
+}

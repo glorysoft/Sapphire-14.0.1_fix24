@@ -1,0 +1,86 @@
+﻿{
+    "name": "scheduleWithTitle",
+    "type": "scheduleWithTitle",
+    "description": "Landings.Views.Blocks.Config.ScheduleWithTitle.Description",
+    "category": "Landings.Views.Blocks.Config.ScheduleWithTitle.Category",
+    "picture": "./areas/landing/images/schedule/scheduleWithTitle.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ScheduleWithTitle.Title.Placeholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ScheduleWithTitle.Subtitle.Placeholder"
+        },
+        {
+            "name": "text",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ScheduleWithTitle.Text.Placeholder"
+        }
+    ],
+    "settings": {
+        "items": [
+            {
+                "name": "Landings.Views.Blocks.Config.ScheduleWithTitle.Item1.Name",
+                "title": "Landings.Views.Blocks.Config.ScheduleWithTitle.Item1.Title",
+                "text": "Landings.Views.Blocks.Config.ScheduleWithTitle.Item1.Text"
+            },
+            {
+                "name": "Landings.Views.Blocks.Config.ScheduleWithTitle.Item2.Name",
+                "title": "Landings.Views.Blocks.Config.ScheduleWithTitle.Item2.Title",
+                "text": "Landings.Views.Blocks.Config.ScheduleWithTitle.Item2.Text"
+            },
+            {
+                "name": "Landings.Views.Blocks.Config.ScheduleWithTitle.Item3.Name",
+                "title": "Landings.Views.Blocks.Config.ScheduleWithTitle.Item3.Title",
+                "text": "Landings.Views.Blocks.Config.ScheduleWithTitle.Item3.Text"
+            }
+        ],
+        "classes": ["lp-block-schedule-with-title", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": true,
+        "show_subtitle": false,
+        "show_button": false,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "style": {},
+        "align_btns": "center-xs",
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.ScheduleWithTitle.Button.Text",
+            "color": null,
+            "background_color": null,
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": null,
+            "border_radius": 0,
+            "size": "xsmall",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false,
+        "settings_picture": {
+            "cropper_params": {
+                "aspectRatio": "1"
+            }
+        },
+        "width_in_columns": 10
+    }
+}

@@ -1,0 +1,9 @@
+﻿@using AdvantShop.Core.Services.Bonuses.Internal
+<div class="myaccount-bring-friend" data-ng-controller="MyAccountCtrl as myAccount">
+    <div class="h2 myaccount-subtitle m-b-md">@T("MyAccount.BringFriend.BringFriend")</div>
+    <div class="h6 m-b-md">@T("MyAccount.BringFriend.ProgramConditions")</div>
+    <div class="m-b-md">@Html.Raw(HttpUtility.HtmlDecode(InternalBonusSystem.BringFriendConditions.Replace("\n", "<br />")))</div>
+    <modal-bring-friend-trigger>
+        <button type="button" class="btn btn-middle btn-confirm">@T("MyAccount.BringFriend.Recommend")</button>
+    </modal-bring-friend-trigger>
+</div>

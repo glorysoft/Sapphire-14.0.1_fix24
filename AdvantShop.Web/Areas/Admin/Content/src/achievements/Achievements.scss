@@ -1,0 +1,236 @@
+.congratulationsDashboard .tab-content > .active,
+uib-tab {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    background: transparent;
+}
+
+.dashboard-content .nav > li > a {
+    color: #2f4050;
+    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.dashboard-content .nav.nav-tabs {
+    background: #fff;
+}
+
+.dashboard-content .nav.nav-tabs > li.active > a {
+    background-color: #2d9cee;
+    color: #fff;
+}
+
+.complete_true {
+    background: #edf7ff;
+}
+
+.achievements_button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.dashboard-content .svg_icon {
+    width: 124px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    margin: 0;
+}
+
+.dashboard-content .text_indent {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.dashboard-content .block_indent {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.dashboard-content__progress-bar--step-2 {
+    background: linear-gradient(to right, #3d8af6 0%, #3d8af6 60%, #ebebeb 60%, #ebebeb 100%);
+}
+
+.dashboard-content .progress-bar_indent {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.dashboard-content__progress-bar {
+    width: 90%;
+}
+
+.dashboard-content .inline-container {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-content .inline-container p {
+    margin-right: 20px;
+}
+
+.dashboard-content .reward-coins {
+    position: relative;
+    padding-right: 40px;
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 24px;
+        height: 24px;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-image: url('../../images/icon/Advantcoin.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+.dashboard-content__progress-bar--steps-complete {
+    background: linear-gradient(
+            to right,
+            #3d8af6 0%,
+            #3d8af6 var(--progress, 0%),
+            #ebebeb var(--progress, 0%),
+            #ebebeb 100%
+    );
+}
+
+
+.mobile-version .dashboard-content{
+    .dashboard-content__title {
+        font-size: 1.33rem;
+    }
+
+    .mobile-version .dashboard-content__text {
+        font-size: 0.75rem;
+    }
+    .mobile-version .dashboard-content__text--sub {
+        font-size: 0.75rem;
+    }
+
+    .mobile-version .btn.btn-sm {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+    }
+
+    .mobile-version .dashboard-content__social-links-wrap {
+        a.dashboard-content__social-link svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .mobile-version .dashboard-content__item-right-content .svg_icon {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.mobile-version .congratulationsDashboard .achievements-icon {
+    max-width: 90px;
+    max-height: 90px;
+}
+
+.mobile-version .dashboard-content__title {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.mobile-version .dashboard-content__item--flex {
+    flex-wrap: wrap;
+}
+
+.mobile-version .dashboard-content .svg_icon {
+    max-width: 64px;
+    max-height: 64px;
+}
+
+.dashboard-content .help-trigger {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.mobile-version .dashboard-content__item-about {
+    flex-basis: 60%;
+    margin-bottom: 10px;
+}
+
+.dashboard-content .link-skip {
+    display: inline-block;
+    float: right;
+    min-height: 20px;
+    margin-bottom: 0;
+}
+
+.mobile-version .dashboard-content .link-skip {
+    margin-bottom: 5px;
+}
+
+.dashboard-content .link-skip-container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media (width <= 768px) {
+    .mobile-version .dashboard-content__item-about {
+        min-width: 450px;
+    }
+}
+
+@media (width <= 425px) {
+    .mobile-version .dashboard-content__item-about {
+        min-width: 275px;
+    }
+}
+
+@media (width <= 375px) {
+    .mobile-version .dashboard-content__item-about {
+        min-width: 225px;
+    }
+}
+
+@media (width <= 320px) {
+    .mobile-version .dashboard-content__item-about {
+        min-width: 160px;
+    }
+}
+
+.mobile-version .dashboard-content__items {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.mobile-version .dashboard-content__item-about {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+    min-width: 0;
+}
+
+.mobile-version .dashboard-content__social-links-wrap {
+    display: flex;
+    gap: 10px;
+}
+
+.mobile-version .dashboard-content__social-links-wrap.align-right {
+    margin-left: auto;
+}
+
+.mobile-version .dashboard-content__item--p-md{
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.mobile-version .dashboard-content__btn-blue-wrap{
+    margin-top: 0;
+}

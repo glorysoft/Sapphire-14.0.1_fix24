@@ -1,0 +1,17 @@
+﻿<!--noindex-->
+<form novalidate name="checkOrderForm" class="block-alt check-order cs-bg-3" data-ng-controller="CheckOrderCtrl as checkorder">
+    <header class="block-alt-head check-order__header">
+        <div class="h3 check-order__header-text">@T("Checkout.CheckOrderBlock.CheckStatus")</div>
+    </header>
+    <div class="block-alt-content check-order__body">
+        <div class="check-order-field check-order__field">
+            <input class="input-xsmall check-order__field-input" type="text" value="" placeholder="@T("Checkout.CheckOrderBlock.OrderNumber")" data-ng-model="checkorder.orderNumber" data-ng-model-options="{ debounce: 100 }" required />
+        </div>
+        <div class="check-order__btn-wrap">
+            <button class="btn btn-small btn-action check-order__btn" type="submit"
+                   data-button-validation
+                   data-button-validation-success="checkorder.checkOrderSubmit(checkorder.orderNumber)">@T("Checkout.CheckOrderBlock.Check")</button>
+        </div>
+    </div>
+</form>
+<!--/noindex-->

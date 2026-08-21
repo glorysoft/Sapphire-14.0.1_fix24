@@ -1,0 +1,49 @@
+@use '../../../../styles/settings';
+
+.wishlist-control-wrap {
+    display: contents;
+}
+
+.wishlist-control {
+    font-size: settings.$font-size-normal;
+}
+
+.wishlist-checkbox ~ .custom-input-text {
+    .wishlist-text-not-added {
+        display: inline;
+    }
+
+    .wishlist-text-added {
+        display: none;
+    }
+}
+.wishlist-checkbox:not(:checked){
+    cursor: pointer;
+}
+.wishlist-checkbox:checked ~ .custom-input-text {
+    .wishlist-text-not-added {
+        display: none;
+    }
+
+    .wishlist-text-added {
+        display: inline;
+    }
+}
+
+.mobile-version {
+    .wishlist-control:not(.cart-full-wishlist) {
+        box-shadow: 0 0 3px -1px rgb(0 0 0 / 50%);
+    }
+
+    .wishlist-control.wishlist-state-add {
+        svg {
+            fill: currentcolor;
+        }
+    }
+}
+.wishlist-control__icon{
+    font-size: 1rem;
+    &:after{
+        margin: 0;
+    }
+}

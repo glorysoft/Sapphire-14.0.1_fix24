@@ -1,0 +1,17 @@
+﻿%block-as-card-parent {
+    --row-gap-block-as-card: 20px;
+    display: grid;
+    row-gap: var(--row-gap-block-as-card);
+}
+
+%block-as-card {
+    background-color: var(--cs-10);
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+%block-as-card-radius {
+    @extend %block-as-card;
+    border-radius: 5px;
+}
+

@@ -1,0 +1,28 @@
+﻿.search-block{
+    &--only-on-main-page{
+        padding: 5px 1rem 0;
+    }
+    &__form--only-on-main-page{
+        position: relative;
+        &:focus-within{
+            z-index: 110;
+        }
+    }
+    &__button-container--only-on-main-page{
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        display: flex;
+        place-items: center;
+    }
+    &__button--only-on-main-page{
+        background: transparent none;
+        border: 0;
+    }
+    &__input--only-on-main-page{
+        text-indent: 24px;
+        font-size: 14px;
+    }
+}

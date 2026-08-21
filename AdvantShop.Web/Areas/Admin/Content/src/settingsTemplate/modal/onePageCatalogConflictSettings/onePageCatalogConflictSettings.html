@@ -1,0 +1,195 @@
+﻿<form data-is-mobile>
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.SinglePageCatalogMode'|translate}}</h2>
+    </div>
+    <div class="modal-body one-page-catalog-conflict-settings">
+        <div class="row one-page-catalog-conflict-settings__block">
+            <div
+                class="form-group setting__form-group col-xs-12 one-page-catalog-conflict-settings__row"
+                data-ng-if="$ctrl.data.ShowSettingSearchBlockLocation">
+                <div class="row middle-xs control-label" data-ng-class="{'flex-nowrap': isMobile.value}">
+                    <div class="col-xs" data-ng-class="{'flex-shrink-1': isMobile.value}">
+                        <label for="TurnOffSearchBlockLocation" class="setting__font-weight--xs"> {{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.Search'|translate}} </label>
+                    </div>
+                    <div class="relative col-xs-slim relative flex middle-xs first-xs" data-ng-class="{'p-r-xs': isMobile.value, 'p-r-none': !isMobile.value}">
+                        <label class="adv-checkbox-label flex">
+                            <input
+                                type="checkbox"
+                                id="TurnOffSearchBlockLocation"
+                                class="adv-checkbox-input input-alt-mobile"
+                                data-ng-model="$ctrl.data.TurnOffSearchBlockLocation" />
+                            <span class="adv-checkbox-emul" data-e2e="TurnOffSearchBlockLocation"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div
+                class="form-group setting__form-group col-xs-12 one-page-catalog-conflict-settings__row"
+                data-ng-if="$ctrl.data.ShowSettingProductReviewsVisibility">
+                <div class="row middle-xs control-label" data-ng-class="{'flex-nowrap': isMobile.value}">
+                    <div class="col-xs" data-ng-class="{'flex-shrink-1': isMobile.value}">
+                        <label for="TurnOffProductReviewsVisibility" class="setting__font-weight--xs"> {{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.Reviews'|translate}} </label>
+                    </div>
+                    <div class="relative col-xs-slim relative flex middle-xs first-xs" data-ng-class="{'p-r-xs': isMobile.value, 'p-r-none': !isMobile.value}">
+                        <label class="adv-checkbox-label flex">
+                            <input
+                                type="checkbox"
+                                id="TurnOffProductReviewsVisibility"
+                                class="adv-checkbox-input input-alt-mobile"
+                                data-ng-model="$ctrl.data.TurnOffProductReviewsVisibility" />
+                            <span class="adv-checkbox-emul" data-e2e="TurnOffProductReviewsVisibility"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="form-group setting__form-group col-xs-12 one-page-catalog-conflict-settings__row"
+                data-ng-if="$ctrl.data.ShowSettingDisplayCategoriesInBottomMenu">
+                <div class="row middle-xs control-label" data-ng-class="{'flex-nowrap': isMobile.value}">
+                    <div class="col-xs" data-ng-class="{'flex-shrink-1': isMobile.value}">
+                        <label for="TurnOffDisplayCategoriesInBottomMenu" class="setting__font-weight--xs"> {{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.CategoriesBottomMenu'|translate}} </label>
+                    </div>
+                    <div class="relative col-xs-slim relative flex middle-xs first-xs" data-ng-class="{'p-r-xs': isMobile.value, 'p-r-none': !isMobile.value}">
+                        <label class="adv-checkbox-label flex">
+                            <input
+                                type="checkbox"
+                                id="TurnOffDisplayCategoriesInBottomMenu"
+                                class="adv-checkbox-input input-alt-mobile"
+                                data-ng-model="$ctrl.data.TurnOffDisplayCategoriesInBottomMenu" />
+                            <span class="adv-checkbox-emul" data-e2e="TurnOffDisplayCategoriesInBottomMenu"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="form-group setting__form-group col-xs-12 one-page-catalog-conflict-settings__row"
+                data-ng-if="$ctrl.data.ShowSettingShowShippingsMethodsInDetails">
+                <div class="row middle-xs control-label" data-ng-class="{'flex-nowrap': isMobile.value}">
+                    <div class="col-xs" data-ng-class="{'flex-shrink-1': isMobile.value}">
+                        <label for="TurnOffShowShippingsMethodsInDetails" class="setting__font-weight--xs"> {{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.DeliveryInProductCard'|translate}} </label>
+                    </div>
+                    <div class="relative col-xs-slim relative flex middle-xs first-xs" data-ng-class="{'p-r-xs': isMobile.value, 'p-r-none': !isMobile.value}">
+                        <label class="adv-checkbox-label flex">
+                            <input
+                                type="checkbox"
+                                id="TurnOffShowShippingsMethodsInDetails"
+                                class="adv-checkbox-input input-alt-mobile"
+                                data-ng-model="$ctrl.data.TurnOffShowShippingsMethodsInDetails" />
+                            <span class="adv-checkbox-emul" data-e2e="TurnOffShowShippingsMethodsInDetails"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="form-group setting__form-group col-xs-12 one-page-catalog-conflict-settings__row"
+                data-ng-if="$ctrl.data.ShowSettingRelatedProduct">
+                <div class="row middle-xs control-label" data-ng-class="{'flex-nowrap': isMobile.value}">
+                    <div class="col-xs-slim col-md-7 col-wl-4" data-ng-class="{'flex-shrink-1': isMobile.value}">
+                        <label for="TurnOffRelatedProduct" class="setting__font-weight--xs">{{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.ListsRelatedProductsInCard'|translate}}</label>
+                    </div>
+                    <div class="relative col-xs-slim relative flex middle-xs first-xs" data-ng-class="{'p-r-xs': isMobile.value, 'p-r-none': !isMobile.value}">
+                        <label class="adv-checkbox-label flex">
+                            <input
+                                type="checkbox"
+                                id="TurnOffRelatedProduct"
+                                class="adv-checkbox-input input-alt-mobile"
+                                data-ng-model="$ctrl.data.TurnOffRelatedProduct" />
+                            <span class="adv-checkbox-emul" data-e2e="TurnOffRelatedProduct"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="form-group setting__form-group col-xs-12 one-page-catalog-conflict-settings__row"
+                data-ng-if="$ctrl.data.ShowSettingEnableCompareProducts">
+                <div class="row middle-xs control-label" data-ng-class="{'flex-nowrap': isMobile.value}">
+                    <div class="col-xs" data-ng-class="{'flex-shrink-1': isMobile.value}">
+                        <label for="TurnOffEnableCompareProducts" class="setting__font-weight--xs"> {{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.ProductComparison'|translate}} </label>
+                    </div>
+                    <div class="relative col-xs-slim relative flex middle-xs first-xs" data-ng-class="{'p-r-xs': isMobile.value, 'p-r-none': !isMobile.value}">
+                        <label class="adv-checkbox-label flex">
+                            <input
+                                type="checkbox"
+                                id="TurnOffEnableCompareProducts"
+                                class="adv-checkbox-input input-alt-mobile"
+                                data-ng-model="$ctrl.data.TurnOffEnableCompareProducts" />
+                            <span class="adv-checkbox-emul" data-e2e="TurnOffEnableCompareProducts"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 first-xs one-page-catalog-conflict-settings__title">{{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.RecommendTurningElements'|translate}}</div>
+        </div>
+        <div class="row one-page-catalog-conflict-settings__block">
+            <div
+                class="form-group setting__form-group col-xs-12 one-page-catalog-conflict-settings__row"
+                data-ng-if="$ctrl.data.ShowSettingBuyInOneClick">
+                <div class="row middle-xs control-label" data-ng-class="{'flex-nowrap': isMobile.value}">
+                    <div class="col-xs" data-ng-class="{'flex-shrink-1': isMobile.value}">
+                        <label for="TurnOffBuyInOneClick" class="setting__font-weight--xs"> {{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.AllowOneclickPurchase'|translate}} </label>
+                    </div>
+                    <div class="relative col-xs-slim relative flex middle-xs first-xs" data-ng-class="{'p-r-xs': isMobile.value, 'p-r-none': !isMobile.value}">
+                        <label class="adv-checkbox-label flex">
+                            <input
+                                type="checkbox"
+                                id="TurnOffBuyInOneClick"
+                                class="adv-checkbox-input input-alt-mobile"
+                                data-ng-model="$ctrl.data.TurnOffBuyInOneClick" />
+                            <span class="adv-checkbox-emul" data-e2e="TurnOffBuyInOneClick"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="form-group setting__form-group col-xs-12 one-page-catalog-conflict-settings__row"
+                data-ng-if="$ctrl.data.ShowSettingSearchByCategories">
+                <div class="row middle-xs control-label" data-ng-class="{'flex-nowrap': isMobile.value}">
+                    <div class="col-xs" data-ng-class="{'flex-shrink-1': isMobile.value}">
+                        <label for="TurnOffSearchByCategories" class="setting__font-weight--xs"> {{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.SearchByProductCategory'|translate}} </label>
+                    </div>
+                    <div class="relative col-xs-slim relative flex middle-xs first-xs" data-ng-class="{'p-r-xs': isMobile.value, 'p-r-none': !isMobile.value}">
+                        <label class="adv-checkbox-label flex">
+                            <input
+                                type="checkbox"
+                                id="TurnOffSearchByCategories"
+                                class="adv-checkbox-input input-alt-mobile"
+                                data-ng-model="$ctrl.data.TurnOffSearchByCategories" />
+                            <span class="adv-checkbox-emul" data-e2e="TurnOffSearchByCategories"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="form-group setting__form-group col-xs-12 one-page-catalog-conflict-settings__row"
+                data-ng-if="$ctrl.data.ShowSettingShowCategoryTreeInBrand">
+                <div class="row middle-xs control-label" data-ng-class="{'flex-nowrap': isMobile.value}">
+                    <div class="col-xs-slim col-md-8 col-wl-4" data-ng-class="{'flex-shrink-1': isMobile.value}">
+                        <label for="TurnOffShowCategoryTreeInBrand" class="setting__font-weight--xs"
+                            >{{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.DisplayCategoryTree'|translate}}</label
+                        >
+                    </div>
+                    <div class="relative col-xs-slim relative flex middle-xs first-xs" data-ng-class="{'p-r-xs': isMobile.value, 'p-r-none': !isMobile.value}">
+                        <label class="adv-checkbox-label flex">
+                            <input
+                                type="checkbox"
+                                id="TurnOffShowCategoryTreeInBrand"
+                                class="adv-checkbox-input input-alt-mobile"
+                                data-ng-model="$ctrl.data.TurnOffShowCategoryTreeInBrand" />
+                            <span class="adv-checkbox-emul" data-e2e="TurnOffShowCategoryTreeInBrand"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 first-xs one-page-catalog-conflict-settings__title">{{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.RecommendTurningSettings'|translate}}</div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-save btn-primary" ladda="$ctrl.inSaveProgress" data-ng-click="$ctrl.save(true)">
+            {{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.TurnOffSelected'|translate}}
+        </button>
+        <button type="button" class="btn btn-default btn-cancel" data-ng-click="$ctrl.save(false)">{{'Admin.Js.SettingsTemplate.OnePageCatalogConflictSettings.DontTurnOff'|translate}}</button>
+    </div>
+</form>

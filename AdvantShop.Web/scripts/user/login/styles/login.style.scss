@@ -1,0 +1,220 @@
+﻿@media (min-width: 48em) {
+    .login {
+        max-width: 400px;
+        width: 100vw;
+    }
+    .login:has(registration) {
+        max-width: 710px;
+    }
+
+}
+
+.login-modal {
+    .modal-content {
+        padding: 0;
+    }
+}
+
+.login-content {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__title-group {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 10px;
+
+        &--link {
+            cursor: pointer;
+        }
+    }
+
+    &__back {
+        width: 1rem;
+        height: 1rem;
+        display: flex;
+        align-items: center;
+        background-image: url('data:image/svg+xml,<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.19289 7.79289C3.80237 8.18342 3.80237 8.81658 4.19289 9.20711L10.5569 15.5711C10.9474 15.9616 11.5805 15.9616 11.9711 15.5711C12.3616 15.1805 12.3616 14.5474 11.9711 14.1569L6.31421 8.5L11.9711 2.84315C12.3616 2.45262 12.3616 1.81946 11.9711 1.42893C11.5805 1.03841 10.9474 1.03841 10.5569 1.42893L4.19289 7.79289ZM5 8.5L5 7.5L4.9 7.5L4.9 8.5L4.9 9.5L5 9.5L5 8.5Z" fill="%234B4F58"/></svg>');
+    }
+
+    &__title {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 110%;
+    }
+
+    &__description {
+        color: #707070;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 120%;
+    }
+}
+
+.login-routes {
+    margin-top: 10px;
+}
+
+.login-loader {
+    text-align: center;
+}
+
+.login-action {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-email {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    &__captcha {
+        .captcha-txt {
+            width: 100%;
+        }
+    }
+
+    &__send-again {
+        text-align: center;
+        align-self: center;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 120%;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .login-email &__password {
+        display: flex;
+        gap: 5px;
+    }
+}
+
+.login-code {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    &__captcha {
+        .captcha-txt {
+            width: 100%;
+        }
+    }
+
+    &__send-again {
+        text-align: center;
+        align-self: center;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 120%;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__sms-confirmation-input {
+        align-self: center;
+    }
+}
+
+.login-auth-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &:not(:has(.login-auth-methods__route)):not(:has(.auth-social__btns-wrap)) {
+        display: none;
+    }
+
+    &__or {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 120%;
+        color: #C4C4C4;
+
+        &-line {
+            width: 20%;
+            border: 1px solid rgba(196, 196, 196, .5);
+            margin: auto 0;
+        }
+    }
+
+    &__routes {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-self: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    &__route {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 120%;
+        color: var(--cs-6);
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__module-route {
+        border-radius: 4px;
+        padding: 0.8125rem 0.8125rem 0.8125rem;
+        background-color: #F6F7FA;
+    }
+
+    &__open-id:not(:has(.auth-social__btns-wrap)) {
+        display: none;
+    }
+}
+
+.login-forget {
+    margin-top: 8px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 120%;
+    color: var(--cs-6);
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.login-checkout {
+    padding: 1rem;
+
+    @media (min-width: 48em) {
+        .login {
+            max-width: initial;
+            width: initial;
+        }
+    }
+
+    .login-content {
+        padding: 0;
+    }
+}

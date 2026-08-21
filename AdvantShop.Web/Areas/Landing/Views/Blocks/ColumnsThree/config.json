@@ -1,0 +1,79 @@
+﻿{
+    "name": "columnsThree",
+    "type": "column",
+    "description": "Landings.Views.Blocks.Config.ColumnsThree.Description",
+    "category": "Landings.Views.Blocks.Config.ColumnsThree.Category",
+    "picture": "./areas/landing/frontend/images/columns/columnsThree.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsThree.SubBlockPlasholderOne"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsThree.SubBlockPlasholderTwo"
+        }
+    ],
+    "settings": {
+        "items": [
+            {
+                "title": "Landings.Views.Blocks.Config.ColumnsThree.ItemTitleOne",
+                "text": "Landings.Views.Blocks.Config.ColumnsThree.ItemTextOne"
+            },
+            {
+                "title": "Landings.Views.Blocks.Config.ColumnsThree.ItemTitleTwo",
+                "text": "Landings.Views.Blocks.Config.ColumnsThree.ItemTextTwo"
+            },
+            {
+                "title": "Landings.Views.Blocks.Config.ColumnsThree.ItemTitleThree",
+                "text": "Landings.Views.Blocks.Config.ColumnsThree.ItemTextThree"
+            }
+        ],
+        "gridColumns": {
+            "text": true,
+            "title": true
+        },
+        "classes": ["lp-block-columns-three", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": true,
+        "show_subtitle": false,
+        "show_button": false,
+        "items_in_row": 3,
+        "rows_in_block": 1,
+        "constructor_buttons_reverse": true,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "style": {},
+        "align_btns": "center-xs",
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "color": null,
+            "background_color": null,
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": null,
+            "border_radius": 0,
+            "text": "Landings.Views.Blocks.Config.ColumnsThree.ButtonText",
+            "size": "xsmall",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false
+    }
+}

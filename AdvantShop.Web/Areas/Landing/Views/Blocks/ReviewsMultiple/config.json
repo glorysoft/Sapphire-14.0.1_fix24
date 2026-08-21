@@ -1,0 +1,100 @@
+﻿{
+    "name": "reviewsMultiple",
+    "type": "reviews",
+    "description": "Landings.Views.Blocks.Config.ReviewsMultiple.Description",
+    "category": "Landings.Views.Blocks.Config.ReviewsMultiple.Category",
+    "picture": "./areas/landing/images/reviews/previewReviews/previewReviewsCarouselBlocks.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ReviewsMultiple.Title.Placeholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ReviewsMultiple.Subtitle.Placeholder"
+        }
+    ],
+    "settings": {
+        "items": [
+            {
+                "picture": {
+                    "src": "areas/landing/images/reviews/author3.jpg"
+                },
+                "author": "Landings.Views.Blocks.Config.ReviewsMultiple.Review1.Author",
+                "caption": "Landings.Views.Blocks.Config.ReviewsMultiple.Review1.Caption",
+                "text": "Landings.Views.Blocks.Config.ReviewsMultiple.Review1.Text"
+            },
+            {
+                "picture": {
+                    "src": "areas/landing/images/reviews/author2.jpg"
+                },
+                "author": "Landings.Views.Blocks.Config.ReviewsMultiple.Review2.Author",
+                "caption": "Landings.Views.Blocks.Config.ReviewsMultiple.Review2.Caption",
+                "text": "Landings.Views.Blocks.Config.ReviewsMultiple.Review2.Text"
+            },
+            {
+                "picture": {
+                    "src": "areas/landing/images/reviews/author4.jpg"
+                },
+                "author": "Landings.Views.Blocks.Config.ReviewsMultiple.Review3.Author",
+                "caption": "Landings.Views.Blocks.Config.ReviewsMultiple.Review3.Caption",
+                "text": "Landings.Views.Blocks.Config.ReviewsMultiple.Review3.Text"
+            },
+            {
+                "picture": {
+                    "src": "areas/landing/images/reviews/author5.jpg"
+                },
+                "author": "Landings.Views.Blocks.Config.ReviewsMultiple.Review4.Author",
+                "caption": "Landings.Views.Blocks.Config.ReviewsMultiple.Review4.Caption",
+                "text": "Landings.Views.Blocks.Config.ReviewsMultiple.Review4.Text"
+            }
+        ],
+        "carouselOptions": {
+            "slidesToShow": 3,
+            "arrows": true,
+            "dots": true,
+            "draggable": false,
+            "accessibility": false,
+            "infinite": false,
+            "enabled": true,
+            "mobileFirst": false,
+            "adaptiveHeight": true,
+            "responsive": [
+                {
+                    "breakpoint": 768,
+                    "settings": {
+                        "slidesToShow": 1,
+                        "arrows": false
+                    }
+                }
+            ],
+            "method": {},
+            "event": {}
+        },
+        "color_scheme": "color-scheme--light",
+        "classes": ["lp-block-reviews", "reviews-multiple", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "show_title": true,
+        "show_subtitle": true,
+        "darken": 0,
+        "background_image": null,
+        "background_color": "#f5f8fb",
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "settings_picture": {
+            "cropper_params": {
+                "aspectRatio": "1"
+            },
+            "galleryIconsEnabled": "false"
+        },
+        "style": {
+            "box-shadow": "200vh 200vw 0 rgba(0,0,0, 0) inset"
+        },
+        "mobile_hidden": false
+    }
+}

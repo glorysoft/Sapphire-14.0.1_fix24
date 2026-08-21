@@ -1,0 +1,121 @@
+.cart-full-product {
+    $self: &;
+
+    &:not(.cart-full-header-item, .cart-full-body-item) {
+        display: grid;
+        grid-template-columns: 3fr 2fr minmax(min-content, 1fr);
+    }
+
+    &__info {
+        display: grid;
+
+        &--two-cols {
+            grid-template-columns: auto 1fr;
+            column-gap: 12px;
+        }
+    }
+
+    &__btns {
+        display: flex;
+        align-items: center;
+        column-gap: 5px;
+    }
+
+    &__amount-error {
+        color: #e20a0a;
+    }
+
+    &__cost {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    &__brief-description {
+        font-size: 14px;
+
+        .readmore-link {
+            font-size: 14px;
+        }
+    }
+
+    &__sku {
+        line-height: 1;
+    }
+
+    &__attributes {
+        display: grid;
+        row-gap: 8px;
+    }
+
+    &__properties {
+        display: grid;
+        row-gap: 8px;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__additional-info {
+        &:not(:has(*)) {
+            display: none;
+        }
+    }
+
+    &__properties-item {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: flex-start;
+
+        &:not(:has(#{$self}__properties-name)) #{$self}__properties-value {
+            padding-left: 0;
+        }
+    }
+
+    &__properties-name,
+    &__properties-value {
+        line-height: 1;
+    }
+
+    &__properties-value {
+        padding-left: 5px;
+    }
+
+    &__wishlist-control,
+    &__remove-btn {
+        font-size: 17px !important;
+        margin-bottom: 0;
+    }
+
+    &__remove-btn {
+        &::before {
+            content: "";
+            display: block;
+            width: 18px;
+            height: 18px;
+            background-color: currentColor;
+            mask-image: url('../../../../images/cart/delete.svg');
+            mask-size: 18px;
+            mask-repeat: no-repeat;
+        }
+    }
+
+    &__amount-control {
+        margin-right: 0;
+
+        &--with-unit {
+            width: 100% !important;
+            margin-right: 0 !important;
+
+            .spinbox-input {
+                width: 100% !important;
+            }
+
+        }
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

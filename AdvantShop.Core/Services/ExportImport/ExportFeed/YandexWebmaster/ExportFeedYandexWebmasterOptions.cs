@@ -1,0 +1,232 @@
+﻿using AdvantShop.Core.Common.Attributes;
+using AdvantShop.Core.Common.Extensions;
+using AdvantShop.Core.Services.ExportImport.ExportFeed;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+
+namespace AdvantShop.ExportImport
+{
+    [Serializable]
+    public class ExportFeedYandexWebmasterOptions : BaseExportFeedFilterOptions
+    {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public override bool AllowPreOrderProducts { get; set; } = true; // true, если отсутствует в json или равен null.
+
+
+        [JsonProperty(PropertyName = "Currency")]
+        public override string Currency { get; set; }
+
+        [JsonProperty(PropertyName = "RemoveHtml")]
+        public bool RemoveHtml { get; set; }
+
+        [JsonProperty(PropertyName = "Delivery")]
+        public bool Delivery { get; set; }
+
+        [JsonIgnore]
+        private string _delivery;
+
+        [JsonIgnore]
+        public string DeliveryString => _delivery ?? (_delivery = Delivery.ToLowerString());
+
+
+        //[JsonProperty(PropertyName = "LocalDeliveryCost")]
+        //public bool LocalDeliveryCost { get; set; }
+
+        [JsonProperty(PropertyName = "DeliveryCost")]
+        public ExportFeedYandexWebmasterDeliveryCost DeliveryCost { get; set; }
+
+        [JsonProperty(PropertyName = "GlobalDeliveryCost")]
+        public string GlobalDeliveryCost { get; set; }
+
+        private string _localDeliveryOption;
+        [JsonProperty(PropertyName = "LocalDeliveryOption")]
+        public string LocalDeliveryOption
+        {
+            get { return _localDeliveryOption; }
+            set
+            {
+                _localDeliveryOption = value;
+                _localDeliveryOptionObject = null;
+            }
+        }
+
+        private ExportFeedYandexWebmasterDeliveryCostOption _localDeliveryOptionObject;
+        [JsonIgnore]
+        public ExportFeedYandexWebmasterDeliveryCostOption LocalDeliveryOptionObject
+        {
+            get { return _localDeliveryOptionObject ?? (_localDeliveryOptionObject = GetLocalDeliveryOption(LocalDeliveryOption)); }
+        }
+
+        [JsonProperty(PropertyName = "ExportProductProperties")]
+        public bool ExportProductProperties { get; set; }
+        
+        [JsonProperty(PropertyName = "ExportPropertyDisplayedName")]
+        public bool ExportPropertyDisplayedName { get; set; }
+
+        [JsonProperty(PropertyName = "JoinPropertyValues")]
+        public bool JoinPropertyValues { get; set; }
+
+        [JsonProperty(PropertyName = "ExportOnlyUseInDetailsProperties")]
+        public bool ExportOnlyUseInDetailsProperties { get; set; }
+
+        [JsonProperty(PropertyName = "ExportOnlyUseInDetailsPropertiesExceptionIds")]
+        public List<int> ExportOnlyUseInDetailsPropertiesExceptionIds { get; set; }
+
+        [Obsolete("use ProductPriceType")]
+        [JsonProperty(PropertyName = "ExportProductDiscount")]
+        public bool ExportProductDiscount
+        {
+            set => ProductPriceType = value
+                    ? EExportFeedYandexWebmasterPriceType.Both
+                    : EExportFeedYandexWebmasterPriceType.WithDiscount;
+        }
+
+        [JsonProperty(PropertyName = "ProductPriceType")]
+        public EExportFeedYandexWebmasterPriceType ProductPriceType { get; set; }
+
+        [JsonProperty(PropertyName = "SalesNotes")]
+        public string SalesNotes { get; set; }
+
+        [JsonIgnore] private string _salesNotesEncoded;
+        [JsonIgnore]
+        public string SalesNotesEncoded => _salesNotesEncoded ??
+                                           (_salesNotesEncoded = SalesNotes.XmlEncode().RemoveInvalidXmlChars());
+
+        [JsonProperty(PropertyName = "ShopName")]
+        public string ShopName { get; set; }
+
+        [JsonProperty(PropertyName = "CompanyName")]
+        public string CompanyName { get; set; }
+
+        [JsonProperty(PropertyName = "ColorSizeToName")]
+        public bool ColorSizeToName { get; set; }
+
+        [JsonProperty(PropertyName = "ProductDescriptionType")]
+        public string ProductDescriptionType { get; set; }
+
+        [JsonProperty(PropertyName = "OfferIdType")]
+        public string OfferIdType { get; set; }
+
+        [JsonProperty(PropertyName = "VendorCodeType")]
+        public string VendorCodeType { get; set; }
+
+        [JsonProperty(PropertyName = "ExportPurchasePrice")]
+        public bool ExportPurchasePrice { get; set; }
+
+        [JsonProperty(PropertyName = "ExportCount")]
+        public bool ExportCount { get; set; }
+
+        [JsonProperty(PropertyName = "ExportShopSku")]
+        public bool ExportShopSku { get; set; }
+
+
+        [JsonProperty(PropertyName = "ExportBarCode")]
+        public bool ExportBarCode { get; set; }
+
+        [JsonProperty(PropertyName = "ExportRelatedProducts")]
+        public bool ExportRelatedProducts { get; set; }
+
+        [JsonProperty(PropertyName = "ExportAllPhotos")]
+        public bool ExportAllPhotos { get; set; }
+
+        [JsonProperty(PropertyName = "TypeExportYandex")]
+        public bool TypeExportYandex { get; set; }
+
+        [JsonProperty(PropertyName = "NeedZip")]
+        public bool NeedZip { get; set; }
+
+        [JsonProperty(PropertyName = "ExportDimensions")]
+        public bool ExportDimensions { get; set; }
+
+        [JsonProperty(PropertyName = "Promos")]
+        public string Promos { get; set; }
+        private static ExportFeedYandexWebmasterDeliveryCostOption GetLocalDeliveryOption(string localDeliveryOptionString)
+        {
+            var localDeliveryOption = new ExportFeedYandexWebmasterDeliveryCostOption();
+
+            try
+            {
+                localDeliveryOption =
+                    JsonConvert.DeserializeObject<ExportFeedYandexWebmasterDeliveryCostOption>(localDeliveryOptionString);
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                if (localDeliveryOption == null)
+                    localDeliveryOption = new ExportFeedYandexWebmasterDeliveryCostOption();
+            }
+            return localDeliveryOption;
+        }
+
+
+        [JsonProperty(PropertyName = "ExportExpiry")]
+        public bool ExportExpiry { get; set; }
+
+        [JsonProperty(PropertyName = "ExportWarrantyDays")]
+        public bool ExportWarrantyDays { get; set; }
+
+        [JsonProperty(PropertyName = "ExportCommentWarranty")]
+        public bool ExportCommentWarranty { get; set; }
+
+        [JsonProperty(PropertyName = "ExportPeriodOfValidityDays")]
+        public bool ExportPeriodOfValidityDays { get; set; }
+
+        [JsonProperty(PropertyName = "ExportServiceLifeDays")]
+        public bool ExportServiceLifeDays { get; set; }
+
+        [JsonProperty(PropertyName = "ExportMarketTnVedCode")]
+        public bool ExportMarketTnVedCode { get; set; }
+
+        [JsonProperty(PropertyName = "ExportMarketStepQuantity")]
+        public bool ExportMarketStepQuantity { get; set; }
+
+        [JsonProperty(PropertyName = "ExportMarketMinQuantity")]
+        public bool ExportMarketMinQuantity { get; set; }
+
+        [JsonProperty(PropertyName = "ExportMarketCisRequired")]
+        public bool ExportMarketCisRequired { get; set; }
+
+        [JsonProperty(PropertyName = "PriceFrom")]
+        public override decimal? PriceFrom { get; set; }
+
+        [JsonProperty(PropertyName = "PriceTo")]
+        public override decimal? PriceTo { get; set; }
+
+        [JsonProperty(PropertyName = "ConsiderMultiplicityInPrice")]
+        public override bool ConsiderMultiplicityInPrice { get; set; }
+    }
+
+    public enum ExportFeedYandexWebmasterDeliveryCost
+    {
+        [Localize("Core.ExportImport.ExportFeedYandexDeliveryCost.None")]
+        None = 0,
+
+        [Localize("Core.ExportImport.ExportFeedYandexDeliveryCost.LocalDeliveryCost")]
+        LocalDeliveryCost = 1,
+
+        [Localize("Core.ExportImport.ExportFeedYandexDeliveryCost.GlobalDeliveryCost")]
+        GlobalDeliveryCost = 2
+    }
+
+    public class ExportFeedYandexWebmasterDeliveryCostOption
+    {
+        public string Cost { get; set; }
+
+        public string Days { get; set; }
+
+        public string OrderBefore { get; set; }
+    }
+
+    public enum EExportFeedYandexWebmasterPriceType
+    {
+        [Localize("Core.ExportImport.ExportFeedYandexPriceType.WithDiscount")]
+        WithDiscount,
+        [Localize("Core.ExportImport.ExportFeedYandexPriceType.WithoutDiscount")]
+        WithoutDiscount,
+        [Localize("Core.ExportImport.ExportFeedYandexPriceType.Both")]
+        Both
+    }
+}

@@ -1,0 +1,43 @@
+﻿@using AdvantShop.Core.Services.Auth
+@model AdvantShop.ViewModel.Checkout.CheckoutUserViewModel
+
+@{
+    var isMobile = SettingsDesign.IsMobileTemplate;
+}
+
+<article class="checkout-block">
+    <div class="checkout-block-title h2">
+        @T("Checkout.CheckoutUser.CustomerTitle")
+    </div>
+    <div class="checkout-block-content">
+        @if (Model.Customer.RegistredUser)
+        {
+            @Html.Partial("CheckoutUserRegistred", Model)
+        }
+        else if (SettingsMain.RegistrationIsProhibited)
+        {
+            <div data-ng-init="checkout.userUnRegType='oldCustomer'">
+                @switch (SettingsMain.CheckoutLoginDisplayMode)
+                {
+                    case ECheckoutLoginDisplayMode.Inside:
+                        <login class="login-checkout" data-render-from="'checkout'" data-redirect-to="'@(UrlService.GetCurrentUrl())'"></login>
+                        break;
+                    case ECheckoutLoginDisplayMode.Default:
+                    case ECheckoutLoginDisplayMode.Modal:
+                        <login-modal class="btn btn-middle btn-submit @(isMobile ? "btn-expander" : "")"
+                                     data-redirect-to="'@(UrlService.GetCurrentUrl())'">
+                            @(SettingsMain.RegistrationIsProhibited 
+                                ? T("Checkout.CheckoutUser.Login") 
+                                : T("Checkout.CheckoutUser.LoginAndRegister") 
+                            )
+                        </login-modal>
+                        break;
+                }
+            </div>
+        }
+        else
+        {
+            @Html.Partial("CheckoutUserUnRegistred", Model)
+        }
+    </div>
+</article>

@@ -1,0 +1,78 @@
+﻿<div data-ng-switch="orderProduct.items.OrderedProducts.length > 0">
+    <div data-ng-switch-when="true" class="products-view products-view-tile row order-product">
+        <div data-ng-repeat="item in orderProduct.items.OrderedProducts" class="products-view-block cs-br-1 js-products-view-block">
+            <div class="products-view-item text-static cs-br-1 js-products-view-item">
+                <figure class="products-view-pictures" data-ng-switch="orderProduct.linkAsQuickview === true">
+                    <a data-ng-switch-default class="products-view-picture-link" ng-href="{{item.Url}}">
+                        <img ng-src="{{item.PhotoSmallUrl}}" width="200" height="200" />
+                    </a>
+                    <span data-ng-switch-when="true" data-ng-switch="item.ProductId != null">
+                        <img data-ng-switch-default ng-src="{{item.PhotoSmallUrl}}" width="200" height="200" />
+                        <a
+                            data-ng-switch-when="true"
+                            class="products-view-picture-link"
+                            data-quickview-trigger
+                            data-alone="true"
+                            data-product-id="item.ProductId"
+                            data-offer-id="item.OfferId">
+                            <img ng-src="{{item.PhotoSmallUrl}}" width="200" height="200" />
+                        </a>
+                    </span>
+                </figure>
+                <div class="products-view-info">
+                    <div class="products-view-name" ng-if="item.Url !== null" data-ng-switch="orderProduct.linkAsQuickview === true">
+                        <a data-ng-switch-default ng-href="{{item.Url}}" class="products-view-name-link">{{item.Name}}</a>
+                        <span data-ng-switch-when="true" data-ng-switch="item.ProductId != null">
+                            <span data-ng-switch-default>{{item.Name}}</span>
+                            <a
+                                data-ng-switch-when="true"
+                                data-quickview-trigger
+                                data-alone="true"
+                                data-product-id="item.ProductId"
+                                class="products-view-name-link"
+                                >{{item.Name}}</a
+                            >
+                        </span>
+                    </div>
+                    <div class="products-view-name" ng-if="item.Url === null">{{item.Name}}</div>
+                    <div
+                        data-ng-if="orderProduct.productViewOptions.showProductArtNo"
+                        class="products-view-meta products-view-meta-sku-review-count-wrap">
+                        <div class="products-view-meta-item products-view-meta-item-sku-wrap cs-br-1">
+                            <span class="products-view-tile-element-hidden">{{::'Js.MyAccount.OrderProductHistory.Sku' | translate}}: </span>
+                            <span class="products-view-meta-item-artNo">{{item.ArtNo}}</span>
+                        </div>
+                    </div>
+                    <div class="order-product__data" data-ng-click="myaccount.showDetailsOrder(item.LastOrderNumber, tabContent.header)">
+                        <span>
+                            <span class="order-product__last-order">{{::'Js.MyAccount.OrderProductHistory.LastOrder' | translate}}: </span>
+                            <span class="link order-product__datetime">
+                                <span class="order-product__order-number">№ {{item.LastOrderNumber}}</span>
+                                <span class="order-product__order-date-time">
+                                    <span class="order-product__order-date"
+                                        >{{::'Js.MyAccount.OrderProductHistory.BeforeOrderDate' | translate}} {{item.LastOrderDate}}</span
+                                    >
+                                    <span class="order-product__order-time">{{item.LastOrderTime}}</span>
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="product-view-price-data">
+                    <div class="products-view-price-block products-view-price-inner">
+                        <div class="products-view-price">
+                            <div class="price">
+                                <div class="price-current cs-t-1" ng-bind-html="item.Price"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-ng-switch-when="false" class="text-align-center p-t-md">
+        <span
+            class="order-product__service-message"
+            data-ng-bind="( orderProduct.isLoaded ? 'Js.MyAccount.OrderProductHistory.Empty' : 'Js.MyAccount.OrderProductHistory.Loading') | translate"></span>
+    </div>
+</div>

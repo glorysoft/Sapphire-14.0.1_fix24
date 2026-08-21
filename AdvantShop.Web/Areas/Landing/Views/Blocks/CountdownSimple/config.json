@@ -1,0 +1,51 @@
+﻿{
+    "name": "countdownSimple",
+    "type": "countdown",
+    "description": "Landings.Views.Blocks.Config.CountDownSimple.Description",
+    "category": "Landings.Views.Blocks.Config.CountDownSimple.Category",
+    "picture": "./areas/landing/images/countdown/countdown_simple_preview.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.CountDownSimple.SubBlockPlasholderOne"
+        }
+    ],
+    "settings": {
+        "color_scheme": "color-scheme--light",
+        "classes": ["countdown-simple", "color-scheme--light", "block-padding-top--30", "block-padding-bottom--30"],
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "date": {
+            "end_date": null,
+            "types": [
+                {
+                    "value": "default",
+                    "name": "Landings.Views.Blocks.Config.CountDownSimple.DateTypeDefault"
+                },
+                {
+                    "value": "loop",
+                    "name": "Landings.Views.Blocks.Config.CountDownSimple.DateTypeLoop"
+                }
+            ],
+            "selectType": {
+                "value": "default"
+            }
+        },
+        "scrollToBlock": false,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "style": {},
+        "textColor": "#c3c3c3",
+        "titleColor": "#fff",
+        "mobile_hidden": false,
+        "form": {
+            "is_hidden": true
+        }
+    }
+}

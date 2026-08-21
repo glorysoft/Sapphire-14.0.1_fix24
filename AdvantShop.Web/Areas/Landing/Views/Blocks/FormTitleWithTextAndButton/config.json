@@ -1,0 +1,71 @@
+﻿{
+    "name": "formTitleWithTextAndButton",
+    "type": "form",
+    "description": "Landings.Views.Blocks.Config.FormTitleWithTextAndButton.Description",
+    "category": "Landings.Views.Blocks.Config.FormTitleWithTextAndButton.Category",
+    "picture": "./areas/landing/images/forms/formTitleWithTextAndButton.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.FormTitleWithTextAndButton.SubBlockPlasholderOne"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.FormTitleWithTextAndButton.SubBlockPlasholderTwo"
+        },
+        {
+            "name": "header",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.FormTitleWithTextAndButton.SubBlockPlasholderThree"
+        },
+        {
+            "name": "text",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.FormTitleWithTextAndButton.SubBlockPlasholderFour"
+        }
+    ],
+    "settings": {
+        "color_scheme": "color-scheme--light",
+        "classes": ["lp-block-form-title-with-text-and-button", "color-scheme--light", "block-padding-top--85", "block-padding-bottom--85"],
+        "background_image": null,
+        "background_color": null,
+        "darken": 0,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "align_btns": "center-xs",
+        "align_items": "start-xs",
+        "align_text": "start-xs",
+        "padding_top": 85,
+        "padding_bottom": 85,
+        "show_title": false,
+        "show_subtitle": false,
+        "style": {},
+        "show_button": true,
+        "button": {
+            "is_default_style": true,
+            "action": "Form",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.FormTitleWithTextAndButton.ButtonText",
+            "color": null,
+            "background_color": null,
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": null,
+            "border_radius": 0,
+            "size": "xsmall",
+            "style": {}
+        },
+        "width_in_columns": 12,
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false
+    }
+}

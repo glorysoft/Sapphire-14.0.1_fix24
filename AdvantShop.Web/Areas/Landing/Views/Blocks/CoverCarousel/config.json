@@ -1,0 +1,58 @@
+﻿{
+    "name": "coverCarousel",
+    "type": "coverCarousel",
+    "description": "Landings.Views.Blocks.Config.CoverCarousel.Description",
+    "category": "Landings.Views.Blocks.Config.CoverCarousel.Category",
+    "picture": "./areas/landing/images/covers/cover_carousel.jpg",
+    "settings": {
+        "items": [
+            {
+                "background": {
+                    "src": "areas/landing/frontend/images/covers/cover.jpg"
+                },
+                "title": "Landings.Views.Blocks.Config.CoverCarousel.ItemOneTitle",
+                "text": "Landings.Views.Blocks.Config.CoverCarousel.ItemOneText",
+                "textButton": "Landings.Views.Blocks.Config.CoverCarousel.ItemOneButtonText",
+                "showButton": true,
+                "urlButton": ""
+            },
+            {
+                "background": {
+                    "src": "areas/landing/images/covers/cover_alt.jpg"
+                },
+                "title": "Landings.Views.Blocks.Config.CoverCarousel.ItemTwoTitle",
+                "text": "Landings.Views.Blocks.Config.CoverCarousel.ItemTwoText",
+                "textButton": "Landings.Views.Blocks.Config.CoverCarousel.ItemTwoButtonText",
+                "showButton": true,
+                "urlButton": ""
+            }
+        ],
+        "carouselOptions": {
+            "slidesToShow": 1,
+            "arrows": true,
+            "touchThreshold": 20,
+            "dots": true,
+            "draggable": false,
+            "accessibility": false,
+            "infinite": false,
+            "enabled": true,
+            "adaptiveHeight": true
+        },
+        "color_scheme": "color-scheme--dark",
+        "align_btns": "center-xs",
+        "classes": ["cover-carousel", "color-scheme--dark", "block-padding-top--180", "block-padding-bottom--180"],
+        "background_image": null,
+        "background_color": null,
+        "darken": 0.5,
+        "padding_top": 180,
+        "padding_bottom": 180,
+        "settings_picture": {
+            "galleryIconsEnabled": false
+        },
+        "style": {
+            "box-shadow": "200vh 200vw 0 rgba(0,0,0, 0) inset"
+        },
+        "width_in_columns": 8,
+        "mobile_hidden": false
+    }
+}

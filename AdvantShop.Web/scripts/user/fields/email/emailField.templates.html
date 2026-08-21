@@ -1,0 +1,26 @@
+﻿<label class="row middle-xs form-field-control">
+        <span class="col-xs-12 form-field-name-wrap">
+            <span class="form-field-name vertical-interval-xsmall"
+                  data-ng-class="{'input-required': $ctrl.ngRequired}">
+                {{ ::'Js.Login.Registration.Email' | translate }}
+            </span>
+        </span>
+    <span class="col-xs-12 form-field-input-wrap">
+        <span class="form-field-input vertical-interval-xsmall flex" style="gap: 0.625rem;">
+            <input type="email"
+                   class="input-small"
+                   data-ng-required="$ctrl.ngRequired"
+                   data-ng-model="$ctrl.ngModel"
+                   pattern="^([a-zA-Z0-9_.+\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9.\-]+)$"
+                   autocomplete="email" />
+        </span>
+    </span>
+    <span class="col-xs-12 form-field-input-wrap" data-ng-if="($ctrl.showEmailConfirmation && $ctrl.ngModel != null)">
+        <span class="form-field-input vertical-interval-xsmall">
+            <email-confirmation data-email="$ctrl.ngModel"
+                                data-confirmed="$ctrl.confirmed"
+                                data-show-confirmation="$ctrl.showEmailConfirmation">
+            </email-confirmation>
+        </span>
+    </span>
+</label>

@@ -1,0 +1,53 @@
+@model AdvantShop.Web.Admin.Models.Settings.Templates.SettingsTemplateModel
+@{
+    var isMobile = SettingsDesign.IsMobileTemplate;
+}
+
+
+<div class="form-group setting__form-group">
+    <div class="row middle-xs">
+        <div class="col-xs col-md-3 col-wl-2  @(isMobile ? "flex-grow" : "")">
+            <label for="ShowProductsPhotoInCheckoutCart">
+                @T("Admin.Settings.Template.ShowProductsPhotoInCheckoutCart")
+            </label>
+        </div>
+        <div class="col-xs-slim relative flex middle-xs first-xs last-md @(isMobile ? "p-r-xs" : "")">
+            <label class="adv-checkbox-label flex">
+                @Html.CheckBoxFor(x => x.ShowProductsPhotoInCheckoutCart, new { id = "ShowProductsPhotoInCheckoutCart", @class = "adv-checkbox-input input-alt-mobile", ng_model = "settingsTemplate.ShowProductsPhotoInCheckoutCart" })
+                <span class="adv-checkbox-emul" data-e2e="ShowProductsPhotoInCheckoutCart"></span>
+            </label>
+        </div>
+        <help-trigger class="ng-cloak last-md  @(isMobile ? "m-r-sm" : "")" data-title="@T("Admin.Settings.Template.ShowProductsPhotoInCheckoutCart")">
+            @T("Admin.Settings.Template.ShowProductsPhotoInCheckoutCartNote")
+        </help-trigger>
+    </div>
+</div>
+
+@* <div class="form-group setting__form-group"> *@
+@*     <div class="row middle-xs"> *@
+@*         <div class="col-xs col-md-3 col-wl-2  @(isMobile ? "flex-grow" : "")"> *@
+@*             <label for="ShowMapAddress"> *@
+@*                 @T("Admin.Settings.Template.MapAddress") *@
+@*             </label> *@
+@*         </div> *@
+@*         <div class="col-xs-slim relative flex middle-xs first-xs last-md @(isMobile ? "p-r-xs" : "")"> *@
+@*             <label class="adv-checkbox-label flex"> *@
+@*                 @Html.CheckBoxFor(x => x.ShowMapAddress, new { id = "ShowMapAddress", @class = "adv-checkbox-input input-alt-mobile", ng_model = "settingsTemplate.ShowMapAddress" }) *@
+@*                 <span class="adv-checkbox-emul" data-e2e="ShowMapAddress"></span> *@
+@*             </label> *@
+@*         </div> *@
+@*         <help-trigger class="ng-cloak last-md @(isMobile ? "m-r-sm" : "")" data-title="@T("Admin.Settings.Template.MapAddress.Title")"> *@
+@*             @T("Admin.Settings.Template.MapAddress.Note") *@
+@*         </help-trigger> *@
+@*     </div> *@
+@* </div> *@
+
+<div class="setting-title m-t-none">
+    <h3 class="setting__subtitle">@T("Admin.Settings.Template.AuthMethodsSorting")</h3>
+</div>
+
+<div class="form-group row setting__form-group">
+    <div class="col-xs-12 col-md-7 col-wl-6">
+        <auth-sorting/>
+    </div>
+</div>

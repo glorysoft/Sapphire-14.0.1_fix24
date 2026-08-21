@@ -1,0 +1,37 @@
+﻿@model AdvantShop.Web.Admin.Models.Catalog.WarehouseGroups.WarehouseGroupModel
+@{
+    var isMobile = SettingsDesign.IsMobileTemplate;
+}
+
+<div class="@(isMobile ? "col-xs-12" : "block-additional-parameters-col flex-grow-n")">
+    <div class="ibox category-block block-additional-parameters category-page__ibox @(isMobile ? "form-group" : "")">
+        <div class="ibox-content category-content block-additional-parameters-content @(!isMobile ? "block-additional-parameters-content--padding-mid" : "") border_none">
+            <h3 class="category-title category-page__title @(isMobile ? "setting__subtitle" : "")">
+                @T("Admin.Warehouse.AddEdit.Display")
+            </h3>
+            <div class="row category-row" ng-class="{'form-group': isMobile.value}">
+                <div class="col-xs-12 m-b-sm" ng-class="{'form-group': isMobile.value, 'category-row': !isMobile.value}">
+                    <span>@T("Admin.Warehouse.AddEdit.SortingOrder")</span>
+                </div>
+                <div class="col-xs-12 flex middle-xs">
+                    @Html.TextBoxFor(x => x.SortOrder, new { @class = "form-control input-alt", required = "required", ng_model = "warehouse.sortOrder" })
+                    <help-trigger class="ng-cloak word-spacing m-l-xs @(isMobile ? "p-l-sm" : "")" data-title="@T("Admin.Warehouse.AddEdit.SortingOrder")">
+                        @T("Admin.Warehouse.AddEdit.SortingOrder.About")
+                    </help-trigger>
+                </div>
+            </div>
+            
+            @if (!string.IsNullOrEmpty(Model.ExternalId))
+            {
+                <div class="row" ng-class="{'form-group': isMobile.value, 'category-row': !isMobile.value}">
+                    <div class="col-xs-12 m-b-sm" ng-class="{'control-label': isMobile.value}">
+                        <span>@T("Admin.WarehouseGroup.AddEdit.ExternalId")</span>
+                    </div>
+                    <div class="col-xs-12 flex middle-xs">
+                        @Model.ExternalId
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

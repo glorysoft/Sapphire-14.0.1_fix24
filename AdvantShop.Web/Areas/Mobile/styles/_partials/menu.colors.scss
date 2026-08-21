@@ -1,0 +1,22 @@
+@use '../defFuncValues';
+@use '../function';
+
+.menu {
+    &__link {
+        color: white;
+
+        &:hover,
+        &:active {
+            background: #232429;
+        }
+    }
+
+    &__item {
+        border-color: #484a52;
+
+        .newOrders {
+            color: white;
+            background: #e12223;
+        }
+    }
+}

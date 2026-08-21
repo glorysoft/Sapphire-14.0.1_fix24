@@ -1,0 +1,15 @@
+﻿.points-filters {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: left;
+    column-gap: 20px;
+
+    &__inner:not(:has(> *)) {
+        display: none;
+    }
+
+    &__label {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+}

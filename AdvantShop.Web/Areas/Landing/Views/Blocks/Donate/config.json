@@ -1,0 +1,80 @@
+﻿{
+    "name": "donate",
+    "type": "donate",
+    "description": "Landings.Views.Blocks.Config.ProductsViewTile.Description",
+    "category": "Landings.Views.Blocks.Config.ProductsViewTile.Category",
+    "picture": "./areas/landing/images/productsView/products_view_tile_preview.jpg",
+    "depends_on": ["storeClosed"],
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Donate.SubBlockTitlePlaceholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Donate.SubBlockSubtitlePlaceholder"
+        }
+    ],
+    "settings": {
+        "show_title": true,
+        "show_subtitle": true,
+        "color_scheme": "color-scheme--light",
+        "classes": ["lp-products-view-tile", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "product_ids": [],
+        "prices": [
+            {
+                "value": 300,
+                "selected": false,
+                "productId": null,
+                "offerId": null
+            },
+            {
+                "value": 500,
+                "selected": true,
+                "productId": null,
+                "offerId": null
+            },
+            {
+                "value": 1000,
+                "selected": false,
+                "productId": null,
+                "offerId": null
+            },
+            {
+                "value": 5000,
+                "selected": false,
+                "productId": null,
+                "offerId": null
+            }
+        ],
+        "currency": "₽",
+        "show_other_price": true,
+        "other_price": {
+            "value": null,
+            "selected": false,
+            "productId": null,
+            "offerId": null
+        },
+        "other_price_min": 300,
+        "other_price_max": 10000,
+        "hide_shipping": true,
+        "background_image": null,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "button": {
+            "text": "Поддержать",
+            "action_upsell_lp_id": null
+        },
+        "darken": 0,
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "mobile_hidden": false,
+        "style": {},
+        "no_cache": true
+    }
+}

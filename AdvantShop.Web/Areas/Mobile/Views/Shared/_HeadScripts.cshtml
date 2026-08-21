@@ -1,0 +1,73 @@
+﻿@using AdvantShop.Core
+@using AdvantShop.Design
+@using AdvantShop.Core.Services.Configuration.Settings;
+@using System.Globalization;
+
+@{
+    bool isUseCustoms = SettingsDesign.IsUseChooseFont;
+}
+
+@Html.Raw(SettingsSEO.CustomMetaString)
+@if (isUseCustoms)
+{
+    @Html.PreloadFonts(new List<string>()
+    {
+        "advantshopfonts/advantshopfonts.woff2",
+    })
+}
+else
+{
+    @Html.Partial("_Preload")
+}
+@Html.Partial("_CriticalCSS")
+@Html.Partial("_HeadNewMobileScriptsTemplate")
+@Html.Partial("_GeneratedCSS")
+@Html.Partial("_HeadScriptsTemplate")
+
+@{
+    var prefix = !string.IsNullOrEmpty(SettingsDesign.MobileTemplate) ? "_" + SettingsDesign.MobileTemplate.ToLower() : "";
+    var bundleNameMobileCss = "mobile_head_" + prefix + ".css";
+    var bundleNameMobileExtraCss = "mobile" + prefix + ".css";
+}
+
+@Html.RenderCssBundle(bundleNameMobileCss)
+
+@Html.RenderModules("headStyles")
+
+@Html.Partial("_AdditionalHeadScripts")
+
+
+@*@Html.RenderAssetFilesAsHtml("head", "mobile")
+    @Html.RenderAssetFilesAsHtml("runtimeHead", "mobile")*@
+
+@Html.RenderModules("head")
+@Html.StaticBlock("head_mobile", onlyContent: true)
+@Html.Partial("_ExtraStyles", bundleNameMobileExtraCss)
+
+@{
+
+    if (isUseCustoms)
+    {
+        var chooseFont = SettingsDesign.ChooseFont;
+        double chooseLineHeight;
+        double defaultLineHeight = 1.2;
+        bool success = double.TryParse(SettingsDesign.ChooseLineHeight.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out chooseLineHeight);
+
+        <style>
+            :root {
+                --font-family: @Html.Raw(chooseFont), sans-serif;
+                --line-height: @(success ? chooseLineHeight.ToString().Replace(',', '.') : defaultLineHeight.ToString().Replace(',', '.'));
+            }
+
+            body {
+                font-family: var(--font-family) !important;
+                line-height: var(--line-height) !important;
+            }
+
+            body * {
+                font-family: var(--font-family) !important;
+                line-height: var(--line-height) !important;
+            }
+        </style>
+    }
+}

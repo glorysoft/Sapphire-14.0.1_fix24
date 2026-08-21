@@ -1,0 +1,113 @@
+﻿<form class="login-email"
+      data-ng-if="$ctrl.status === 'email'">
+    <div class="row middle-xs">
+        <div class="col-xs-12">
+            <label class="form-field-name vertical-interval-xsmall input-required"
+                   for="email">
+                {{ ::'Js.Login.Email.Email' | translate }}
+            </label>
+        </div>
+        <div class="col-xs-12">
+            <span class="form-field-input vertical-interval-xsmall">
+                <input type="text"
+                       id="email"
+                       class="input-small"
+                       data-ng-model="$ctrl.email"
+                       required="required"
+                       pattern="^([a-zA-Z0-9_.+\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9.\-]+)|(admin)$"
+                       autocomplete="email">
+            </span>
+        </div>
+    </div>
+
+    <button type="submit"
+            class="btn btn-submit btn-big login-action"
+            data-button-validation
+            data-button-validation-success="$ctrl.sendEmail();">
+        {{ ::'Js.Login.Email.SendEmail' | translate }}
+    </button>
+</form>
+<form class="login-email"
+      data-ng-if="$ctrl.status === 'password'">
+    <div class="row middle-xs">
+        <div class="col-xs-12">
+            <label class="form-field-name vertical-interval-xsmall input-required"
+                   for="password">
+                {{ ::'Js.Login.Email.Password' | translate }}
+            </label>
+        </div>
+        <div class="col-xs-12">
+            <span class="login-email__password form-field-input vertical-interval-xsmall">
+                <input id="password"
+                       class="input-small"
+                       data-ng-model="$ctrl.password"
+                       required="required"
+                       autocomplete="off"
+                       data-ng-attr-type="{{$ctrl.inputPassword}}">
+                <a class="showhidepass"
+                   data-ng-click="$ctrl.switchPasswordType();"
+                   style="position:static;align-self:center;">
+                    <span class="fa"
+                          data-ng-class="(auth.inputPassword == 'password') ? 'fa-eye' : 'fa-eye-slash'">
+                    </span>
+                </a>
+            </span>
+        </div>
+    </div>
+    <div class="row middle-xs">
+        <span class="col-xs-12 form-field-name-wrap"
+              data-ng-if="$ctrl.countErrorLogin >= $ctrl.maxCountErrorLogin">
+            <span class="form-field-name vertical-interval-xsmall input-required">
+                {{ 'Captcha.Code' | translate }}
+            </span>
+        </span>
+        <span class="col-xs-12"
+              data-ng-if="$ctrl.countErrorLogin >= $ctrl.maxCountErrorLogin">
+            <span class="form-field-input vertical-interval-xsmall login-email__captcha"
+                  data-bind-html-compile="$ctrl.captchaHtml">
+            </span>
+        </span>
+    </div>
+    <button type="submit"
+            class="btn btn-submit btn-big login-action"
+            data-button-validation
+            data-button-validation-success="$ctrl.login();">
+        {{ ::'Js.Login.Email.Login' | translate }}
+    </button>
+    <a href=""
+       class="login-forget"
+       data-ng-click="$ctrl.recoveryPassword();">
+        {{ ::'Js.Login.Email.ForgotPassword' | translate }}
+    </a>
+</form>
+<form class="login-email"
+      data-ng-if="$ctrl.status === 'confirmation'">
+    <div class="row middle-xs">
+        <div class="col-xs-12">
+            <label class="form-field-name vertical-interval-xsmall input-required">
+                {{ ::'Js.Login.Email.Code' | translate }}
+            </label>
+        </div>
+        <div class="col-xs-12">
+            <span class="form-field-input vertical-interval-xsmall">
+                <code-input data-length="$ctrl.emailCodeLength"
+                            data-focus-on-start="true"
+                            data-send-code-delay="$ctrl.countdownSeconds"
+                            data-on-complete-filling="$ctrl.confirmCode(code)"
+                            data-on-send-code="$ctrl.sendCode()">
+                </code-input>
+            </span>
+        </div>
+    </div>
+</form>
+<div class="login-email"
+     data-ng-if="$ctrl.status === 'forgotPassword'">
+</div>
+<div class="login-email"
+     data-ng-if="$ctrl.status === 'registration'">
+    <registration data-method="'email'"
+                  data-email="$ctrl.email"
+                  data-loaded="$ctrl.parentCtrl.loaded"
+                  data-redirect-to="$ctrl.redirectTo">
+    </registration>
+</div>

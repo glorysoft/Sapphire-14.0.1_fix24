@@ -1,0 +1,166 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.APISettingsModel
+
+<div class="api-item get">
+    <div class="api-item__header" ng-click="settings.showDetails($event)">
+        <span class="method">GET</span>
+        <span class="path">/api/bonus/cards/bynumber/{number}</span>
+        <span class="description">@T("Admin.SettingsApi.Index.BonusSystem.BonusCardByNumber")</span>
+    </div>
+    <div class="details">
+        <div class="">
+            GET @Model.GetApiUrl("/api/bonus/cards/bynumber/{number}")
+        </div>
+        <div class="m-b">
+            GET @Model.GetApiUrl("/api/bonus/cards/bynumber/")<b>&number={number}</b>
+        </div>
+        <h3 class="m-t-sm">@T("Admin.SettingsApi.Index.Order.SampleAnswer")</h3>
+        <pre class="m-t-sm">{
+    "number": "961-640",    // номер бонусной карты, может отсутствовать    (string)
+    "bonuses": 200,         // кол-во бонусов, может быть null              (decimal?)
+}
+</pre>
+        <div class="m-t-sm">
+            <h3>@T("Admin.SettingsApi.Index.Order.SampleAnswerError")</h3>
+            <pre class="m-t-sm">{
+    "status": "error",
+    "errors": "У покупателя нет бонусной карты"
+}
+</pre>
+        </div>
+
+    </div>
+</div>
+
+<div class="api-item get">
+    <div class="api-item__header" ng-click="settings.showDetails($event)">
+        <span class="method">GET</span>
+        <span class="path">/api/bonus/cards/{customerId}</span>
+        <span class="description">Получение бонусной карты по покупателю</span>
+    </div>
+    <div class="details">
+        <div class="m-b">
+            GET @Model.GetApiUrl("/api/bonus/cards/{customerId}")
+        </div>
+        <h3 class="m-t-sm">@T("Admin.SettingsApi.Index.Order.SampleAnswer")</h3>
+        <pre class="m-t-sm">{
+    "number": "961-640",    // номер бонусной карты, может отсутствовать    (string)
+    "bonuses": 200,         // кол-во бонусов, может быть null              (decimal?)
+}
+</pre>
+        <div class="m-t-sm">
+            <h3>@T("Admin.SettingsApi.Index.Order.SampleAnswerError")</h3>
+            <pre class="m-t-sm">{
+    "status": "error",
+    "errors": "У покупателя нет бонусной карты"
+}
+</pre>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="api-item post">
+    <div class="api-item__header" ng-click="settings.showDetails($event)">
+        <span class="method">POST</span>
+        <span class="path">/api/bonus/cards/{customerId}/add</span>
+        <span class="description">@T("Admin.SettingsApi.Index.BonusSystem.BonusCardCreating")</span>
+    </div>
+    <div class="details">
+        <div class="m-b">
+            POST @Model.GetApiUrl("/api/bonus/cards/{customerId}/add")
+        </div>
+        @T("Admin.SettingsApi.Index.BonusSystem.CustomerIdForCard")
+
+        <h3 class="m-t-sm">@T("Admin.SettingsApi.Index.Order.SampleAnswer")</h3>
+        <pre class="m-t-sm">{
+    "number": "12-34",    // номер бонусной карты, может отсутствовать    (string)
+    "bonuses": 10,        // кол-во бонусов, может быть null              (decimal?)
+}
+</pre>
+        <div class="m-t-sm">
+            <h3>@T("Admin.SettingsApi.Index.Order.SampleAnswerError")</h3>
+            <pre class="m-t-sm">{
+    "status": "error",
+    "errors": "У покупателя уже есть бонусная карта"
+}
+</pre>
+        </div>
+    </div>
+</div>
+
+<div class="api-item post">
+    <div class="api-item__header" ng-click="settings.showDetails($event)">
+        <span class="method">POST</span>
+        <span class="path">/api/bonus/cards/{customerId}/bonuses/accept</span>
+        <span class="description">@T("Admin.SettingsApi.Index.BonusSystem.AccrualOfBonuses")</span>
+    </div>
+    <div class="details">
+        <div class="m-b">
+            POST @Model.GetApiUrl("/api/bonus/cards/{customerId}/bonuses/accept")
+        </div>
+        @T("Admin.SettingsApi.Index.Order.SampleRequest")
+        <div class="row-tb">
+            <div class="row m-b-xs">
+                <div class="col-xs-3 col-sm-2">amount</div>
+                <div class="col-xs-2 col-sm-1">decimal</div>
+                <div class="col-xs">Кол-во бонусов</div>
+            </div>
+            <div class="row m-b-xs">
+                <div class="col-xs-3 col-sm-2">reason</div>
+                <div class="col-xs-2 col-sm-1">string</div>
+                <div class="col-xs">Причина начисления</div>
+            </div>
+        </div>
+        <h3 class="m-t-sm">@T("Admin.SettingsApi.Index.Order.SampleRequest")</h3>
+        <pre class="m-t-sm">{
+    "amount": 100,
+    "reason": "С Днем Рождения!",
+}
+</pre>
+        <h3 class="m-t-sm">@T("Admin.SettingsApi.Index.Order.SampleAnswer")</h3>
+        <pre class="m-t-sm">{
+    "status": "ok"
+}
+</pre>
+    </div>
+</div>
+
+<div class="api-item post">
+    <div class="api-item__header" ng-click="settings.showDetails($event)">
+        <span class="method">POST</span>
+        <span class="path">/api/bonus/cards/{customerId}/bonuses/substract</span>
+        <span class="description">@T("Admin.SettingsApi.Index.BonusSystem.WriteOffOfBonuses")</span>
+    </div>
+    <div class="details">
+        <div class="m-b">
+            POST @Model.GetApiUrl("/api/bonus/cards/{customerId}/bonuses/substract")
+        </div>
+        @T("Admin.SettingsApi.Index.Order.SampleRequest")
+        <div class="row-tb">
+            <div class="row m-b-xs">
+                <div class="col-xs-3 col-sm-2">amount</div>
+                <div class="col-xs-2 col-sm-1">decimal</div>
+                <div class="col-xs">Кол-во бонусов</div>
+            </div>
+            <div class="row m-b-xs">
+                <div class="col-xs-3 col-sm-2">reason</div>
+                <div class="col-xs-2 col-sm-1">string</div>
+                <div class="col-xs">Причина списания</div>
+            </div>
+        </div>
+        <h3 class="m-t-sm">@T("Admin.SettingsApi.Index.Order.SampleRequest")</h3>
+        <pre class="m-t-sm">{
+    "amount": 100,
+    "reason": "Списание бонусов",
+}
+</pre>
+        <h3 class="m-t-sm">@T("Admin.SettingsApi.Index.Order.SampleAnswer")</h3>
+        <pre class="m-t-sm">{
+    "status": "ok"
+}
+</pre>
+    </div>
+</div>
+
+

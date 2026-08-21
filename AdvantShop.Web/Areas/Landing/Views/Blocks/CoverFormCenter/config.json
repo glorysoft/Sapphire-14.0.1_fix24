@@ -1,0 +1,65 @@
+﻿{
+    "name": "CoverFormCenter",
+    "type": "cover",
+    "description": "Landings.Views.Blocks.Config.CoverFormCenter.Description",
+    "category": "Landings.Views.Blocks.Config.CoverFormCenter.Category",
+    "picture": "./areas/landing/images/covers/cover_form_center_preview.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.CoverFormCenter.SubBlockPlasholderOne"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.CoverFormCenter.SubBlockPlasholderTwo"
+        },
+        {
+            "name": "text1",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.CoverFormCenter.SubBlockPlasholderThree"
+        },
+        {
+            "name": "text2",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.CoverFormCenter.SubBlockPlasholderFour"
+        }
+    ],
+    "settings": {
+        "color_scheme": "color-scheme--light",
+        "classes": ["cover-form-center", "lp-block-cover", "color-scheme--light", "block-padding-top--150", "block-padding-bottom--150"],
+        "background_image": "./areas/landing/images/covers/cover_form_center.jpg",
+        "background_color": null,
+        "darken": 0.5,
+        "scrollToBlock": false,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "full_height": true,
+        "padding_top": 160,
+        "padding_bottom": 160,
+        "style": {
+            "background-image": "url('./areas/landing/images/covers/cover_form_center.jpg')",
+            "box-shadow": "200vh 200vw 0 rgba(0,0,0, 0.5) inset"
+        },
+        "mobile_hidden": false,
+        "form": {
+            "is_hidden": false,
+            "ShowAgreement": false,
+            "Title": "",
+            "Fields": [
+                {
+                    "Title": "Landings.Views.Blocks.Config.CoverFormCenter.FormFieldEmailTitle",
+                    "TitleCrm": "Email",
+                    "CustomFieldId": null,
+                    "FieldType": 5,
+                    "Subtitle": "",
+                    "Type": "text",
+                    "Required": true
+                }
+            ]
+        }
+    }
+}

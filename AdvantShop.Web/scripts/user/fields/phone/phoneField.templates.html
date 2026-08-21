@@ -1,0 +1,29 @@
+﻿<label class="row middle-xs form-field-control">
+        <span class="col-xs-12 form-field-name-wrap">
+            <span class="form-field-name vertical-interval-xsmall"
+                  data-ng-class="{'input-required': $ctrl.ngRequired}">
+                {{$ctrl.label}}
+            </span>
+        </span>
+    <span class="col-xs-12 form-field-input-wrap">
+        <span class="form-field-input vertical-interval-xsmall flex" style="gap: 0.625rem;">
+            <input type="tel"
+                   class="input-small"
+                   placeholder="{{::'Js.Phone.PhonePlaceholder' | translate}}"
+                   data-mask-control="$ctrl.enableMask"
+                   data-mask-control-preset="phone"
+                   data-ng-model="$ctrl.ngModel"
+                   data-ng-required="$ctrl.ngRequired"
+                   autocomplete="tel"
+                   maxlength="70"/>
+        </span>
+    </span>
+    <span class="col-xs-12 form-field-input-wrap" data-ng-if="($ctrl.showPhoneConfirmation && $ctrl.ngModel != null)">
+        <span class="form-field-input vertical-interval-xsmall">
+            <phone-confirmation data-phone="$ctrl.ngModel"
+                                data-confirmed="$ctrl.confirmed"
+                                data-show-code-confirmation="$ctrl.showPhoneConfirmation">
+            </phone-confirmation>
+        </span>
+    </span>
+</label>

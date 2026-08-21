@@ -1,0 +1,93 @@
+@use '../functions/util';
+@use '../functions/prefixer';
+@use '../functions/list';
+@use '../settings';
+
+$input-border-radius: 5px !default;
+$input-border: 1px #e2e3e4 solid !default;
+$input-placeholder-color: #4b4f58 !default;
+$input-big: (padding util.rem-calc(13px), font-size settings.$font-size-xmedium) !default;
+$input-middle: (padding util.rem-calc(12px), font-size settings.$font-size-normal) !default;
+$input-small: (padding util.rem-calc(9px), font-size settings.$font-size-normal) !default;
+$input-xsmall: (padding util.rem-calc(10px), font-size settings.$font-size-normal) !default;
+$textarea-big: (padding util.rem-calc(13px), height util.rem-calc(13px), font-size settings.$font-size-xmedium) !default;
+$textarea-middle: (padding util.rem-calc(12px), height util.rem-calc(155px), font-size settings.$font-size-normal) !default;
+$textarea-small: (padding util.rem-calc(9px), height util.rem-calc(96px), font-size settings.$font-size-normal) !default;
+$textarea-xsmall: (padding util.rem-calc(9px), height util.rem-calc(65px), font-size settings.$font-size-normal) !default;
+
+@mixin input-size($input-size-name, $input-size-params) {
+    .#{$input-size-name} {
+        font-size: list.list-find-value($input-size-params, font-size);
+        padding: list.list-find-value($input-size-params, padding);
+    }
+}
+
+@mixin textarea-size($textarea-size-name, $textarea-size-params) {
+    .#{$textarea-size-name} {
+        padding: list.list-find-value($textarea-size-params, padding);
+        font-size: list.list-find-value($textarea-size-params, font-size);
+        height: list.list-find-value($textarea-size-params, height);
+    }
+}
+
+input[type='text'],
+input[type='password'],
+input[type='search'],
+input[type='email'],
+input[type='number'],
+input[type='tel'],
+input[type='url'],
+textarea {
+    box-sizing: border-box;
+    border-radius: $input-border-radius;
+    border: $input-border;
+    vertical-align: middle;
+    width: 100%;
+    appearance: none;
+    box-shadow: none; // remove styles for invalid input in FF
+
+    /* line-height: 1.2; */
+    &:focus {
+        outline: none;
+    }
+
+    &[readonly] {
+        background-color: #f9f9f9;
+    }
+
+    &:disabled {
+        background-color: #eee;
+    }
+}
+
+input[type="password"] {
+    &:has(+ .showhidepass) {
+        &::-ms-reveal,
+        &::-ms-clear {
+            display: none;
+        }
+    }
+}
+
+textarea {
+    overflow: auto;
+}
+
+input[type='number'] {
+    appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+    }
+}
+
+@include input-size('input-big', $input-big);
+@include input-size('input-middle', $input-middle);
+@include input-size('input-small', $input-small);
+@include input-size('input-xsmall', $input-xsmall);
+@include textarea-size('textarea-big', $textarea-big);
+@include textarea-size('textarea-middle', $textarea-middle);
+@include textarea-size('textarea-small', $textarea-small);
+@include textarea-size('textarea-xsmall', $textarea-xsmall);

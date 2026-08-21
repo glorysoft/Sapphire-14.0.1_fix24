@@ -1,0 +1,47 @@
+﻿<div class="login">
+    <div class="login-content">
+        <login-header data-title="$ctrl.title"
+                      data-description="$ctrl.description"
+                      data-show-back="$ctrl.showBack"
+                      data-back-fn="$ctrl.back($ctrl.method)">
+        </login-header>
+
+        <div class="login-main"
+             data-ng-switch="$ctrl.method"
+             data-ng-show="!$ctrl.loaded">
+            <div data-ng-switch-when="email">
+                <login-email data-redirect-to="$ctrl.redirectTo"
+                             data-lp-id="$ctrl.lpId">
+                </login-email>
+            </div>
+            <div data-ng-switch-when="code">
+                <login-code data-redirect-to="$ctrl.redirectTo"></login-code>
+            </div>
+            <div data-ng-switch-when="module"
+                 data-ng-repeat="module in $ctrl.authModules"
+                 data-ng-if="module.id === $ctrl.authModuleId">
+                <login-module data-id="module.id"
+                              data-controller-name="module.controllerName"
+                              data-redirect-to="$ctrl.redirectTo">
+                </login-module>
+            </div>
+        </div>
+
+        <div class="login-auth-methods"
+             data-login-auth-methods
+             data-redirect-to="$ctrl.redirectTo"
+             data-auth-routes="$ctrl.authRoutes"
+             data-method="$ctrl.method"
+             data-module-id="$ctrl.authModuleId"
+             data-route-fn="$ctrl.changeMethod(method, moduleId)"
+             data-ng-if="$ctrl.showAuthMethods && !$ctrl.loaded">
+        </div>
+
+        <div class="icon-spinner-before icon-animate-spin-before login-loader"
+             data-ng-show="$ctrl.loaded">
+        </div>
+    </div>
+</div>
+
+
+

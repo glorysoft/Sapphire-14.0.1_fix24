@@ -1,0 +1,29 @@
+﻿@model AdvantShop.Web.Infrastructure.Admin.PaymentMethods.ThawaniPaymentModel
+
+@{
+    var isMobile = SettingsDesign.IsMobileTemplate;
+}
+
+<div class="form-group row middle-xs setting__form-group">
+    <div class="flex-grow-n setting__label @(isMobile ? "col-xs-12" : "col-fixed-size-md")">
+        <span class="text-required">@T("Admin.PaymentMethods.Thawani.SecretKey")</span>
+    </div>
+    <div class="col-xs-12 col-md-6 relative setting--m-t-sm @(isMobile ? "flex middle-xs" : "")">
+        @Html.TextBoxFor(x => x.SecretKey, new { ng_model = "paymentMethod.Parameters.SecretKey", @class = "form-control input-alt", required = "required", validation_input_text = T("Admin.PaymentMethods.Thawani.SecretKey").ToString(), ng_attr_type = "{{paymentMethod.inputTypeSecretKey}}" })
+        <a class="showhidepass @(isMobile ? "m-l-sm" : "")" style="top:0;right:25px;" ng-init="paymentMethod.inputTypeSecretKey = 'password'" ng-click="paymentMethod.inputTypeSecretKey = paymentMethod.inputTypeSecretKey == 'password' ? 'text' : 'password'">
+            <span class="fa" ng-class="(paymentMethod.inputTypeSecretKey == 'password') ? 'fa-eye' : 'fa-eye-slash'"></span>
+        </a>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    <div class="flex-grow-n setting__label @(isMobile ? "col-xs-12" : "col-fixed-size-md")">
+        <span class="text-required">@T("Admin.PaymentMethods.Thawani.PublishableKey")</span>
+    </div>
+    <div class="col-xs-12 col-md-6 relative setting--m-t-sm @(isMobile ? "flex middle-xs" : "")">
+        @Html.TextBoxFor(x => x.PublishableKey, new { ng_model = "paymentMethod.Parameters.PublishableKey", @class = "form-control input-alt", required = "required", validation_input_text = T("Admin.PaymentMethods.Thawani.PublishableKey").ToString(), ng_attr_type = "{{paymentMethod.inputTypePublishableKey}}" })
+        <a class="showhidepass @(isMobile ? "m-l-sm" : "")" style="top:0;right:25px;" ng-init="paymentMethod.inputTypePublishableKey = 'password'" ng-click="paymentMethod.inputTypePublishableKey = paymentMethod.inputTypePublishableKey == 'password' ? 'text' : 'password'">
+            <span class="fa" ng-class="(paymentMethod.inputTypePublishableKey == 'password') ? 'fa-eye' : 'fa-eye-slash'"></span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿.phone-confirmation {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+
+    &__phone-not-confirmed {
+        color: #f15959;
+    }
+
+    &__phone-confirmed {
+        color: #04ab1a;
+    }
+}

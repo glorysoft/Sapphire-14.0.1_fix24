@@ -1,0 +1,44 @@
+﻿{
+    "name": "progressbar",
+    "type": "progressbar",
+    "description": "Landings.Views.Blocks.Config.Progressbar.Description",
+    "category": "Landings.Views.Blocks.Config.Progressbar.Category",
+    "picture": "./areas/landing/images/progressbar/progressbar.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Progressbar.SubBlockTitlePlaceholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Progressbar.SubBlockSubtitlePlaceholder"
+        },
+        {
+            "name": "text",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Progressbar.SubBlockTextPlaceholder"
+        }
+    ],
+    "settings": {
+        "color_scheme": "color-scheme--light",
+        "classes": ["block-progressbar", "color-scheme--light", "block-padding-top--30", "block-padding-bottom--30"],
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "style": {},
+        "show_title": false,
+        "show_subtitle": false,
+        "mobile_hidden": false,
+        "width_in_columns": 7,
+        "background_color_passed": "rgb(23, 121, 250)",
+        "percent_passed": 50
+    }
+}

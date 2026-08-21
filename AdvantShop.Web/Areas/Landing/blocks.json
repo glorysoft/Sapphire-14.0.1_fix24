@@ -1,0 +1,1138 @@
+﻿[
+    {
+        "category": "Langings.Blocks.Json.Headers",
+        "categoryName": "Headers",
+        "blocks": [
+            {
+                "name": "headerCommunicationSimple",
+                "type": "header",
+                "description": "Langings.Blocks.Json.Headers.LogoOnTheLeft",
+                "picture": "./areas/landing/frontend/images/headers/headerCommunicationSimple.png"
+            },
+            {
+                "name": "headerCenterSimple",
+                "type": "header",
+                "description": "Langings.Blocks.Json.Headers.LogoOnTheCenter",
+                "picture": "./areas/landing/frontend/images/headers/headerCenterSimple.png"
+            },
+            {
+                "name": "headerMenu",
+                "type": "header",
+                "description": "Langings.Blocks.Json.Headers.MenuOnTheCenter",
+                "picture": "./areas/landing/frontend/images/headers/headerMenu.png"
+            },
+            {
+                "name": "headerSimple",
+                "type": "header",
+                "description": "Langings.Blocks.Json.Headers.LogoAndPhoneNumber",
+                "picture": "./areas/landing/frontend/images/headers/headerSimple.png"
+            },
+            {
+                "name": "headerCommunication",
+                "type": "header",
+                "description": "Langings.Blocks.Json.Headers.LogoMenuEmailAndOther",
+                "picture": "./areas/landing/frontend/images/headers/headerCommunication.png"
+            },
+            {
+                "name": "headerSimpleSocial",
+                "type": "header",
+                "description": "Langings.Blocks.Json.Headers.LogoSocialNetworks",
+                "picture": "./areas/landing/frontend/images/headers/headerSimpleSocial.png"
+            },
+            {
+                "name": "headerCenter",
+                "type": "header",
+                "description": "Langings.Blocks.Json.Headers.CenterLogoMenuNumberAction",
+                "picture": "./areas/landing/frontend/images/headers/headerCenter.png"
+            },
+            {
+                "name": "header",
+                "type": "header",
+                "description": "Langings.Blocks.Json.Headers.LeftLogoMenuAction",
+                "picture": "./areas/landing/frontend/images/headers/header.png"
+            },
+            {
+                "name": "headerBurger",
+                "type": "header",
+                "description": "Langings.Blocks.Json.Headers.LogoCenterHamburgerNetworks",
+                "picture": "./areas/landing/frontend/images/headers/headerBurger.png"
+            },
+            {
+                "name": "headerBurgerWithText",
+                "type": "header",
+                "description": "Langings.Blocks.Json.Headers.CenteredLogoHamburgerText",
+                "picture": "./areas/landing/frontend/images/headers/headerBurgerWithText.jpg"
+            },
+            {
+                "name": "headerBurgerRight",
+                "type": "header",
+                "description": "Langings.Blocks.Json.Headers.LogoLeftHamburger",
+                "picture": "./areas/landing/frontend/images/headers/headerBurgerRight.png"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Covers",
+        "categoryName": "Covers",
+        "blocks": [
+            {
+                "name": "cover",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.BackgroundImageTextOneButton",
+                "picture": "./areas/landing/images/covers/cover_preview.jpg"
+            },
+            {
+                "name": "coverAlt",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.BackgroundImageTextCenterTwoButtons",
+                "picture": "./areas/landing/images/covers/cover_alt_preview.jpg"
+            },
+            {
+                "name": "coverTextLeft",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.BackgroundImageTextOneButtonLeft",
+                "picture": "./areas/landing/images/covers/cover_preview_text_left.jpg"
+            },
+            {
+                "name": "coverVideo",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.BackgroundImageTextVideo",
+                "picture": "./areas/landing/images/covers/cover_preview_cover_video.jpg"
+            },
+            {
+                "name": "coverTextLeftModalVideo",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.BackgroundImageTextLeftVideoLink",
+                "picture": "./areas/landing/images/covers/cover_preview_text_left_modal_video.jpg"
+            },
+            {
+                "name": "coverVideoLeft",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.BackgroundImageVideoLeftTextOneButtonRight",
+                "picture": "./areas/landing/images/covers/cover_preview_cover_video_left.jpg"
+            },
+            {
+                "name": "coverHorizontalForm",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.BackgroundImageHorizontalCaptureForm",
+                "picture": "./areas/landing/images/covers/cover_horizontal_form_preview.jpg"
+            },
+            {
+                "name": "CoverFormCenter",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.BackgroundImageCenteredCaptureForm",
+                "picture": "./areas/landing/images/covers/cover_form_center_preview.jpg"
+            },
+            {
+                "name": "coverFormVideoLeft",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.CaptureFormVideoLeft",
+                "picture": "./areas/landing/images/covers/cover_preview_cover_form_video_left.jpg"
+            },
+            {
+                "name": "coverFormSlim",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.BackgroundImageTextLeftCaptureFormRight",
+                "picture": "./areas/landing/images/covers/cover_form_slim_preview.jpg"
+            },
+            {
+                "name": "coverCarousel",
+                "type": "coverCarousel",
+                "description": "Langings.Blocks.Json.Covers.CarouselBackgroundImage",
+                "picture": "./areas/landing/images/covers/cover_carousel.jpg"
+            },
+            {
+                "name": "coverImageText",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.ImageLeftTextRight",
+                "picture": "./areas/landing/images/covers/cover_image_text_preview.jpg"
+            },
+            {
+                "name": "coverImageTextAlt",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.ImageRightTextLeft",
+                "picture": "./areas/landing/images/covers/cover_image_text_alt_preview.jpg"
+            },
+            {
+                "name": "videoBackground",
+                "type": "cover",
+                "description": "Langings.Blocks.Json.Covers.BackgroundVideoPictureTextButton",
+                "picture": "./areas/landing/images/covers/cover_video_background.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Images",
+        "categoryName": "Images",
+        "blocks": [
+            {
+                "name": "textImage",
+                "type": "image",
+                "description": "Langings.Blocks.Json.Images.LeftTextImage",
+                "picture": "./areas/landing/images/texts/textImage.jpg"
+            },
+            {
+                "name": "textImageReverse",
+                "type": "image",
+                "description": "Langings.Blocks.Json.Images.RightTextImage",
+                "picture": "./areas/landing/images/texts/textImageReverse.jpg"
+            },
+            {
+                "name": "image",
+                "type": "image",
+                "description": "Langings.Blocks.Json.Images.HeaderAndImage",
+                "picture": "./areas/landing/images/texts/preview_image_block.jpg"
+            },
+            {
+                "name": "imageFullWidth",
+                "type": "image",
+                "description": "Langings.Blocks.Json.Images.HeaderAndImageFullWidth",
+                "picture": "./areas/landing/images/image/preview_image_full_width.jpg"
+            },
+            {
+                "name": "imageBackgroundWithText",
+                "type": "image",
+                "description": "Langings.Blocks.Json.Images.TextOnBackgroundImage",
+                "category": "Изображения",
+                "picture": "./areas/landing/images/imageBackground/preview_image_background_with_text.jpg"
+            },
+            {
+                "name": "gallery",
+                "type": "gallery",
+                "description": "Langings.Blocks.Json.Images.Gallery",
+                "picture": "./areas/landing/images/gallery/preview_gallery.jpg"
+            },
+            {
+                "name": "galleryWithText",
+                "type": "galleryWithText",
+                "description": "Langings.Blocks.Json.Images.GalleryWithText",
+                "picture": "./areas/landing/images/gallery/preview_gallery_with_text.jpg"
+            },
+            {
+                "name": "galleryPuzzles",
+                "type": "gallery",
+                "description": "Langings.Blocks.Json.Images.MosaicGallery",
+                "picture": "./areas/landing/images/galleryPuzzles/preview_gallery_puzzles.jpg"
+            },
+            {
+                "name": "imageCarousel",
+                "type": "gallery",
+                "description": "Langings.Blocks.Json.Images.Slider",
+                "picture": "./areas/landing/images/gallery/preview_image_carousel.jpg"
+            },
+            {
+                "name": "TextImageFullHeight",
+                "type": "image",
+                "description": "Langings.Blocks.Json.Images.TextRightImageFullHeightScreen",
+                "picture": "./areas/landing/images/texts/textImageFullHeight.jpg"
+            },
+            {
+                "name": "TextImageFullHeightReverse",
+                "type": "image",
+                "description": "Langings.Blocks.Json.Images.TextLeftImageFullHeightScreen",
+                "picture": "./areas/landing/images/texts/textImageFullHeightReverse.jpg"
+            },
+            {
+                "name": "textImageCarouselReverse",
+                "type": "gallery",
+                "description": "Langings.Blocks.Json.Images.TextLeftSlider",
+                "picture": "./areas/landing/images/image/textImageCarousel.jpg"
+            },
+            {
+                "name": "textImageCarousel",
+                "type": "gallery",
+                "description": "Langings.Blocks.Json.Images.TextRightSlider",
+                "picture": "./areas/landing/images/image/textImageCarouselReverse.jpg"
+            },
+            {
+                "name": "imageBackground",
+                "type": "image",
+                "description": "Langings.Blocks.Json.Images.BackgroundImage",
+                "picture": "./areas/landing/images/imageBackground/preview_image_background.jpg"
+            },
+            {
+                "name": "columnsWithPicture",
+                "type": "image",
+                "description": "Langings.Blocks.Json.Images.ColumnTextImageInCenter",
+                "picture": "./areas/landing/frontend/images/columns/columnsWithPicture.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Text",
+        "categoryName": "Text",
+        "blocks": [
+            {
+                "name": "textHeader",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.HeadingInTheCenter",
+                "picture": "./areas/landing/images/texts/textHeader.jpg"
+            },
+            {
+                "name": "textHeaderBold",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.HeadingOnTheLeft",
+                "picture": "./areas/landing/images/texts/textHeaderBold.jpg"
+            },
+            {
+                "name": "textCenter",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.CenteredTitleAndSubtitle",
+                "picture": "./areas/landing/images/texts/textCenter.jpg"
+            },
+            {
+                "name": "textSingle",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.CenterText",
+                "picture": "./areas/landing/images/texts/textSingle.jpg"
+            },
+            {
+                "name": "textSingleLeft",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.LargeTextLeftEdge",
+                "picture": "./areas/landing/images/texts/textSingleLeft.jpg"
+            },
+            {
+                "name": "textSingleSlimLeft",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.TextLeftEdge",
+                "picture": "./areas/landing/images/texts/textSingleSlimLeft.jpg"
+            },
+            {
+                "name": "textSingleSlim",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.CenterText",
+                "picture": "./areas/landing/images/texts/textSingleSlim.jpg"
+            },
+            {
+                "name": "textPyramid",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.HeadingLeftText",
+                "picture": "./areas/landing/images/texts/textPyramid.jpg"
+            },
+            {
+                "name": "titleLeftTextRight",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.HeadingLeftTextRight",
+                "picture": "./areas/landing/images/texts/titleLeftTextRight.jpg"
+            },
+            {
+                "name": "textFullWidth",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.TitleLeftAlignedText",
+                "picture": "./areas/landing/images/texts/textFullWidth.jpg"
+            },
+            //{
+            //  "name": "textImage",
+            //  "type": "text",
+            //  "description": "Текст и картинка (справа)",
+            //  "picture": "./areas/landing/images/texts/textImage.png"
+            //},
+            //{
+            //  "name": "textImageCarouselReverse",
+            //  "type": "text",
+            //  "description": "Текст и слайдер справа",
+            //  "picture": "./areas/landing/images/image/textImageCarousel.jpg"
+            //},
+            //{
+            //  "name": "textImageCarousel",
+            //  "type": "text",
+            //  "description": "Текст и слайдер слева",
+            //  "picture": "./areas/landing/images/image/textImageCarouselReverse.jpg"
+            //},
+            //{
+            //  "name": "textImageReverse",
+            //  "type": "text",
+            //  "description": "Текст и картинка (слева)",
+            //  "picture": "./areas/landing/images/texts/textImageReverse.png"
+            //}
+            {
+                "name": "textParagraph",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.HeadingLeftAlignedTextOnBackground",
+                "picture": "./areas/landing/images/texts/textParagraph.jpg"
+            },
+            {
+                "name": "textThanks",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.GratitudeForAction",
+                "picture": "./areas/landing/images/texts/textThanks.jpg"
+            },
+            {
+                "name": "textBlockCoupon",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Text.Coupon",
+                "picture": "./areas/landing/images/texts/textBlockCoupon.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Columns",
+        "categoryName": "Columns",
+        "blocks": [
+            {
+                "name": "columnsTwo",
+                "type": "column",
+                "description": "Langings.Blocks.Json.Columns.HeadingTwoColumnsText",
+                "picture": "./areas/landing/frontend/images/columns/columnsTwo.jpg"
+            },
+            {
+                "name": "columnsThree",
+                "type": "column",
+                "description": "Langings.Blocks.Json.Columns.HeadingThreeColumnsText",
+                "picture": "./areas/landing/frontend/images/columns/columnsThree.jpg"
+            },
+            {
+                "name": "columnsThreeIcons",
+                "type": "column",
+                "description": "Langings.Blocks.Json.Columns.ThreeColumnsTextIcons",
+                "picture": "./areas/landing/frontend/images/columns/columnsThreeIcons.jpg"
+            },
+            {
+                "name": "columnsFour",
+                "type": "column",
+                "description": "Langings.Blocks.Json.Columns.FourColumnsText",
+                "picture": "./areas/landing/frontend/images/columns/columnsFour.jpg"
+            },
+            {
+                "name": "columnsFAQ",
+                "type": "column",
+                "description": "Langings.Blocks.Json.Columns.TwoColumnsTextIcons",
+                "picture": "./areas/landing/frontend/images/columns/columnsFAQ.jpg"
+            },
+            {
+                "name": "columnsIconTitle",
+                "type": "column",
+                "description": "Langings.Blocks.Json.Columns.ThreeColumnsHeaderIcons",
+                "picture": "./areas/landing/frontend/images/columns/columnsIconTitle.jpg"
+            },
+            {
+                "name": "columnsOneIcons",
+                "type": "column",
+                "description": "Langings.Blocks.Json.Columns.OneColumnTextIcon",
+                "picture": "./areas/landing/frontend/images/columns/columnsOneIcons.jpg"
+            },
+            {
+                "name": "columnsTextPicture",
+                "type": "servicesLinks",
+                "description": "Langings.Blocks.Json.Columns.PicturesTitlesDescription",
+                "picture": "./areas/landing/frontend/images/columns/columnsTextPicture.jpg"
+            },
+            {
+                "name": "news",
+                "type": "column",
+                "description": "Langings.Blocks.Json.Columns.News",
+                "picture": "./areas/landing/frontend/images/news/news.jpg"
+            },
+            {
+                "name": "columnsPictureWithText",
+                "type": "column",
+                "description": "Langings.Blocks.Json.Columns.ColumnsBackgroundImageIconText",
+                "picture": "./areas/landing/frontend/images/columns/columnsPictureWithText.jpg"
+            },
+            {
+                "name": "columnsMenu",
+                "type": "header",
+                "description": "Langings.Blocks.Json.Columns.ThreeColumnMenu",
+                "picture": "./areas/landing/frontend/images/columns/columnsMenu.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Buttons",
+        "categoryName": "Buttons",
+        "blocks": [
+            {
+                "name": "formButton",
+                "type": "form",
+                "description": "Langings.Blocks.Json.Buttons.Button",
+                "picture": "./areas/landing/images/buttons/button.jpg"
+            },
+            {
+                "name": "formTwoButtons",
+                "type": "form",
+                "description": "Langings.Blocks.Json.Buttons.TwoButtons",
+                "picture": "./areas/landing/images/buttons/formTwoButtons.jpg"
+            },
+            {
+                "name": "formButtonWide",
+                "type": "form",
+                "description": "Langings.Blocks.Json.Buttons.FullWidthButton",
+                "picture": "./areas/landing/images/buttons/formButtonWide.jpg"
+            },
+            {
+                "name": "formButtonsWithLink",
+                "type": "form",
+                "description": "Langings.Blocks.Json.Buttons.ButtonAndLinkBelow",
+                "picture": "./areas/landing/images/buttons/formButtonsWithLink.jpg"
+            },
+            {
+                "name": "formTextAndButton",
+                "type": "form",
+                "description": "Langings.Blocks.Json.Buttons.LeftTextButton",
+                "picture": "./areas/landing/images/forms/formTextAndButton.jpg"
+            },
+            {
+                "name": "formTextAndButtonWithBackground",
+                "type": "form",
+                "description": "Langings.Blocks.Json.Buttons.LeftTextButtonBackground",
+                "picture": "./areas/landing/images/forms/formTextAndButtonWithBackground.jpg"
+            },
+            {
+                "name": "formTitleWithTextAndButton",
+                "type": "form",
+                "description": "Langings.Blocks.Json.Buttons.TitleTextButton",
+                "picture": "./areas/landing/images/forms/formTitleWithTextAndButton.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.CaptureForms",
+        "categoryName": "Forms",
+        "blocks": [
+            {
+                "name": "form",
+                "type": "form",
+                "description": "Langings.Blocks.Json.CaptureForms.Form",
+                "picture": "./areas/landing/images/forms/form.jpg"
+            },
+            {
+                "name": "formSubscribe",
+                "type": "form",
+                "description": "Langings.Blocks.Json.CaptureForms.SubscribeForm",
+                "picture": "./areas/landing/images/forms/formSubscribe.jpg"
+            },
+            {
+                "name": "formWithPicture",
+                "type": "form",
+                "description": "Langings.Blocks.Json.CaptureForms.LeftGripFormImage",
+                "picture": "./areas/landing/images/forms/formWithPicture.jpg"
+            },
+            {
+                "name": "formWithPictureInvert",
+                "type": "form",
+                "description": "Langings.Blocks.Json.CaptureForms.RightGripFormImage",
+                "picture": "./areas/landing/images/forms/formWithPictureInvert.jpg"
+            },
+            {
+                "name": "formWithTextAside",
+                "type": "form",
+                "description": "Langings.Blocks.Json.CaptureForms.LeftCaptureFormText",
+                "picture": "./areas/landing/images/forms/formWithTextAside.jpg"
+            },
+            {
+                "name": "formWithTextAsideInvert",
+                "type": "form",
+                "description": "Langings.Blocks.Json.CaptureForms.RightCaptureFormText",
+                "picture": "./areas/landing/images/forms/formWithTextAsideInvert.jpg"
+            },
+            {
+                "name": "formCenter",
+                "type": "form",
+                "description": "Langings.Blocks.Json.CaptureForms.CenterCaptureShape",
+                "picture": "./areas/landing/images/forms/formCenter.jpg"
+            },
+            {
+                "name": "formWithVideo",
+                "type": "form",
+                "description": "Langings.Blocks.Json.CaptureForms.RightCaptureFormVideo",
+                "picture": "./areas/landing/images/forms/formWithVideoPreview.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Products",
+        "categoryName": "Products",
+        "blocks": [
+            {
+                "name": "productsView",
+                "type": "productsView",
+                "description": "Langings.Blocks.Json.Products.ProductsList",
+                "picture": "./areas/landing/images/productsView/products_view_preview.jpg"
+            },
+            {
+                "name": "productsViewLead",
+                "type": "productsViewLead",
+                "description": "Langings.Blocks.Json.Products.ProductsListWithButtonFindPrice",
+                "picture": "./areas/landing/images/productsView/products_view_lead_preview.jpg"
+            },
+            {
+                "name": "productsByCategories",
+                "type": "productsByCategories",
+                "description": "Langings.Blocks.Json.Products.ProductsListProductCategories",
+                "picture": "./areas/landing/images/productsView/products_view_by_categories_preview.jpg"
+            },
+            {
+                "name": "productsByCategoriesLead",
+                "type": "productsByCategories",
+                "description": "Langings.Blocks.Json.Products.ProductsListWithButtonFindPriceProductCategories",
+                "picture": "./areas/landing/images/productsView/products_view_by_categories_lead_preview.jpg"
+            },
+            {
+                "name": "productsViewAlt",
+                "type": "productsView",
+                "description": "Langings.Blocks.Json.Products.OneProductProductDescription",
+                "picture": "./areas/landing/images/productsView/products_view_alt_preview.jpg"
+            },
+            {
+                "name": "productsViewAltOne",
+                "type": "productsView",
+                "description": "Langings.Blocks.Json.Products.OneDiscountedProductProductDescription",
+                "picture": "./areas/landing/images/productsView/products_view_alt_preview.jpg"
+            },
+            {
+                "name": "productsViewOneWithBigPicture",
+                "type": "productsView",
+                "description": "Langings.Blocks.Json.Products.ProductWithFullWidthPicture",
+                "category": "Товары",
+                "picture": "./areas/landing/images/productsView/products_view_one_with_big_picture_preview.jpg"
+            },
+            {
+                "name": "tableProduct",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Products.ProductTable",
+                "picture": "./areas/landing/images/productsView/table_product_preview.jpg"
+            },
+            {
+                "name": "productDetails",
+                "type": "gallery",
+                "description": "Langings.Blocks.Json.Products.ProductCardSlider",
+                "picture": "./areas/landing/images/productsView/products_details_preview.jpg"
+            },
+            {
+                "name": "productDetailsWithVideo",
+                "type": "video",
+                "description": "Langings.Blocks.Json.Products.ProductCardVideo",
+                "picture": "./areas/landing/images/productsView/products_view_with_video_preview.jpg"
+            },
+            {
+                "name": "productDetailsBrief",
+                "type": "image",
+                "description": "Langings.Blocks.Json.Products.ProductCard",
+                "picture": "./areas/landing/images/productsView/products_details_brief_preview.jpg"
+            },
+            {
+                "name": "productsViewTile",
+                "type": "productsView",
+                "description": "Langings.Blocks.Json.Products.ProductsListDescriptionPriceButton",
+                "picture": "./areas/landing/images/productsView/products_view_tile_preview.jpg"
+            },
+            {
+                "name": "ProductsViewBackground",
+                "type": "productsView",
+                "description": "Langings.Blocks.Json.Products.ProductsListBackgroundImage",
+                "picture": "./areas/landing/images/productsView/products_view_background.jpg"
+            },
+            {
+                "name": "donate",
+                "type": "donate",
+                "description": "Langings.Blocks.Json.Products.Donate",
+                "picture": "./areas/landing/images/donate/donate.jpg"
+            },
+            {
+                "name": "donateArtist",
+                "type": "donate",
+                "description": "Langings.Blocks.Json.Products.DonateArtist",
+                "picture": "./areas/landing/images/donate/donate_artist.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Characteristics",
+        "categoryName": "Characteristics",
+        "blocks": [
+            {
+                "name": "characteristics",
+                "type": "characteristics",
+                "description": "Langings.Blocks.Json.Characteristics.Characteristics",
+                "picture": "./areas/landing/images/characteristics/characteristics_preview.jpg"
+            },
+            {
+                "name": "characteristicsAlt",
+                "type": "characteristics",
+                "description": "Langings.Blocks.Json.Characteristics.CharacteristicsAlt",
+                "picture": "./areas/landing/images/characteristics/characteristics_alt_preview.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Video",
+        "categoryName": "Video",
+        "blocks": [
+            {
+                "name": "video",
+                "type": "video",
+                "description": "Langings.Blocks.Json.Video.FullWidthVideo",
+                "picture": "./areas/landing/images/video/video_preview.jpg"
+            },
+            {
+                "name": "modalVideo",
+                "type": "video",
+                "description": "Langings.Blocks.Json.Video.VideoInModalWindow",
+                "picture": "./areas/landing/images/video/modal_video_preview.jpg"
+            },
+            {
+                "name": "videoColumns",
+                "type": "videoColumns",
+                "description": "Langings.Blocks.Json.Video.VideoInThreeColumns",
+                "picture": "./areas/landing/frontend/images/columns/videoColumns.jpg"
+            },
+            {
+                "name": "textVideo",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Video.TextLeftAndVideo",
+                "picture": "./areas/landing/images/texts/textVideo.jpg"
+            },
+            {
+                "name": "textVideoReverse",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Video.TextRightAndVideo",
+                "picture": "./areas/landing/images/texts/textVideoReverse.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Counters",
+        "categoryName": "Counters",
+        "blocks": [
+            {
+                "name": "countdown",
+                "type": "countdown",
+                "description": "Langings.Blocks.Json.Counters.HurryUpBuyDarkBackground",
+                "picture": "./areas/landing/images/countdown/countdown_preview.jpg"
+            },
+            {
+                "name": "countdownAlt",
+                "type": "countdown",
+                "description": "Langings.Blocks.Json.Counters.HurryUpBuyWhiteBackground",
+                "picture": "./areas/landing/images/countdown/countdown_alt_preview.jpg"
+            },
+            {
+                "name": "countdownRow",
+                "type": "countdown",
+                "description": "Langings.Blocks.Json.Counters.HurryUpBuyDarkLined",
+                "picture": "./areas/landing/images/countdown/countdown_row_preview.jpg"
+            },
+            {
+                "name": "countdownSimple",
+                "type": "countdown",
+                "description": "Langings.Blocks.Json.Counters.HurryUpBuyLightLine",
+                "picture": "./areas/landing/images/countdown/countdown_simple_preview.jpg"
+            },
+            {
+                "name": "textImageCountdown",
+                "type": "image",
+                "description": "Langings.Blocks.Json.Counters.TextLeftCounterAndImage",
+                "picture": "./areas/landing/images/image/textImageCountdown.jpg"
+            },
+            {
+                "name": "textImageCountdownReverse",
+                "type": "image",
+                "description": "Langings.Blocks.Json.Counters.TextRightCounterAndImage",
+                "picture": "./areas/landing/images/image/textImageCountdownReverse.jpg"
+            },
+            {
+                "name": "progressbar",
+                "type": "progressbar",
+                "description": "Langings.Blocks.Json.Counters.Progress",
+                "picture": "./areas/landing/images/progressbar/progressbar.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Services",
+        "categoryName": "Services",
+        "blocks": [
+            {
+                "name": "servicesAccordion",
+                "type": "servicesGroupAccordion",
+                "description": "Langings.Blocks.Json.Services.ServicesAccordion",
+                "picture": "./areas/landing/frontend/images/services/servicesAccordion.jpg"
+            },
+            {
+                "name": "servicesTable",
+                "type": "servicesTable",
+                "description": "Langings.Blocks.Json.Services.ServicesTable",
+                "picture": "./areas/landing/frontend/images/services/servicesTable.jpg"
+            },
+            {
+                "name": "servicesColumnsThreeIcons",
+                "type": "servicesColumnsThreeIcons",
+                "description": "Langings.Blocks.Json.Services.ServicesCategories",
+                "picture": "./areas/landing/frontend/images/services/servicesColumnsThreeIcons.jpg"
+            },
+            {
+                "name": "servicesThreeColumns",
+                "type": "services",
+                "description": "Langings.Blocks.Json.Services.ServicesThreeColumns",
+                "picture": "./areas/landing/frontend/images/services/servicesThreeColumns.jpg"
+            },
+            {
+                "name": "servicesThreeColumnsLinks",
+                "type": "servicesLinks",
+                "description": "Langings.Blocks.Json.Services.ServicesThreeColumnsWithLinks",
+                "picture": "./areas/landing/frontend/images/services/servicesThreeColumnsLinks.jpg"
+            },
+            {
+                "name": "servicesIconsThreeColumns",
+                "type": "services",
+                "description": "Langings.Blocks.Json.Services.ServicesThreeColumnsTextIcons",
+                "picture": "./areas/landing/frontend/images/services/servicesIconsThreeColumns.jpg"
+            },
+            {
+                "name": "servicesColumns",
+                "type": "services",
+                "description": "Langings.Blocks.Json.Services.ServicesColumns",
+                "picture": "./areas/landing/frontend/images/services/servicesColumns.jpg"
+            },
+            {
+                "name": "servicesTwoColumnsPortrait",
+                "type": "services",
+                "description": "Langings.Blocks.Json.Services.ServicesTwoColumnsPhoto",
+                "picture": "./areas/landing/frontend/images/services/servicesTwoColumnsPortrait.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Quizzes",
+        "categoryName": "Quizzes",
+        "blocks": [
+            {
+                "name": "quiz",
+                "type": "quiz",
+                "description": "Langings.Blocks.Json.Quizzes.Quiz",
+                "picture": "./areas/landing/images/quizzes/quiz.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Separators",
+        "categoryName": "Line",
+        "blocks": [
+            {
+                "name": "delimiterLineHorizontal",
+                "type": "delimiter",
+                "description": "Langings.Blocks.Json.Separators.HorizontalLine",
+                "picture": "./areas/landing/frontend/images/delimiters/delimiterLineHorizontal.jpg"
+            },
+            {
+                "name": "delimiterLineVertical",
+                "type": "delimiter",
+                "description": "Langings.Blocks.Json.Separators.VerticalLine",
+                "picture": "./areas/landing/frontend/images/delimiters/delimiterLineVertical.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Reviews",
+        "categoryName": "Reviews",
+        "blocks": [
+            {
+                "name": "reviews",
+                "type": "reviews",
+                "description": "Langings.Blocks.Json.Reviews.ReviewsSlider",
+                "picture": "./areas/landing/images/reviews/previewReviews/previewReviewsCarousel.jpg"
+            },
+            {
+                "name": "reviewsMultiple",
+                "type": "reviews",
+                "description": "Langings.Blocks.Json.Reviews.ReviewsThreeColumnsSlider",
+                "picture": "./areas/landing/images/reviews/previewReviews/previewReviewsCarouselBlocks.jpg"
+            },
+            {
+                "name": "reviewsTwice",
+                "type": "reviews",
+                "description": "Langings.Blocks.Json.Reviews.ReviewsTwoColumnsSlider",
+                "picture": "./areas/landing/images/reviews/previewReviews/previewReviewsCarouselTwoBlocks.jpg"
+            },
+            {
+                "name": "reviewsVerticalList",
+                "type": "reviews",
+                "description": "Langings.Blocks.Json.Reviews.ReviewsVertically",
+                "picture": "./areas/landing/images/reviews/previewReviews/reviewsVerticalList.jpg"
+            },
+            {
+                "name": "textReviews",
+                "type": "reviews",
+                "description": "Langings.Blocks.Json.Reviews.ReviewPhotoRight",
+                "picture": "./areas/landing/images/texts/textReviews.jpg"
+            },
+            {
+                "name": "textRightReviews",
+                "type": "reviews",
+                "description": "Langings.Blocks.Json.Reviews.ReviewPhotoLeft",
+                "picture": "./areas/landing/images/texts/textRightReviews.jpg"
+            },
+            {
+                "name": "reviewsColumnsWithStars",
+                "type": "reviews",
+                "description": "Langings.Blocks.Json.Reviews.ReviewsColumnsWithRatings",
+                "picture": "./areas/landing/images/reviews/previewReviews/reviewsWithRatingPreview.jpg"
+            },
+            {
+                "name": "FormWithReviews",
+                "type": "form",
+                "description": "Langings.Blocks.Json.Reviews.ReviewsWithRatingsInThreeColumns",
+                "picture": "./areas/landing/images/reviews/previewReviews/formReviews.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Partners",
+        "categoryName": "Partners",
+        "blocks": [
+            {
+                "name": "partnersLogoCarousel",
+                "type": "logos",
+                "description": "Langings.Blocks.Json.Partners.LogosSlider",
+                "picture": "./areas/landing/images/logosPartners/logos_partners_carousel.jpg"
+            },
+            {
+                "name": "partnersLogoBlocks",
+                "type": "logos",
+                "description": "Langings.Blocks.Json.Partners.BlockBogos",
+                "picture": "./areas/landing/images/logosPartners/logos_partners_block.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Team",
+        "categoryName": "Team",
+        "blocks": [
+            {
+                "name": "teamThreeColumns",
+                "type": "team",
+                "description": "Langings.Blocks.Json.Team.TeamThreeColumns",
+                "picture": "./areas/landing/frontend/images/team/teamThreeColumns.jpg"
+            },
+            {
+                "name": "teamThreeColumnsRounded",
+                "type": "team",
+                "description": "Langings.Blocks.Json.Team.TeamThreeColumnsRounded",
+                "picture": "./areas/landing/frontend/images/team/teamThreeColumnsRounded.jpg"
+            },
+            {
+                "name": "teamThreeColumnsCarousel",
+                "type": "team",
+                "description": "Langings.Blocks.Json.Team.CarouselTeam",
+                "picture": "./areas/landing/frontend/images/team/teamThreeColumnsCarousel.jpg"
+            },
+            {
+                "name": "teamDetailsReverse",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Team.DescriptionEmployeePhotoRight",
+                "picture": "./areas/landing/frontend/images/team/teamDetailsReverse.jpg"
+            },
+            {
+                "name": "teamDetails",
+                "type": "text",
+                "description": "Langings.Blocks.Json.Team.DescriptionEmployeePhotoLeft",
+                "picture": "./areas/landing/frontend/images/team/teamDetails.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.PersonalAccount",
+        "categoryName": "PersonalAccount",
+        "blocks": [
+            {
+                "name": "personalAccount",
+                "type": "personalAccount",
+                "description": "Langings.Blocks.Json.PersonalAccount.PersonalAccount",
+                "picture": "./areas/landing/frontend/images/myaccount/myaccount.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Booking",
+        "categoryName": "Booking",
+        "blocks": [
+            {
+                "name": "bookingResources",
+                "type": "booking",
+                "description": "Langings.Blocks.Json.Booking.ResourceBlock",
+                "picture": "./areas/landing/frontend/images/booking/bookingResources.jpg",
+                "settingValues": ["BookingActive"]
+            },
+            {
+                "name": "bookingResourcesWithServices",
+                "type": "booking",
+                "description": "Langings.Blocks.Json.Booking.ResourceBlockWithServiceSelection",
+                "picture": "./areas/landing/frontend/images/booking/bookingResourcesWithServices.jpg",
+                "settingValues": ["BookingActive"]
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Schedule",
+        "categoryName": "Schedule",
+        "blocks": [
+            {
+                "name": "schedule",
+                "type": "schedule",
+                "description": "Langings.Blocks.Json.Schedule.ScheduleWithPicture",
+                "picture": "./areas/landing/images/schedule/schedule.jpg"
+            },
+            {
+                "name": "scheduleAlt",
+                "type": "schedule",
+                "description": "Langings.Blocks.Json.Schedule.Schedule",
+                "picture": "./areas/landing/images/schedule/scheduleAlt.jpg"
+            },
+            {
+                "name": "scheduleWithTitle",
+                "type": "schedule",
+                "description": "Langings.Blocks.Json.Schedule.ScheduleWithTitle",
+                "picture": "./areas/landing/images/schedule/scheduleWithTitle.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Contacts",
+        "categoryName": "Contacts",
+        "blocks": [
+            {
+                "name": "contactsCenterSimple",
+                "type": "contacts",
+                "description": "Langings.Blocks.Json.Contacts.ContactsCenter",
+                "picture": "./areas/landing/frontend/images/contacts/contactsCenterSimple.png"
+            },
+            {
+                "name": "contactsCenter",
+                "type": "contacts",
+                "description": "Langings.Blocks.Json.Contacts.ContactsCenterBackgroundImage",
+                "picture": "./areas/landing/frontend/images/contacts/contactsCenter.png"
+            },
+            {
+                "name": "contactsMap",
+                "type": "contacts",
+                "description": "Langings.Blocks.Json.Contacts.ContactsWithMap",
+                "picture": "./areas/landing/frontend/images/contacts/contactsMap.png"
+            },
+            {
+                "name": "contactsMapBackground",
+                "type": "contacts",
+                "description": "Langings.Blocks.Json.Contacts.ContactsWithMapAsBackground",
+                "picture": "./areas/landing/frontend/images/contacts/contactsMapBackground.png"
+            },
+            {
+                "name": "contactsForm",
+                "type": "contacts",
+                "description": "Langings.Blocks.Json.Contacts.ContactsWithForm",
+                "picture": "./areas/landing/frontend/images/contacts/contactsForm.png"
+            },
+            {
+                "name": "contactsButtonsSocials",
+                "type": "contacts",
+                "description": "Langings.Blocks.Json.Contacts.SocialButtons",
+                "picture": "./areas/landing/frontend/images/contacts/contactsButtonsSocials_preview.jpg"
+            },
+            {
+                "name": "contactsButtonsSocialsAlt",
+                "type": "contacts",
+                "description": "Langings.Blocks.Json.Contacts.RoundedSocialButtons",
+                "picture": "./areas/landing/frontend/images/contacts/contactsButtonsSocialsAlt_preview.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Langings.Blocks.Json.Footers",
+        "categoryName": "Footers",
+        "blocks": [
+            {
+                "name": "footerSimpleDark",
+                "type": "footer",
+                "description": "Langings.Blocks.Json.Footers.SimpleFooter",
+                "picture": "./areas/landing/frontend/images/footers/footerSimpleDark.jpg"
+            },
+            {
+                "name": "footerSocial",
+                "type": "footer",
+                "description": "Langings.Blocks.Json.Footers.FooterWithSocialNetworks",
+                "picture": "./areas/landing/frontend/images/footers/footerSocial.jpg"
+            },
+            {
+                "name": "footerSocialSimple",
+                "type": "footer",
+                "description": "Langings.Blocks.Json.Footers.FooterWithSocialNetworksAndHeader",
+                "picture": "./areas/landing/frontend/images/footers/footerSocialSimple.jpg"
+            },
+            {
+                "name": "footerWithMenu",
+                "type": "footer",
+                "description": "Langings.Blocks.Json.Footers.FooterWithMenu",
+                "picture": "./areas/landing/frontend/images/footers/footerWithMenu.jpg"
+            }
+        ]
+    },
+    //{
+    //  "category": "Карта",
+    //  "blocks": [
+    //    {
+    //      "name": "map",
+    //      "type": "map",
+    //      "description": "Карта",
+    //      "picture": null
+    //    }
+    //  ]
+    //},
+    //{
+    //  "category": "Вкладки",
+    //  "blocks": [
+    //    {
+    //      "name": "tabs",
+    //      "type": "tabs",
+    //      "description": "Вкладки",
+    //      "picture": null
+    //    }
+    //  ]
+    //},
+    {
+        "category": "Exit popup",
+        "categoryName": "ExitPopup",
+        "blocks": [
+            {
+                "name": "exitButtons",
+                "type": "exit",
+                "description": "Langings.Blocks.Json.ExitPopup.ExitPopupWithButtons",
+                "picture": "./areas/landing/images/exit/exitButtons_preview.jpg"
+            },
+            {
+                "name": "exitForm",
+                "type": "exit",
+                "description": "Langings.Blocks.Json.ExitPopup.ExitPopupWithForm",
+                "picture": "./areas/landing/images/exit/exitForm_preview.jpg"
+            },
+            {
+                "name": "exitFormPicture",
+                "type": "exit",
+                "description": "Langings.Blocks.Json.ExitPopup.ExitPopupWithFormAndImage",
+                "picture": "./areas/landing/images/exit/exitFormPicture_preview.jpg"
+            },
+            {
+                "name": "exitButtonsCountdown",
+                "type": "exit",
+                "description": "Langings.Blocks.Json.ExitPopup.ExitPopupWithButtonsAndCounter",
+                "picture": "./areas/landing/images/exit/exitButtonsCountdown_preview.jpg"
+            }
+        ]
+    },
+    {
+        "category": "Html",
+        "categoryName": "Html",
+        "blocks": [
+            {
+                "name": "html",
+                "type": "html",
+                "description": "Langings.Blocks.Json.Html.HtmlBlock",
+                "picture": "./areas/landing/images/html/html.jpg"
+            },
+            {
+                "name": "reference",
+                "type": "reference",
+                "description": "Langings.Blocks.Json.Html.LinkToAnotherBlock",
+                "picture": "./areas/landing/images/reference/reference_preview.jpg"
+            }
+        ]
+    }
+]

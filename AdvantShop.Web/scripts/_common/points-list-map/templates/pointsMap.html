@@ -1,0 +1,33 @@
+﻿<div
+    class="relative points-map"
+    data-ng-style="{'height': !pointsMap.isShowMap && pointsMap.compactMode ? 0 : 'auto', 'width': !pointsMap.isShowMap && pointsMap.compactMode ? 0 : 'auto', 'overflow': !pointsMap.isShowMap && pointsMap.compactMode ? 'hidden' : 'auto' }">
+    <div class="points-map__spinner" data-ng-if="!pointsMap.isLoadedMap">
+        <div class="icon-spinner-before icon-animate-spin-before"></div>
+    </div>
+    <ya-map
+        data-ya-behaviors="default scrollZoom"
+        class="points-map__map"
+        data-ng-class="{'points-map__map--hide': !pointsMap.isLoadedMap}"
+        data-ng-attr-ya-center="pointsMap.yaCenter"
+        data-ya-after-init="pointsMap.handleAfterInitMap($target)"
+        data-ya-event-load="pointsMap.handleAfterInitMap($target)"
+        data-ya-map-key="pointsMap.yaMapKey"
+        data-ya-zoom="{{pointsMap.yaZoom}}"
+        data-ya-options="{{pointsMap.mapOptions}}"
+        data-ya-controls="{{pointsMap.mapControls}}">
+        <ya-collection
+            data-ng-if="pointsMap.points.length"
+            data-show-all="pointsMap.showAll"
+            data-ya-options="{{pointsMap.yaCollectionOption}}"
+            data-points="pointsMap.points"
+            data-ya-event-click="pointsMap.handleGeoObject($event, balloon)"
+            data-ya-after-set-points="pointsMap.setCollection($target)">
+        </ya-collection>
+        <ya-geo-object
+            data-ng-repeat="geoObject in pointsMap.polygon track by $index"
+            data-ya-source="geoObject"
+            data-ya-after-init="pointsMap.initGeoObjectPolygon($target)"
+            data-ya-options="{{geoObject.properties}}">
+        </ya-geo-object>
+    </ya-map>
+</div>

@@ -1,0 +1,28 @@
+﻿@model AdvantShop.ViewModel.Common.ZonePopoverViewModel
+
+@if (SettingsDesign.IsMobileTemplate)
+{
+    <div data-modal-control id="zoneModalQuestion" class="zone-modal-question">
+        <div class="modal-content">
+            <div class="text-center" data-ng-controller="ZoneModalCtrl as zoneModal">
+                <div class="zone-modal-question__text">@T("Common.ZonePopover.YourCityQuestion", Model.City)</div>
+                <div class="text-align-center vertical-interval-small no-bottom">
+                    <button type="button"  data-ng-click="zoneModal.approveZone();" data-modal-close class="btn btn-middle btn-buy zone-modal-question__btn">@T("Common.ZonePopover.Yes")</button>
+                    <button type="button" data-ng-click="zoneModal.showDialogVariants();"  data-modal-close class="btn btn-middle zone-modal-question__btn">@T("Common.ZonePopover.No")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}else{
+    <div data-zone-popover class="ng-cloak">
+        <div id="zonePopover" data-popover data-popover-on-open="zonePopover.handleOpenZonePopover" data-popover-on-close="zonePopover.handleCloseZonePopover" data-popover-position="bottom" data-popover-is-fixed="true" data-popover-show-on-load="true" data-popover-overlay-enabled="true">
+            <div>
+                @T("Common.ZonePopover.YourCityQuestion", Model.City)
+                <div class="text-align-center vertical-interval-small no-bottom">
+                    <button type="button" data-ng-click="zonePopover.zoneOk()" class="btn btn-xsmall btn-buy">@T("Common.ZonePopover.Yes")</button>
+                    <button type="button" data-ng-click="zonePopover.zoneNo()" class="btn btn-xsmall">@T("Common.ZonePopover.No")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

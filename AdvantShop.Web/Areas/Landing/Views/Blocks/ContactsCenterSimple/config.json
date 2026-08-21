@@ -1,0 +1,65 @@
+﻿{
+    "name": "contactsCenterSimple",
+    "type": "contacts",
+    "description": "Landings.Views.Blocks.Config.ContactsCenterSimple.Description",
+    "category": "Landings.Views.Blocks.Config.ContactsCenterSimple.Category",
+    "picture": "./areas/landing/frontend/images/contacts/contactsCenterSimple.png",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ContactsCenterSimple.SubBlockPlasholderOne"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ContactsCenterSimple.SubBlockPlasholderTwo"
+        },
+        {
+            "name": "text",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ContactsCenterSimple.SubBlockPlasholderThree"
+        }
+    ],
+    "settings": {
+        "classes": ["lp-block-contacts-center-simple", "color-scheme--light", "block-padding-top--135", "block-padding-bottom--135"],
+        "color_scheme": "color-scheme--light",
+        "show_title": true,
+        "show_subtitle": false,
+        "vk_enabled": true,
+        "vk_url": null,
+        "vk_text": "Landings.Views.Blocks.Config.ContactsCenterSimple.VkText",
+        "fb_enabled": true,
+        "fb_url": null,
+        "fb_text": "Landings.Views.Blocks.Config.ContactsCenterSimple.FbText",
+        "youtube_enabled": true,
+        "youtube_url": null,
+        "youtube_text": "Landings.Views.Blocks.Config.ContactsCenterSimple.YoutubeText",
+        "twitter_enabled": true,
+        "twitter_url": null,
+        "twitter_text": "Landings.Views.Blocks.Config.ContactsCenterSimple.TwitterText",
+        "instagram_enabled": true,
+        "instagram_url": null,
+        "instagram_text": "Landings.Views.Blocks.Config.ContactsCenterSimple.InstagramText",
+        "whatsapp_enabled": false,
+        "whatsapp_text": "Landings.Views.Blocks.Config.ContactsCenterSimple.WhatsappText",
+        "whatsapp_message": "Landings.Views.Blocks.Config.ContactsCenterSimple.WhatsappMessage",
+        "telegram_enabled": false,
+        "telegram_url": null,
+        "telegram_text": "Landings.Views.Blocks.Config.ContactsCenterSimple.TelegramText",
+        "odnoklassniki_enabled": false,
+        "odnoklassniki_url": null,
+        "odnoklassniki_text": "Landings.Views.Blocks.Config.ContactsCenterSimple.OdnoklassnikiText",
+        "background_image": null,
+        "darken": 0,
+        "background_color": "#ffffff",
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 135,
+        "padding_bottom": 135,
+        "style": {},
+        "mobile_hidden": false
+    }
+}

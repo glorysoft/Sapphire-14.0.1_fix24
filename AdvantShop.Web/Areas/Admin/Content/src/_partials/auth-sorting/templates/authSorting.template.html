@@ -1,0 +1,49 @@
+﻿<div class="sortable-row ng-cloak"
+     data-ng-model="ctrl.methods"
+     data-as-sortable="ctrl.sortableOptions"
+     data-is-mobile>
+    <div data-ng-if="!isMobile.value"
+         data-ng-repeat="method in ctrl.methods"
+         data-as-sortable-item>
+        <div class="flex auth-sort-order__item p-xs">
+            <div class="as-sortable-item-handle"
+                 data-as-sortable-item-handle>
+                <icon-move />
+            </div>
+            <div>{{method.Title}}</div>
+        </div>
+    </div>
+    <div data-ng-if="isMobile.value"
+         data-ng-repeat="method in ctrl.methods"
+         data-as-sortable-item
+         class="swipe-line m-b-xs">
+        <div class="swipe-line__inner">
+            <div class="swipe-line__content auth-sort-order__mobile-item card card--middle">
+                <div class="as-sortable-item-handle"
+                     data-as-sortable-item-handle>
+                    <icon-move>
+                        <svg
+                            class="icon-move"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="10.000000pt"
+                            height="20.000000pt"
+                            viewBox="0 0 10.000000 20.000000"
+                            preserveAspectRatio="xMidYMid meet">
+                            <g transform="translate(0.000000,20.000000) scale(0.100000,-0.100000)" fill="#c4c4c4" stroke="none">
+                                <path d="M10 175 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                <path d="M60 175 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                <path d="M10 125 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                <path d="M60 125 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                <path d="M10 75 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                <path d="M60 75 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                <path d="M10 25 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                                <path d="M60 25 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z"></path>
+                            </g>
+                        </svg>
+                    </icon-move>
+                </div>
+                <div>{{method.Title}}</div>
+            </div>
+        </div>
+    </div>
+</div>

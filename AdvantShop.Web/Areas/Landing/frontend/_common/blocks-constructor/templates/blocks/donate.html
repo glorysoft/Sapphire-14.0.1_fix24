@@ -1,0 +1,308 @@
+﻿<div data-tabs class="tabs tabs-horizontal tabs-lp--minimalistic" id="photosSortable" ng-controller="SubBlockProductsViewCtrl as product">
+    <ul class="tabs-headers row center-xs start-sm">
+        <li
+            id="tabCoverFront"
+            class="tabs-header-item col-xs-12 col-sm-slim"
+            data-tab-header=""
+            data-ng-class="{'tabs-header-active block-constructor-settings-link' : tabHeader.selected}">
+            <span
+                class="tabs-header-item-link"
+                data-ng-click="tabs.change(tabHeader)"
+                data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+                {{'Admin.Js.Landings.BlocksConstructor.ProductsView.Appearance'|translate}}
+            </span>
+        </li>
+        <li
+            id="tabPrices"
+            class="tabs-header-item col-xs-12 col-sm-slim"
+            data-tab-header=""
+            data-ng-class="{'tabs-header-active block-constructor-settings-link' : tabHeader.selected}">
+            <span
+                class="tabs-header-item-link"
+                data-ng-click="tabs.change(tabHeader)"
+                data-ng-class="{'link-dotted-invert' : !tabHeader.selected, 'cs-l-2 link-dotted-invert link-dotted-none' : tabHeader.selected}">
+                {{'Admin.Js.Landings.BlocksConstructor.Donate.Prices'|translate}}
+            </span>
+        </li>
+    </ul>
+    <div class="tabs-content">
+        <div class="tab-content" data-tab-content="tabCoverFront" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="blocks-constructor-settings-col">
+                        <div ng-include="$ctrl.modalData.generalOptionsTemplateUrl"></div>
+
+                        <div class="blocks-constructor-row">
+                            <label class="blocks-constructor-label" data-e2e="HideShipping">
+                                <input class="blocks-constructor-checkbox-native" type="checkbox" ng-model="$ctrl.modalData.settings.hide_shipping" />
+                                <span class="blocks-constructor-checkbox"></span>
+                                <span class="blocks-constructor-label-text">
+                                    {{'Admin.Js.Landings.BlocksConstructor.ProductsView.HideDelivery'|translate}}
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="blocks-constructor-row" ng-if="$ctrl.modalData.settings.hover_animation != null">
+                            <div class="blocks-constructor-row__name">
+                                {{'Admin.Js.Landings.BlocksConstructor.ProductsView.HoverEffects'|translate}}
+                            </div>
+                            <div>
+                                <div class="blocks-constructor-select">
+                                    <select
+                                        ng-model="$ctrl.modalData.settings.hover_animation"
+                                        ng-options="item.value as item.name for item in $ctrl.modalData.settings.hover_animation_options"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="blocks-constructor-settings-col--alt">
+                        <div ng-include="$ctrl.modalData.generalRightOptionsTemplateUrl"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="blocks-constructor-table-row-group" ng-include="$ctrl.modalData.buttonOptionsTemplateUrl"></div>
+        </div>
+
+        <div class="tab-content" data-tab-content="tabPrices" data-ng-class="{'tab-content-active': tabContent.header.selected}">
+            <div class="blocks-constructor-settings-col">
+                <div class="blocks-constructor-row">
+
+                    <div class="row m-b-md" data-ng-if="$ctrl.modalData.settings.prices != null && $ctrl.modalData.settings.prices.length > 0">
+                        <div class="col-xs-5">
+                            {{'Admin.Js.Landings.BlocksConstructor.Donate.Product'|translate}}
+                        </div>
+                        <div class="col-xs-5">
+                            {{'Admin.Js.Landings.BlocksConstructor.Donate.Price'|translate}}
+                        </div>
+                        <div class="col-xs-2">
+                            {{'Admin.Js.Landings.BlocksConstructor.Donate.Selected'|translate}}
+                        </div>
+                    </div>
+                    <div class="row m-b-md" data-ng-repeat="item in $ctrl.modalData.settings.prices track by $index">
+                        <div class="col-xs-5">
+                            <a data-ng-if="item.offerId != null"
+                               data-ng-init="ctrl.loadProductByDonateItem(item)"
+                                ng-href="./adminv3/product/edit/{{item.productId}}"
+                                target="_blank">
+                                {{item.name}}
+                            </a>
+                            <a data-ng-if="item.offerId == null"
+                               data-ng-click="$ctrl.selectDonateOffer(item)"
+                                href="">
+                                {{'Admin.Js.Landings.BlocksConstructor.Donate.ChooseProduct'|translate}}
+                            </a>
+                        </div>
+                        <div class="col-xs-5">
+                            <input
+                                class="blocks-constructor-input"
+                                type="number"
+                                ng-model="item.value" />
+                        </div>
+                        <div class="col-xs-1">
+                            <label class="blocks-constructor-label">
+                                <input
+                                    class="blocks-constructor-checkbox-native"
+                                    type="checkbox"
+                                    ng-model="item.selected"
+                                    data-ng-click="$ctrl.selectDonateItem(item, $ctrl.modalData.settings.prices)"/>
+                                <span class="blocks-constructor-checkbox"></span>
+                            </label>
+                        </div>
+                        <div class="col-xs-1">
+                            <span
+                                data-ng-click="$ctrl.modalData.settings.prices.splice($index, 1)"
+                                class="lp-grid__remove-control link-service--secondary link-decoration-none"
+                                data-e2e="DelProduct"
+                                title="Удалить">
+                                <svg
+                                    width="16px"
+                                    height="16px"
+                                    viewBox="0 0 16 16"
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <path
+                                        fill="currentColor"
+                                        d="M8.8890873,8.18198052 L12.363961,11.6568542 L11.6568542,12.363961 L8.18198052,8.8890873 L4.70710678,12.363961 L4,11.6568542 L7.47487373,8.18198052 L4,4.70710678 L4.70710678,4 L8.18198052,7.47487373 L11.6568542,4 L12.363961,4.70710678 L8.8890873,8.18198052 Z"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="" data-ng-click="$ctrl.modalData.settings.prices.push({value: 0, selected: false, productId: null, offerId: null})">
+                            {{'Admin.Js.Landings.BlocksConstructor.Donate.AddPrice'|translate}}
+                        </a>
+                    </div>
+                </div>
+
+                <div class="blocks-constructor-row" data-ng-show="$ctrl.modalData.name != 'donateArtist'">
+                    <label class="blocks-constructor-label">
+                        <input
+                            class="blocks-constructor-checkbox-native"
+                            type="checkbox"
+                            ng-model="$ctrl.modalData.settings.show_other_price" />
+                        <span class="blocks-constructor-checkbox"></span>
+                        <span class="blocks-constructor-label-text">
+                            {{'Admin.Js.Landings.BlocksConstructor.Donate.ShowOtherPrice'|translate}}
+                        </span>
+                    </label>
+                </div>
+
+                <div class="blocks-constructor-row" data-ng-if="$ctrl.modalData.settings.show_other_price">
+                    <div class="row m-b-md">
+                        <div class="col-xs-5">
+                            {{'Admin.Js.Landings.BlocksConstructor.Donate.ProductForOther'|translate}}
+                        </div>
+                        <div class="col-xs-3">
+                            {{'Admin.Js.Landings.BlocksConstructor.Donate.MinPriceForOther'|translate}}
+                        </div>
+                        <div class="col-xs-3">
+                            {{'Admin.Js.Landings.BlocksConstructor.Donate.MaxPriceForOther'|translate}}
+                        </div>
+                        <div class="col-xs-1">
+                        </div>
+                    </div>
+                    <div class="row middle-xs">
+                        <div class="col-xs-5">
+                            <span>
+                                <span data-ng-if="$ctrl.modalData.settings.other_price.offerId != null">
+                                    <a data-ng-init="ctrl.loadProductByDonateItem($ctrl.modalData.settings.other_price)"
+                                       ng-href="./adminv3/product/edit/{{$ctrl.modalData.settings.other_price.productId}}"
+                                       target="_blank">
+                                        {{$ctrl.modalData.settings.other_price.name}}
+                                    </a>
+                                </span>
+
+                                <a data-ng-if="$ctrl.modalData.settings.other_price.offerId == null"
+                                   data-ng-click="$ctrl.selectDonateOffer($ctrl.modalData.settings.other_price)"
+                                   href="">
+                                    {{'Admin.Js.Landings.BlocksConstructor.Donate.ChooseProduct'|translate}}
+                                </a>
+                            </span>
+                        </div>
+                        <div class="col-xs-3">
+                            <input
+                                class="blocks-constructor-input"
+                                type="number"
+                                ng-model="$ctrl.modalData.settings.other_price_min" />
+                        </div>
+                        <div class="col-xs-3">
+                            <input
+                                class="blocks-constructor-input"
+                                type="number"
+                                ng-model="$ctrl.modalData.settings.other_price_max" />
+                        </div>
+                        <div class="col-xs-1">
+                                <span
+                                    data-ng-click="$ctrl.modalData.settings.other_price = {}"
+                                    class="lp-grid__remove-control link-service--secondary link-decoration-none"
+                                    data-e2e="DelProduct"
+                                    title="Удалить">
+                                    <svg
+                                        width="16px"
+                                        height="16px"
+                                        viewBox="0 0 16 16"
+                                        version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <path
+                                            fill="currentColor"
+                                            d="M8.8890873,8.18198052 L12.363961,11.6568542 L11.6568542,12.363961 L8.18198052,8.8890873 L4.70710678,12.363961 L4,11.6568542 L7.47487373,8.18198052 L4,4.70710678 L4.70710678,4 L8.18198052,7.47487373 L11.6568542,4 L12.363961,4.70710678 L8.8890873,8.18198052 Z"></path>
+                                    </svg>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocks-constructor-row">
+                    <div class="blocks-constructor-row__name">
+                        {{'Admin.Js.Landings.BlocksConstructor.Donate.Currency'|translate}}
+                    </div>
+                    <input
+                        class="blocks-constructor-input"
+                        type="text"
+                        ng-model="$ctrl.modalData.settings.currency" />
+                </div>
+
+                <div class="blocks-constructor-row"
+                     ng-init="$ctrl.modalData.settings.button.text = $ctrl.modalData.settings.button != null ? $ctrl.modalData.settings.button.text : 'Поддержать'">
+                    <div class="blocks-constructor-row__name">
+                        {{'Admin.Js.Landings.BlocksConstructor.ProductsView.ButtonText'|translate}}
+                    </div>
+                    <input
+                        class="blocks-constructor-input"
+                        data-e2e="ButtonText"
+                        type="text"
+                        ng-model="$ctrl.modalData.settings.button.text" />
+                </div>
+
+                <div class="blocks-constructor-row" data-ng-if="$ctrl.modalData.settings.show_picture != null">
+                    <label class="blocks-constructor-label">
+                        <input class="blocks-constructor-checkbox-native" type="checkbox" ng-model="$ctrl.modalData.settings.show_picture" />
+                        <span class="blocks-constructor-checkbox"></span>
+                        <span class="blocks-constructor-label-text">
+                            {{'Admin.Js.Landings.BlocksConstructor.Donate.ShowPicture'|translate}}
+                        </span>
+                    </label>
+                </div>
+
+                <div class="blocks-constructor-row"
+                     data-ng-if="$ctrl.modalData.settings.show_picture"
+                     data-ng-controller="SubBlockGalleryConstructorCtrl as gallery">
+
+                    <picture-loader-trigger
+                        data-lp-id="{{$ctrl.modalData.landingpageId}}"
+                        data-block-id="{{$ctrl.modalData.blockId}}"
+                        data-lp-setting="$ctrl.modalData.data"
+                        data-delete-picture="false"
+                        gallery-icons-enabled="false"
+                        data-current="$ctrl.modalData.data.Subblocks[$ctrl.getIndexSubblockByName('picture')].Settings.preview || $ctrl.modalData.data.Subblocks[$ctrl.getIndexSubblockByName('picture')].Settings.src || pictureLoaderTrigger.imgSrc || './areas/landing/frontend/images/nophoto_cover.png'"
+                        data-max-width-picture="{{:: $ctrl.pictureMaxSize.largeWidth}}"
+                        data-max-height-picture="{{:: $ctrl.pictureMaxSize.largeHeight}}"
+                        width-picture="$ctrl.modalData.data.Subblocks[$ctrl.getIndexSubblockByName('picture')].Settings.width"
+                        height-picture="$ctrl.modalData.data.Subblocks[$ctrl.getIndexSubblockByName('picture')].Settings.height"
+                        on-apply="gallery.onUploadPictureSubblock($ctrl.modalData.data.Subblocks[$ctrl.getIndexSubblockByName('picture')].Settings, result)"
+                        on-resize="gallery.onResizePictureSubblock($ctrl.modalData.data.Subblocks[$ctrl.getIndexSubblockByName('picture')].Settings, result)"
+                        on-lazy-load-change="$ctrl.modalData.data.Subblocks[$ctrl.getIndexSubblockByName('picture')].Settings.lazyLoadEnabled = result"
+                        lazy-load-enabled="$ctrl.modalData.data.Subblocks[$ctrl.getIndexSubblockByName('picture')].Settings.lazyLoadEnabled">
+                        <div class="picture-loader-trigger-image-wrap">
+                            <div class="image-block-picture-trigger-image">
+                                <img
+                                    data-e2e="ImgPicture"
+                                    ng-src="{{$ctrl.modalData.data.Subblocks[$ctrl.getIndexSubblockByName('picture')].Settings.preview || $ctrl.modalData.data.Subblocks[$ctrl.getIndexSubblockByName('picture')].Settings.src || pictureLoaderTrigger.imgSrc || './areas/landing/frontend/images/nophoto_cover.png'}}"
+                                    class="reviews-carousel__picture"
+                                    alt="" />
+                            </div>
+                            <button type="button" data-e2e="UpdateImg" picture-loader-element-trigger class="blocks-constructor-picture-update">
+                                <svg
+                                    class="blocks-constructor-picture-update-icon"
+                                    width="16px"
+                                    height="16px"
+                                    viewBox="0 0 16 16"
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <path
+                                        fill="currentColor"
+                                        d="M15.3846154,0.0683760684 C15.0700855,0.0683760684 14.8239316,0.314529915 14.8239316,0.629059829 L14.8239316,3.95213675 C13.4153846,1.58632479 10.8581197,0.0683760684
+                                      8,0.0683760684 C3.62393162,0.0683760684 0.0683760684,3.62393162 0.0683760684,8.01367521 C0.0683760684,12.4034188 3.62393162,15.9452991 8,15.9452991 C12.3760684,15.9452991 15.9316239,12.3897436
+                                      15.9316239,8.01367521 C15.9316239,7.6991453 15.6854701,7.45299145 15.3709402,7.45299145 C15.0564103,7.45299145 14.8102564,7.6991453 14.8102564,8.01367521 C14.8102564,11.774359 11.7470085,14.8376068
+                                      7.98632479,14.8376068 C4.22564103,14.8376068 1.17606838,11.7606838 1.17606838,8 C1.17606838,4.23931624 4.23931624,1.17606838 8,1.17606838 C10.6940171,1.17606838 13.1008547,2.74871795
+                                      14.1948718,5.15555556 L10.2700855,5.15555556 C9.95555556,5.15555556 9.70940171,5.4017094 9.70940171,5.71623932 C9.70940171,6.03076923 9.95555556,6.27692308 10.2700855,6.27692308 L15.3709402,6.27692308
+                                      C15.6854701,6.27692308 15.9316239,6.03076923 15.9316239,5.71623932 L15.9316239,0.615384615 C15.9316239,0.314529915 15.6854701,0.0683760684 15.3846154,0.0683760684 Z"
+                                        id="Shape"></path>
+                                </svg>
+                                {{'Admin.Js.Landings.BlocksConstructor.Cover.RefreshImage'|translate}}
+                            </button>
+                        </div>
+                    </picture-loader-trigger>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+@use 'util';
+@use 'prefixer';
+@use 'list';
+@use '../settings';
+
+$input-border-radius: 5px !default;
+$input-border: 1px #e2e3e4 solid !default;
+$input-placeholder-color: #4b4f58 !default;
+$input-big: (padding util.rem-calc(13px), font-size settings.$font-size-xmedium) !default;
+$input-middle: (padding util.rem-calc(12px), font-size settings.$font-size-normal) !default;
+$input-small: (padding util.rem-calc(9px), font-size settings.$font-size-normal) !default;
+$input-xsmall: (padding util.rem-calc(10px), font-size settings.$font-size-normal) !default;
+$textarea-height: util.rem-calc(96px) !default;
+
+@mixin inputs-init() {
+    input[type='text'],
+    input[type='password'],
+    input[type='search'],
+    input[type='email'],
+    input[type='number'],
+    input[type='tel'],
+    input[type='url'],
+    textarea {
+        @include prefixer.box-sizing(border-box);
+
+        border-radius: $input-border-radius;
+        border: $input-border;
+        vertical-align: middle;
+        width: 100%;
+        appearance: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    textarea {
+        height: $textarea-height;
+        overflow: auto;
+    }
+}
+
+@mixin input-size($input-size-name, $input-size-params) {
+    .#{$input-size-name} {
+        font-size: list.list-find-value($input-size-params, font-size);
+        padding: list.list-find-value($input-size-params, padding);
+    }
+}

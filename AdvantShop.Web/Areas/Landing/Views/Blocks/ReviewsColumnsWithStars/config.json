@@ -1,0 +1,70 @@
+﻿{
+    "name": "reviewsColumnsWithStars",
+    "type": "reviewsWithRating",
+    "description": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Description",
+    "category": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Category",
+    "picture": "./areas/landing/images/reviews/previewReviews/reviewsWithRatingPreview.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Title.Placeholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Subtitle.Placeholder"
+        }
+    ],
+    "settings": {
+        "items": [
+            {
+                "author": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Review1.Author",
+                "rating": 4,
+                "text": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Review1.Text"
+            },
+            {
+                "author": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Review2.Author",
+                "rating": 4,
+                "text": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Review2.Text"
+            },
+            {
+                "author": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Review3.Author",
+                "rating": 4,
+                "text": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Review3.Text"
+            },
+            {
+                "author": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Review2.Author",
+                "rating": 4,
+                "text": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Review2.Text"
+            },
+            {
+                "author": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Review5.Author",
+                "rating": 4,
+                "text": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Review5.Text"
+            },
+            {
+                "author": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Review6.Author",
+                "rating": 4,
+                "text": "Landings.Views.Blocks.Config.ReviewsColumnsWithStars.Review6.Text"
+            }
+        ],
+        "color_scheme": "color-scheme--light",
+        "classes": ["lp-block-reviews", "reviews-columns-with-stars", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "show_title": true,
+        "show_subtitle": false,
+        "background_image": null,
+        "background_color": null,
+        "darken": 0,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "style": {
+            "box-shadow": "200vh 200vw 0 rgba(0,0,0, 0) inset"
+        },
+        "mobile_hidden": false
+    }
+}

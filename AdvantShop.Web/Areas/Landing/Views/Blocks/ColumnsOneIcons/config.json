@@ -1,0 +1,91 @@
+﻿{
+    "name": "columnsOneIcons",
+    "type": "column",
+    "description": "Landings.Views.Blocks.Config.ColumnsOneIcons.Description",
+    "category": "Landings.Views.Blocks.Config.ColumnsOneIcons.Category",
+    "picture": "./areas/landing/frontend/images/columns/columnsOneIcons.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsOneIcons.SubBlockTitle"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ColumnsOneIcons.SubBlockSubtitle"
+        }
+    ],
+    "settings": {
+        "items": [
+            {
+                "title": "Landings.Views.Blocks.Config.ColumnsOneIcons.Item1Title",
+                "text": "Landings.Views.Blocks.Config.ColumnsOneIcons.Item1Text",
+                "picture": {
+                    "src": "areas/landing/images/columns/good-review.png",
+                    "type": "image"
+                }
+            },
+            {
+                "title": "Landings.Views.Blocks.Config.ColumnsOneIcons.Item2Title",
+                "text": "Landings.Views.Blocks.Config.ColumnsOneIcons.Item2Text",
+                "picture": {
+                    "src": "areas/landing/images/columns/love.png",
+                    "type": "image"
+                }
+            },
+            {
+                "title": "Landings.Views.Blocks.Config.ColumnsOneIcons.Item3Title",
+                "text": "Landings.Views.Blocks.Config.ColumnsOneIcons.Item3Text",
+                "picture": {
+                    "src": "areas/landing/images/columns/megaphone.png",
+                    "type": "image"
+                }
+            }
+        ],
+        "gridColumns": {
+            "text": true,
+            "icon": true,
+            "title": true
+        },
+        "classes": ["lp-block-columns-one-icons", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": false,
+        "show_subtitle": false,
+        "show_button": false,
+        "constructor_buttons_reverse": true,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "style": {},
+        "align_btns": "center-xs",
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.ColumnsOneIcons.ButtonText",
+            "color": null,
+            "background_color": null,
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": null,
+            "border_radius": 0,
+            "size": "xsmall",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false,
+        "width_in_columns": 8
+    }
+}

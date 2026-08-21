@@ -1,0 +1,59 @@
+﻿.user-layout {
+    --user-layout-stretch-limited-max: 1200px;
+    --user-layout-stretch-limited-min: 980px;
+    --user-layout-padding: 20px;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    min-height: 100vh;
+    width: 100%;
+
+    &--stretch-limited {
+        max-width: var(--user-layout-stretch-limited-max);
+        min-width: var(--user-layout-stretch-limited-min);
+        margin-inline: auto;
+    }
+
+    &__header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--user-layout-padding);
+    }
+
+    &__trigger-close {
+        width: 17px;
+        height: 17px;
+        mask: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDIyMC4xNzYgMjIwLjE3NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjIwLjE3NiAyMjAuMTc2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE3IiBoZWlnaHQ9IjE3Ij48cGF0aCBkPSJNMTMxLjU3NywxMTAuMDg0bDg0LjE3Ni04NC4xNDZjNS44OTctNS45MjgsNS44OTctMTUuNTY1LDAtMjEuNDkyICAgICBjLTUuOTI4LTUuOTI4LTE1LjU5NS01LjkyOC0yMS40OTIsMGwtODQuMTc2LDg0LjE0NkwyNS45MzgsNC40NDZjLTUuOTI4LTUuOTI4LTE1LjU2NS01LjkyOC0yMS40OTIsMHMtNS45MjgsMTUuNTY1LDAsMjEuNDkyICAgICBsODQuMTQ2LDg0LjE0Nkw0LjQ0NiwxOTQuMjZjLTUuOTI4LDUuODk3LTUuOTI4LDE1LjU2NSwwLDIxLjQ5MmM1LjkyOCw1Ljg5NywxNS41NjUsNS44OTcsMjEuNDkyLDBsODQuMTQ2LTg0LjE3Nmw4NC4xNzYsODQuMTc2ICAgICBjNS44OTcsNS44OTcsMTUuNTY1LDUuODk3LDIxLjQ5MiwwYzUuODk3LTUuOTI4LDUuODk3LTE1LjU5NSwwLTIxLjQ5MkwxMzEuNTc3LDExMC4wODR6IiBmaWxsPSIjMmY0MDUwIi8+PC9zdmc+') no-repeat center;
+        display: inline-block;
+        background-color: var(--cs-5);
+        cursor: pointer;
+    }
+
+    &__body,
+    &__footer {
+        padding: var(--user-layout-padding);
+    }
+
+    &__body--center {
+        display: flex;
+        align-items: center;
+    }
+
+    &__footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+    &__footer-copyright {
+        margin-block: var(--user-layout-padding) !important;
+        border: 0 !important;
+    }
+
+    login {
+        margin: auto;
+        display: block;
+        width: max-content;
+    }
+}

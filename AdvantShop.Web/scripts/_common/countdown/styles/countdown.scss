@@ -1,0 +1,82 @@
+@use '../../../../styles/settings';
+@use '../../../../styles/functions/util';
+
+.countdown {
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    font-size: 0;
+    line-height: 0;
+    transform: translate3d(0, 0, 0);
+}
+
+.countdown-item,
+.countdown-item-part,
+.countdown-spliter {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.countdown-item {
+    width: 30%;
+}
+
+.wSeconds {
+    .countdown-item {
+        width: 22%;
+    }
+}
+
+.countdown-spliter {
+    width: 2%;
+    font-size: settings.$font-size-large;
+    border-radius: settings.$border-radius-base;
+    line-height: normal;
+    padding: 0 util.rem-calc(4px) 0 util.rem-calc(1px);
+}
+
+.countdown-item-part {
+    font-size: settings.$font-size-large;
+    font-weight: bold;
+    color: #fff;
+    border-radius: settings.$border-radius-base;
+    background: #4b4f58;
+    width: 49%;
+    text-align: center;
+    line-height: normal;
+    margin-left: util.rem-calc(1px);
+    padding-top: util.rem-calc(5px);
+    padding-bottom: util.rem-calc(5px);
+
+    &:first-child {
+        margin-left: 0;
+    }
+}
+
+.countdown-item-label {
+    text-align: center;
+    font-size: settings.$font-size-small;
+    line-height: normal;
+    color: #b2b4b8;
+    margin-top: util.rem-calc(3px);
+}
+
+.countdown-admin {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.countdown-admin-item-wrap {
+    width: 22%;
+}
+
+.countdown-admin-item {
+    background-color: #191d23;
+    text-align: center;
+    color: #d1d2d3;
+    font-size: 38px;
+    font-weight: bold;
+    border-radius: 3px;
+    margin-right: 4px;
+}

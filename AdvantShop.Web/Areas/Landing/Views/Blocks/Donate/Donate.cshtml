@@ -1,0 +1,133 @@
+﻿@using AdvantShop.ViewCommon
+@using Newtonsoft.Json
+
+@model BlockModel
+@{
+    var prices = Model.Block.TryGetSettingAsList<LpOfferPrice>("prices")?.Where(x => x.Value != null && x.OfferId != null).ToList();
+    var showOtherPrice = Convert.ToBoolean(Model.Block.TryGetSetting("show_other_price"));
+    var otherPrice = showOtherPrice ? Model.Block.TryGetSetting<LpOfferPrice>("other_price") : null;
+    if (showOtherPrice && (otherPrice == null || otherPrice.OfferId == null))
+    {
+        showOtherPrice = false;
+    }
+    float otherPriceMin = Convert.ToSingle(Model.Block.TryGetSetting("other_price_min"));
+    float otherPriceMax = Convert.ToSingle(Model.Block.TryGetSetting("other_price_max"));
+    var currency = Model.Block.TryGetSetting("currency") as string;
+    var button = Model.Block.TryGetSetting<LpButton>("button");
+    
+    var hasPrices = prices != null && prices.Count > 0;
+}
+
+<style>
+    .lp-donate-input {
+        width: 250px;
+    }
+    .lp-donate-price .lp-donate-price-btn {
+        padding: 13px 30px;
+    }
+    .lp-donate__pay-block button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+        border: 1px solid #cbd5e1;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="lp-donater-block lp-container ng-cloak"
+         data-lp-donate
+         data-prices="@JsonConvert.SerializeObject(prices)"
+         data-show-other-price=@(showOtherPrice.ToString().ToLower())
+         data-other-price=@JsonConvert.SerializeObject(otherPrice)
+         data-other-price-min="@(otherPriceMin > 0 ? otherPriceMin.ToInvariantString() : "")">
+        
+        <div class="row center-xs">
+            @if (Model.Block.TryGetSetting("show_title") == true)
+            {
+                <div class="col-xs-12">
+                    <div class="lp-h2 lp-h2--color lp-block-products-view-tile__title @(Model.Block.TryGetSetting("show_subtitle") == false ? "lp-products-view__title--margin-bottom" : "")">
+                        @Html.SubBlock(Model, "title")
+                    </div>
+                </div>
+            }
+            @if (Model.Block.TryGetSetting("show_subtitle") == true)
+            {
+                <div class="col-xs-12">
+                    <div class="lp-h3 lp-h3--color lp-block-products-view-tile__subtitle">
+                        @Html.SubBlock(Model, "subtitle")
+                    </div>
+                </div>
+            }
+        </div>
+
+        @if (!hasPrices && !showOtherPrice)
+        {
+            <div class="row center-xs">@T("Admin.Landing.Donate.NoPricesError")</div>
+        }
+        else if (hasPrices)
+        {
+            <div class="row center-xs">
+                <div data-ng-repeat="priceItem in donateItem.prices track by $index"
+                     data-ng-click="donateItem.selectPrice(priceItem)"
+                     class="col-sm-slim m-r-sm m-b-xs lp-donate-price">
+                    <div class="lp-btn lp-donate-price-btn" 
+                         data-ng-class="{'donate-selected-price lp-btn--primary': priceItem.selected, 'btn-action': !priceItem.selected}">
+                        {{priceItem.value}} @currency
+                    </div>
+                </div>
+                <div data-ng-if="donateItem.showOtherPrice"
+                     data-ng-click="donateItem.selectOtherPrice()"
+                     class="lp-btn m-r-sm m-b-xs"
+                     data-ng-class="{'donate-selected-price lp-btn--primary': donateItem.otherPrice.selected, 'btn-action': !donateItem.otherPrice.selected}">
+                    @T("Admin.Landing.Donate.Other")
+                </div>
+            </div> 
+            if (showOtherPrice)
+            {
+                <div class="row center-xs middle-xs m-t-lg" data-ng-if="donateItem.otherPrice.selected">
+                    <div class="col-xs-11 col-sm-slim lp-form__field">
+                        <input type="number"
+                               data-ng-model="donateItem.selectedItem.value"
+                               class="lp-donate-input lp-input ng-pristine"
+                               min="@otherPriceMin.ToInvariantString()"
+                               @Html.Raw(otherPriceMax > 0 ? "max=\"" + otherPriceMax.ToInvariantString() + "\"" : "")
+                               placeholder=""/>
+                    </div>
+                    <div class="col-xs-1 col-sm-slim lp-form__field lp-font-size--small">@currency</div>
+                </div>
+            }
+        }
+        else if (showOtherPrice)
+        {
+            <div class="row center-xs middle-xs">
+                <div class="col-xs-11 col-sm-slim lp-form__field">
+                    <input type="number"
+                           data-ng-model="donateItem.selectedItem.value"
+                           class="lp-donate-input lp-input ng-pristine"
+                           min="@otherPriceMin.ToInvariantString()"
+                           data-ng-max=""
+                           @Html.Raw(otherPriceMax > 0 ? "max=\"" + otherPriceMax.ToInvariantString() + "\"" : "")
+                           placeholder=""/>
+                </div>
+                <div class="col-xs-1 col-sm-slim lp-form__field lp-font-size--small">@currency</div>
+            </div>
+        }
+        <div class="row center-xs m-t-wl lp-donate__pay-block">
+            @Html.Partial("_CartAdd", new CartAddViewModel()
+            {
+                Classes = "lp-btn lp-btn--primary",
+                LpId = LpService.CurrentLanding.Id,
+                Mode = "lp",
+                NgOfferId = "donateItem.selectedItem.offerId",
+                NgProductId = "donateItem.selectedItem.productId",
+                NgLpPriceValue = "donateItem.selectedItem.value",
+                NgDisabled = "donateItem.selectedItem == null || donateItem.selectedItem.value == null",
+                LpBlockId = Model.Block.Id,
+                LpEntityId = LpService.EntityId != 0 ? LpService.EntityId : (int?)null,
+                LpEntityType = LpService.EntityId != 0 ? LpService.EntityType : "",
+                HideShipping = Model.Block.TryGetSetting("hide_shipping") == true ? "true" : "",
+                BtnContent = button != null && !string.IsNullOrEmpty(button.Text) ? button.Text : "Поддержать",
+                Size = CardAddSize.None
+            })
+        </div>
+    </div>
+</div>

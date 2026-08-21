@@ -1,0 +1,15 @@
+@use '../settings';
+@use '../functions/util';
+
+.wishlist-remove {
+    font-size: settings.$font-size-xmedium;
+    position: absolute;
+    top: util.rem-calc(-5px);
+    right: util.rem-calc(-5px);
+}
+
+.wishlist-empty {
+    text-align: center;
+    padding: settings.$padding-base;
+    font-size: settings.$font-size-xmedium;
+}

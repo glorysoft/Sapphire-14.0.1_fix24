@@ -1,0 +1,12 @@
+.one-page-catalog-conflict-settings__title {
+    display: none;
+    margin-bottom: 15px;
+}
+
+.one-page-catalog-conflict-settings__row + .one-page-catalog-conflict-settings__title {
+    display: block;
+}
+
+.one-page-catalog-conflict-settings__block {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,25 @@
+﻿<div>
+    <div class="shipping-points-list">
+        <points-list-map
+            class="shipping-points-list__inner"
+            data-ng-class="{'shipping-points-list__inner--fetching' :shippingPointsList._isFetching, 'shipping-points-list__inner--initialization': !shippingPointsList._isInitFirstData, 'shipping-points-list__inner--without-map': shippingPointsList.showMapPickup == false}"
+            data-display-map="shippingPointsList.showMapPickup"
+            data-points="shippingPointsList.points"
+            data-filters="shippingPointsList.shippingPointsFilters"
+            data-is-select="true"
+            data-center="shippingPointsList.mapCenter"
+            data-map-options="shippingPointsList.mapOptions"
+            data-collection-options="shippingPointsList.collectionOptions"
+            data-on-init="shippingPointsList.onInitPointsListMap(pointsListMapCtrl)"
+            data-on-load="shippingPointsList.onLoadPointsListMap(map)"
+            data-show-all="false"
+            data-async-init="true"
+            data-show-only-points-list-by-bounds="false"
+            data-on-select="shippingPointsList.selectShippingPoint(point)"
+            data-ya-geo-object-before-event-click="shippingPointsList.onClickGeoObject(map, geoObject)"
+            data-show-details-point="shippingPointsList.showMapPickup">
+        </points-list-map>
+    </div>
+    <div class="shipping-points-list__error" data-ng-if="shippingPointsList._errorMessage != null" data-ng-bind="shippingPointsList._errorMessage"></div>
+</div>
+

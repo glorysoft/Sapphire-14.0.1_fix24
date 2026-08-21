@@ -1,0 +1,204 @@
+﻿<form is-mobile>
+    <div class="modal-header">
+        <ui-modal-cross ng-if="!isMobile.value"></ui-modal-cross>
+        <h2 class="modal-header-title">{{'Admin.Js.AddEditPriceRule.PriceType'|translate}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row setting__form-group">
+            <label class="col-xs-12 col-md-3 control-label text-required"> {{'Admin.Js.AddEditPriceRule.Name'|translate}} </label>
+            <div class="col-xs-12 col-md-9">
+                <input
+                    type="text"
+                    class="form-control input-alt"
+                    ng-model="ctrl.priceRule.Name"
+                    required
+                    validation-input-text="{{'Admin.Js.AddEditColor.Name'|translate}}"
+                    data-autofocus="!isMobile.value" />
+            </div>
+        </div>
+
+        <div class="form-group row setting__form-group">
+            <label class="col-xs-12 col-md-3 control-label"> {{'Admin.Js.AddEditPriceRule.Mode'|translate}} </label>
+            <div class="col-xs-12 col-md-9">
+                <select
+                    ng-model="ctrl.priceRule.Mode"
+                    ng-options="s.value as s.label for s in ctrl.modes"
+                    class="form-control input-alt"></select>
+            </div>
+        </div>
+
+        <div ng-show="ctrl.priceRule.Mode == 0">
+
+            <div class="form-group row setting__form-group">
+                <label class="col-xs-12 col-md-3 control-label text-required"> {{'Admin.Js.AddEditPriceRule.NumberProducts'|translate}} </label>
+                <div class="col-xs-12 col-md-9">
+                    <input
+                        type="number"
+                        ng-model="ctrl.priceRule.Amount"
+                        class="form-control input-alt"
+                        validation-input-text="{{'Admin.Js.AddEditPriceRule.NumberProducts'|translate}}" />
+                </div>
+            </div>
+
+            <div class="form-group row setting__form-group">
+                <label class="col-xs-12 col-md-3 control-label text-required"> {{'Admin.Js.AddEditPriceRule.BuyerGroup'|translate}} </label>
+                <div class="col-xs-12 col-md-9">
+                    <ui-select class="input-alt" multiple tagging-label="true" ng-model="ctrl.selectedCustomerGroups" required>
+                        <ui-select-match placeholder="">{{$item.Name}}</ui-select-match>
+                        <ui-select-choices repeat="item in ctrl.customerGroups" minimum-input-length="1">
+                            <span ng-bind="item.Name"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+
+            <div class="form-group row setting__form-group">
+                <label class="col-xs-12 col-md-3 control-label"> {{'Admin.Js.AddEditPriceRule.PaymentMethod'|translate}} </label>
+                <div class="col-xs-12 col-md-9">
+                    <select
+                        ng-model="ctrl.priceRule.PaymentMethodId"
+                        ng-options="s.value as s.label for s in ctrl.paymentMethods"
+                        class="form-control input-alt"></select>
+                </div>
+            </div>
+
+            <div class="form-group row setting__form-group">
+                <label class="col-xs-12 col-md-3 control-label"> {{'Admin.Js.AddEditPriceRule.DeliveryMethod'|translate}} </label>
+                <div class="col-xs-12 col-md-9">
+                    <select
+                        ng-model="ctrl.priceRule.ShippingMethodId"
+                        ng-options="s.value as s.label for s in ctrl.shippingMethods"
+                        class="form-control input-alt"></select>
+                </div>
+            </div>
+
+            <div
+                class="form-group row setting__form-group"
+                ng-show="ctrl.warehousesActive || (ctrl.selectedWarehouses != null && ctrl.selectedWarehouses.length > 0)">
+                <label class="col-xs-12 col-md-3 control-label"> {{'Admin.Js.AddEditPriceRule.Warehouse'|translate}} </label>
+                <div class="col-xs-12 col-md-9">
+                    <ui-select class="input-alt" multiple tagging-label="true" ng-model="ctrl.selectedWarehouses">
+                        <ui-select-match placeholder="">{{$item.Name}}</ui-select-match>
+                        <ui-select-choices repeat="item in ctrl.warehouses" minimum-input-length="1">
+                            <span ng-bind="item.Name"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+
+            <div class="form-group row setting__form-group">
+                <label ng-if="!isMobile.value" class="ccol-xs-12 col-xs-3 control-label" for="priceRuleCalculatePriceAutomatically"> {{'Admin.Js.AddEditPriceRule.CalculatePriceAutomatically'|translate}} </label>
+                <div class="col-xs-12 col-md-1 relative" ng-class="{'flex middle-xs' : isMobile.value}">
+                    <label class="adv-checkbox-label control-checkbox" ng-class="{'flex-grow' : isMobile.value}">
+                        <input type="checkbox" class="adv-checkbox-input" ng-model="ctrl.priceRule.CalculatePriceAutomatically" id="priceRuleCalculatePriceAutomatically" />
+                        <span class="adv-checkbox-emul"></span>
+                        <span ng-if="isMobile.value" class="flex-grow m-l-sm">{{'Admin.Js.AddEditPriceRule.CalculatePriceAutomatically'|translate}}</span>
+                        <help-trigger class="help-trigger-icon-abs m-l-sm" data-use-template="true">
+                            <div
+                                class="help-content"
+                                data-ng-bind-html="'Admin.Js.AddEditPriceRule.CalculatePriceAutomaticallyHint'|translate"></div>
+                        </help-trigger>
+                    </label>
+                </div>
+            </div>
+
+            <div data-ng-if="ctrl.priceRule.CalculatePriceAutomatically" class="m-b-md">
+
+                <div class="form-group row setting__form-group middle-xs">
+                    <div class="col-xs-12 col-md-4" data-ng-class="{'m-b' : isMobile.value}">
+                        <select
+                            ng-model="ctrl.priceRule.CalculationPriceMode"
+                            ng-options="s.value as s.label for s in ctrl.calculationPriceModes"
+                            class="form-control input-alt"></select>
+                    </div>
+                    <div class="col-xs-12 col-md-4" data-ng-class="{'m-b' : isMobile.value}">
+                        <div class="input-group">
+                            <div class="input-group-plus-select">
+                                <select ng-model="ctrl.MarkupPercentagePlusSelect"
+                                        ng-options="s.value as s.label for s in ctrl.plusMinusSelect"
+                                        class="form-control input-alt">
+                                </select>
+                            </div>
+                            <input type="text" ng-model="ctrl.priceRule.MarkupPercentage" class="form-control input-alt" />
+                            <div class="input-group-addon">
+                                <span>%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-4" data-ng-class="{'m-b' : isMobile.value}">
+                        <div class="input-group">
+                            <div class="input-group-plus-select">
+                                <select ng-model="ctrl.MarkupAmountPlusSelect"
+                                        ng-options="s.value as s.label for s in ctrl.plusMinusSelect"
+                                        class="form-control input-alt">
+                                </select>
+                            </div>
+                            <input type="text" ng-model="ctrl.priceRule.MarkupAmount" class="form-control input-alt" />
+                            <div class="input-group-addon">
+                                <span>{{ctrl.currencySymbol}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div ng-show="ctrl.priceRule.Mode == 1">
+
+            <div class="form-group row setting__form-group">
+                <label class="col-xs-12 col-md-3 control-label text-required"> {{'Admin.Js.AddEditPriceRule.CartSum'|translate}} </label>
+                <div class="col-xs-12 col-md-9">
+                    <input
+                        type="number"
+                        ng-model="ctrl.priceRule.CartSum"
+                        class="form-control input-alt"
+                        ng-required="ctrl.priceRule.Mode == 1"
+                        validation-input-text="{{'Admin.Js.AddEditPriceRule.CartSum'|translate}}" />
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group row setting__form-group">
+            <label ng-if="!isMobile.value" class="col-xs-3 control-label" for="priceRuleApplyDiscounts"> {{'Admin.Js.AddEditPriceRule.TakeDiscounts'|translate}} </label>
+            <div class="col-xs-12 col-md-1 relative flex middle-xs">
+                <label class="adv-checkbox-label control-checkbox" ng-class="{'flex-grow' : isMobile.value}">
+                    <input type="checkbox" class="adv-checkbox-input" ng-model="ctrl.priceRule.ApplyDiscounts" id="priceRuleApplyDiscounts" />
+                    <span class="adv-checkbox-emul"></span>
+                    <span data-use-template="true" ng-if="isMobile.value" class="flex-grow m-l-sm"
+                    >{{'Admin.Js.AddEditPriceRule.TakeDiscounts'|translate}}</span
+                    >
+                </label>
+                <help-trigger class="ng-cloak m-l-sm" data-use-template="true">
+                    {{'Admin.Js.AddEditPriceRule.OptionNotActive'|translate}}
+                </help-trigger>
+            </div>
+        </div>
+
+
+        <div class="form-group row setting__form-group">
+            <label ng-if="!isMobile.value" class="ccol-xs-12 col-xs-3 control-label" for="priceRuleEnabled"> {{'Admin.Js.AddEditPriceRule.Activity'|translate}} </label>
+            <div class="col-xs-12 col-md-1 relative" ng-class="{'flex middle-xs' : isMobile.value}">
+                <label class="adv-checkbox-label control-checkbox" ng-class="{'flex-grow' : isMobile.value}">
+                    <input type="checkbox" class="adv-checkbox-input" ng-model="ctrl.priceRule.Enabled" id="priceRuleEnabled" />
+                    <span class="adv-checkbox-emul"></span>
+                    <span ng-if="isMobile.value" class="flex-grow m-l-sm">{{'Admin.Js.AddEditPriceRule.Activity'|translate}}</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group row setting__form-group">
+            <label class="col-xs-12 col-md-3 control-label">{{'Admin.Js.AddEditPriceRule.Sort'|translate}}</label>
+            <div class="col-xs-12 col-md-3">
+                <input type="text" ng-model="ctrl.priceRule.SortOrder" class="form-control input-alt" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button" data-button-validation-success="ctrl.save()" data-button-validation>
+            {{'Admin.Js.AddEdit.Save'|translate}}
+        </button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">{{'Admin.Js.AddEdit.Cancel'|translate}}</button>
+    </div>
+</form>

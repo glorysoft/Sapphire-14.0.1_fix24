@@ -1,0 +1,20 @@
+﻿<div class="modal-header">
+    <ui-modal-cross></ui-modal-cross>
+    <h2 class="modal-header-title">{{ ::'Admin.Js.Sdek.SendOrder.Header' | translate }}</h2>
+</div>
+<div class="modal-body">
+    <div class="form-group row">
+        <div class="col-xs-12">
+            <label class="control-label text-left"> {{ ::'Admin.Js.Sdek.SendOrder.Comment' | translate }} </label>
+        </div>
+        <div class="col-xs-12">
+            <textarea class="form-control" rows="4" maxlength="255" ng-model="ctrl.comment"></textarea>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save btn-primary" type="button" ng-click="ctrl.save(); ctrl.btnLoading = true" ladda="ctrl.btnLoading">
+        {{'Admin.Js.Sdek.SendOrder.Send'|translate}}
+    </button>
+    <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">{{'Admin.Js.AddEdit.Cancel'|translate}}</button>
+</div>

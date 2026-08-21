@@ -1,0 +1,83 @@
+<div class="setting-title" data-is-mobile>
+    <h3 class="setting__subtitle">
+        {{'Admin.Js.SettingsAuthModules.Title'|translate}}
+    </h3>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    <div class="col-md-3"
+         data-ng-if="!isMobile.value">
+        <div class="setting-label-wrap">
+            {{'Admin.Js.SettingsAuthModules.UseAuthModules'|translate}}
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6"
+         data-ng-class="{
+             'flex middle-xs': isMobile.value
+         }">
+        <label class="adv-checkbox-label"
+               data-ng-class="{
+                   'p-r-sm': isMobile.value
+               }">
+            <input
+                class="adv-checkbox-input"
+                data-ng-model="ctrl.settings.UseAuthModules"
+                data-ng-on-change="ctrl.setUseAuthModule(ctrl.settings.UseAuthModules)"
+                type="checkbox" />
+            <span class="adv-checkbox-emul" data-e2e="UseAuthModules"></span>
+        </label>
+        <div class="setting-label-wrap setting__label setting--m-none flex-grow"
+             data-ng-if="isMobile.value">
+            {{'Admin.Js.SettingsAuthModules.UseAuthModules'|translate}}
+        </div>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    <div class="col-xs-12 col-md-9">
+        <ui-grid-custom
+            grid-unique-id="authModules"
+            grid-row-identificator="'StringId'"
+            grid-on-init="ctrl.gridAuthModulesOnInit(grid)"
+            grid-options="ctrl.gridAuthModulesOptions"
+            grid-extend-ctrl="ctrl"
+            grid-filter-enabled="false"
+            grid-pagination-enabled="false"
+            grid-selection-enabled="false"
+            grid-url="'settingsSystem/getAuthModules'"
+            grid-inplace-url="'settingsSystem/inplaceAuthModules'"
+            data-ng-if="ctrl.settings.UseAuthModules"
+            grid-on-inplace-apply="ctrl.gridUpdate()">
+            <ui-grid-custom-override-control class="ng-cloak">
+                <div class="card">
+                    <div class="card__row--full-width m-b-n-sm">
+                        <div class="card__col m-b-md" data-ng-bind="row.entity.Name"></div>
+                        <div class="card__col m-b-xs">
+                            <div class="flex">
+                                <ui-grid-custom-switch
+                                    data-row="row"
+                                    data-field-name="Default">
+                                </ui-grid-custom-switch>
+                                <span class="m-l-xs fs-xs">
+                                    {{'Admin.Js.SettingsAuthModules.GridAuthModules.Default' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card__col m-b-xs">
+                            <div class="flex">
+                                <ui-grid-custom-switch
+                                    data-row="row"
+                                    data-readonly="row.entity.Default && row.entity.Enabled"
+                                    data-field-name="Enabled">
+                                </ui-grid-custom-switch>
+                                <span class="m-l-xs fs-xs">
+                                    {{'Admin.Js.SettingsAuthModules.GridAuthModules.Enabled' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui-grid-custom-override-control>
+        </ui-grid-custom>
+    </div>
+</div>

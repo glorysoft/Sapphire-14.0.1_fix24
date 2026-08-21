@@ -1,0 +1,111 @@
+﻿{
+    "name": "productsViewLead",
+    "type": "productsViewLead",
+    "description": "Landings.Views.Blocks.Config.ProductsViewLead.Description",
+    "category": "Landings.Views.Blocks.Config.ProductsViewLead.Category",
+    "picture": "./areas/landing/images/productsView/products_view_lead_preview.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ProductsViewLead.SubBlockTitlePlaceholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ProductsViewLead.SubBlockSubtitlePlaceholder"
+        }
+    ],
+    "settings": {
+        "product_ids": [],
+        "show_title": true,
+        "show_subtitle": true,
+        "color_scheme": "color-scheme--light",
+        "classes": ["lp-block-products-view", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "show_price": false,
+        "hide_photo": false,
+        "show_description": false,
+        "quickview": false,
+        "multiSelect": false,
+        "number_products_in_row": 3,
+        "show_button": true,
+        "show_button_quickview": true,
+        "is_lead_button": true,
+        "quickview_description": "briefDescription",
+        "descriptionOptions": [
+            {
+                "value": "none",
+                "name": "Landings.Views.Blocks.Config.ProductsViewLead.DescriptionOptions.None"
+            },
+            {
+                "value": "briefDescription",
+                "name": "Landings.Views.Blocks.Config.ProductsViewLead.DescriptionOptions.BriefDescription"
+            },
+            {
+                "value": "fullDescription",
+                "name": "Landings.Views.Blocks.Config.ProductsViewLead.DescriptionOptions.FullDescription"
+            }
+        ],
+        "hover_animation": "none",
+        "hover_animation_options": [
+            {
+                "value": "none",
+                "name": "Landings.Views.Blocks.Config.ProductsViewLead.HoverAnimation.None"
+            },
+            {
+                "value": "zoom-animation",
+                "name": "Landings.Views.Blocks.Config.ProductsViewLead.HoverAnimation.ZoomAnimation"
+            },
+            {
+                "value": "next-image-animation",
+                "name": "Landings.Views.Blocks.Config.ProductsViewLead.HoverAnimation.NextImageAnimation"
+            },
+            {
+                "value": "photo-view-list",
+                "name": "Landings.Views.Blocks.Config.ProductsViewLead.HoverAnimation.PhotoViewList"
+            }
+        ],
+        "button": {
+            "is_default_style": true,
+            "action": "Form",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.ProductsViewLead.ButtonText",
+            "color": "rgba(255, 255, 255, 1)",
+            "background_color": "rgba(23, 121, 250, 1)",
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": null,
+            "border_radius": 4,
+            "style": {
+                "color": "rgba(255, 255, 255, 1)",
+                "background-color": "#1779fa",
+                "border-style": "solid",
+                "border-width": "0px",
+                "border-color": "rgba(23, 121, 250, 1)",
+                "border-radius": "4px"
+            }
+        },
+        "form": {
+            "is_hidden": true,
+            "Title": "Landings.Views.Blocks.Config.ProductsViewLead.FormTitle",
+            "SubTitle": "Landings.Views.Blocks.Config.ProductsViewLead.FormSubTitle"
+        },
+        "background_image": null,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "darken": 0,
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "mobile_hidden": false,
+        "style": {},
+        "no_cache": true,
+        "move_not_avaliable_to_end": false,
+        "show_only_available": false
+    }
+}

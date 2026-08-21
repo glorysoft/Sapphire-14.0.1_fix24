@@ -1,0 +1,34 @@
+<div class="cart-mini-result-block cs-br-1">
+    <div
+        class="cart-mini-result-row"
+        data-ng-if="cartMiniList.cartData.TotalProductPrice != null"
+        data-ng-show="cartMiniList.cartData.TotalPrice != cartMiniList.cartData.TotalProductPrice">
+        <span class="cart-mini-result-name">{{ ::'Js.Cart.Sum' | translate }}:</span>
+        <span class="cart-mini-result-value cart-mini-result-sum" data-ng-bind="cartMiniList.cartData.TotalProductPrice"></span>
+    </div>
+    <div
+        class="cart-mini-result-row"
+        data-ng-if="cartMiniList.cartData.DiscountPrice != null"
+        data-ng-show="cartMiniList.cartData.DiscountPrice != null">
+        <span class="cart-mini-result-name">{{ ::'Js.Cart.Discount' | translate }}:</span>
+        <span class="cart-mini-result-value cart-mini-result-discount-price" data-ng-bind="cartMiniList.cartData.DiscountPrice"></span>
+    </div>
+    <div class="cart-mini-result-row" data-ng-if="cartMiniList.cartData.Certificate != null">
+        <span class="cart-mini-result-name">{{ ::'Js.Cart.Certificate' | translate }}:</span>
+        <span class="cart-mini-result-value cart-mini-result-certificate" data-ng-bind="cartMiniList.cartData.Certificate"></span>
+    </div>
+    <div class="cart-mini-result-row" data-ng-if="cartMiniList.cartData.Coupon != null">
+        <span class="cart-mini-result-name">{{ ::'Js.Cart.Coupon' | translate }}:</span>
+        <span class="cart-mini-result-value cart-mini-result-coupon" data-ng-bind="cartMiniList.cartData.Coupon.Price"></span>
+    </div>
+    <div class="cart-mini-result-row" data-ng-if="cartMiniList.cartData.TotalPrice != null">
+        <span class="cart-mini-result-name">{{ ::'Js.Cart.Total' | translate }}:</span>
+        <span class="cart-mini-result-value cart-mini-result-total-price" data-ng-bind="cartMiniList.cartData.TotalPrice"></span>
+    </div>
+    <div class="cart-mini-buttons">
+        <a data-ng-if="::cartMiniList.cartData.ShowConfirmButtons" href="cart" class="btn btn-buy btn-xsmall cart-mini-btn-cart">
+            {{ ::'Js.Cart.Cart' | translate }}
+        </a>
+        <a href="checkout" class="btn btn-action btn-xsmall cart-mini-btn-checkout"> {{ ::'Js.Cart.Checkout' | translate }} </a>
+    </div>
+</div>

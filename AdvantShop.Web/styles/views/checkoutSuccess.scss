@@ -1,0 +1,24 @@
+@use '../functions/util';
+@use '../settings';
+
+.checkout-success-content-top {
+    font-size: settings.$font-size-xmedium;
+}
+
+.checkout-success-content {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.checkout-success--layout-default {
+    .checkout-success-content {
+        min-height: util.rem-calc(300px);
+        padding: 0 0 util.rem-calc(35px) 0;
+    }
+}
+
+.checkout-success-progress {
+    font-size: 20px;
+    vertical-align: middle;
+}

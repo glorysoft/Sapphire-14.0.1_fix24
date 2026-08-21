@@ -1,0 +1,81 @@
+﻿{
+    "name": "reviews",
+    "type": "reviews",
+    "description": "Landings.Views.Blocks.Config.Reviews.Description",
+    "category": "Landings.Views.Blocks.Config.Reviews.Category",
+    "picture": "./areas/landing/images/reviews/previewReviews/previewReviewsCarousel.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Reviews.Title.Placeholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.Reviews.Subtitle.Placeholder"
+        }
+    ],
+    "settings": {
+        "items": [
+            {
+                "picture": {
+                    "src": "areas/landing/images/reviews/author.jpg"
+                },
+                "author": "Landings.Views.Blocks.Config.Reviews.Review1.Author",
+                "caption": "Landings.Views.Blocks.Config.Reviews.Review1.Caption",
+                "text": "Landings.Views.Blocks.Config.Reviews.Review1.Text"
+            },
+            {
+                "picture": {
+                    "src": "areas/landing/images/reviews/author2.jpg"
+                },
+                "author": "Landings.Views.Blocks.Config.Reviews.Review2.Author",
+                "caption": "Landings.Views.Blocks.Config.Reviews.Review2.Caption",
+                "text": "Landings.Views.Blocks.Config.Reviews.Review2.Text"
+            }
+        ],
+        "carouselOptions": {
+            "slidesToShow": 1,
+            "arrows": true,
+            "dots": true,
+            "draggable": false,
+            "accessibility": false,
+            "infinite": false,
+            "enabled": true,
+            "mobileFirst": false,
+            "responsive": [
+                {
+                    "breakpoint": 765,
+                    "settings": {
+                        "slidesToShow": 1,
+                        "arrows": false
+                    }
+                }
+            ]
+        },
+        "color_scheme": "color-scheme--light",
+        "classes": ["lp-block-reviews", "reviews-carousel", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "show_title": true,
+        "show_subtitle": false,
+        "background_image": null,
+        "background_color": null,
+        "darken": 0,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "settings_picture": {
+            "cropper_params": {
+                "aspectRatio": "1"
+            },
+            "galleryIconsEnabled": false
+        },
+        "style": {
+            "box-shadow": "200vh 200vw 0 rgba(0,0,0, 0) inset"
+        },
+        "mobile_hidden": false
+    }
+}

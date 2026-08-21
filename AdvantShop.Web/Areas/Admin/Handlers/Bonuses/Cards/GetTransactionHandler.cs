@@ -1,0 +1,39 @@
+﻿using System;
+using AdvantShop.Core.Services.Bonuses.Internal.Model;
+using AdvantShop.Core.SQL2;
+using AdvantShop.Web.Admin.Models.Bonuses.Cards;
+using AdvantShop.Web.Infrastructure.Handlers;
+
+namespace AdvantShop.Web.Admin.Handlers.Bonuses.Cards
+{
+
+    public class GetTransactionHandler : AbstractHandler<TransactionFilterModel, int, Transaction>
+    {
+        public GetTransactionHandler(TransactionFilterModel filterModel) : base(filterModel)
+        {
+        }
+
+        protected override SqlPaging Select(SqlPaging paging)
+        {
+            paging.Select("Id", "Balance", "CreateOn", "Amount", "Basis", "OperationType", "PurchaseId", "BonusId");
+            paging.From("[Bonus].[Transaction]");
+            return paging;
+        }
+
+        protected override SqlPaging Filter(SqlPaging paging)
+        {
+            if (FilterModel.CardId != Guid.Empty)
+            {
+                paging.Where("CardId = {0}", FilterModel.CardId);
+                paging.Where("Hidden = {0}", false);
+            }
+            return paging;
+        }
+
+        protected override SqlPaging Sorting(SqlPaging paging)
+        {
+            paging.OrderByDesc("Id");
+            return paging;
+        }
+    }
+}

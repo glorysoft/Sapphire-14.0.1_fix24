@@ -1,0 +1,11 @@
+{
+    "cSpell.words": [
+        "adminv",
+        "debugmode",
+        "logintoken",
+        "Yahont",
+        "criticalcss"
+    ],
+    "dotnet.preferCSharpExtension": true,
+    "dotnet.defaultSolution": "AdvantShop_WithModules.sln"
+}

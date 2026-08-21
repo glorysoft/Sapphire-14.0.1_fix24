@@ -1,0 +1,317 @@
+﻿<div class="shipping-list-wrap" data-is-mobile="">
+    <div
+        class="shipping-list shipping-list--modern"
+        id="{{::shippingList.anchor}}"
+        data-ng-class="{'shipping-progress-after shipping-progress': shippingList.isProgress === true,
+                        'shipping-list--tile': shippingList.mode === 'tile' && !isMobile.value
+                        }"
+        data-ng-switch="(shippingList.items != null && shippingList.items.length > 0) || shippingList.isCanAddCustom"
+        data-ng-model="shippingList.selectShipping"
+        data-required>
+        <div data-ng-switch-when="true" class="shipping-list__inner">
+            <div
+                data-ng-click="shippingList.changeShipping(item, $index)"
+                class="shipping-item shipping-list__item shipping-item--{{item.Id}}"
+                data-ng-repeat="item in shippingList.items | visibleShippings:shippingList.collapsed:shippingList.countVisibleItems:shippingList.selectedItemIndex track by item.Id"
+                data-ng-class="[{'shipping-progress-after shipping-progress': shippingList.showProgressForItem(item),
+
+                            'shipping-item--selected': item.Id === shippingList.selectShipping.Id,
+                            'shipping-item--tile': shippingList.mode === 'tile' && !isMobile.value}, shippingList.customClassesByItemId[item.Id]]">
+                <span class="shipping-item__radio-wrap">
+                    <input
+                        type="radio"
+                        name="shipping"
+                        aria-labelledby="shipping-item-info-{{item.Id}}"
+                        class="custom-input-native shipping-item-custom-input"
+                        data-ng-model="shippingList.selectShipping"
+                        data-ng-value="item"
+                        data-ng-change="shippingList.changeShipping(item, $index)" />
+                    <span
+                        class="custom-input-radio shipping-item__radio input-alt-mobile"
+                        data-ng-click="shippingList.selectShipping === item ? null : shippingList.changeShipping(item, $index)">
+                    </span>
+                </span>
+                <div class="shipping-item__info-data">
+                    <div class="shipping-item__title-wrap">
+                        <span class="shipping-item__title control-label"
+                              id="shipping-item-info-{{item.Id}}"
+                              data-ng-click="shippingList.selectShipping === item ? null : shippingList.changeShipping(item, $index)"
+                              data-ng-bind-html="item.Name | sanitize"></span>
+                        <span data-ng-if="item.Hint != null"
+                              class="shipping-item__title shipping-item__title--discount"
+                              data-ng-click="shippingList.selectShipping === item ? null : shippingList.changeShipping(item, $index)"
+                              data-ng-bind-html="item.Hint | sanitize"></span>
+
+                        <!-- Дублирование кода -->
+                        <div data-ng-switch="shippingList.editPrice === true"  data-ng-if="isMobile.value || shippingList.mode === 'tile'" class="shipping-item__price">
+                            <span data-ng-switch-when="false" data-ng-bind="item.FormatRate"></span>
+                            <span data-ng-switch-when="true">
+                                <span class="shipping-item__label">
+                                    <span class="shipping-item__label-text">{{ ::'Js.Shipping.Cost' | translate }}:</span>
+                                    <input
+                                        type="text"
+                                        data-ng-focus="shippingList.focusEditPrice(item, $index)"
+                                        data-ng-blur="shippingList.focusEditPrice(item, $index)"
+                                        readonly
+                                        ng-readonly="item.Id !== shippingList.selectShipping.Id"
+                                        data-ng-model="item.ManualRate"
+                                        class="shipping-item__input shipping-item__input-price input-alt-mobile" />
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="shipping-item__description cs-t-3" data-ng-if="item.Desc">
+                        <read-more data-ng-if="isMobile.value ? (shippingList.selectShipping === item) : shippingList.mode !== 'tile'"
+                                   class="shipping-item__description-text"
+                                   data-max-height="15"
+                                   data-speed="1s"
+                                   data-content="item.Desc | sanitize"></read-more>
+                        <help-trigger data-ng-if="shippingList.mode === 'tile' && !isMobile.value"
+                                      data-ng-if="item.Desc"
+                                      data-placement="top auto"
+                                      class="ng-cloak cs-t-3 shipping-item__description-icon"
+                                      data-use-template="true">
+                            <span class="shipping-item-popover__description" data-ng-bind-html="item.Desc"></span>
+                        </help-trigger>
+                    </span>
+                    <span class="shipping-item__additional"
+                        data-ng-class="{'ng-hide': shippingList.selectShipping !== item && shippingList.mode === 'tile' && !isMobile.value}"
+                        data-ng-if="item.UseDeliveryInterval && shippingList.selectShipping === item && shippingList.selectShipping.DeliveryIntervalsStr">
+                        <span class="row middle-xs" data-ng-if="shippingList.showSoonest">
+                            <span class="col-xs-12">
+                                <span class="form-field-input vertical-interval-middle">
+                                    <label class="flex middle-xs">
+                                        <input
+                                            class="custom-input-native"
+                                            type="checkbox"
+                                            data-ng-model="shippingList.selectShipping.Asap"
+                                            data-ng-change="shippingList.changeSoonest(item, $index)" />
+                                        <span class="custom-input-checkbox"></span>
+                                        <span>{{ ::'Js.ShippingTemplate.SelectInterval.Soonest' | translate }}</span>
+                                    </label>
+                                </span>
+                            </span>
+                        </span>
+                        <span data-ng-if="!shippingList.selectShipping.Asap || !shippingList.showSoonest" class="m-t--mobile">
+                            <span class="">
+                                {{ ::'Js.ShippingTemplate.SelectInterval.SelectDateAndTime' | translate }}
+                                <span class="row">
+                                    <span class="m-t-xs col-xs-12">
+                                        <span class="row middle-xs">
+                                            <span class="col-xs" data-ng-init="shippingList.parseDeliveryInterval()">
+                                            <span class="form-field-input vertical-interval-middle">
+                                                <span
+                                                    class="flatpickr-custom"
+                                                    data-ng-flatpickr
+                                                    fp-opts="{dateFormat: 'd.m.Y', startDateFormat: 'd.m.Y', wrap: true, enableTime: false, minDate: shippingList.selectShipping.MinDate, maxDate: shippingList.selectShipping.MaxDate, disable: shippingList.disabledDates}">
+                                                    <span class="flatpickr-custom-wrap flex-grow-1">
+                                                        <input
+                                                            class="input-small flatpickr-custom__input input-alt-mobile full-width"
+                                                            type="text"
+                                                            id="DateOfDelivery"
+                                                            ng-required="!shippingList.isAdmin"
+                                                            data-ng-flatpickr-input
+                                                            data-ng-change="shippingList.selectShipping.TimeOfDelivery = null; shippingList.initIntervals(item, $index)"
+                                                            data-ng-model="shippingList.selectShipping.DateOfDeliveryStr"
+                                                            data-validation-input-text="{{ ::'Js.ShippingTemplate.SelectInterval.DateNotSelected' | translate }}" />
+                                                        <span class="flatpickr-custom-clear" data-close data-clear
+                                                        ><i class="fas fa-times"></i
+                                                        ></span>
+                                                    </span>
+                                                    <span class="flatpickr-custom__toggle" data-toggle><i class="fas fa-calendar-alt"></i></span>
+                                                </span>
+                                            </span>
+                                            </span>
+                                            <span ng-if="shippingList.selectShipping.DateOfDeliveryStr && shippingList.intervalsOnSelectedDay != null && shippingList.intervalsOnSelectedDay.length != 0"
+                                                  class="col-xs-12">
+                                            <span class="select-custom cs-t-4 icon-down-open-after-abs">
+                                                <select
+                                                    class="cs-bg-2 input-small input-alt-mobile full-width"
+                                                    ng-required="!shippingList.isAdmin"
+                                                    data-ng-options="time for time in shippingList.intervalsOnSelectedDay"
+                                                    data-ng-model="shippingList.selectShipping.TimeOfDelivery"
+                                                    data-ng-change="shippingList.changeDeliveryInterval(item, $parent.$index)"
+                                                    data-validation-input-text="{{ ::'Js.ShippingTemplate.SelectInterval.TimeNotSelected' | translate }}">
+                                                    <option value="">
+                                                        {{ ::'Js.ShippingTemplate.SelectInterval.OptionNotSelected' | translate }}
+                                                    </option>
+                                                </select>
+                                            </span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <shipping-item-error
+                                    data-ng-if="!shippingList.isAdmin && shippingList.selectShipping.DateOfDeliveryStr == null"
+                                    data-error-text="::'Js.ShippingTemplate.SelectInterval.DateNotSelected' | translate"></shipping-item-error>
+
+                                <shipping-item-error
+                                    data-ng-if="!shippingList.isAdmin && shippingList.selectShipping.TimeOfDelivery == null"
+                                    data-error-text="::'Js.ShippingTemplate.SelectInterval.TimeNotSelected' | translate"></shipping-item-error>
+                            </span>
+                            <shipping-item-error
+                                data-ng-if="!shippingList.isAdmin && (shippingList.intervalsOnSelectedDay == null || shippingList.intervalsOnSelectedDay.length == 0)"
+                                data-error-text="::'Js.ShippingTemplate.SelectInterval.IntervalsNotAvailable' | translate"></shipping-item-error>
+                        </span>
+                    </span>
+                    <span class="shipping-item__additional-template"
+                          data-ng-class="{'ng-hide': shippingList.selectShipping !== item && shippingList.mode === 'tile' && !isMobile.value}"
+                          data-ng-if="item.Template">
+                        <span
+                            data-shipping-template
+                            data-contact="shippingList.contact"
+                            data-is-selected="shippingList.selectShipping === item"
+                            data-shipping="item"
+                            data-template-url="item.Template"
+                            data-change-control="shippingList.changeShippingControl(shipping)"
+                            data-is-admin="shippingList.isAdmin"></span>
+                    </span>
+                    <span class="shipping-extend-error error-color"
+                        data-ng-if="item.ErrorMessage && shippingList.selectShipping === item"
+                        data-ng-class="{'shipping-extend-error-warehouse': item.Warehouses != null && item.Warehouses.length > 0 || item.SelectedPoint != null && item.SelectedPoint.WarehouseId > 0}"
+                        ng-bind="item.ErrorMessage"></span>
+                    <input class="shipping-extend-input-hidden"
+                        data-ng-if="item.ErrorMessage && shippingList.selectShipping === item"
+                        type="text"
+                        data-ng-model="item.EmptyValue"
+                        required
+                        readonly
+                        data-validation-input-text="{{ item.ErrorMessage }}" />
+                    <span data-ng-switch="item.SelectedPoint != null && item.SelectedPoint.WarehouseId > 0"
+                          class="shipping-item__warehouses-info"
+                          data-ng-class="{'ng-hide': shippingList.selectShipping !== item && shippingList.mode === 'tile' && !isMobile.value}"
+                          data-ng-if="shippingList.amountLimitation">
+                        <span class="shipping-item__warehouses-stock" data-cart-stock-in-warehouses data-ng-switch-when="true" data-warehouses="[item.SelectedPoint.WarehouseId]"></span>
+                        <span data-ng-switch-default>
+                            <span  class="shipping-item__warehouses-stock"
+                                data-cart-stock-in-warehouses
+                                data-ng-if="item.Warehouses != null && item.Warehouses.length > 0"
+                                data-warehouses="item.Warehouses"></span>
+                        </span>
+                    </span>
+                </div>
+                <span class="shipping-item__delivery-time-wrap">
+                    <span data-ng-if="item.DeliveryTime != null && item.DeliveryTime.length > 0 || item.Delivery != null &&  item.Delivery.length > 0"
+                          class="shipping-item__delivery-time cs-t-3 middle-xs"
+                          data-ng-click="shippingList.selectShipping === item ? null : shippingList.changeShipping(item, $index)">
+                        <span
+                            data-ng-if="item.DeliveryTime != null && item.DeliveryTime.length > 0"
+                            class="shipping-item__note"
+                            data-ng-bind="item.DeliveryTime">
+                        </span>
+                        <span data-ng-if="item.Delivery != null &&  item.Delivery.length > 0"
+                              class="shipping-item__note"
+                              data-ng-bind="(item.Delivery != null &&  item.Delivery.length > 0 ? ', ' + item.Delivery : null)">
+                        </span>
+                    </span>
+                </span>
+
+                <!-- Дублирование кода -->
+                <span data-ng-switch="shippingList.editPrice === true" data-ng-if="!isMobile.value && shippingList.mode !== 'tile'" class="shipping-item__price">
+                    <span data-ng-switch-when="false" data-ng-bind="item.FormatRate"></span>
+                    <span data-ng-switch-when="true">
+                        <span class="shipping-item__label">
+                            <span class="shipping-item__label-text">{{ ::'Js.Shipping.Cost' | translate }}:</span>
+                            <input
+                                type="text"
+                                data-ng-focus="shippingList.focusEditPrice(item, $index)"
+                                data-ng-blur="shippingList.focusEditPrice(item, $index)"
+                                readonly
+                                ng-readonly="item.Id !== shippingList.selectShipping.Id"
+                                data-ng-model="item.ManualRate"
+                                class="shipping-item__input shipping-item__input-price input-alt-mobile" />
+                        </span>
+                    </span>
+                </span>
+                <span
+                    class="shipping-item__icon"
+                    data-ng-style="{width: shippingList.iconWidth}"
+                    data-ng-click="shippingList.selectShipping === item ? null : shippingList.changeShipping(item, $index)">
+                    <img
+                        data-ng-if="item.IconName != null"
+                        ng-style="{width: shippingList.iconWidth, maxHeight: shippingList.iconHeight }"
+                        data-ng-src="{{item.IconName}}"
+                        alt="{{item.Name}}" />
+                </span>
+            </div>
+            <!--Для админки-->
+            <div
+                class="shipping-item shipping-item--custom-{{item.Id}}"
+                data-ng-if="shippingList.isCanAddCustom"
+                ng-class="{'shipping-item--selected': shippingList.selectedItemIndex === shippingList.selectShipping.Id,
+                           'shipping-item--tile': shippingList.mode === 'tile' && !isMobile.value}">
+                <span class="shipping-item__col">
+                    <span class="shipping-item__radio-wrap">
+                        <input
+                            type="radio"
+                            name="shipping"
+                            class="custom-input-native shipping-item__custom-input"
+                            data-ng-model="shippingList.selectShipping"
+                            data-ng-value="shippingList.customShipping"
+                            data-ng-change="shippingList.changeShipping(shippingList.customShipping, shippingList.selectShipping.Id)" />
+                        <span class="custom-input-radio shipping-item__radio input-alt-mobile"></span>
+                    </span>
+                    <span class="shipping-item__icon">
+                        <img
+                            data-ng-if="shippingList.customShipping.IconName != null"
+                            data-ng-src="{{shippingList.customShipping.IconName}}"
+                            ng-style="{width: shippingList.iconWidth, height: shippingList.iconHeight }"
+                            alt="" />
+                    </span>
+                </span>
+                <div class="shipping-item__info">
+                    <div class="form-field-name shipping-item__field">
+                        <div class="shipping-item__title control-label">{{ ::'Js.Shipping.IndividualDeliveryMethod' | translate}}</div>
+                        <div class="shipping-item__additional">
+                            <div class="shipping-template-newshipping">
+                                <div class="shipping-template-row">
+                                    <div>
+                                        <label class="shipping-template__name control-label">{{ ::'Js.Shipping.DeliveryName' | translate}}</label>
+                                    </div>
+
+                                    <input
+                                        type="text"
+                                        class="input-small input-alt-mobile shipping-item__input"
+                                        data-ng-required="shippingList.selectShipping === shippingList.customShipping"
+                                        readonly
+                                        ng-readonly="shippingList.inputCustomNameClicked !== true"
+                                        ng-mousedown="shippingList.inputCustomNameClicked = true"
+                                        data-ng-model="shippingList.customShipping.Name"
+                                        data-ng-blur="shippingList.changeShipping(shippingList.customShipping)"
+                                        validation-input-text="{{:: 'Admin.Js.ShippingMethods.Common.ShippingMethodName' | translate}}" />
+                                </div>
+                                <div class="shipping-template-row">
+                                    <div>
+                                        <label class="shipping-template-name control-label">{{ ::'Js.Shipping.DeliveryCost' | translate}}</label>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        class="input-small input-alt-mobile shipping-item__input"
+                                        data-ng-required="shippingList.selectShipping === shippingList.customShipping"
+                                        readonly
+                                        ng-readonly="shippingList.inputCustomRateClicked !== true"
+                                        ng-mousedown="shippingList.inputCustomRateClicked = true"
+                                        data-ng-model="shippingList.customShipping.ManualRate"
+                                        data-ng-blur="shippingList.changeShipping(shippingList.customShipping)"
+                                        validation-input-text="{{:: 'Admin.Js.ShippingMethods.Common.ShippingMethodManualRate' | translate}}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button
+                type="button"
+                data-ng-class="{'shipping-item--tile': shippingList.mode === 'tile' && !isMobile.value}"
+                class="link-dotted-invert shipping-item shipping-item--more"
+                data-ng-if="shippingList.items.length > shippingList.countVisibleItems"
+                data-ng-click="shippingList.toggleVisible()">
+                {{shippingList.collapsed === true ? ('Js.Shipping.More' | translate) : ('Js.Shipping.Hide' | translate)}}
+            </button>
+        </div>
+        <div ng-switch-when="false" class="shipping-list__empty">
+            <span
+                ng-bind="shippingList.isProgress === true ? ('Js.Shipping.ShippingMethodsLoading' | translate) : ('Js.Shipping.NoShippingMethods' | translate)"></span>
+        </div>
+    </div>
+</div>

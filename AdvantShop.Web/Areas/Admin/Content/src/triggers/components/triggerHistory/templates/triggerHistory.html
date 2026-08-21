@@ -1,0 +1,31 @@
+<div is-mobile>
+
+    <ui-grid-custom grid-unique-id="gridTriggerHistory"
+                    grid-options="ctrl.gridOptions"
+                    grid-params="{ triggerId: ctrl.triggerId }"
+                    grid-url="'triggers/getTriggerHistory'"
+                    grid-swipe-line="false">
+        <ui-grid-custom-override-control class="ng-cloak">
+            <div class="card card--gap-row-sm card--p-18">
+                <div class="flex middle-xs">
+                    <div class="flex-grow m-r-sm">
+                        <div class="m-b-sm">
+                            <div class="fs-xs">
+                                {{row.entity.TimeFormatted}}
+                                <span class="badge badge-custom badge-custom-{{row.entity.LevelFormatted}} border-custom-{{row.entity.LevelFormatted}}"
+                                        ng-bind="row.entity.LevelFormatted">
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="fs-xs m-b-sm">{{row.entity.EventTypeFormatted}}</div>
+                            <div class="fs-xs m-b-xs">{{row.entity.Error}}</div>
+                            <div class="fs-xs">{{row.entity.ParametersFormatted}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ui-grid-custom-override-control>
+    </ui-grid-custom>
+
+</div>

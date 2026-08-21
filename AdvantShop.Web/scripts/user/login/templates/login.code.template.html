@@ -1,0 +1,51 @@
+﻿<form class="login-code"
+      data-ng-if="$ctrl.status === 'phone'">
+    <div class="row middle-xs">
+        <div class="col-xs-12">
+            <label class="form-field-name vertical-interval-xsmall input-required"
+                   for="phone">
+                {{ ::'Js.Login.Code.Phone' | translate }}
+            </label>
+        </div>
+        <div class="col-xs-12">
+            <span class="form-field-input vertical-interval-xsmall">
+                <input type="text"
+                       id="phone"
+                       class="input-small"
+                       autocomplete="tel"
+                       data-mask-control="$ctrl.settings.EnablePhoneMask"
+                       data-mask-control-preset="phone"
+                       data-ng-model="$ctrl.phone"
+                       maxlength="70"
+                       required="required">
+            </span>
+        </div>
+    </div>
+    <div data-ng-bind-html="$ctrl.timerHtml"
+         data-ng-if="!$ctrl.enableRetry && $ctrl.countdownSeconds > 0">
+    </div>
+
+    <button type="submit"
+            class="btn btn-submit btn-big login-action"
+            data-ng-click="$ctrl.sendPhone();"
+            data-ng-disabled="!$ctrl.enableRetry">
+        {{ ::'Js.Login.Code.Login' | translate }}
+    </button>
+</form>
+<form class="login-code"
+      data-ng-if="$ctrl.status === 'confirmation'">
+    <code-input data-length="$ctrl.phoneCodeLength"
+                data-focus-on-start="false"
+                data-send-code-delay="$ctrl.countdownSeconds"
+                data-on-complete-filling="$ctrl.confirmCode(code)"
+                data-on-send-code="$ctrl.sendCode()">
+    </code-input>
+</form>
+<div class="login-code"
+     data-ng-if="$ctrl.status === 'registration'">
+    <registration data-method="'code'"
+                  data-phone="$ctrl.phone"
+                  data-loaded="$ctrl.loaded"
+                  data-redirect-to="$ctrl.redirectTo">
+    </registration>
+</div>

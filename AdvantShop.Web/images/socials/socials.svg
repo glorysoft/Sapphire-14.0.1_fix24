@@ -1,0 +1,113 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 192" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style>
+      g {
+      display: block;
+      }
+      #icon-vk {
+      transform: translatey(32px);
+      }
+      #icon-ok {
+      transform: translatey(64px);
+      }
+
+      #icon-inst {
+      transform: translatey(96px);
+      }
+
+      #icon-tg {
+      transform: translatey(128px);
+      }
+
+      #icon-x {
+      transform: translatey(160px);
+      }
+
+      #icon-yt {
+      transform: translatey(192px);
+      }
+
+      #icon-yz {
+      transform: translate(-36px,0);
+      }
+
+      #icon-rt {
+      transform: translate(-36px,32px);
+      }
+    </style>
+   </defs>
+
+  <use xlink:href="#fb" width ="32" height="32"/>
+  <use xlink:href="#vk" id="icon-vk" width ="32" height="32"/>
+  <use xlink:href="#ok" id="icon-ok" width ="32" height="32"/>
+  <use xlink:href="#inst" id="icon-inst" width ="32" height="32"/>
+  <use xlink:href="#tg" id="icon-tg" width ="32" height="32"/>
+  <use xlink:href="#tw" id="icon-tw" width ="32" height="32"/>
+  <use xlink:href="#yt" id="icon-yt" width ="32" height="32"/>
+  <use xlink:href="#yz" id="icon-yz" width ="32" height="32"/>
+  <use xlink:href="#rt" id="icon-rt" width ="32" height="32"/>
+  <use xlink:href="#x" id="icon-x" width ="32" height="32"/>
+
+
+
+  <symbol id="fb" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <circle style="fill: #39579F" r="20" cy="20.000001" cx="20" />
+    <path style="fill: #FFFFFF" d="m24.3,10.700001c-6.4,0 -6.9,0.6 -6.9,6.3l-2,0l0,3.3l2,0l0,9.6l3.9,0l0,-9.6l2.6,0l0.4,-3.3l-2.9,0c0,0 0,-0.8 0,-1.7s0.3,-1.3 1.5,-1.3s1.5,0 1.5,0l-0.1,-3.3l0,0z" />
+  </symbol>
+
+    <symbol id="vk" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_983_1425)">
+            <mask id="mask0_983_1425" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="61" height="60">
+                <path d="M60.2969 0H0V60H60.2969V0Z" fill="white"/>
+            </mask>
+            <g mask="url(#mask0_983_1425)">
+                <path d="M-0.296875 28.8C-0.296875 15.2236 -0.296875 8.43534 3.94166 4.21766C8.1802 0 15.002 0 28.6456 0H31.0575C44.7011 0 51.5229 0 55.7615 4.21766C60 8.43534 60 15.2236 60 28.8V31.2C60 44.7764 60 51.5647 55.7615 55.7824C51.5229 60 44.7011 60 31.0575 60H28.6456C15.002 60 8.1802 60 3.94166 55.7824C-0.296875 51.5647 -0.296875 44.7764 -0.296875 31.2V28.8Z" fill="#0077FF"/>
+                <path d="M32.0797 43.225C18.337 43.225 10.4985 33.85 10.1719 18.25H17.0558C17.2819 29.7 22.3568 34.55 26.3765 35.55V18.25H32.8587V28.1249C36.8282 27.6999 40.9982 23.2 42.4052 18.25H48.8873C47.807 24.35 43.2847 28.85 40.0689 30.6999C43.2847 32.1999 48.4353 36.125 50.395 43.225H43.2596C41.727 38.475 37.9086 34.8 32.8587 34.2999V43.225H32.0797Z" fill="white"/>
+            </g>
+        </g>
+        <defs>
+            <clipPath id="clip0_983_1425">
+                <rect width="60" height="60" rx="30" fill="white"/>
+            </clipPath>
+        </defs>
+    </symbol>
+
+
+  <symbol id="ok" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <circle style="fill: #EF7D01" r="20" cy="20" cx="20" />
+    <path style="fill: #FFFFFF" d="m20,9.7c-2.8,0 -5.1,2.3 -5.1,5.1s2.3,5.1 5.1,5.1c2.8,0 5.1,-2.3 5.1,-5.1s-2.3,-5.1 -5.1,-5.1zm0,7.2c-1.1,0 -2.1,-0.9 -2.1,-2.1c0,-1.1 0.9,-2.1 2.1,-2.1s2.1,0.9 2.1,2.1s-0.9,2.1 -2.1,2.1zm2.1,7.2c1.8,-0.4 2.9,-1.2 3.1,-1.3l0,0c0.4,-0.3 0.6,-0.7 0.6,-1.2c0,-0.8 -0.7,-1.5 -1.5,-1.5c-0.3,0 -0.6,0.1 -0.9,0.3l0,0l0,0c0,0 -1.4,0.9 -3.3,0.9s-3.4,-1 -3.5,-1l0,0l0,0c-0.2,-0.2 -0.5,-0.2 -0.8,-0.2c-0.8,0 -1.5,0.7 -1.5,1.5c0,0.5 0.2,1 0.7,1.2l0,0c0.1,0.1 1.2,0.8 3,1.2l-2.8,2.9c-0.6,0.6 -0.5,1.5 0,2.1c0.3,0.3 0.7,0.5 1.1,0.5s0.8,-0.2 1.1,-0.5l2.8,-2.8l2.8,2.8c0.6,0.6 1.5,0.6 2.1,0s0.6,-1.5 0,-2.1l-3,-2.8z" />
+  </symbol>
+
+  <symbol id="inst" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <circle style="fill: #d10869" r="20" cy="20" cx="20" />
+    <path style="fill: #FFFFFF" d="m28.4,24.5c0,2.2 -1.8,4 -3.9,4l-8.9,0c-2.2,0 -3.9,-1.8 -3.9,-4l0,-8.9c0,-2.2 1.8,-4 3.9,-4l8.9,0c2.2,0 3.9,1.8 3.9,4l0,8.9zm-4.1,-14.8l-8.7,0c-3.3,0 -5.9,2.7 -5.9,6l0,8.7c0,3.3 2.7,6 5.9,6l6.8,0l1.9,0c3.3,0 5.9,-2.7 5.9,-6l0,-8.7c0.1,-3.3 -2.6,-6 -5.9,-6l0,0zm-4.3,13.8c-1.9,0 -3.5,-1.6 -3.5,-3.5s1.5,-3.5 3.5,-3.5s3.5,1.6 3.5,3.5c0,2 -1.6,3.5 -3.5,3.5m0,-8.8c-2.9,0 -5.3,2.4 -5.3,5.4s2.4,5.4 5.3,5.4c2.9,0 5.3,-2.4 5.3,-5.4s-2.4,-5.4 -5.3,-5.4m5.5,-1.5c-0.7,0 -1.2,0.6 -1.2,1.2c0,0.6 0.6,1.2 1.2,1.2c0.7,0 1.2,-0.6 1.2,-1.2s-0.5,-1.2 -1.2,-1.2" />
+  </symbol>
+
+
+  <symbol id="tg" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <circle style="fill: #2CA5E0" r="20" cy="20" cx="20" />
+    <path style="fill: #FFFFFF" d="m10.6,18.5l15.4,-5.7c0.6,-0.2 1.2,0.4 1.1,1.1l-5.6,15.5c-0.2,0.6 -1.1,0.7 -1.3,0.1l-3.6,-6.1c-0.1,-0.1 -0.2,-0.2 -0.3,-0.3l-5.7,-3.2c-0.7,-0.4 -0.5,-1.3 0,-1.4z" />
+  </symbol>
+
+  <symbol id="yt" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <circle style="fill: #FF0000" r="20" cy="20" cx="20" />
+    <path style="fill: #FFFFFF" d="m30.2,14.8c-0.2,-0.9 -1,-1.6 -1.9,-1.9c-1.7,-0.5 -8.4,-0.5 -8.4,-0.5s-6.7,0 -8.4,0.5c-0.9,0.2 -1.6,1 -1.9,1.9c-0.4,1.7 -0.4,5.1 -0.4,5.1s0,3.5 0.5,5.2c0.2,0.9 1,1.6 1.9,1.9c1.7,0.5 8.4,0.5 8.4,0.5s6.7,0 8.4,-0.5c0.9,-0.2 1.6,-1 1.9,-1.9c0.5,-1.7 0.5,-5.2 0.5,-5.2s-0.1,-3.4 -0.6,-5.1zm-12.3,8.4l0,-6.4l5.5,3.2l-5.5,3.2z" />
+  </symbol>
+
+  <symbol id="yz" viewBox="0 0 1024 1024" fill="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <circle xmlns="http://www.w3.org/2000/svg" style="fill: white;" r="480" cy="512" cx="512"/>
+      <path xmlns="http://www.w3.org/2000/svg" style="fill: #000" d="M781.8 518C854.2 509.5 927.1 507.5 1000 505.6 998.3 646.3 935 784.9 828.1 876.6 739.9 954.6 623.1 998.1 505.7 999.7 509 910.4 508.9 820.2 526.7 732.2 538.8 671.2 570.4 612.9 620.8 575.5 666.7 539.5 725 525.5 781.8 518ZM0.1 505.5C86.9 508.7 174.4 508.8 260 524.9 317.4 535.8 373.6 561.5 412.5 606.2 459.3 657.1 476.1 727.1 483.4 794.1 490.7 862.4 492.4 931.2 494.4 999.9 354 998.1 215.4 934.9 123.7 828.4 45.8 739.9 1.9 623.1 0.1 505.5ZM505.7 0.1C648.6 1.5 789.7 67.3 881.4 177.2 956.2 264.8 998.3 379.1 999.9 494.3 915.7 491.3 830.9 490.9 747.8 476.4 688.8 466.2 630.3 441.5 589.9 396.1 548.3 352.4 529.1 292.8 520.5 234.2 509.3 156.7 508.3 78.2 505.7 0.1ZM215 89.8C296.1 32.2 395.2 2 494.4 0 490.4 95.6 492.1 192.9 468.7 286.5 452.2 354 407 414.2 345.1 446.4 285.5 476.4 217.9 483.2 152.4 487.9 101.6 491.1 50.8 493.5 0 493.9 1.8 334.9 83.5 179.5 215 89.8Z"/>
+  </symbol>
+
+  <symbol xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="rt" viewBox="-630 -500 2048 2048" fill="currentColor">
+      <circle style="fill: #000;" r="1030" cy="524" cx="394"/>
+      <path style="fill: #FFFFFF" d="M611.5 513.7C674.5 462.8 714.9 393.2 714.9 305.8V267.8C714.9 114.4 590.8 1.7 437.7 1.7L0 0 0.3 860.9 207 862.5V570.3H419.5L558 862.5H800L611.5 513.7ZM503.6 295.4C503.6 356.5 454.2 391.2 393.2 391.2H207V184.4H393.2C454.2 184.4 503.6 227.3 503.6 288.5V295.4ZM555.6 1000H0V944.4H555.6V1000ZM777.8 1000H611.1V944.4H777.8V1000Z"/>
+  </symbol>
+
+    <symbol id="x" viewBox="0 0 60 60" fill="none" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <path d="M0 30C0 13.4315 13.4315 0 30 0C46.5685 0 60 13.4315 60 30C60 46.5685 46.5685 60 30 60C13.4315 60 0 46.5685 0 30Z" fill="var(--circle-fill, #000)"/>
+        <path d="M42.3971 41.1436L33.2287 27.824L32.1922 26.3176L25.634 16.7896L25.0904 16H17.0315L18.997 18.8562L27.7171 31.5262L28.7537 33.031L35.7601 43.2111L36.3037 44H44.3626L42.3971 41.1438V41.1436ZM37.2615 42.1769L29.9823 31.6009L28.9458 30.0954L20.4992 17.8231H24.1326L30.9635 27.748L32.0001 29.2535L40.8951 42.1769H37.2617H37.2615Z" fill="var(--path-fill, #fff)"/>
+        <path d="M28.9458 30.0947L29.9824 31.6002L28.7535 33.0304L19.325 43.9991H17L27.717 31.5256L28.9458 30.0947Z" fill="var(--path-fill, #fff)"/>
+        <path d="M43.3924 16L33.2289 27.824L32 29.2532L30.9635 27.7477L32.1924 26.3176L39.077 18.3043L41.0673 16H43.3924Z" fill="var(--path-fill, #fff)"/>
+    </symbol>
+</svg>

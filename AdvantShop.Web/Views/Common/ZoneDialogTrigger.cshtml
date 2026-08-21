@@ -1,0 +1,23 @@
+﻿@using Newtonsoft.Json;
+@model AdvantShop.Models.Common.ZoneDialogTrigger
+
+@if(Model.EnablesAddressList) 
+{
+    var currentAddress = JsonConvert.SerializeObject(Model.CurrentContact);
+    <span data-oc-lazy-load="[{files: [@Html.RenderAssetFilesList("geoMode")]}]">
+        <span data-geo-mode-change-address-trigger="@currentAddress"
+              data-current-city="'@Model.CurrentCity'"
+              data-has-contacts="@Model.HasContacts.ToLowerString()"
+              data-is-show-map="@Model.ShowMapAddress.ToLowerString()">
+            <span data-ng-bind="geoModeChangeAddressTrigger.currentCity">@Model.CurrentCity</span>
+        </span>
+    </span>
+} 
+else 
+{
+    <span data-zone-dialog-trigger>
+        <span data-zone-current data-ng-bind="zone.City || '@T("Product.Index.ShippingTo.ChooseCity")'" data-start-val="{City: '@Model.CurrentCity'}">
+            @(!string.IsNullOrEmpty(Model.CurrentCity) ? Model.CurrentCity : T("Product.Index.ShippingTo.ChooseCity").ToString())
+        </span>
+    </span>
+}

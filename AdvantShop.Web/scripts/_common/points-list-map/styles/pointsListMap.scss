@@ -1,0 +1,41 @@
+.points-list-map {
+    $self: &;
+
+    &:has(&__map-wrap) {
+        --height-map: 630px;
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: minmax(33%, 1fr) 2fr;
+        column-gap: 20px;
+
+        &--nowrap {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__filters {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        grid-auto-flow: column;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    &__filter-item {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.mobile-version .points-list-map {
+    &__row {
+        grid-template-columns: auto;
+    }
+
+    &__map-wrap {
+        order: -1;
+    }
+}

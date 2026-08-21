@@ -1,0 +1,572 @@
+﻿<div class="add-edit-address__content" data-ng-class="{'add-edit-address__content--map': addEditAddressForm.isShowMap}">
+    <div data-ng-form="addEditAddressForm.addEditAddressHtmlForm">
+        <button
+            type="button"
+            data-ng-if="addEditAddressForm.isShowMap"
+            class="btn btn-middle btn-link add-edit-address__locate-btn"
+            data-ng-click="addEditAddressForm.locate()">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                data-ng-if="!addEditAddressForm.disabledInput"
+                width="20"
+                height="20"
+                fill="currentColor"
+                viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"></path>
+            </svg>
+            <span
+                class="icon-spinner-before icon-animate-spin-before add-edit-address__locate-spinner"
+                data-ng-if="addEditAddressForm.disabledInput"></span>
+            <span class="cs-l-2" data-ng-bind="'Js.Address.Locate' | translate "></span>
+        </button>
+        <div class="form-group add-edit-address__form-control" data-ng-if="addEditAddressForm.fields.IsShowFirstName === true">
+            <label for="firstName" class="col-xs-12 control-label">
+                <span
+                    class="form-field-name vertical-interval-small"
+                    data-ng-class="{'input-required':  addEditAddressForm.requiredValidationEnabled}"
+                    data-ng-bind="addEditAddressForm.fields.CustomerFirstNameField"></span>
+            </label>
+            <span class="col-xs-12">
+                <span class="form-field-input vertical-interval-small">
+                    <input
+                        type="text"
+                        data-ng-model="addEditAddressForm.form.firstName"
+                        name="firstName"
+                        id="firstName"
+                        value=""
+                        class="input-small form-control input-alt"
+                        data-ng-required="addEditAddressForm.requiredValidationEnabled"
+                        data-ng-disabled="addEditAddressForm.disabledInput"
+                        data-validation-input-text="addEditAddressForm.fields.CustomerFirstNameField" />
+                </span>
+            </span>
+        </div>
+        <div
+            class="row form-group add-edit-address__form-control"
+            data-ng-class="{'show-placeholder': !addEditAddressForm.form.lastName.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}"
+            data-ng-if="addEditAddressForm.fields.IsShowLastName === true">
+            <label for="lastName" class="col-xs-12 control-label">
+                <span
+                    class="form-field-name vertical-interval-small"
+                    data-ng-class="{'input-required': addEditAddressForm.fields.IsRequiredLastName && addEditAddressForm.requiredValidationEnabled}"
+                    data-translate="Js.Address.LastName"></span>
+            </label>
+            <span class="col-xs-12">
+                <span class="form-field-input vertical-interval-small">
+                    <input
+                        type="text"
+                        data-ng-model="addEditAddressForm.form.lastName"
+                        name="lastName"
+                        id="lastName"
+                        value=""
+                        class="input-small form-control input-alt"
+                        data-ng-required="addEditAddressForm.fields.IsRequiredLastName && addEditAddressForm.requiredValidationEnabled"
+                        data-ng-disabled="addEditAddressForm.disabledInput"
+                        data-validation-input-text="{{::'Js.Address.LastName' | translate}}" />
+                </span>
+            </span>
+        </div>
+
+        <div
+            class="row form-group add-edit-address__form-control"
+            data-ng-class="{'show-placeholder': !addEditAddressForm.form.patronymic.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}"
+            data-ng-if="addEditAddressForm.fields.IsShowPatronymic === true">
+            <label for="patronymic" class="col-xs-12 control-label">
+                <span
+                    class="form-field-name vertical-interval-small"
+                    data-ng-class="{'input-required': addEditAddressForm.fields.IsRequiredPatronymic && addEditAddressForm.requiredValidationEnabled}"
+                    data-translate="Js.Address.Patronymic"></span>
+            </label>
+            <span class="col-xs-12">
+                <span class="form-field-input vertical-interval-small">
+                    <input
+                        type="text"
+                        data-ng-model="addEditAddressForm.form.patronymic"
+                        name="patronymic"
+                        id="patronymic"
+                        value=""
+                        class="input-small form-control input-alt"
+                        data-ng-required="addEditAddressForm.fields.IsRequiredPatronymic && addEditAddressForm.requiredValidationEnabled"
+                        data-ng-disabled="addEditAddressForm.disabledInput"
+                        data-validation-input-text="{{::'Js.Address.Patronymic' | translate}}" />
+                </span>
+            </span>
+        </div>
+
+        <div
+            class="row form-group add-edit-address__form-control"
+            data-ng-class="{'show-placeholder': !addEditAddressForm.form.city.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}"
+            data-ng-if="addEditAddressForm.fields.IsShowCity === true">
+            <label for="addressCity" class="col-xs-12 control-label">
+                <span
+                    class="form-field-name vertical-interval-small"
+                    data-ng-class="{'input-required': addEditAddressForm.fields.IsRequiredCity && addEditAddressForm.requiredValidationEnabled}"
+                    data-translate="Js.Address.City"></span>
+            </label>
+            <span class="col-xs-12">
+                <span class="form-field-input vertical-interval-small" data-ng-switch="addEditAddressForm.autocompleteAlt">
+                    <span
+                        data-ng-switch-when="false"
+                        class="autocompleter-block"
+                        data-field="Name"
+                        data-autocompleter
+                        data-request-url="/location/GetCitiesAutocomplete"
+                        data-max-height-list="addEditAddressForm.citiesListMaxHeight"
+                        data-template-path="scripts/_common/autocompleter/templates/location.html"
+                        data-apply-fn="addEditAddressForm.changeAddress(addEditAddressForm.processAddressTypes.CITY, obj, addEditAddressForm.isShowMap ? 500 : 0)">
+                        <input
+                            type="text"
+                            name="addressCity"
+                            id="addressCity"
+                            value=""
+                            class="input-small form-control input-alt"
+                            data-ng-model="addEditAddressForm.form.city"
+                            data-ng-required="addEditAddressForm.fields.IsRequiredCity && addEditAddressForm.requiredValidationEnabled"
+                            data-ng-change="addEditAddressForm.changeAddress(addEditAddressForm.processAddressTypes.CITY, obj, addEditAddressForm.isShowMap ? 500 : 0)"
+                            data-autocompleter-input
+                            autocomplete="{{addEditAddressForm.fields.UseAddressSuggestions ? 'new-password' : 'address-level2'}}"
+                            data-ng-disabled="addEditAddressForm.disabledInput"
+                            maxlength="70" />
+                    </span>
+                    <input
+                        data-ng-switch-when="true"
+                        type="text"
+                        data-ng-model="addEditAddressForm.form.city"
+                        class="form-control input-alt"
+                        id="addressCity"
+                        data-typeahead-append-to-body="true"
+                        data-autocompleter-address
+                        autocomplete="off"
+                        data-ng-change="addEditAddressForm.changeAddress(addEditAddressForm.processAddressTypes.CITY, item, 0)"
+                        data-ng-required="addEditAddressForm.fields.IsRequiredCity && addEditAddressForm.requiredValidationEnabled"
+                        maxlength="70"
+                        data-on-select="addEditAddressForm.changeAddress(addEditAddressForm.processAddressTypes.CITY, item, 0)"
+                        data-ng-disabled="addEditAddressForm.disabledInput"
+                        data-validation-input-text="{{::'Js.Address.City' | translate}}" />
+                </span>
+            </span>
+        </div>
+
+        <div
+            class="row form-group add-edit-address__form-control"
+            data-ng-class="{'show-placeholder': !addEditAddressForm.form.district.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}"
+            data-ng-if="addEditAddressForm.fields.IsShowDistrict === true">
+            <label for="addressDistrict" class="col-xs-12 control-label">
+                <span
+                    class="form-field-name vertical-interval-small"
+                    data-ng-class="{'input-required': addEditAddressForm.fields.IsRequiredDistrict && addEditAddressForm.requiredValidationEnabled}"
+                    data-translate="Js.Address.District"></span>
+            </label>
+            <span class="col-xs-12">
+                <span class="form-field-input vertical-interval-small">
+                    <input
+                        type="text"
+                        name="addressDistrict"
+                        id="addressDistrict"
+                        value=""
+                        class="input-small form-control input-alt"
+                        data-ng-model="addEditAddressForm.form.district"
+                        data-ng-required="addEditAddressForm.fields.IsRequiredDistrict"
+                        autocomplete="{{addEditAddressForm.fields.UseAddressSuggestions ? 'new-password' : 'address-level2'}}"
+                        maxlength="70"
+                        data-ng-disabled="addEditAddressForm.disabledInput"
+                        data-validation-input-text="{{::'Js.Address.District' | translate}}" />
+                </span>
+            </span>
+        </div>
+
+        <div
+            class="row form-group add-edit-address__form-control"
+            data-ng-class="{'show-placeholder': !addEditAddressForm.form.region.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}"
+            data-ng-if="addEditAddressForm.fields.IsShowState === true">
+            <label for="addressRegion" class="col-xs-12 control-label">
+                <span
+                    class="form-field-name vertical-interval-small"
+                    data-ng-class="{'input-required': addEditAddressForm.fields.IsRequiredState && addEditAddressForm.requiredValidationEnabled}"
+                    data-translate="Js.Address.Region"></span>
+            </label>
+            <span class="col-xs-12">
+                <span class="form-field-input vertical-interval-small" data-ng-switch="addEditAddressForm.autocompleteAlt">
+                    <span
+                        data-ng-switch-when="false"
+                        class="autocompleter-block"
+                        data-field="Name"
+                        data-autocompleter
+                        data-request-url="/location/GetRegionsAutocomplete"
+                        data-template-path="scripts/_common/autocompleter/templates/location.html">
+                        <input
+                            type="text"
+                            data-autocompleter-input
+                            data-ng-model="addEditAddressForm.form.region"
+                            name="addressRegion"
+                            id="addressRegion"
+                            value=""
+                            class="input-small form-control input-alt-mobile"
+                            data-ng-required="addEditAddressForm.fields.IsRequiredState && addEditAddressForm.requiredValidationEnabled"
+                            autocomplete="{{addEditAddressForm.fields.UseAddressSuggestions ? 'new-password' : 'address-level1'}}"
+                            data-ng-disabled="addEditAddressForm.disabledInput"
+                            maxlength="70" />
+                    </span>
+                    <input
+                        data-ng-switch-when="true"
+                        type="text"
+                        data-ng-model="addEditAddressForm.form.region"
+                        class="form-control input-alt input-alt"
+                        data-typeahead-append-to-body="true"
+                        data-autocompleter
+                        id="addressRegion"
+                        data-on-type="region"
+                        autocomplete="off"
+                        maxlength="70"
+                        data-ng-required="addEditAddressForm.fields.IsRequiredState && addEditAddressForm.requiredValidationEnabled"
+                        data-ng-disabled="addEditAddressForm.disabledInput"
+                        data-validation-input-text="{{::'Js.Address.Region' | translate}}" />
+                </span>
+            </span>
+        </div>
+
+        <div
+            class="row form-group add-edit-address__form-control"
+            data-ng-class="{'show-placeholder': !addEditAddressForm.form.country.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}"
+            data-ng-if="addEditAddressForm.fields.IsShowCountry === true">
+            <label for="addressCountry" class="col-xs-12 control-label">
+                <span
+                    class="form-field-name vertical-interval-small"
+                    data-ng-class="{'input-required': addEditAddressForm.fields.IsRequiredCountry && addEditAddressForm.requiredValidationEnabled}"
+                    data-translate="Js.Address.Country"></span>
+            </label>
+            <span class="col-xs-12">
+                <span class="form-field-input vertical-interval-small">
+                    <span class="select-custom cs-t-4 icon-down-open-after-abs">
+                        <select
+                            class="cs-bg-2 form-control form-select input-alt"
+                            name="addressCountry"
+                            id="addressCountry"
+                            data-ng-required="addEditAddressForm.fields.IsRequiredCountry && addEditAddressForm.requiredValidationEnabled"
+                            data-ng-model="addEditAddressForm.form.country"
+                            data-ng-on-change="addEditAddressForm.changeAddress(addEditAddressForm.processAddressTypes.COUNTRY, obj, addEditAddressForm.isShowMap ? 500 : 0)"
+                            data-ng-options="countryItem.Name for countryItem in addEditAddressForm.form.countries"
+                            data-ng-disabled="addEditAddressForm.disabledInput"
+                            data-validation-input-text="{{::'Js.Address.Country' | translate}}"></select>
+                    </span>
+                </span>
+            </span>
+        </div>
+
+        <div
+            class="row form-group add-edit-address__form-control"
+            data-ng-class="{'show-placeholder': !addEditAddressForm.form.zip.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}"
+            data-ng-if="addEditAddressForm.fields.IsShowZip === true">
+            <label for="addressZip" class="col-xs-12 control-label">
+                <span
+                    class="form-field-name vertical-interval-small"
+                    data-ng-class="{'input-required': addEditAddressForm.fields.IsRequiredZip && addEditAddressForm.requiredValidationEnabled}"
+                    data-translate="Js.Address.Zip"></span>
+            </label>
+            <span class="col-xs-12">
+                <span class="form-field-input vertical-interval-small">
+                    <input
+                        type="text"
+                        data-ng-model="addEditAddressForm.form.zip"
+                        name="addressZip"
+                        id="addressZip"
+                        value=""
+                        class="input-small form-control input-alt"
+                        data-ng-required="addEditAddressForm.fields.IsRequiredZip && addEditAddressForm.requiredValidationEnabled"
+                        data-validation-input-text="{{::'Js.Address.Zip' | translate}}"
+                        autocomplete="{{addEditAddressForm.fields.UseAddressSuggestions ? 'new-password' : 'postal-code'}}"
+                        data-ng-disabled="addEditAddressForm.disabledInput"
+                        maxlength="70" />
+                </span>
+            </span>
+        </div>
+
+        <div
+            class="row form-group add-edit-address__form-control"
+            data-ng-class="{'show-placeholder': !addEditAddressForm.form.street.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}"
+            data-ng-if="!addEditAddressForm.fields.IsShowFullAddress && addEditAddressForm.fields.IsShowAddress === true">
+            <label for="addressStreet" class="col-xs-12 control-label">
+                <span
+                    class="form-field-name vertical-interval-small"
+                    data-ng-class="{'input-required': addEditAddressForm.fields.IsRequiredAddress && addEditAddressForm.requiredValidationEnabled}"
+                    data-translate="Js.Address.Address"></span>
+            </label>
+            <span class="col-xs-12" data-ng-switch="addEditAddressForm.autocompleteAlt">
+                <span
+                    data-ng-switch-when="false"
+                    class="autocompleter-block form-field-input vertical-interval-small"
+                    data-field="Name"
+                    data-autocompleter
+                    data-min-length="1"
+                    data-show-mode="top"
+                    data-max-height-list="addEditAddressForm.addressListMaxHeight"
+                    data-request-url="{{addEditAddressForm.fields.SuggestAddressUrl}}"
+                    data-template-path="scripts/_common/autocompleter/templates/location.html"
+                    data-apply-fn="addEditAddressForm.changeAddress(addEditAddressForm.processAddressTypes.ADDRESS, obj, addEditAddressForm.isShowMap ? 500 : 0)"
+                    data-params="{city: addEditAddressForm.form.city, district: addEditAddressForm.form.district, region: addEditAddressForm.form.region}">
+                    <textarea
+                        data-ng-model="addEditAddressForm.form.street"
+                        name="addressDetails"
+                        id="addressStreet"
+                        class="textarea-small form-control input-alt"
+                        data-ng-required="addEditAddressForm.fields.IsRequiredAddress && addEditAddressForm.requiredValidationEnabled"
+                        data-ng-change="addEditAddressForm.changeAddress(addEditAddressForm.processAddressTypes.ADDRESS, obj, addEditAddressForm.isShowMap ? 500 : 0)"
+                        data-autocompleter-input
+                        data-autocomplete-debounce="400"
+                        data-autocompleter-disabled="{{!addEditAddressForm.fields.UseAddressSuggestions}}"
+                        autocomplete="{{addEditAddressForm.fields.UseAddressSuggestions ? 'new-password' : 'street-address'}}"
+                        data-ng-disabled="addEditAddressForm.disabledInput"
+                        maxlength="255"></textarea>
+                </span>
+                <input
+                    data-ng-switch-when="true"
+                    data-ng-model="addEditAddressForm.form.street"
+                    class="form-control textarea-alt input-alt"
+                    data-autocompleter-address="{{addEditAddressForm.fields.UseAddressSuggestions}}"
+                    data-autocompleter-url="{{addEditAddressForm.fields.SuggestAddressUrl}}"
+                    data-autocompleter-params="{part: 'Street', city: addEditAddressForm.form.city, district: addEditAddressForm.form.district, region: addEditAddressForm.form.region, inAdminPart: true}"
+                    data-typeahead-append-to-body="true"
+                    data-ng-required="addEditAddressForm.fields.IsRequiredAddress && addEditAddressForm.requiredValidationEnabled"
+                    maxlength="255"
+                    id="addressStreet"
+                    data-ng-disabled="addEditAddressForm.disabledInput"
+                    data-validation-input-text="{{::'Js.Address.Address' | translate}}" />
+            </span>
+        </div>
+
+        <div
+            class="row form-group add-edit-address__form-control"
+            data-ng-class="{'show-placeholder': !addEditAddressForm.form.street.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}"
+            data-ng-if="addEditAddressForm.fields.IsShowFullAddress && addEditAddressForm.fields.IsShowAddress === true">
+            <label class="col-xs-12 control-label">
+                <span
+                    class="form-field-name vertical-interval-small"
+                    data-ng-class="{'input-required': addEditAddressForm.fields.IsRequiredAddress && addEditAddressForm.requiredValidationEnabled}"
+                    data-translate="Js.Address.Street"></span>
+            </label>
+            <span class="col-xs-12" data-ng-switch="addEditAddressForm.autocompleteAlt">
+                <span
+                    data-ng-switch-when="false"
+                    class="autocompleter-block form-field-input vertical-interval-small"
+                    data-field="Name"
+                    data-autocompleter
+                    data-min-length="1"
+                    data-request-url="{{addEditAddressForm.fields.SuggestAddressUrl}}"
+                    data-template-path="scripts/_common/autocompleter/templates/location.html"
+                    data-apply-fn="addEditAddressForm.changeAddress(addEditAddressForm.processAddressTypes.ADDRESS, obj, addEditAddressForm.isShowMap ? 500 : 0)"
+                    data-params="{part: 'Street', city: addEditAddressForm.form.city, district: addEditAddressForm.form.district, region: addEditAddressForm.form.region}">
+                    <input
+                        type="text"
+                        data-ng-model="addEditAddressForm.form.street"
+                        name="addressDetails"
+                        id="addressStreet"
+                        class="input-small form-control input-alt"
+                        data-ng-required="addEditAddressForm.fields.IsRequiredAddress && addEditAddressForm.requiredValidationEnabled"
+                        data-ng-change="addEditAddressForm.changeAddress(addEditAddressForm.processAddressTypes.ADDRESS, obj, addEditAddressForm.isShowMap ? 500 : 0)"
+                        data-autocompleter-input
+                        data-autocomplete-debounce="400"
+                        data-autocompleter-disabled="{{!addEditAddressForm.fields.UseAddressSuggestions}}"
+                        autocomplete="{{addEditAddressForm.fields.UseAddressSuggestions ? 'new-password' : 'street-address'}}"
+                        data-ng-disabled="addEditAddressForm.disabledInput"
+                        maxlength="255" />
+                </span>
+                <input
+                    data-ng-switch-when="true"
+                    type="text"
+                    id="addressStreet"
+                    data-ng-model="addEditAddressForm.form.street"
+                    class="form-control input-alt"
+                    data-autocompleter-address="{{addEditAddressForm.fields.UseAddressSuggestions}}"
+                    data-autocompleter-url="{{addEditAddressForm.fields.SuggestAddressUrl}}"
+                    autocomplete="off"
+                    data-typeahead-append-to-body="true"
+                    maxlength="255"
+                    data-ng-required="addEditAddressForm.fields.IsRequiredAddress && addEditAddressForm.requiredValidationEnabled"
+                    data-validation-input-text="{{::'Js.Address.Street' | translate}}"
+                    data-ng-disabled="addEditAddressForm.disabledInput"
+                    data-autocompleter-params="{part: 'Street', city: addEditAddressForm.form.city, district: addEditAddressForm.form.district, region: addEditAddressForm.form.region, inAdminPart: true}" />
+            </span>
+        </div>
+
+        <div data-ng-if="addEditAddressForm.fields.IsShowFullAddress && addEditAddressForm.fields.IsShowAddress === true">
+            <div class="row">
+                <div class="col-xs-4 col-md">
+                    <div
+                        class="row form-group add-edit-address__form-control"
+                        data-ng-class="{'show-placeholder': !addEditAddressForm.form.house.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}">
+                        <label for="addressHouse" class="col-xs-12 control-label">
+                            <span
+                                class="form-field-name vertical-interval-small"
+                                data-ng-class="{'input-required': addEditAddressForm.fields.IsRequiredAddress && addEditAddressForm.requiredValidationEnabled}"
+                                data-translate="Js.Address.House"></span>
+                        </label>
+                        <span class="col-xs-12" data-ng-switch="addEditAddressForm.autocompleteAlt">
+                            <span
+                                data-ng-switch-when="false"
+                                class="autocompleter-block form-field-input vertical-interval-small"
+                                data-field="Name"
+                                data-autocompleter
+                                data-min-length="1"
+                                data-max-height-list="200"
+                                data-request-url="{{addEditAddressForm.fields.SuggestAddressUrl}}"
+                                data-template-path="scripts/_common/autocompleter/templates/location.html"
+                                data-apply-fn="addEditAddressForm.changeAddress(addEditAddressForm.processAddressTypes.ADDRESS, obj, addEditAddressForm.isShowMap ? 500 : 0)"
+                                data-params="{part: 'House', city: addEditAddressForm.form.city, district: addEditAddressForm.form.district, region: addEditAddressForm.form.region, street: addEditAddressForm.form.street}">
+                                <input
+                                    type="text"
+                                    data-ng-model="addEditAddressForm.form.house"
+                                    name="addressHouse"
+                                    id="addressHouse"
+                                    class="input-small form-control input-alt"
+                                    data-ng-required="addEditAddressForm.fields.IsRequiredAddress && addEditAddressForm.requiredValidationEnabled"
+                                    data-ng-change="addEditAddressForm.changeAddress(addEditAddressForm.processAddressTypes.ADDRESS, obj, addEditAddressForm.isShowMap ? 500 : 0)"
+                                    data-autocompleter-input
+                                    data-autocomplete-debounce="400"
+                                    data-autocompleter-disabled="{{!addEditAddressForm.fields.UseAddressSuggestions}}"
+                                    autocomplete="{{addEditAddressForm.fields.UseAddressSuggestions ? 'new-password' : 'street-address'}}"
+                                    data-ng-disabled="addEditAddressForm.disabledInput"
+                                    maxlength="10" />
+                            </span>
+                            <input
+                                data-ng-switch-when="true"
+                                type="text"
+                                id="addressHouse"
+                                data-ng-model="addEditAddressForm.form.house"
+                                class="form-control input-alt"
+                                data-autocompleter-address="{{addEditAddressForm.fields.UseAddressSuggestions}}"
+                                data-autocompleter-url="{{addEditAddressForm.fields.SuggestAddressUrl}}"
+                                autocomplete="off"
+                                data-typeahead-append-to-body="true"
+                                data-ng-required="addEditAddressForm.fields.IsRequiredAddress && addEditAddressForm.requiredValidationEnabled"
+                                maxlength="10"
+                                data-validation-input-text="{{::'Js.Address.House' | translate}}"
+                                data-ng-disabled="addEditAddressForm.disabledInput"
+                                data-autocompleter-params="{part: 'House', city: addEditAddressForm.form.city, district: addEditAddressForm.form.district, region: addEditAddressForm.form.region, street: addEditAddressForm.form.street, inAdminPart: true}" />
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-md">
+                    <div
+                        class="row form-group add-edit-address__form-control"
+                        data-ng-class="{'show-placeholder': !addEditAddressForm.apartment.lastName.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}">
+                        <label for="addressApartment" class="col-xs-12 control-label">
+                            <span class="form-field-name vertical-interval-small" data-translate="Js.Address.Apartment"></span>
+                        </label>
+                        <span class="col-xs-12">
+                            <span class="form-field-input vertical-interval-small">
+                                <input
+                                    type="text"
+                                    data-ng-model="addEditAddressForm.form.apartment"
+                                    value=""
+                                    id="addressApartment"
+                                    class="input-small form-control input-alt"
+                                    maxlength="50"
+                                    data-ng-disabled="addEditAddressForm.disabledInput"
+                                    data-validation-input-text="{{::'Js.Address.Apartment' | translate}}" />
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-md">
+                    <div
+                        class="row form-group add-edit-address__form-control"
+                        data-ng-class="{'show-placeholder': !addEditAddressForm.form.structure.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}">
+                        <label for="addressStructure" class="col-xs-12 control-label">
+                            <span class="form-field-name vertical-interval-small" data-translate="Js.Address.StructureShort"></span>
+                        </label>
+                        <span class="col-xs-12">
+                            <span class="form-field-input vertical-interval-small">
+                                <input
+                                    type="text"
+                                    data-ng-model="addEditAddressForm.form.structure"
+                                    value=""
+                                    id="addressStructure"
+                                    class="input-small form-control input-alt"
+                                    maxlength="10"
+                                    data-ng-disabled="addEditAddressForm.disabledInput"
+                                    data-validation-input-text="{{::'Js.Address.Structure' | translate}}" />
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-md">
+                    <div
+                        class="row form-group add-edit-address__form-control"
+                        data-ng-class="{'show-placeholder': !addEditAddressForm.form.entrance.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}">
+                        <label for="addressEntrance" class="col-xs-12 control-label">
+                            <span class="form-field-name vertical-interval-small" data-translate="Js.Address.Entrance"></span>
+                        </label>
+                        <span class="col-xs-12">
+                            <span class="form-field-input vertical-interval-small">
+                                <input
+                                    type="text"
+                                    data-ng-model="addEditAddressForm.form.entrance"
+                                    value=""
+                                    id="addressEntrance"
+                                    class="input-small form-control input-alt"
+                                    maxlength="10"
+                                    data-ng-disabled="addEditAddressForm.disabledInput"
+                                    data-validation-input-text="{{::'Js.Address.Entrance' | translate}}" />
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-md">
+                    <div
+                        class="row form-group add-edit-address__form-control"
+                        data-ng-class="{'show-placeholder': !addEditAddressForm.form.floor.length, 'add-edit-address__form-control--inside-label': addEditAddressForm.isShowMap}">
+                        <label for="addressFloor" class="col-xs-12 control-label">
+                            <span class="form-field-name vertical-interval-small" data-translate="Js.Address.Floor"></span>
+                        </label>
+                        <span class="col-xs-12">
+                            <span class="form-field-input vertical-interval-small">
+                                <input
+                                    type="text"
+                                    data-ng-model="addEditAddressForm.form.floor"
+                                    value=""
+                                    id="addressFloor"
+                                    class="input-small form-control input-alt"
+                                    maxlength="10"
+                                    data-ng-disabled="addEditAddressForm.disabledInput"
+                                    data-validation-input-text="{{::'Js.Address.Floor' | translate}}" />
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--    <div-->
+<!--        data-address-map-->
+<!--        data-on-check-delivery-zone="addEditAddressForm.onCheckDeliveryZone(isContain)"-->
+<!--        data-ng-if="addEditAddressForm.isShowMap && addEditAddressForm.isLoadData"-->
+<!--        class="add-edit-address__map-wrap"-->
+<!--        data-on-after-init-map="addEditAddressForm.onInitMap($target)"-->
+<!--        data-city-id="addEditAddressForm.currentCityId"-->
+<!--        data-action-end="addEditAddressForm.onActionEndMap(center)"-->
+<!--        data-center="addEditAddressForm.center"></div>-->
+</div>
+
+<div class="m-t-md add-edit-address__footer modal-footer">
+    <div class="row middle-xs end-md">
+        <div class="col-xs-slim">
+            <div class="modal-footer__btns-wrap">
+                <input
+                    type="button"
+                    value="{{ ::'Js.Address.Apply' | translate }}"
+                    class="btn"
+                    data-ng-disabled="addEditAddressForm.disabledAddAddress"
+                    data-ng-class="{'btn-middle btn-submit': !addEditAddressForm.themeAlt,'btn-save btn-primary': addEditAddressForm.themeAlt}"
+                    data-button-validation
+                    data-button-validation-success="addEditAddressForm.save()" />
+                <input
+                    type="button"
+                    value="{{ ::'Js.Address.Cancel' | translate }}"
+                    class="btn"
+                    data-ng-class="{'btn-middle btn-action': !addEditAddressForm.themeAlt,'btn-default btn-cancel': addEditAddressForm.themeAlt}"
+                    data-ng-click="addEditAddressForm.cancelAdding('modalAddress')" />
+            </div>
+        </div>
+    </div>
+</div>

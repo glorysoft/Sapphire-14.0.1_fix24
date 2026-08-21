@@ -1,0 +1,34 @@
+﻿@{
+    Html.AddAsset("vkChannel");
+}
+<script>
+    (function(){
+        const search = document.location.search || document.location.href.split('?')[1] || '';
+        
+        if (search.indexOf('code') !== -1) {
+            const params = new URLSearchParams(search);
+
+            const code = params.get('code');
+            const device_id = params.get('device_id');
+            const state = params.get('state');
+
+            if (code && device_id && state) {
+                window.opener.postMessage({code, device_id, state}, document.baseURI + 'vk');
+                window.close();
+            }
+        } else {
+            let accessToken = null;
+            const urlParts = document.URL.split('#')[1].split('&');
+            for (const item of urlParts) {
+                if (item.indexOf('access_token') !== -1) {
+                    accessToken = item.split('=')[1];
+                }
+            }
+            
+            if (accessToken) {
+                window.opener.postMessage({accessToken}, document.baseURI + 'vk');
+                window.close();
+            }
+        }
+    })();
+</script>

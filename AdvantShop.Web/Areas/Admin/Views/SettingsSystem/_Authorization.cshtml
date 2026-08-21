@@ -1,0 +1,1147 @@
+@using AdvantShop.Core.Services.Configuration.Settings.Enums
+@model AdvantShop.Web.Admin.Models.Settings.SystemSettingsModel
+
+@{
+    var isMobile = SettingsDesign.IsMobileTemplate;
+}
+
+<div class="setting-title-top">
+    <h3 class="setting__subtitle">
+        @T("Admin.Settings.SystemSettings.Authorization.Title")
+    </h3>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    <div class="col-xs-12 col-md-3">
+        <div class="setting-label-wrap setting__label">
+            @Html.LabelFor(
+                model => model.AuthMethod,
+                T("Admin.Settings.SystemSettings.Autorization.DefaultAuthorizationMethod")
+            )
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-3 relative @(isMobile ? "flex middle-xs" : "")">
+        @Html.DropDownListFor(
+            model => model.AuthMethod,
+            Model.AuthMethods,
+            new
+            {
+                @class = "form-control input-alt",
+                data_ng_model = "settingsSystem.AuthMethod"
+            }
+        )
+        <help-trigger class="ng-cloak help-trigger-icon-abs @(isMobile ? "m-l-sm p-l-xs" : "")" 
+                      data-title="@T("Admin.Settings.SystemSettings.Autorization.DefaultAuthorizationMethod")">
+            @T("Admin.Settings.SystemSettings.Autorization.DefaultAuthorizationMethod.Help")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group middle-xs setting__form-group row">
+    <div class="col-xs-12 col-md-3">
+        <div class="setting-label-wrap setting__label">
+            @Html.LabelFor(
+                model => model.LoginDisplayMode,
+                T("Admin.Settings.SystemSettings.LoginDisplayMode")
+            )
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-3">
+        @Html.DropDownListFor(
+            model => model.LoginDisplayMode,
+            Model.LoginDisplayModes,
+            new
+            {
+                @class = "form-control input-alt",
+                data_ng_model = "settingsSystem.LoginDisplayMode"
+            }
+        )
+    </div>
+</div>
+
+<div class="form-group middle-xs setting__form-group row">
+    <div class="col-xs-12 col-md-3">
+        <div class="setting-label-wrap setting__label">
+            @Html.LabelFor(
+                model => model.CheckoutLoginDisplayMode,
+                T("Admin.Settings.SystemSettings.CheckoutLoginDisplayMode")
+            )
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-3 relative @(isMobile ? "flex middle-xs" : "")">
+        @Html.DropDownListFor(
+            model => model.CheckoutLoginDisplayMode,
+            Model.CheckoutLoginDisplayModes,
+            new
+            {
+                @class = "form-control input-alt",
+                data_ng_model = "settingsSystem.CheckoutLoginDisplayMode"
+            }
+        )
+        <help-trigger class="ng-cloak help-trigger-icon-abs @(isMobile ? "m-l-sm p-l-xs" : "")" 
+                      data-title="@T("Admin.Settings.SystemSettings.CheckoutLoginDisplayMode")">
+            @T("Admin.Settings.SystemSettings.CheckoutLoginDisplayMode.Help")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group middle-xs setting__form-group row">
+    <div class="col-xs-12 col-md-3">
+        <div class="setting-label-wrap setting__label">
+            @Html.LabelFor(
+                model => model.EmailAuthType,
+                T("Admin.Settings.SystemSettings.Authorization.EmailAuthType")
+            )
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-3 relative @(isMobile ? "flex middle-xs" : "")">
+        @Html.DropDownListFor(
+            model => model.EmailAuthType,
+            Model.EmailAuthTypes,
+            new
+            {
+                @class = "form-control input-alt",
+                data_ng_model = "settingsSystem.EmailAuthType"
+            }
+        )
+        <help-trigger class="ng-cloak help-trigger-icon-abs @(isMobile ? "m-l-sm p-l-xs" : "")" 
+                      data-title="@T("Admin.Settings.SystemSettings.Authorization.EmailAuthType")">
+            @T("Admin.Settings.SystemSettings.Authorization.EmailAuthType.Help")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group setting__form-group row setting--label-with-checkbox-reverse">
+    <div class="col-xs-11 col-md-3">
+        <div class="setting-label-wrap setting--m-b-none setting__label">
+            @Html.LabelFor(
+                model => model.SkipEmailConfirmation,
+                T("Admin.Settings.SystemSettings.Authorization.SkipEmailConfirmation")
+            )
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(
+                model => model.SkipEmailConfirmation,
+                new
+                {
+                    @class = "adv-checkbox-input",
+                    data_ng_init = "settingsSystem.SkipEmailConfirmation=" + Model.SkipEmailConfirmation.ToLowerString(),
+                    data_ng_model = "settingsSystem.SkipEmailConfirmation"
+                }
+            )
+            <span class="adv-checkbox-emul" data-e2e="SkipEmailConfirmation"></span>
+        </label>
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3 class="setting__subtitle">@T("Admin.Settings.SystemSettings.Registration")</h3>
+</div>
+
+<div class="form-group setting__form-group row setting--label-with-checkbox-reverse">
+    <div class="col-xs-11 col-md-3">
+        <div class="setting-label-wrap setting--m-b-none setting__label">
+            @Html.LabelFor(
+                model => model.ProhibitRegistration,
+                T("Admin.Settings.SystemSettings.ProhibitRegistration")
+            )
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(
+                model => model.ProhibitRegistration,
+                new
+                {
+                    @class = "adv-checkbox-input",
+                    data_ng_init = "settingsSystem.ProhibitRegistration=" + Model.ProhibitRegistration.ToLowerString(),
+                    data_ng_model = "settingsSystem.ProhibitRegistration"
+                }
+            )
+            <span class="adv-checkbox-emul" data-e2e="ProhibitRegistration"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group middle-xs setting__form-group row">
+    <div class="col-xs-12 col-md-3">
+        <div class="setting-label-wrap setting__label">
+            @Html.LabelFor(
+                model => model.StoreAccessMode,
+                T("Admin.Settings.SystemSettings.StoreAccessMode")
+            )
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-3">
+        @Html.DropDownListFor(
+            model => model.StoreAccessMode,
+            Model.StoreAccessModes,
+            new
+            {
+                @class = "form-control input-alt",
+                data_ng_model = "settingsSystem.StoreAccessMode"
+            }
+        )
+    </div>
+</div>
+
+<div class="form-group setting__form-group row middle-xs"
+     data-ng-show="settingsSystem.StoreAccessMode === '@((int)EStoreAccessMode.AuthenticatedCustomer)'">
+    <div class="col-xs-12 col-md-3">
+        <div class="setting-label-wrap setting__label">
+            @Html.LabelFor(
+                model => model.NoAccessRedirectUrl,
+                T("Admin.Settings.SystemSettings.NoAccessRedirectUrl")
+            )
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6 relative @(isMobile ? "flex middle-xs" : "")">
+        @Html.TextBoxFor(
+            model => model.NoAccessRedirectUrl,
+            new
+            {
+                @class = "form-control input-alt ",
+                data_ng_model = "settingsSystem.NoAccessRedirectUrl"
+            }
+        )
+        <help-trigger class="ng-cloak help-trigger-icon-abs @(isMobile ? "m-l-sm p-l-xs" : "")"
+                      data-title="@T("Admin.Settings.SystemSettings.StoreAccessMode")">
+            @T("Admin.Settings.SystemSettings.StoreAccessModeNote", Model.LoginUrl)
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group setting__form-group row middle-xs"
+     data-ng-show="settingsSystem.StoreAccessMode === '@((int)EStoreAccessMode.AuthenticatedCustomer)'">
+    <div class="col-xs-12 col-md-3">
+        <div class="setting-label-wrap setting__label">
+            @Html.LabelFor(
+                model => model.LoginUrl,
+                T("Admin.Settings.SystemSettings.LoginUrl")
+            )
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6 relative @(isMobile ? "flex middle-xs" : "")">
+        @Html.TextBoxFor(
+            model => model.LoginUrl,
+            new
+            {
+                @class = "form-control input-alt ",
+                data_ng_model = "settingsSystem.LoginUrl",
+                data_ng_readonly = "true",
+            }
+        )
+        <help-trigger class="ng-cloak help-trigger-icon-abs @(isMobile ? "m-l-sm p-l-xs" : "")"
+                      data-title="@T("Admin.Settings.SystemSettings.LoginUrl")">
+            @T("Admin.Settings.SystemSettings.LoginUrlNote")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3 class="setting__subtitle">
+        @T("Admin.Settings.SystemSettings.Confirmations")
+    </h3>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    @if (!isMobile)
+    {
+        <div class="col-md-3">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(
+                    model => model.UseEmailConfirmation, 
+                    T("Admin.Settings.SystemSettings.UseEmailConfirmation")
+                )
+            </div>
+        </div>
+    }
+    <div class="col-xs-12 col-md-6 @(isMobile ? "flex middle-xs" : "")">
+        <label class="adv-checkbox-label @(isMobile ? "p-r-sm" : "")">
+            @Html.CheckBoxFor(
+                model => model.UseEmailConfirmation, 
+                new
+                {
+                    @class = "adv-checkbox-input",
+                    data_ng_init = "settingsSystem.UseEmailConfirmation=" + Model.UseEmailConfirmation.ToLowerString(),
+                    data_ng_model = "settingsSystem.UseEmailConfirmation"
+                })
+            <span class="adv-checkbox-emul" data-e2e="UseEmailConfirmation"></span>
+        </label>
+        @if (isMobile)
+        {
+            <div class="setting-label-wrap setting__label setting--m-none flex-grow">
+                @Html.LabelFor(
+                    model => model.UseEmailConfirmation, 
+                    T("Admin.Settings.SystemSettings.UseEmailConfirmation")
+                )
+            </div>
+        }
+        <help-trigger class="ng-cloak @(isMobile ? "m-l-sm p-l-xs" : "p-l-xs")" 
+                      data-title="@T("Admin.Settings.SystemSettings.UseEmailConfirmation")">
+            @T("Admin.Settings.SystemSettings.UseEmailConfirmation.Help")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    @if (!isMobile)
+    {
+        <div class="col-md-3">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(
+                    model => model.UsePhoneConfirmation, 
+                    T("Admin.Settings.SystemSettings.UsePhoneConfirmation")
+                )
+            </div>
+        </div>
+    }
+    <div class="col-xs-12 col-md-6 @(isMobile ? "flex middle-xs" : "")">
+        <label class="adv-checkbox-label @(isMobile ? "p-r-sm" : "")">
+            @Html.CheckBoxFor(
+                model => model.UsePhoneConfirmation, 
+                new
+                {
+                    @class = "adv-checkbox-input",
+                    data_ng_init = "settingsSystem.UsePhoneConfirmation=" + Model.UsePhoneConfirmation.ToLowerString(),
+                    data_ng_model = "settingsSystem.UsePhoneConfirmation"
+                })
+            <span class="adv-checkbox-emul" data-e2e="UsePhoneConfirmation"></span>
+        </label>
+        @if (isMobile)
+        {
+            <div class="setting-label-wrap setting__label setting--m-none flex-grow">
+                @Html.LabelFor(
+                    model => model.UsePhoneConfirmation, 
+                    T("Admin.Settings.SystemSettings.UsePhoneConfirmation")
+                )
+            </div>
+        }
+        <help-trigger class="ng-cloak @(isMobile ? "m-l-sm p-l-xs" : "p-l-xs")" 
+                      data-title="@T("Admin.Settings.SystemSettings.UsePhoneConfirmation")">
+            @T("Admin.Settings.SystemSettings.UsePhoneConfirmation.Help")
+        </help-trigger>
+    </div>
+</div>
+
+<div class="setting-title">
+    <h3 class="setting__subtitle">
+        @T("Admin.Settings.SystemSettings.AuthByCode")
+    </h3>
+</div>
+
+<div class="form-group setting__form-group row setting--label-with-checkbox-reverse">
+    <div class="col-xs-6 col-md-3">
+        <div class="setting-label-wrap setting--m-b-none setting__label">
+            @Html.LabelFor(
+                model => model.AuthByCodeActive,
+                T("Admin.Settings.SystemSettings.AuthByCodeActive")
+            )
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-6">
+        <label class="adv-checkbox-label">
+            @Html.CheckBoxFor(
+                model => model.AuthByCodeActive,
+                new
+                {
+                    @class = "adv-checkbox-input",
+                    data_ng_init = "settingsSystem.AuthByCodeActive=" + Model.AuthByCodeActive.ToLowerString(),
+                    data_ng_model = "settingsSystem.AuthByCodeActive",
+                    data_ng_click = "settingsSystem.checkPhoneDuplicates()"
+                }
+            )
+            <span class="adv-checkbox-emul" data-e2e="AuthByCodeActive"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group" data-ng-show="settingsSystem.AuthByCodeActive">
+    <div class="col-xs-12 col-md-3">
+        <div class="setting-label-wrap setting__label">
+            @T("Admin.Settings.SystemSettings.AuthByCodeMethod")
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-3">
+        @Html.DropDownListFor(
+            model => model.AuthByCodeMethod,
+            Model.AuthByCodeMethods,
+            new
+            {
+                @class = "form-control input-alt",
+                data_ng_model = "settingsSystem.AuthByCodeMethod"
+            })
+    </div>
+</div>
+
+<div class="form-group" ng-if="settingsSystem.havePhoneDuplicates">
+    <div class="adv-panel-danger">
+        @T("Admin.Settings.SystemSettings.PhoneDuplicates.Warning")
+    </div>
+    <a data-e2e="DownloadFile" ng-href="{{settingsSystem.duplicateFileName}}" class="btn btn-sm btn-success"
+       target="_blank" download>@T("Admin.Settings.SystemSettings.PhoneDuplicates.DownloadFile")</a>
+</div>
+
+<settings-auth-modules></settings-auth-modules>
+
+<div class="setting-title">
+    <h3 class="setting__subtitle">
+        @T("Admin.Settings.SystemSettings.OAuth")
+    </h3>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    @if (!isMobile)
+    {
+        <div class="col-md-3">
+            <div >
+                @Html.LabelFor(
+                    model => model.YandexActive, 
+                    T("Admin.Settings.SystemSettings.AuthYandexActive")
+                )
+            </div>
+        </div>
+    }
+    <div class="col-xs-12 col-md-6 @(isMobile ? "flex middle-xs" : "")">
+        <label class="adv-checkbox-label @(isMobile ? "p-r-sm" : "")">
+            @Html.CheckBoxFor(
+                model => model.YandexActive, 
+                new
+                {
+                    @class = "adv-checkbox-input",
+                    data_ng_init = "settingsSystem.YandexActive=" + Model.YandexActive.ToLowerString(),
+                    data_ng_model = "settingsSystem.YandexActive"
+                })
+            <span class="adv-checkbox-emul" data-e2e="YandexActive"></span>
+        </label>
+        @if (isMobile)
+        {
+            <div class="setting-label-wrap setting__label setting--m-none flex-grow">
+                @Html.LabelFor(
+                    model => model.YandexActive, 
+                    T("Admin.Settings.SystemSettings.AuthYandexActive")
+                )
+            </div>
+        }
+        <help-trigger class="ng-cloak @(isMobile ? "m-l-sm p-l-xs" : "p-l-xs")" 
+                      data-title="@T("Admin.Settings.SystemSettings.AuthYandexActive")">
+            <a href="@LinkService.Internal.AccountPlatformNotSecure/help/pages/openid-yandex" target="_blank">
+                @T("Admin.Settings.SystemSettings.AuthYandexInstruction")
+            </a>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="m-b-xl" data-ng-show="settingsSystem.YandexActive">
+    <div class="form-group setting__form-group row middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.YandexClientId,
+                    T("Admin.Settings.SystemSettings.AuthYandexClientId")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.YandexClientId,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.YandexClientId"
+                }
+            )
+        </div>
+    </div>
+    
+    <div class="form-group setting__form-group row middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.YandexClientSecret,
+                    T("Admin.Settings.SystemSettings.AuthYandexClientSecret")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.YandexClientSecret,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.YandexClientSecret"
+                }
+            )
+        </div>
+    </div>
+    
+    <div class="form-group setting__form-group row">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.CallbackUrl,
+                    T("Admin.Settings.SystemSettings.AuthYandexCallbackURL")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.Label("lblYandexCallbackUrl", Model.CallbackUrl)
+        </div>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    @if (!isMobile)
+    {
+        <div class="col-md-3">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(
+                    model => model.MailActive, 
+                    T("Admin.Settings.SystemSettings.AuthMailActive")
+                )
+            </div>
+        </div>
+    }
+    <div class="col-xs-12 col-md-6 @(isMobile ? "flex middle-xs" : "")">
+        <label class="adv-checkbox-label @(isMobile ? "p-r-sm" : "")">
+            @Html.CheckBoxFor(
+                model => model.MailActive, 
+                new
+                {
+                    @class = "adv-checkbox-input",
+                    data_ng_init = "settingsSystem.MailActive=" + Model.MailActive.ToLowerString(),
+                    data_ng_model = "settingsSystem.MailActive"
+                })
+            <span class="adv-checkbox-emul" data-e2e="MailActive"></span>
+        </label>
+        @if (isMobile)
+        {
+            <div class="setting-label-wrap setting__label setting--m-none flex-grow">
+                @Html.LabelFor(
+                    model => model.MailActive, 
+                    T("Admin.Settings.SystemSettings.AuthMailActive")
+                )
+            </div>
+        }
+        <help-trigger class="ng-cloak @(isMobile ? "m-l-sm p-l-xs" : "p-l-xs")" 
+                      data-title="@T("Admin.Settings.SystemSettings.AuthMailActive")">
+            <a href="@LinkService.Internal.AccountPlatformNotSecure/help/pages/openid-mail-ru" target="_blank">
+                @T("Admin.Settings.SystemSettings.AuthMailInstruction")
+            </a>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="m-b-xl" data-ng-show="settingsSystem.MailActive">
+    <div class="form-group setting__form-group row middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.MailAppId,
+                    T("Admin.Settings.SystemSettings.AuthMailAppId")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.MailAppId,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.MailAppId"
+                }
+            )
+        </div>
+    </div>
+    
+    @*<div class="form-group row middle-xs">
+        <div class="col-xs-2">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(
+                    model => model.MailClientId, 
+                    T("Admin.Settings.SystemSettings.AuthMailClientId")
+                )
+            </div>
+        </div>
+        <div class="col-xs-6">
+            @Html.TextBoxFor(
+                model => model.MailClientId, 
+                new { 
+                    @class = "form-control", 
+                    data_ng_model = "settingsSystem.MailClientId" 
+                }
+            )
+        </div>
+    </div>*@
+    
+    <div class="form-group setting__form-group row middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.MailClientSecret,
+                    T("Admin.Settings.SystemSettings.AuthMailClientSecret")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.MailClientSecret,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.MailClientSecret"
+                })
+        </div>
+    </div>
+
+    <div class="form-group setting__form-group row">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.CallbackUrl,
+                    T("Admin.Settings.SystemSettings.AuthMailCallbackURL")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.Label(
+                "lblMailCallbackUrl",
+                Model.CallbackUrl
+            )
+        </div>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    @if (!isMobile)
+    {
+        <div class="col-md-3">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(
+                    model => model.VkIdActive, 
+                    T("Admin.Settings.SystemSettings.AuthVkIdActive")
+                )
+            </div>
+        </div>
+    }
+    <div class="col-xs-12 col-md-6 @(isMobile ? "flex middle-xs" : "")">
+        <label class="adv-checkbox-label @(isMobile ? "p-r-sm" : "")">
+            @Html.CheckBoxFor(
+                model => model.VkIdActive, 
+                new
+                {
+                    @class = "adv-checkbox-input",
+                    data_ng_init = "settingsSystem.VkIdActive=" + Model.VkIdActive.ToLowerString(),
+                    data_ng_model = "settingsSystem.VkIdActive"
+                })
+            <span class="adv-checkbox-emul" data-e2e="VkIdActive"></span>
+        </label>
+        @if (isMobile)
+        {
+            <div class="setting-label-wrap setting__label setting--m-none flex-grow">
+                @Html.LabelFor(
+                    model => model.VkIdActive, 
+                    T("Admin.Settings.SystemSettings.AuthVkIdActive")
+                )
+            </div>
+        }
+        <help-trigger class="ng-cloak @(isMobile ? "m-l-sm p-l-xs" : "p-l-xs")" 
+                      data-title="@T("Admin.Settings.SystemSettings.AuthVkIdActive")">
+            <a href="@LinkService.Internal.AccountPlatformNotSecure/help/pages/openid-vk-id" target="_blank">
+                @T("Admin.Settings.SystemSettings.AuthVkIdInstruction")
+            </a>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="m-b-xl" data-ng-show="settingsSystem.VkIdActive">
+    <div class="form-group setting__form-group row middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.VkIdClientId,
+                    T("Admin.Settings.SystemSettings.AuthVkIdClientId")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.VkIdClientId,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.VkIdClientId"
+                }
+            )
+        </div>
+    </div>
+
+    <div class="form-group setting__form-group row">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.VkIdCallbackUrl, 
+                    T("Admin.Settings.SystemSettings.AuthVkCallbackURL")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.Label("VkIdCallbackUrl", Model.VkIdCallbackUrl)
+        </div>
+    </div>
+
+    @{
+        var showVkInfo = (SettingsVk.ApplicationId != null
+                          && SettingsVk.UserTokenData != null
+                          && SettingsVk.UserTokenData.access_token != null).ToLowerString();
+    }
+
+    <div class="form-group setting__form-group row"
+         data-ng-if="settingsSystem.VkIdClientId != null && @(showVkInfo) && settingsSystem.VkIdClientId == '@SettingsVk.ApplicationId'">
+        <div class="col-xs-12 col-md-8">
+            <div class="adv-panel-warn">
+                @T("Admin.Settings.SystemSettings.AuthVkWarnMessage")
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group" data-ng-show="settingsSystem.VkontakteActive">
+    @if (!isMobile)
+    {
+        <div class="col-md-3">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(
+                    model => model.VkontakteActive, 
+                    T("Admin.Settings.SystemSettings.AuthVkontakteActive")
+                )
+            </div>
+        </div>
+    }
+    <div class="col-xs-12 col-md-6 @(isMobile ? "flex middle-xs" : "")">
+        <label class="adv-checkbox-label @(isMobile ? "p-r-sm" : "")">
+            @Html.CheckBoxFor(
+                model => model.VkontakteActive, 
+                new
+                {
+                    @class = "adv-checkbox-input",
+                    data_ng_init = "settingsSystem.VkontakteActive=" + Model.VkontakteActive.ToLowerString(),
+                    data_ng_model = "settingsSystem.VkontakteActive"
+                })
+            <span class="adv-checkbox-emul" data-e2e="VkontakteActive"></span>
+        </label>
+        @if (isMobile)
+        {
+            <div class="setting-label-wrap setting__label setting--m-none flex-grow">
+                @Html.LabelFor(
+                    model => model.VkontakteActive, 
+                    T("Admin.Settings.SystemSettings.AuthVkontakteActive")
+                )
+            </div>
+        }
+        <help-trigger class="ng-cloak @(isMobile ? "m-l-sm p-l-xs" : "p-l-xs")" 
+                      data-title="@T("Admin.Settings.SystemSettings.AuthVkontakteActive")">
+            <a href="@LinkService.Internal.AccountPlatformNotSecure/help/pages/openid-vk" target="_blank">
+                @T("Admin.Settings.SystemSettings.AuthVkInstruction")
+            </a>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="m-b-xl" data-ng-show="settingsSystem.VkontakteActive">
+    <div class="form-group setting__form-group row middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.VkontakeClientId,
+                    T("Admin.Settings.SystemSettings.AuthVkontakeClientId")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.VkontakeClientId,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.VkontakeClientId"
+                }
+            )
+        </div>
+    </div>
+
+    <div class="form-group setting__form-group row middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.VkontakeSecret,
+                    T("Admin.Settings.SystemSettings.AuthVkontakeSecret")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.VkontakeSecret,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.VkontakeSecret"
+                })
+        </div>
+    </div>
+
+    <div class="form-group setting__form-group row">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.CallbackUrl,
+                    T("Admin.Settings.SystemSettings.AuthVkCallbackURL")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.Label(
+                "lblVkCallbackUrl",
+                Model.CallbackUrl
+            )
+        </div>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    @if (!isMobile)
+    {
+        <div class="col-md-3">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(
+                    model => model.OdnoklassnikiActive, 
+                    T("Admin.Settings.SystemSettings.AuthOdnoklassnikiActive")
+                )
+            </div>
+        </div>
+    }
+    <div class="col-xs-12 col-md-6 @(isMobile ? "flex middle-xs" : "")">
+        <label class="adv-checkbox-label @(isMobile ? "p-r-sm" : "")">
+            @Html.CheckBoxFor(
+                model => model.OdnoklassnikiActive, 
+                new
+                {
+                    @class = "adv-checkbox-input",
+                    data_ng_init = "settingsSystem.OdnoklassnikiActive=" + Model.OdnoklassnikiActive.ToLowerString(),
+                    data_ng_model = "settingsSystem.OdnoklassnikiActive"
+                })
+            <span class="adv-checkbox-emul" data-e2e="OdnoklassnikiActive"></span>
+        </label>
+        @if (isMobile)
+        {
+            <div class="setting-label-wrap setting__label setting--m-none flex-grow">
+                @Html.LabelFor(
+                    model => model.OdnoklassnikiActive, 
+                    T("Admin.Settings.SystemSettings.AuthOdnoklassnikiActive")
+                )
+            </div>
+        }
+        <help-trigger class="ng-cloak @(isMobile ? "m-l-sm p-l-xs" : "p-l-xs")" 
+                      data-title="@T("Admin.Settings.SystemSettings.AuthOdnoklassnikiActive")">
+            <a href="@LinkService.Internal.AccountPlatformNotSecure/help/pages/openid-odk" target="_blank">
+                @T("Admin.Settings.SystemSettings.AuthOdnoklassnikiInstruction")
+            </a>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="m-b-xl" data-ng-show="settingsSystem.OdnoklassnikiActive">
+    <div class="form-group row setting__form-group middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.OdnoklassnikiClientId,
+                    T("Admin.Settings.SystemSettings.AuthOdnoklassnikiClientId")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-3">
+            @Html.TextBoxFor(
+                model => model.OdnoklassnikiClientId,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.OdnoklassnikiClientId"
+                }
+            )
+        </div>
+    </div>
+
+    <div class="form-group row setting__form-group middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.OdnoklassnikiPublicApiKey,
+                    T("Admin.Settings.SystemSettings.AuthOdnoklassnikiPublicApiKey")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.OdnoklassnikiPublicApiKey,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.OdnoklassnikiPublicApiKey"
+                }
+            )
+        </div>
+    </div>
+
+    <div class="form-group row setting__form-group middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.OdnoklassnikiSecret,
+                    T("Admin.Settings.SystemSettings.AuthOdnoklassnikiSecret")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.OdnoklassnikiSecret,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.OdnoklassnikiSecret"
+                }
+            )
+        </div>
+    </div>
+
+    <div class="form-group row setting__form-group">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.CallbackUrl,
+                    T("Admin.Settings.SystemSettings.AuthOdnoklassnikiCallbackURL")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.Label(
+                "lblOkCallbackUrl",
+                Model.CallbackUrl
+            )
+        </div>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    @if (!isMobile)
+    {
+        <div class="col-md-3">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(
+                    model => model.GoogleActive, 
+                    T("Admin.Settings.SystemSettings.AuthGoogleActive") + "*"
+                )
+            </div>
+        </div>
+    }
+    <div class="col-xs-12 col-md-6 @(isMobile ? "flex middle-xs" : "")">
+        <label class="adv-checkbox-label @(isMobile ? "p-r-sm" : "")">
+            @Html.CheckBoxFor(
+                model => model.GoogleActive, 
+                new
+                {
+                    @class = "adv-checkbox-input",
+                    data_ng_init = "settingsSystem.GoogleActive=" + Model.GoogleActive.ToLowerString(),
+                    data_ng_model = "settingsSystem.GoogleActive"
+                })
+            <span class="adv-checkbox-emul" data-e2e="GoogleActive"></span>
+        </label>
+        @if (isMobile)
+        {
+            <div class="setting-label-wrap setting__label setting--m-none flex-grow">
+                @Html.LabelFor(
+                    model => model.GoogleActive, 
+                    T("Admin.Settings.SystemSettings.AuthGoogleActive") + "*"
+                )
+            </div>
+        }
+        <help-trigger class="ng-cloak @(isMobile ? "m-l-sm p-l-xs" : "p-l-xs")" 
+                      data-title="@T("Admin.Settings.SystemSettings.AuthGoogleActive")*">
+            <a href="@LinkService.Internal.AccountPlatformNotSecure/help/pages/openid-google-text" target="_blank">
+                @T("Admin.Settings.SystemSettings.AuthGoogleInstruction")
+            </a>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="m-b-xl" data-ng-show="settingsSystem.GoogleActive">
+    <div class="form-group setting__form-group row middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.GoogleClientId,
+                    T("Admin.Settings.SystemSettings.AuthGoogleClientId")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.GoogleClientId,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.GoogleClientId"
+                }
+            )
+        </div>
+    </div>
+
+    <div class="form-group setting__form-group row middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.GoogleClientSecret,
+                    T("Admin.Settings.SystemSettings.AuthGoogleClientSecret")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.GoogleClientSecret,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.GoogleClientSecret"
+                }
+            )
+        </div>
+    </div>
+
+    <div class="form-group setting__form-group row">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.CallbackUrl,
+                    T("Admin.Settings.SystemSettings.AuthGoogleRedirectUrl")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.Label(
+                "lblGoogleCallbackUrl",
+                Model.CallbackUrl
+            )
+        </div>
+    </div>
+</div>
+
+<div class="form-group row middle-xs setting__form-group">
+    @if (!isMobile)
+    {
+        <div class="col-md-3">
+            <div class="setting-label-wrap">
+                @Html.LabelFor(
+                    model => model.FacebookActive, 
+                    T("Admin.Settings.SystemSettings.AuthFacebookActive") + "*"
+                )
+            </div>
+        </div>
+    }
+    <div class="col-xs-12 col-md-6 @(isMobile ? "flex middle-xs" : "")">
+        <label class="adv-checkbox-label @(isMobile ? "p-r-sm" : "")">
+            @Html.CheckBoxFor(
+                model => model.FacebookActive, 
+                new
+                {
+                    @class = "adv-checkbox-input",
+                    data_ng_init = "settingsSystem.FacebookActive=" + Model.FacebookActive.ToLowerString(),
+                    data_ng_model = "settingsSystem.FacebookActive"
+                })
+            <span class="adv-checkbox-emul" data-e2e="FacebookActive"></span>
+        </label>
+        @if (isMobile)
+        {
+            <div class="setting-label-wrap setting__label setting--m-none flex-grow">
+                @Html.LabelFor(
+                    model => model.FacebookActive, 
+                    T("Admin.Settings.SystemSettings.AuthFacebookActive") + "*"
+                )
+            </div>
+        }
+        <help-trigger class="ng-cloak @(isMobile ? "m-l-sm p-l-xs" : "p-l-xs")" 
+                      data-title="@T("Admin.Settings.SystemSettings.AuthFacebookActive")*">
+            <a href="@LinkService.Internal.AccountPlatformNotSecure/help/pages/openid-fb-text" target="_blank">
+                @T("Admin.Settings.SystemSettings.AuthFacebookInstruction")
+            </a>
+        </help-trigger>
+    </div>
+</div>
+
+<div class="m-b-xl" data-ng-show="settingsSystem.FacebookActive">
+    <div class="form-group setting__form-group row middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.FacebookClientId,
+                    T("Admin.Settings.SystemSettings.AuthFacebookClientId"))
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.FacebookClientId,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.FacebookClientId"
+                }
+            )
+        </div>
+    </div>
+    
+    <div class="form-group setting__form-group row middle-xs">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.FacebookApplicationSecret,
+                    T("Admin.Settings.SystemSettings.AuthFacebookApplicationSecret"))
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.TextBoxFor(
+                model => model.FacebookApplicationSecret,
+                new
+                {
+                    @class = "form-control input-alt ",
+                    data_ng_model = "settingsSystem.FacebookApplicationSecret"
+                }
+            )
+        </div>
+    </div>
+
+    <div class="form-group setting__form-group row">
+        <div class="col-xs-12 col-md-3">
+            <div class="setting-label-wrap setting__label">
+                @Html.LabelFor(
+                    model => model.CallbackUrl,
+                    T("Admin.Settings.SystemSettings.AuthFacebookCallbackURL")
+                )
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            @Html.Label(
+                "lblFacebookCallbackUrl",
+                Model.CallbackUrl
+            )
+        </div>
+    </div>
+</div>
+
+<div class="form-group setting__form-group row">
+    <div class="col-xs-12 col-md-8">
+        <div class="adv-panel-info setting__mobile-adv-panel-info @(isMobile ? "adv-panel-info--show" : "")">
+            @T("Admin.Settings.SystemSettings.OAuth.ForbiddenInRussia")
+        </div>
+    </div>
+</div>

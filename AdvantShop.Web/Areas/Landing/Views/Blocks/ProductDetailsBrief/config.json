@@ -1,0 +1,74 @@
+﻿{
+    "name": "productDetailsBrief",
+    "type": "image",
+    "description": "Landings.Views.Blocks.Config.ProductDetailsBrief.Description",
+    "category": "Landings.Views.Blocks.Config.ProductDetailsBrief.Category",
+    "picture": "./areas/landing/images/productsView/products_details_brief_preview.jpg",
+    "depends_on": ["storeClosed"],
+    "subblocks": [
+        {
+            "name": "product_name",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ProductDetailsBrief.SubBlockProductNamePlaceholder"
+        },
+        {
+            "name": "old_price",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ProductDetailsBrief.SubBlockOldPricePlaceholder"
+        },
+        {
+            "name": "discount",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ProductDetailsBrief.SubBlockDiscountPlaceholder"
+        },
+        {
+            "name": "price",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.ProductDetailsBrief.SubBlockPricePlaceholder"
+        },
+        {
+            "name": "picture",
+            "type": "picture",
+            "settings": {
+                "src": "./areas/landing/images/productsView/bitmap.jpg",
+                "class": ""
+            }
+        }
+    ],
+    "settings": {
+        "classes": ["lp-block-product-details-brief", "color-scheme--light", "block-padding-top--35", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_button": true,
+        "constructor_buttons_reverse": true,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 35,
+        "padding_bottom": 45,
+        "style": {},
+        "align_btns": "start-xs",
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.ProductDetailsBrief.ButtonText",
+            "size": "xsmall",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false,
+        "settings_picture": {
+            "maxWidthPicture": 490,
+            "maxHeightPicture": 490
+        }
+    }
+}

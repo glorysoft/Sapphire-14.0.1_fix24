@@ -1,0 +1,95 @@
+@use '../settings';
+@use '../functions/util';
+
+.bonus-card-block {
+    display: block;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+        text-decoration: none;
+    }
+
+    &::before {
+        display: block;
+        margin-bottom: util.rem-calc(10px);
+        font-size: settings.$font-size-huge;
+        height: util.rem-calc(50px);
+        width: util.rem-calc(80px);
+    }
+}
+
+.bonus-card-block-inline::before {
+    width: util.rem-calc(27px);
+    height: util.rem-calc(27px);
+    font-size: util.rem-calc(15px);
+    margin-right: util.rem-calc(5px);
+    display: inline-block;
+    line-height: 1.7rem;
+    padding: 0 5px;
+}
+
+.bonus-card-block-inline-after::after {
+    position: absolute;
+    left: 6px;
+    width: util.rem-calc(27px);
+    height: util.rem-calc(27px);
+    font-size: util.rem-calc(15px);
+    margin-right: util.rem-calc(5px);
+    display: inline-block;
+    line-height: 1.7rem;
+    padding: 0 5px;
+}
+
+.bonus-card-block-inline_without-margin::before {
+    margin-right: 0;
+}
+
+.bonus-card-icon-after::after {
+    content: '%';
+    box-shadow: settings.$box-shadow-base;
+    text-align: center;
+    background-color: #fff;
+    color: #c13d35;
+    border-radius: settings.$border-radius-base;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.bonus-card-icon::before {
+    content: '%';
+    box-shadow: settings.$box-shadow-base;
+    text-align: center;
+    background-color: #fff;
+    color: #c13d35;
+    border-radius: settings.$border-radius-base;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.bonus-card-icon-center {
+    margin: 0;
+}
+
+.bonus-card-icon-center::before {
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.bonus-string-sum {
+    display: block;
+    font-size: settings.$font-size-small;
+}
+
+.bonus-card-reg {
+    padding-right: 45px;
+}
+
+.checkout-success-bonus-title {
+    font-size: 30px;
+}
+
+.checkout-success-bonus-card-block {
+    background-color: #f8f8f8;
+    padding: 30px 0;
+}

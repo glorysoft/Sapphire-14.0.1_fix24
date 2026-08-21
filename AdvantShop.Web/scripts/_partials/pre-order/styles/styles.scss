@@ -1,0 +1,20 @@
+@use '../../../../styles/functions/util';
+@use '../../../../styles/settings';
+@use '../../../../styles/functions/breakpoints';
+
+.adv-modal .adv-modal-inner.pre-order-dialog,
+.pre-order-dialog {
+    min-width: 35vw;
+    max-width: 35vw;
+}
+
+@include breakpoints.breakpointsGetMedia(tablet) {
+    .pre-order-dialog {
+        min-width: 70vw;
+    }
+}
+
+.pre-order-dialog-buttons {
+    text-align: right;
+    margin-top: settings.$vertical-interval-middle;
+}

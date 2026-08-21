@@ -1,0 +1,92 @@
+﻿@model AdvantShop.Web.Admin.Models.Settings.APISettingsModel
+
+<div class="api-item get">
+    <div class="api-item__header" ng-click="settings.showDetails($event)">
+        <span class="method">GET</span>
+        <span class="path">/api/warehouses/groups</span>
+        <span class="description">@T("Admin.SettingsApiAuth.Index.Warehouses.GetGroups")</span>
+    </div>
+    <div class="details">
+        <div class="m-b">
+            GET @Model.GetApiAuthUrl("/api/warehouses/groups")
+        </div>
+        
+        <h3>Фильтр</h3>
+        <div class="row-tb">
+            <div class="row m-b-xs">
+                <div class="col-xs-2">city</div>
+                <div class="col-xs-1">string</div>
+                <div class="col-xs">Название города</div>
+            </div>
+            
+            <div class="row m-b-xs">
+                <div class="col-xs-2">cityId</div>
+                <div class="col-xs-1">int?</div>
+                <div class="col-xs">Id города</div>
+            </div>
+            
+            <div class="row m-b-xs">
+                <div class="col-xs-2">regionId</div>
+                <div class="col-xs-1">int?</div>
+                <div class="col-xs">Id региона</div>
+            </div>
+            
+            <div class="row m-b-xs">
+                <div class="col-xs-2">countryId</div>
+                <div class="col-xs-1">int?</div>
+                <div class="col-xs">Id страны</div>
+            </div>
+        </div>
+        
+        <div class="m-t m-b-xs">
+            <h3>@T("Admin.SettingsApiAuth.Index.ApiAuth.ExampleAnswer")</h3>
+        </div>
+        <pre class="m-t-sm">[
+  {
+    "name": "Группа складов в Москве",
+    "description": "Описание",
+    "photoUrl": "https://site.ru/pictures/warehousegroup/photos/1.jpg",
+    "logoUrl": "https://site.ru/pictures/warehousegroup/logos/2.jpg",
+    "phone": "+7(123)456-78-90",
+    "countryId": 171,
+    "countryName": "Россия",
+    "regionId": 1,
+    "regionName": "Москва",
+    "cityId": 1,
+    "cityName": "Москва",
+    "vk": "https://vk.com/advantshop",
+    "facebook": null,
+    "instagram": "https://www.instagram.com/advantshop/",
+    "twitter": null,
+    "okRu": null,
+    "youtube": null,
+    "zen": null,
+    "rutube": null,
+    "warehouses": [
+    	{
+        "id": 1,
+        "name": "Склад на Московском шоссе",
+        "description": "Описание склада",
+        "city": "Москва",
+        "address": "Московское шоссе, 123",
+        "addressComment": "Комментарий к адресу",
+        "phones": [
+        	"+7(981)818-18-18",
+        	"+7(982)828-28-28"
+        ],
+        "timeOfWorkList": [
+        	"Пн, Вт, Ср, Чт, Пт: 09:00 - 12:00, 13:00 - 18:00",
+        	"Сб: 09:00 - 12:00, 14:00 - 17:00"
+        ],
+        "coordinates": {
+        	"latitude": 50.32481,
+        	"longitude": 54.32481
+        }
+    	}
+    ]
+  }
+]
+</pre>
+        
+    </div>
+</div>

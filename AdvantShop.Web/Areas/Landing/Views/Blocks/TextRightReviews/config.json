@@ -1,0 +1,69 @@
+﻿{
+    "name": "textRightReviews",
+    "type": "reviews",
+    "description": "Landings.Views.Blocks.Config.TextRightReviews.Description",
+    "category": "Landings.Views.Blocks.Config.TextRightReviews.Category",
+    "picture": "./areas/landing/images/texts/textRightReviews.jpg",
+    "subblocks": [
+        {
+            "name": "title",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TextRightReviews.Subblocks.Title.Placeholder"
+        },
+        {
+            "name": "subtitle",
+            "type": "html",
+            "placeholder": "Landings.Views.Blocks.Config.TextRightReviews.Subblocks.Subtitle.Placeholder"
+        }
+    ],
+    "settings": {
+        "items": [
+            {
+                "picture": {
+                    "src": "areas/landing/images/reviews/author.jpg"
+                },
+                "author": "Landings.Views.Blocks.Config.TextRightReviews.Settings.Items.Author",
+                "caption": "Landings.Views.Blocks.Config.TextRightReviews.Settings.Items.Caption",
+                "text": "Landings.Views.Blocks.Config.TextRightReviews.Settings.Items.Text"
+            }
+        ],
+        "classes": ["text-reviews", "text-left-reviews", "color-scheme--light", "block-padding-top--45", "block-padding-bottom--45"],
+        "color_scheme": "color-scheme--light",
+        "show_title": false,
+        "show_subtitle": false,
+        "show_button": false,
+        "constructor_buttons_reverse": true,
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "style": {},
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.TextRightReviews.Settings.Button.Text",
+            "color": null,
+            "background_color": null,
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": null,
+            "border_radius": 0,
+            "size": "xsmall",
+            "style": {}
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false,
+        "width_in_columns": 12
+    }
+}

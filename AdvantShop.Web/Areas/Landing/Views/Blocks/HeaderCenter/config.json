@@ -1,0 +1,157 @@
+﻿{
+    "name": "headerCenter",
+    "type": "header",
+    "description": "Landings.Views.Blocks.Config.HeaderCenter.Description",
+    "category": "Landings.Views.Blocks.Config.HeaderCenter.Category",
+    "picture": "./areas/landing/frontend/images/headers/headerCenter.png",
+    "subblocks": [
+        {
+            "name": "logo",
+            "description": "Landings.Views.Blocks.Config.HeaderCenter.SubBlockLogoDescription",
+            "type": "logo",
+            "settings": {
+                "alt": null,
+                "src": "areas/landing/frontend/images/logotype.png"
+            }
+        },
+        {
+            "name": "phone",
+            "description": "Landings.Views.Blocks.Config.HeaderCenter.SubBlockPhoneDescription",
+            "type": "html",
+            "placeholder": "+7 (999) 420-02-01"
+        },
+        {
+            "name": "phone_mobile",
+            "description": "Landings.Views.Blocks.Config.HeaderCenter.SubBlockPhoneMobileDescription",
+            "type": "phonemobile",
+            "placeholder": "88005508313"
+        },
+        {
+            "name": "email",
+            "description": "Landings.Views.Blocks.Config.HeaderCenter.SubBlockEmailDescription",
+            "type": "html",
+            "placeholder": "info@mysite.ru"
+        },
+        {
+            "name": "callback",
+            "description": "Landings.Views.Blocks.Config.HeaderCenter.SubBlockCallbackDescription",
+            "type": "button",
+            "settings": {
+                "text": "Landings.Views.Blocks.Config.HeaderCenter.CallbackButtonText",
+                "style": {}
+            }
+        },
+        {
+            "name": "menuHeader",
+            "description": "Landings.Views.Blocks.Config.HeaderCenter.SubBlockMenuDescription",
+            "type": "menu",
+            "settings": {
+                "font_size": 16,
+                "menu_items_spacing": 20,
+                "style": {
+                    "font-size": "16px",
+                    "padding-left": "20px",
+                    "padding-right": "20px"
+                }
+            }
+        }
+    ],
+    "settings": {
+        "classes": ["lp-block-header-center", "color-scheme--light"],
+        "color_scheme": "color-scheme--light",
+        "show_logo": true,
+        "show_button": true,
+        "show_phone": true,
+        "show_email": false,
+        "show_menu": true,
+        "vk_enabled": false,
+        "vk_url": null,
+        "fb_enabled": false,
+        "fb_url": null,
+        "youtube_enabled": false,
+        "youtube_url": null,
+        "twitter_enabled": false,
+        "twitter_url": null,
+        "instagram_enabled": false,
+        "instagram_url": null,
+        "whatsapp_enabled": false,
+        "telegram_enabled": false,
+        "telegram_url": null,
+        "odnoklassniki_enabled": false,
+        "odnoklassniki_url": null,
+        "menu_items": [
+            {
+                "text": "Landings.Views.Blocks.Config.HeaderCenter.MenuItem.Home",
+                "href": "",
+                "target": false,
+                "class": "",
+                "childs": []
+            },
+            {
+                "text": "Landings.Views.Blocks.Config.HeaderCenter.MenuItem.AboutUs",
+                "href": "",
+                "target": false,
+                "class": "",
+                "childs": []
+            },
+            {
+                "text": "Landings.Views.Blocks.Config.HeaderCenter.MenuItem.Contacts",
+                "href": "",
+                "target": false,
+                "class": "",
+                "childs": []
+            }
+        ],
+        "background_image": null,
+        "darken": 0,
+        "background_color": null,
+        "background_settings": {
+            "background_fixed": false,
+            "parallax": false
+        },
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "style": {
+            "background-attachment": "scroll"
+        },
+        "button": {
+            "is_default_style": true,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "action_offer_id": "",
+            "text": "Landings.Views.Blocks.Config.HeaderCenter.ButtonText",
+            "color": "rgba(255, 255, 255, 1)",
+            "background_color": "rgba(255, 255, 255, 1)",
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": null,
+            "border_radius": 0,
+            "style": {
+                "color": "rgba(255, 255, 255, 1)",
+                "background-color": "rgba(255, 255, 255, 0)",
+                "border-style": "solid",
+                "border-width": "0px",
+                "border-color": "transparent",
+                "border-radius": "0px"
+            }
+        },
+        "show_button2": false,
+        "button2": {
+            "is_default_style": false,
+            "action": "Url",
+            "action_url": "",
+            "action_form": "",
+            "action_section": "",
+            "text": "Подробнее",
+            "type": "Secondary"
+        },
+        "form": {
+            "is_hidden": true
+        },
+        "mobile_hidden": false,
+        "show_on_all_landing_pages_top": false,
+        "show_on_all_landing_pages_bottom": false
+    }
+}

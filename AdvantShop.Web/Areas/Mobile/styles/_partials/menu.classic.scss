@@ -1,0 +1,5 @@
+@use '../function';
+
+.menu__item span {
+    font-size: function.toEm(18px);
+}

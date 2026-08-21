@@ -1,0 +1,27 @@
+.color-viewer {
+    &-list {
+        max-width: 100%;
+
+        &--mobile-scroll {
+            justify-content: start !important;
+            flex-wrap: nowrap !important;
+            overflow: auto;
+            padding-bottom: 10px;
+        }
+    }
+
+    &-item {
+        text-align: center;
+        padding: 0;
+    }
+}
+
+.carousel-colors {
+    .carousel-nav {
+        font-size: 6px;
+    }
+
+    &-wrap {
+        font-size: 10px;
+    }
+}

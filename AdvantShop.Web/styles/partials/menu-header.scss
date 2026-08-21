@@ -1,0 +1,30 @@
+@use '../functions/util';
+
+.menu-header {
+    padding: 0;
+    margin: 0 util.rem-calc(-7px) util.rem-calc(15px);
+    top: util.rem-calc(7px);
+    position: relative;
+    z-index: 1;
+}
+
+.menu-header-item {
+    margin: 0 util.rem-calc(7px);
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.menu-header-link,
+.menu-header-link:hover {
+    text-decoration: none;
+}
+
+.menu-header-tile-submenu {
+    padding-top: util.rem-calc(25px);
+    min-width: util.rem-calc(135px);
+}
+
+.menu-header-item--current{
+    text-decoration: underline;
+}
+

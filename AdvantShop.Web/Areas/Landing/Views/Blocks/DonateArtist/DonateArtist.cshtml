@@ -1,0 +1,256 @@
+﻿@using AdvantShop.Core.Services.Landing.Blocks
+@using AdvantShop.ViewCommon
+@using Newtonsoft.Json
+
+@model BlockModel
+@{
+    var prices = Model.Block.TryGetSettingAsList<LpOfferPrice>("prices")?.Where(x => x.Value != null && x.OfferId != null).ToList();
+    var showOtherPrice = Convert.ToBoolean(Model.Block.TryGetSetting("show_other_price"));
+    var otherPrice = showOtherPrice ? Model.Block.TryGetSetting<LpOfferPrice>("other_price") : null;
+    float otherPriceMin = Convert.ToSingle(Model.Block.TryGetSetting("other_price_min"));
+    float otherPriceMax = Convert.ToSingle(Model.Block.TryGetSetting("other_price_max"));
+    var currency = Model.Block.TryGetSetting("currency") as string;
+    var button = Model.Block.TryGetSetting<LpButton>("button");
+
+    var showTitle = Model.Block.TryGetSetting("show_title");
+    var showSubtitle = Model.Block.TryGetSetting("show_subtitle");
+
+    string pictureSrc = null;
+    var showPicture = Convert.ToBoolean(Model.Block.TryGetSetting("show_picture"));
+    if (showPicture)
+    {
+        var pictureSubblock = new LpBlockService().GetSubBlock(Model.Block.Id, "picture");
+        if (pictureSubblock != null)
+        {
+            pictureSrc = (string)pictureSubblock.TryGetSetting("src");
+        }
+    }
+}
+<style>
+    .lp-donate-artist-block {
+        max-width: 560px;
+    }
+    .color-scheme--light .lp-donate-artist-block {
+        background: #fff;
+    }
+
+    .lp-donate-artist__picture {
+        position: relative;
+        max-height: 500px;
+        overflow: hidden;
+        margin: 0 10px 20px 10px;
+    }
+    .lp-donate-artist__picture img {
+        width: 100%;
+        display: block;
+    }
+    
+    .lp-donate-artist__title-block {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;        
+        padding: 7px;
+        border-radius: 15px;
+        backdrop-filter: blur(6px);        
+    }
+
+    .lp-donate-artist__title {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .lp-donate-artist__subtitle {
+        font-size: 16px;
+        margin-top: 4px;
+        line-height: 17px;
+    }
+
+    .color-scheme--light .lp-donate-artist__title,
+    .color-scheme--light .lp-donate-artist__subtitle {
+        color: #fff;
+    }
+
+    .lp-donate-artist__price_value-block {
+        border-bottom: 1px solid rgba(138, 135, 132, 0.4);
+        margin: 20px 15px;
+    }
+    
+    .lp-donate-artist__price_value-block__title {
+        color: #9E9B98;
+        font-size: 13px;
+        text-align: center;
+    }
+    
+    .lp-donate-artist__price_value-block__amount {
+        font-size: 40px;
+        font-weight: 500;
+    }
+    
+    .lp-donate-artist__price_value {
+        border: none;
+        text-align: right;
+        padding: 0;
+        margin: 0;
+        width: 120px;
+        -moz-appearance: textfield;
+        appearance: textfield;
+    }
+
+    .mobile-version input.lp-donate-artist__price_value {
+        box-shadow: none !important;
+        font-size: 40px !important;
+    }
+
+    .lp-donate-artist__price_value::-webkit-outer-spin-button,
+    .lp-donate-artist__price_value::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    
+    .lp-donate-artist__pay-block {
+        padding: 10px;
+    }
+    .lp-donate-artist__pay-block .lp-donate-artist__pay-btn,
+    .lp-donate-artist-block .lp-donate-artist__price {
+        border-radius: 15px;
+    }
+    .lp-donate-artist__pay-block button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+        border: 1px solid #cbd5e1;
+    }
+
+    .lp-donate-artist-block .lp-donate-artist__price {
+        margin-right: 10px;
+        flex-grow: 1;
+        flex-basis: 50px;
+        height: 48px;
+        border: 1px solid rgba(138, 135, 132, 0.4);
+        cursor: pointer;
+        display: flex;
+        text-align: center;
+        transition: background-color .2s, color .2s;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .lp-donate-artist-block .lp-donate-artist__price .lp-donate-artist__price-text {
+        font-size: 16px;
+        line-height: 17px;
+        white-space: nowrap;
+    }
+    
+    .lp-donate-artist__prices {
+        display: flex;
+        padding: 0 8px 0 16px;
+        margin: 10px 0 30px 0;
+        overflow: auto;
+        overflow-y: hidden;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+</style>
+<div class="container-fluid">
+    <div class="lp-donater-block lp-donate-artist-block lp-container ng-cloak"
+         data-lp-donate
+         data-prices="@JsonConvert.SerializeObject(prices)"
+         data-show-other-price=@(showOtherPrice.ToString().ToLower())
+         data-other-price=@JsonConvert.SerializeObject(otherPrice)
+         data-other-price-min="@(otherPriceMin > 0 ? otherPriceMin.ToInvariantString() : "")">
+        
+        @if (!string.IsNullOrEmpty(pictureSrc))
+        {
+            <div class="lp-donate-artist__picture">
+                <div class="lp-donate-artist__picture-item">
+                    <img src="@pictureSrc"/>
+                </div>
+                <div class="lp-donate-artist__title-block">
+                    @if (showTitle == true)
+                    {
+                        <div class="lp-donate-artist__title">
+                            @Html.SubBlock(Model, "title")
+                        </div>
+                    }
+                    @if (showSubtitle == true)
+                    {
+                        <div class="lp-donate-artist__subtitle">
+                            @Html.SubBlock(Model, "subtitle")
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        else if (showTitle == true || showSubtitle == true)
+        {
+            <div class="row center-xs">
+                @if (showTitle == true)
+                {
+                    <div class="col-xs-12">
+                        <div class="lp-h2 lp-h2--color lp-block-products-view-tile__title @(showSubtitle == false ? "lp-products-view__title--margin-bottom" : "")">
+                            @Html.SubBlock(Model, "title")
+                        </div>
+                    </div>
+                }
+                @if (showSubtitle == true)
+                {
+                    <div class="col-xs-12">
+                        <div class="lp-h3 lp-h3--color lp-block-products-view-tile__subtitle">
+                            @Html.SubBlock(Model, "subtitle")
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        
+
+        <div class="lp-donate-artist__price_value-block">
+            <div class="lp-donate-artist__price_value-block__title">
+                @T("Admin.Landing.DonateArtist.EnterPrice")
+            </div>
+            <div class="lp-donate-artist__price_value-block__amount row center-xs middle-xs">
+                <div class="col-sm-slim lp-form__field">
+                    <input type="number"
+                           data-ng-model="donateItem.selectedItem.value"
+                           data-ng-change="donateItem.changeOther()"
+                           class="lp-donate-artist__price_value ng-pristine"
+                           min="@otherPriceMin.ToInvariantString()" 
+                           @Html.Raw(otherPriceMax > 0 ? "max=\"" + otherPriceMax.ToInvariantString() + "\"" : "")
+                           placeholder=""/>
+                </div>
+                <div class="col-sm-slim lp-form__field p-l-xs">@currency</div>
+            </div>
+        </div>
+
+        <div class="lp-donate-artist__prices">
+            <div data-ng-repeat="priceItem in donateItem.prices track by $index"
+                 data-ng-click="donateItem.selectPrice(priceItem)"
+                 class="lp-donate-artist__price"
+                 data-ng-class="{'donate-selected-price lp-btn--primary': priceItem.selected, 'btn-action': !priceItem.selected}">
+                <span class="lp-donate-artist__price-text">
+                    {{priceItem.value}} @currency
+                </span>
+            </div>
+        </div>
+
+        <div class="lp-donate-artist__pay-block">
+            @Html.Partial("_CartAdd", new CartAddViewModel()
+            {
+                Classes = "lp-donate-artist__pay-btn lp-btn lp-btn--primary",
+                LpId = LpService.CurrentLanding.Id,
+                Mode = "lp",
+                NgOfferId = "donateItem.selectedItem.offerId",
+                NgProductId = "donateItem.selectedItem.productId",
+                NgLpPriceValue = "donateItem.selectedItem.value",
+                NgDisabled = "donateItem.selectedItem == null || donateItem.selectedItem.value == null",
+                LpBlockId = Model.Block.Id,
+                LpEntityId = LpService.EntityId != 0 ? LpService.EntityId : (int?)null,
+                LpEntityType = LpService.EntityId != 0 ? LpService.EntityType : "",
+                HideShipping = Model.Block.TryGetSetting("hide_shipping") == true ? "true" : "",
+                BtnContent = button != null && !string.IsNullOrEmpty(button.Text) ? button.Text : "Поддержать",
+                Size = CardAddSize.None
+            })
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿<ul class="catalog-modal-list" data-ng-switch="options.onePageCatalog">
+    <li class="catalog-modal-list__item" data-ng-repeat="category in data.Items track by $index">
+        <a
+            data-ng-switch-when="true"
+            class="catalog-modal-list__link"
+            data-scroll-to-block
+            data-scroll-to-block-options="{delay: 300}"
+            data-modal-close
+            data-ng-href="#{{category.Url | toAnchor}}"
+            >{{category.Name}}<span
+                class="catalog-modal-list__item-count"
+                data-ng-if="data.ShowProductsCount"
+                data-ng-bind="'(' + category.ProductsCount + ')'"></span
+        ></a>
+        <a data-ng-switch-default class="catalog-modal-list__link" data-ng-href="{{category.Url}}">{{category.Name}}</a>
+    </li>
+</ul>

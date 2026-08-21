@@ -1,0 +1,15 @@
+@use '../settings';
+@use '../functions/util';
+
+.other-contacts {
+    margin-bottom: util.rem-calc(15px);
+}
+
+.contacts-phone-title {
+    font-size: util.rem-calc(24px);
+}
+
+.contacts-phone {
+    font-size: util.rem-calc(45px);
+    line-height: 0.9;
+}
