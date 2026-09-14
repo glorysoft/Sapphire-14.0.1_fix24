@@ -1,0 +1,52 @@
+﻿@using AdvantShop.CMS;
+@using AdvantShop.Customers
+@{
+    Html.AddAsset("home");
+    var showTextOnMain = StaticBlockService.GetPagePartByKeyWithCache("TextOnMain").Content.Contains("Это тег H1") == false || SettingsMain.EnableInplace;
+    var showRecentlyView = TemplateSettingsProvider.Items["RecentlyViewVisibility"].TryParseBool();
+}
+@Html.RenderModules("before_body_content")
+
+<div class="row body-content">
+    <div class="col-xs-3 col-p-v site-body-aside" data-set-css-custom-props="{'home-aside-width': 'width'}">
+        @* @Html.Action("MenuCatalog", "Catalog", new { inLayout = false, isExpanded = true }) *@
+        @Html.Action("NewsBlock", "News")
+        @Html.Action("CheckOrderBlock", "Checkout")
+        @Html.RenderModules("voting_block")
+        @*@Html.Action("GiftCertificateBlock", "GiftCertificate")*@
+        @Html.StaticBlock("Vk")
+        @Html.Partial("SocialWidget")
+    </div>
+    <div class="col-xs-9 col-p-v site-body-main two-columns">
+        @Html.StaticBlock("mainpage_before_carousel")
+        <div class="slider-main-block">
+            <div class="row">
+                @Html.RenderModules("mainpage_after_carousel")
+                @Html.Action("Carousel", "Home")
+            </div>
+        </div>
+        @Html.Action("BrandCarousel", "Brand", new { count = 20 })
+        @if (showTextOnMain)
+        {
+            @Html.StaticBlock("TextOnMain")
+        }
+        @Html.RenderModules("mainpage_block")
+        @Html.Action("MainPageCategories", "Home")
+        @Html.Action("MainPageProducts", "Home")
+         @Html.RenderModules("store_reviews")
+        @Html.Action("ProductReviewsOnMain", "Product", new { count = 10 })
+        @Html.StaticBlock("TextOnMain2")
+    </div>
+</div>
+@if (showRecentlyView == true)
+{
+    <div class="recently-viewed-block product-card cs-bg-4">
+        <div class="container">
+            @Html.Action("RecentlyViewedBlock", "RecentlyViews")
+        </div>
+    </div>
+}
+
+@Html.Action("NewsSubscription", "News")
+
+

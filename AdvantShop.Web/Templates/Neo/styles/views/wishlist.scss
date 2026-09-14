@@ -1,0 +1,39 @@
+﻿.wishlist-page__productview {
+    .product-view-action,
+    .products-view-buttons-cell,
+    .products-view-labels {
+        display: none !important;
+    }
+
+    .wishlist-remove {
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        width: 36px;
+        height: 36px;
+        top: 20px;
+        right: 20px;
+        color: red;
+
+        &:hover{
+            background-color: var(--cs-2);
+        }
+
+        &::before {
+            content: "";
+            mask-image: url('../../images/icons/heart-fill.svg');
+            mask-repeat: no-repeat;
+            mask-size: contain;
+            width: 18px;
+            height: 16px;
+            background-color: currentColor;
+            margin: 0;
+        }
+    }
+}
+.wishlist-empty{
+    font-size: var(--adv-h5);
+    letter-spacing: -1px;
+}

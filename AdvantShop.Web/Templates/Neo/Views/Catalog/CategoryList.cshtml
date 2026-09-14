@@ -1,0 +1,37 @@
+﻿@using AdvantShop.Customers
+@model AdvantShop.ViewModel.Catalog.CategoryListViewModel
+@{
+    var width = 100 / (Model.CountCategoriesInLine != 0 ? Model.CountCategoriesInLine : 4);
+    var widthString = String.Format("calc({0}% - var(--_product-categories-gap))", width);
+    string productCardBackground = TemplateSettingsProvider.Items["ProductCardBackground"];
+    bool showCategoryPhoto = TemplateSettingsProvider.Items["ShowCategoryPhoto"].TryParseBool();
+}
+@if (Model.Categories.Count > 0)
+{
+    <div class="product-categories product-categories-slim">
+        @foreach (var category in Model.Categories)
+        {
+            <div class="product-categories-item-slim @(showCategoryPhoto ? "product-categories-item-slim--with-image" : "product-categories-item-slim--without-image") product-categories-slim--fill-@(productCardBackground.ToLower())" style="flex-basis: @(widthString); max-width: @(widthString);">
+                <div class="product-categories-item-inner-slim">
+                    @if (showCategoryPhoto || InplaceEditorService.CanUseInplace(RoleAction.Catalog))
+                    {
+                        <figure class="product-categories-item-picture-slim center-aligner">
+                            <a href="@Url.AbsoluteRouteUrl("Category", new {url = category.UrlPath})" class="product-categories-item-photo-link-slim" style="height: @(SettingsPictureSize.SmallCategoryImageHeight)px;">
+                                <img class="product-categories-item-picture-obj-slim" width="@(Model.PhotoWidth)" height="@(Model.PhotoHeight)" data-qazy src="@category.MiniPicture.ImageSrcSmall()" alt="@category.MiniPicture.Alt" title="@category.MiniPicture.Title" @Html.InplaceImageCategory(category.CategoryId, ImageInplaceField.CategorySmall) />
+                            </a>
+                        </figure>
+                    }
+                    <div class="product-categories-header-slim">
+                        <div class="product-categories-header-container">
+                            <a href="@Url.AbsoluteRouteUrl("Category", new {url = category.UrlPath})" class="product-categories-header-slim-title">@Html.Raw(category.Name)</a>
+                            @if (Model.DisplayProductCount)
+                            {
+                                <span class="product-categories-header-slim-count">(@category.ProductsCount)</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

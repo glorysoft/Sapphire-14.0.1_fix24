@@ -1,0 +1,21 @@
+﻿.adv-modal  .zone-dialog{
+    border-radius: var(--adv-rounded-4);
+}
+.zone-dialog-title{
+    font-size: var(--adv-h3);
+    padding: 0;
+}
+.zone-dialog-countries {
+    padding: 0;
+    margin-top: var(--adv-m-7);
+}
+.zone-dialog-autocomplete-block{
+    margin-top: var(--adv-m-7);
+    padding-block: 0;
+}
+.zone-dialog-country-link{
+    font-size: var(--adv-text-3);
+}
+.zone-dialog-btn{
+    width: 100%;
+}

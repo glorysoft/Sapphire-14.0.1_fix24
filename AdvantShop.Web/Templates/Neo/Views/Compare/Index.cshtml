@@ -1,0 +1,301 @@
+﻿@using AdvantShop.Core.Common.Extensions
+@using AdvantShop.ViewCommon
+@using AdvantShop.CMS
+@model AdvantShop.ViewModel.Compare.CompareProductsViewModel
+
+@{
+Html.AddAsset("compare");
+var widthDefault = String.Format("--product-view-block-width:{0}%;", (100 / ((float)SettingsDesign.CountCatalogProductInLine - 2)).ToInvariantString()); 
+var widthLg = String.Format("--product-view-block-width--lg:{0}%;", (100 / ((float)SettingsDesign.CountCatalogProductInLine - 1)).ToInvariantString());
+var widthWl = String.Format("--product-view-block-width--wl:{0}%;", (100 / ((float)SettingsDesign.CountCatalogProductInLine)).ToInvariantString());
+var styleWidths = widthDefault + widthLg + widthWl;
+}
+
+@{
+var showBrandRow = Model.Products.Any(pr => pr.Brand != null);
+var titleIndex = 0;
+var valueIndex = 0;
+var showNotAvaliableLable = SettingsCatalog.ShowNotAvaliableLable;
+string productCardBackground = TemplateSettingsProvider.Items["ProductCardBackground"];
+}
+<div data-oc-lazy-load="[{files: [@Html.RenderAssetFilesList("compareExtend")]}]" class="contents">
+    <div class="site-body-cell desktop-col-p-v" data-ng-controller="CompareExtendCtrl as compareExtend">
+        <div class="js-compareproduct-container">
+            <div class="page-title-row compare-title-row">
+                <div class="compare-title page-title cs-bg-4--mobile">
+                    <h1 class="main-title">@T("Compare.Index.ComparisonHeader")</h1>
+                    <button type="button" class="js-compareproduct-remove-all btn-link link-dotted"
+                            data-compare-remove-all>@T("Compare.Index.СlearList")</button>
+                </div>
+            </div>
+
+            @if (Model.Products.Count > 0)
+            {
+            <div
+                class="compareproduct-container compareproduct-container-processing">
+                <div class="js-compareproduct-removeall-container">
+                    <div class="compareproduct-products-wrapper" style="--compare-product-view-count-in-line:@SettingsDesign.CountMainPageProductInLine">
+                        <div data-sticky-element class="compareproduct-products--over">
+                            <div class="carousel">
+                                <div
+                                    class="carousel-inner compareproduct-products-list js-compareproduct-block @(SettingsCatalog.ShowUnitsInCatalog ? "with-unit" : "")">
+                                    @{
+                                        
+                                        var mobileCountVisible = 2;
+                                        var tabletCountVisible = Math.Max(1, SettingsDesign.CountMainPageProductInLine - 2);
+                                        var desktopCountVisible = Math.Max(1, SettingsDesign.CountMainPageProductInLine - 1);
+                                        var landscapeCountVisible = SettingsDesign.CountMainPageProductInLine;
+                                    }
+                                    <div data-carousel
+                                         data-stretch="true"
+                                         data-visible-min="@mobileCountVisible"
+                                         data-init-fn="compareExtend.initCarousel(carousel)"
+                                         data-on-goto-start="compareExtend.onGotoStart(distance, useAnimate, speed)"
+                                         data-on-calc="compareExtend.onCalc(carousel)"
+                                         data-responsive="{0: {slidesToShow : @mobileCountVisible}, 
+                                                                    768: {slidesToShow : @tabletCountVisible}, 
+                                                                    1024: {slidesToShow : @desktopCountVisible}, 
+                                                                    1700: {slidesToShow : @landscapeCountVisible} }"
+                                         class="carousel-list compareproduct-product-row products-view-tile js-compareproduct-block-products"
+                                         data-row-index="@(valueIndex++)"
+                                         style="@styleWidths">
+                                        @foreach (var product in Model.Products)
+                                        {
+                                            var productUrl = Url.RouteUrl("Product", new { url = product.UrlPath });
+                                            var quickViewTrigger = "data-quickview-trigger data-product-id=\"" + product.ProductId + "\" data-color-id=\"productViewItem.getSelectedColorId()\"";
+                                            var linkOrQuickViewTrigger = @Html.Raw(SettingsDesign.OnePageCatalog || SettingsCatalog.QuickViewAsProductPage ? quickViewTrigger : "href=\"" + productUrl + "\"");
+                                            
+                                            var allowToBuy = Model.AllowBuyOutOfStockProducts || Model.AllowPreOrderOutOfStockProducts && product.AllowPreorder;
+                                            var isAvailable = product.Price > 0 && product.AmountByMultiplicity > 0;
+                                            var showBuyButton = Model.DisplayBuyButton && (isAvailable || allowToBuy);
+                                            var showPreOrderButton = Model.DisplayPreOrderButton && !showBuyButton && !isAvailable && product.AllowPreorder && product.OfferId != 0 && !Model.AllowBuyOutOfStockProducts;
+                                            
+                                            <div
+                                                class="products-view-block js-products-view-block  js-compareproduct-block-row cs-br-1 compareproduct-product-item"
+                                                data-compare-offer-id="@product.OfferId">
+                                                <div
+                                                    class="products-view-item text-static cs-br-1 products-view-item--fill-@(productCardBackground.ToLower()) js-compareproduct-product-item">
+                                                    <figure class="products-view-pictures">
+                                                        <a class="products-view-picture-link"
+                                                           @linkOrQuickViewTrigger
+                                                           style="height: @(SettingsPictureSize.SmallProductImageHeight)px;">
+                                                            <img
+                                                                src="@product.Photo.ImageSrcSmall()"
+                                                                class="products-view-picture"
+                                                                width="@(SettingsPictureSize.SmallProductImageWidth)"
+                                                                height="@(SettingsPictureSize.SmallProductImageHeight)"
+                                                                alt="@Html.AttributeEncode(product.Photo.Alt.IsNotEmpty() ? product.Photo.Alt : product.Name)"
+                                                                title="@Html.AttributeEncode(product.Photo.Title.IsNotEmpty() ? product.Photo.Title : product.Name)}"/>
+                                                        </a>
+                                                    </figure>
+                                                    <div class="products-view-info">
+                                                        <div class="products-view-name">
+                                                            <a @linkOrQuickViewTrigger
+                                                                class="products-view-name-link" title="@product.Name">@product.Name</a>
+                                                        </div>
+                                                        <div
+                                                            class="products-view-meta products-view-meta-sku-review-count-wrap">
+                                                            <div
+                                                                class="products-view-meta-item products-view-meta-item-sku-wrap cs-br-1">
+                                                                <span
+                                                                    class="products-view-tile-element-hidden">@T("Shared.ProductView.Sku")
+                                                                    : </span>
+                                                                <span
+                                                                    class="products-view-meta-item-artNo">@Html.Raw(product.ArtNo)</span>
+                                                            </div>
+                                                        </div>
+                                                        @if (Model.ShowNotAvailableLabel && !allowToBuy && (product.AmountByMultiplicity < product.MinAmount || product.AmountByMultiplicity == 0))
+                                                        {
+                                                            <div
+                                                                class="product-view-noAvailable">@T("Product.NotAvailable")</div>
+                                                        }
+                                                    </div>
+                                                    <div class="product-view-price-data">
+                                                        @if (!Model.HidePrice || (Model.HidePrice && Model.TextInsteadOfPrice.IsNotEmpty()))
+                                                        {
+                                                            <div
+                                                                class="products-view-price-block products-view-price-inner 
+                                                               products-view-cart-add-type--@SettingsDesign.CartAddType.ToString().ToLower()">
+                                                                @if (!Model.HidePrice)
+                                                                {
+                                                                    <div
+                                                                        class="products-view-price @(!showBuyButton && !showPreOrderButton ? "products-view-price--without-buttons" : "")">
+
+                                                                        <div class="price">
+                                                                            @Html.Raw(product.PreparedPrice)
+                                                                        </div>
+                                                                    </div>
+                                                                }
+
+                                                                <div class="products-view-buttons-cell">
+                                                                    <div class="products-view-buttons">
+                                                                        @if (showBuyButton)
+                                                                        {
+                                                                            @Html.Partial("_CartAdd", new CartAddViewModel()
+                                                                            {
+                                                                                Classes = "btn btn-buy",
+                                                                                Href = productUrl,
+                                                                                OfferId = product.OfferId,
+                                                                                ProductId = product.ProductId,
+                                                                                Amount = product.Multiplicity,
+                                                                                BtnContent = Model.BuyButtonText,
+                                                                                Size = CardAddSize.Small,
+                                                                                SpinboxMin = product.AmountByMultiplicity,
+                                                                                SpinboxMax = product.MaxAmount,
+                                                                                StepSpinbox = product.Multiplicity,
+                                                                                AllowAddProductToCart = product.AllowAddProductToCart,
+                                                                                CartAddType = SettingsDesign.CartAddType,
+                                                                                ChooseBtnContent = Model.ChooseBtnText,
+                                                                            })
+                                                                        }
+                                                                        else if (showPreOrderButton)
+                                                                        {
+                                                                            <a @Html.Raw(linkOrQuickViewTrigger)
+                                                                                class="btn btn-small btn-action icon-bag-before products-view-buy">@Model.PreOrderButtonText</a>
+                                                                        }
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                        }
+                                                        <button type="button"
+                                                                class="compareproduct-product-remove cs-l-1"
+                                                                data-compare-offer-id="@product.OfferId"
+                                                                data-compare-remove="@product.OfferId"
+                                                                data-ng-click="compareExtend.updateCarousel()">
+                                                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <circle cx="15" cy="15.0005" r="10"
+                                                                        transform="rotate(45 15 15.0005)"
+                                                                        fill="currentColor"/>
+                                                                <path
+                                                                    d="M17.8277 12.1715C18.023 12.3667 18.023 12.6833 17.8277 12.8786L15.7119 14.9944L17.834 17.1164C18.0292 17.3116 18.0291 17.6282 17.834 17.8235C17.6387 18.0188 17.3221 18.0188 17.1268 17.8235L15.0048 15.7015L12.878 17.8283C12.6827 18.0234 12.3661 18.0235 12.1709 17.8283C11.9759 17.6331 11.9759 17.3165 12.1709 17.1212L14.2977 14.9944L12.1771 12.8738C11.982 12.6785 11.9819 12.3619 12.1771 12.1667C12.3723 11.9716 12.689 11.9716 12.8842 12.1667L15.0048 14.2873L17.1206 12.1715C17.3158 11.9763 17.6325 11.9764 17.8277 12.1715Z"
+                                                                    fill="#D9D9D9"/>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="compareproduct-scroll-container">
+                            <dl class="compareproduct-properties js-compareproduct-block js-compareproduct-block-properties">
+                                <div class="compareproduct-header-item">@T("Core.Catalog.Product.Ratio")</div>
+                                @if (SettingsCatalog.EnableProductRating || SettingsCatalog.AllowReviews)
+                                {
+                                <dd class="compareproduct-product-row compareproduct-product--data  js-compareproduct-block-row"
+                                    data-row-index="@(titleIndex)">
+                                    @foreach (var p in Model.Products)
+                                    {
+                                    <div class="compareproduct-product-item js-compareproduct-product-item"
+                                         data-compare-offer-id="@p.OfferId">
+                                        <div class="compare-product-rating-container">
+                                            @if (SettingsCatalog.EnableProductRating)
+                                            {
+                                            <div class="products-view-rating">
+                                                <svg width="18" height="18" viewBox="0 0 18 18"
+                                                     fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M8.60373 1.2196C8.72846 0.835725 9.27154 0.835725 9.39627 1.2196L11.1516 6.62192C11.2074 6.7936 11.3674 6.90983 11.5479 6.90983H17.2282C17.6318 6.90983 17.7997 7.42634 17.4731 7.66359L12.8776 11.0024C12.7316 11.1085 12.6705 11.2966 12.7263 11.4682L14.4816 16.8706C14.6063 17.2544 14.1669 17.5737 13.8404 17.3364L9.24491 13.9976C9.09887 13.8915 8.90113 13.8915 8.75509 13.9976L4.15961 17.3364C3.83306 17.5737 3.39369 17.2544 3.51842 16.8706L5.27374 11.4682C5.32952 11.2966 5.26841 11.1085 5.12238 11.0024L0.526893 7.66359C0.200345 7.42634 0.368168 6.90983 0.771803 6.90983H6.45213C6.63264 6.90983 6.79263 6.7936 6.84841 6.62192L8.60373 1.2196Z"
+                                                        fill="#FDC14E"/>
+                                                </svg>
+                                                <span>@(p.ManualRatio ?? p.Ratio)</span>
+                                            </div>
+                                            }
+                                            @if (SettingsCatalog.AllowReviews)
+                                            {
+                                                var reviewsCount = ReviewService.GetReviewsCount(p.ProductId, EntityType.Product, SettingsCatalog.ModerateReviews, true);
+                                                if (reviewsCount > 0)
+                                                {
+                                                    <div
+                                                        class="products-view__reviews">
+
+                                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                                             fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 11.2397 2.80078 12.4091 3.33333 13.4393L2.5 17.5L6.56066 16.6667C7.59086 17.1992 8.76031 17.5 10 17.5Z"
+                                                                fill="#B9B9B9"/>
+                                                            <rect x="6.25" y="10" width="0.00833333"
+                                                                  height="0.00833333"
+                                                                  stroke="white"
+                                                                  stroke-width="2.5" stroke-linejoin="round"/>
+                                                            <rect x="10" y="10" width="0.00833333"
+                                                                  height="0.00833333"
+                                                                  stroke="white"
+                                                                  stroke-width="2.5" stroke-linejoin="round"/>
+                                                            <rect x="13.75" y="10" width="0.00833333"
+                                                                  height="0.00833333"
+                                                                  stroke="white"
+                                                                  stroke-width="2.5" stroke-linejoin="round"/>
+                                                        </svg>
+
+                                                        @Html.Numerals(reviewsCount, T("Shared.ProductView.Reviews0"), T("Shared.ProductView.Reviews1"), T("Shared.ProductView.Reviews2"), T("Shared.ProductView.Reviews5"))
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    }
+                                </dd>
+                                }
+                                @if (showBrandRow)
+                                {
+                                <div class="compareproduct-header-item">@T("Compare.Index.Brand")</div>
+                                <dd class="compareproduct-product-row compareproduct-product--data  js-compareproduct-block-row"
+                                    data-row-index="@(titleIndex)">
+                                    @foreach (var p in Model.Products)
+                                    {
+                                    <div class="compareproduct-product-item js-compareproduct-product-item"
+                                         data-compare-offer-id="@p.OfferId">
+                                        @if (p.Brand != null)
+                                        {
+                                        <a href="@Url.AbsoluteRouteUrl("Brand", new { url = p.Brand.UrlPath })">@p.Brand.Name</a>
+                                        }
+                                    </div>
+                                    }
+                                </dd>
+                                }
+                                <div class="compareproduct-header-item">@T("Product.ProductTabs.Properties")</div>
+                                @foreach (var prop in Model.Properties)
+                                {
+                                <dt class="compareproduct-properties-row  compareproduct-properties-row--title js-compareproduct-block-row"
+                                    data-row-index="@(titleIndex += 1)">
+                                    <div
+                                        class="compareproduct-properties-item">@Html.Raw(prop.NameDisplayed + (prop.Unit.IsNotEmpty() ? " (" + prop.Unit + ")" : string.Empty))</div>
+                                </dt>
+                                <dd class="compareproduct-product-row compareproduct-product--data  js-compareproduct-block-row"
+                                    data-row-index="@(titleIndex)">
+                                    @foreach (var product in Model.Products)
+                                    {
+                                        var propertiesValue = product.ProductPropertyValues.Where(p => p.PropertyId == prop.PropertyId).Select(p => p.Value);
+                                        var hasPropertiesValue = propertiesValue.Any();
+                                        
+                                        <div class="compareproduct-product-item js-compareproduct-product-item @(hasPropertiesValue ? "": "compareproduct-product-item--not-items")"
+                                             data-compare-offer-id="@product.OfferId">
+                                            @Html.Raw(hasPropertiesValue ? propertiesValue.AggregateString(", "): "&mdash;")
+                                        </div>
+                                    }
+                                </dd>
+                                }
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        <div class="js-compareproduct-empty compareproduct-empty"
+             @Html.Raw(Model.Products.Count == 0 ? "style=\"display:block;\"" : "")>
+            <div class="compareproduct-empty-title">@T("Compare.Index.EmptyList")</div>
+            <div class="compareproduct-empty-text">@T("Compare.Index.EmptyList.Info")<br> <a
+                    class="btn btn-submit btn-small m-t"
+                    href="@Url.Action("Index", "Catalog")">@T("Compare.Index.EmptyList.Info.Link")</a></div>
+        </div>
+    </div>
+</div>        

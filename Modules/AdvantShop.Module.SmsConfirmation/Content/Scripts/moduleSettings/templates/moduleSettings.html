@@ -1,0 +1,126 @@
+<div class="container-fluid">
+    <div class="sticky-page-name" sticky sticky-top="0">
+        <div class="page-name-block sticky-page-name-inner">
+            <div class="page-name-block-item-main">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    Настройки
+                </h1>
+            </div>
+            <div class="page-name-block-item-additional">
+                <button type="submit" class="btn btn-sm btn-success" ng-click="$ctrl.saveSettings();">
+                    <i class="fa fa-check"></i> Сохранить
+                </button>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <span class="alert alert-warning">
+            При отправке SMS используется модуль, выбранный в основных <a href="settingsmail#?notifyTab=sms" target="_blank">настройках</a> интернет-магазина. Если модуль не выбран, форма отправки SMS-подтверждения отображаться не будет.
+        </span>
+    </div>
+    <div class="row">
+        <span class="alert alert-warning">
+            При активации модуля для упрощения оформления заказа, автоматически отключается настройка "Показывать поле Email" <a href="settingscheckout#?checkoutTab=checkoutfields" target="_blank">в разделе</a> настроек оформления заказа. <br />
+            При деактивации или удалении модуля, настройка будет автоматически возвращена в исходное состояние.
+        </span>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <label class="col-xs-4 control-label">
+                Подключенный SMS-модуль
+            </label>
+            <div class="col-xs-4">
+                <a ng-href="{{ $ctrl.settings.ActiveModuleLink }}" target="_blank" ng-if="$ctrl.settings.ActiveModule !== null"><span ng-bind="$ctrl.settings.ActiveModule"></span></a>
+                <span ng-if="$ctrl.settings.ActiveModule === null" style="font-weight: bold; color: #ff0000;">Модуль не выбран</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12">
+                <span style="font-weight: bold;">Активность</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <label class="col-xs-4 control-label">
+                На странице регистрации
+            </label>
+            <div class="col-xs-4">
+                <label class="adv-checkbox-label control-checkbox">
+                    <input type="checkbox" class="adv-checkbox-input" ng-model="$ctrl.settings.RegistrationPageActive" ng-change="$ctrl.saveSettings();" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <!--<div class="form-group">
+        <div class="row">
+            <label class="col-xs-4 control-label">
+                На странице авторизации
+            </label>
+            <div class="col-xs-4">
+                <label class="adv-checkbox-label control-checkbox">
+                    <input type="checkbox" class="adv-checkbox-input" ng-model="$ctrl.settings.AuthorizationPageActive" ng-change="$ctrl.saveSettings();" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+    </div>-->
+    <div class="form-group">
+        <div class="row">
+            <label class="col-xs-4 control-label">
+                На странице оформления заказа
+            </label>
+            <div class="col-xs-4">
+                <label class="adv-checkbox-label control-checkbox">
+                    <input type="checkbox" class="adv-checkbox-input" ng-model="$ctrl.settings.CheckoutPageActive" ng-change="$ctrl.saveSettings();" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12">
+                <span style="font-weight: bold;">Другие настройки</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <label class="col-xs-4 control-label">
+                Использовать CAPTCHA
+            </label>
+            <div class="col-xs-4">
+                <label class="adv-checkbox-label control-checkbox">
+                    <input type="checkbox" class="adv-checkbox-input" ng-model="$ctrl.settings.UseCaptcha" ng-change="$ctrl.saveSettings();" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <label class="col-xs-4 control-label">
+                Заголовок формы подтверждения SMS
+            </label>
+            <div class="col-xs-6">
+                <input type="text" class="form-control" ng-model="$ctrl.settings.FormTitle" ng-blur="$ctrl.saveSettings();" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <label class="col-xs-4 control-label">
+                Содержание формы подтверждения SMS
+            </label>
+            <div class="col-xs-6">
+                <textarea id="smsConfirmationModuleFormContent" ckeditor ng-model="$ctrl.settings.FormContent" class="wysiwyg" style="height: 300px;" multiple ng-blur="$ctrl.saveSettings();"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

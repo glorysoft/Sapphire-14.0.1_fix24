@@ -1,0 +1,35 @@
+﻿.custom-cursor {
+    --cursor-width: 32px;
+    --cursor-height: 24px;
+    position: fixed;
+    width: var(--cursor-width);
+    height: var(--cursor-height);
+    margin-top: calc(-1 * var(--cursor-height) / 2);
+    margin-left: calc(-1 * var(--cursor-width) / 2);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    transition: opacity .3s;
+    mix-blend-mode: difference;
+    z-index: 30;
+    will-change: transform;
+    mask-size: contain;
+    background-color: white;
+
+    &.cursor-arrow-left {
+        mask-image: url('../../../images/icons/arrow-left.svg');
+    }
+
+    &.cursor-arrow-right {
+        mask-image: url('../../../images/icons/arrow-right.svg');
+    }
+}
+
+.custom-cursor--hide {
+    display: none;
+}
+
+.custom-cursor-target {
+    cursor: none;
+}

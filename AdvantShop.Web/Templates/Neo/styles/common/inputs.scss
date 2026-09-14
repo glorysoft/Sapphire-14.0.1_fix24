@@ -1,0 +1,16 @@
+﻿.input-small,
+.input-big {
+    --_input-height: var(--input-height, var(--adv-form-control-height));
+    padding: var(--adv-m-3);
+    height: var(--_input-height);
+}
+
+input[type=text], input[type=password], input[type=search], input[type=email], input[type=number], input[type=tel], input[type=url], textarea {
+    border-radius: var(--adv-rounded-2);
+    border: 1px solid transparent;
+    font-size: var(--adv-text-3);
+    box-sizing: border-box;
+}
+.textarea-small{
+    font-size: var(--adv-text-3);
+}

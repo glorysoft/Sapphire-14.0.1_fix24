@@ -1,0 +1,15 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.Rees46
+
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>
+    {
+        url + "modules/Rees46/scripts/Admin/Rees46Settings/Rees46Settings.js"
+    };
+    var version = Html.GetModuleVersion(Rees46.ModuleStringId);
+}
+<div data-oc-lazy-load="[@(string.Join(", ", scripts.Select(x => "'" + x + "?v=" + version + "'")))]">
+    <rees46-settings />
+</div>
+

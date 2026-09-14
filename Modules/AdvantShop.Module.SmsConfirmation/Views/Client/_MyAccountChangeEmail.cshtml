@@ -1,0 +1,16 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.SmsConfirmation.Service
+
+@model string
+
+@{ 
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>
+    {
+        url + "modules/" + SmsConfirmationSettings.ModuleID + "/content/scripts/changeEmail/changeEmail.js"
+    }; 
+}
+
+<div data-oc-lazy-load="[{files: [@String.Join(" ,", scripts.Select(x=>"'" + x + "?" + SmsConfirmationSettings.Version + "'" ))], serie: true}]">
+    <sms-confirmation-change-email data-email="@Model"></sms-confirmation-change-email>
+</div>

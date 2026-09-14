@@ -1,0 +1,19 @@
+.wishlist-control {
+    &__icon {
+        display: flex;
+        &::after {
+            content: "";
+            mask-image: url('../../../../images/icons/heart.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 18px;
+            background-color: currentColor;
+            cursor: pointer;
+        }
+    }
+}
+
+.wishlist-state-not-add{
+    color:var(--cs-7);
+}

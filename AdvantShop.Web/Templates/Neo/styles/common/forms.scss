@@ -1,0 +1,13 @@
+﻿.form-field-name,
+.form-field-input{
+    font-size: var(--adv-text-2);
+}
+
+.form-field-input:has(.custom-input-checkbox){
+    display: inline-flex;
+    align-items: center;
+}
+// добавил для алреса в чекауте
+.form-field-control {
+    align-items: center;
+}

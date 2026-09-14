@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="h2">Изменить Email</div>
+        <span class="form-field-name vertical-interval-small">
+            Текущий email сгенерирован автоматически.
+            Пожалуйста, укажите ваш настоящий Email.
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-8">
+        <label class="row middle-xs">
+            <span class="col-xs-12 col-sm-4">
+                <span class="form-field-name vertical-interval-xsmall">Ваш текущий Email</span>
+            </span>
+        </label>
+        <label class="row middle-xs">
+            <span class="col-xs-12 col-sm-4">
+                <span ng-bind="$ctrl.email" style="font-weight: bold;">
+
+                </span>
+            </span>
+        </label>
+    </div>
+</div>
+<form name="myAccountChangeEmailForm" novalidate="novalidate">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <label class="row middle-xs">
+                <span class="col-xs-12 col-sm-4">
+                    <span class="form-field-name vertical-interval-xsmall">Новый Email:</span>
+                </span>
+            </label>
+            <label class="row middle-xs">
+                <span class="col-xs-12 col-sm-8">
+                    <span class="form-field-input vertical-interval-xsmall">
+                        <input autocomplete="email" class="input-small"
+                               data-ng-model="$ctrl.newEmail" pattern="^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)|(admin)$" required="required" type="text">
+                    </span>
+                </span>
+            </label>
+            <div class="row middle-xs">
+                <span class="col-sm-8 col-xs-12">
+                    <span class="form-field-input vertical-interval-xsmall">
+                        <button type="button" class="btn btn-middle btn-action" ng-click="$ctrl.changeEmail();" style="cursor: pointer;" data-ng-disabled="myAccountChangeEmailForm.$invalid">Изменить</button>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>

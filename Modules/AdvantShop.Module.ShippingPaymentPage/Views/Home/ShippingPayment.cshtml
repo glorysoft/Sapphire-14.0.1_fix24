@@ -1,0 +1,170 @@
+﻿@using AdvantShop.Configuration;
+@model AdvantShop.Module.ShippingPaymentPage.Models.ShippingPaymentModel
+
+
+@{
+	Html.AddAsset("checkout");
+    Html.AddModuleAsset(AdvantShop.Module.ShippingPaymentPage.ShippingPaymentPage.ModuleID, "shippingPaymentPage");
+    Html.AddModuleAsset(AdvantShop.Module.ShippingPaymentPage.ShippingPaymentPage.ModuleID, "shippingPaymentPageRuntime");
+    var isMobile = SettingsDesign.IsMobileTemplate;
+}
+
+<div class="main-title-wrap shipping-payment-title">
+    <h1 class="main-title">@T("Module.ShippingPaymentPage.PageTitle")</h1>
+</div>
+
+<div>
+    <div data-ng-controller="ShippingPaymentPageCtrl as shippingPaymentPage" class="col-p-v container-fluid shipping-payment-block">
+        <div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                    <form name="shippingPaymentZone">
+                        <div class="row bottom-xs">
+                            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                                <div>
+                                    <div class="shipping-payment-city">Ваш город:</div>
+                                    <div data-field="Name" class="shipping-payment-autocomplete" data-autocompleter data-apply-fn="shippingPaymentPage.setZone(value, shippingPaymentPage.zoneRegion, shippingPaymentPage.zoneZip)" data-request-url="/location/GetCitiesAutocomplete" data-template-path="scripts/_common/autocompleter/templates/location.html">
+                                        <input data-autocompleter-input type="text" class="input-big" placeholder="@T("Module.ShippingPaymentPage.EnterYourCity")" value="@Model.Zone.City" name="shippingPaymentCity" data-ng-init="shippingPaymentPage.zoneCity = '@Model.Zone.City'" data-ng-model="shippingPaymentPage.zoneCity" />
+                                    </div>
+                                </div>
+                                <div data-ng-if="shippingPaymentPage.showRegion" class="ng-cloak p-t-sm">
+                                    <div class="shipping-payment-city">Регион:</div>
+                                    <div data-field="Name" class="shipping-payment-autocomplete" data-autocompleter data-apply-fn="shippingPaymentPage.setZone(shippingPaymentPage.zoneCity, value, shippingPaymentPage.zoneZip)" data-request-url="/location/GetRegionsAutocomplete" data-template-path="scripts/_common/autocompleter/templates/location.html">
+                                        <input data-autocompleter-input type="text" class="input-big" value="" name="shippingPaymentRegion" data-ng-model="shippingPaymentPage.zoneRegion" data-autofocus="zone.showRegion" />
+                                    </div>
+                                </div>
+                                <div class="ng-cloak p-t-sm">
+                                    <div class="shipping-payment-city">Индекс:</div>
+                                    <div>
+                                        <input type="text" data-ng-model="shippingPaymentPage.zoneZip" name="shippingPaymentZip" id="shippingPaymentZip" value="" class="input-big" data-autofocus="zone.showZip" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 p-t-md">
+                                <div class="shipping-payment-zone-button">
+                                    <input class="btn btn-big btn-buy btn-expander" type="button" value="@T("Module.ShippingPaymentPage.Apply")" data-ng-click="shippingPaymentPage.setZone(shippingPaymentPage.zoneCity, shippingPaymentPage.zoneRegion, shippingPaymentPage.zoneZip)" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 p-t-sm">
+                    <div class="site-body-cell">
+                        <label class="shipping-payment-use-cart">
+                            <input type="checkbox" class="custom-input-native" data-ng-model="shippingPaymentPage.useCart" data-ng-change="shippingPaymentPage.reloadData()" />
+                            <span class="custom-input-checkbox"></span>
+                            <span class="custom-input-text">@T("Module.ShippingPaymentPage.RequireCart")</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            @if (!string.IsNullOrEmpty(@Model.TextBlock))
+            {
+                <div class="row">
+                    <div class="col-xs-12 p-t-sm">
+                        <div class="site-body-cell site-body-cell-no-left">
+                            @Html.Raw(Model.TextBlock)
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="h2 shipping-main-title m-b-sm">@T("Module.ShippingPaymentPage.ShippingMethods")</div>
+                <div class="shipping-payment-list-wrapper icon-spinner-after icon-animate-spin-after" data-ng-class="{'loaded' : shippingPaymentPage.shippingDataReceived}">
+                    <div class="shipping-payment-list">
+                        @if (!isMobile)
+                        {
+                            <div class="shipping-payment-item">
+                                <span class="shipping-payment-head cs-br-1"></span>
+                                <span class="shipping-payment-head cs-br-1">@T("Module.ShippingPaymentPage.ShippingName")</span>
+                                <span class="shipping-payment-head cs-br-1">@T("Module.ShippingPaymentPage.ShippingCost")</span>
+                                <span class="shipping-payment-head cs-br-1">@T("Module.ShippingPaymentPage.ShippingTime")</span>
+                                <span class="shipping-payment-head cs-br-1">@T("Module.ShippingPaymentPage.ShippingDescription")</span>
+                            </div>
+                        }
+                        
+                        <div class="shipping-payment-body ng-hide" data-ng-show="shippingPaymentPage.shippingDataReceived">
+                            <label class="shipping-payment-item cs-bg-9-interactive" data-ng-repeat="shipping in shippingPaymentPage.Shipping.option track by $index">
+                                @if (isMobile)
+                                {
+                                    @:<span class="flex middle-xs">
+                                }
+                                
+                                <span class="shipping-payment-field shipping-payment-radio">
+                                    <input type="radio" name="shipping" class="custom-input-native" data-ng-value="shipping" data-ng-model="shippingPaymentPage.ngSelectShipping" data-ng-change="shippingPaymentPage.changeShipping(shipping)"/>
+                                    <span class="custom-input-radio"></span>
+                                </span>
+                                <span class="shipping-payment-field @(isMobile ? "flex middle-xs" : "")">
+                                    <span class="shipping-payment-icon-cell" data-ng-if="shipping.IconName != null">
+                                        <img class="shipping-payment-icon" data-ng-src="{{shipping.IconName}}" alt=""/>
+                                    </span>
+                                    <span data-ng-bind-html="shipping.Name"></span>
+                                    <span class="shipping-payment-additional" data-ng-if="shipping.Template != null && shipping.Template.length > 0">
+                                        <span data-shipping-template data-contact="shippingPaymentPage.contact" data-is-selected="shippingPaymentPage.selectShipping === shipping" data-shipping="shipping" data-template-url="shipping.Template" data-change-control="shippingPaymentPage.changeShipping(shipping)"></span>
+                                    </span>
+                                </span>
+                                <span class="shipping-payment-field" data-ng-bind="shipping.FormatRate"></span>
+                                <span class="shipping-payment-field shipping-payment-delivery-time" data-ng-if="shipping.DeliveryTime.length > 0" data-ng-bind="shipping.DeliveryTime"> </span>
+                                @if (isMobile)
+                                {
+                                    @:</span>
+                                }
+                                <span class="shipping-payment-field" data-ng-if="shipping.Desc.length > 0" data-ng-bind-html="shipping.Desc"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="h2 shipping-main-title">@T("Module.ShippingPaymentPage.PaymentMethods")</div>
+                <div class="shipping-payment-list-wrapper icon-spinner-after icon-animate-spin-after" data-ng-class="{'loaded' : shippingPaymentPage.paymentDataReceived}">
+                    <div class="shipping-payment-list">
+                         @if (!isMobile)
+                         {
+                             <div class="shipping-payment-item">
+                                 <span class="shipping-payment-head shipping-payment-head-radio-payment cs-br-1"></span>
+                                 <span class="shipping-payment-head cs-br-1">@T("Module.ShippingPaymentPage.PaymentName")</span>
+                                 <span class="shipping-payment-head shipping-payment-head-description cs-br-1">@T("Module.ShippingPaymentPage.ShippingDescription")</span>
+                             </div>
+                         }
+
+                        <div class="shipping-payment-body ng-hide" data-ng-show="shippingPaymentPage.paymentDataReceived">
+                            <label class="shipping-payment-item cs-bg-9-interactive" data-ng-repeat="payment in shippingPaymentPage.Payment.option track by $index">
+                                @if (isMobile)
+                                {
+                                    @:<span class="flex middle-xs">
+                                }
+                                <span class="shipping-payment-field shipping-payment-radio">
+                                    <input type="radio" name="payment" class="custom-input-native" data-ng-value="payment" data-ng-model="shippingPaymentPage.ngSelectPayment" data-ng-change="shippingPaymentPage.changePayment(payment)"/>
+                                    <span class="custom-input-radio"></span>
+                                </span>
+                                <span class="shipping-payment-field @(isMobile ? "flex middle-xs" : "")">
+                                    <img class="shipping-payment-icon" data-ng-if="payment.IconName != null" data-ng-src="{{payment.IconName}}" alt=""/>
+                                    <span data-ng-bind-html="payment.Name"></span>
+                                </span>
+                                @if (isMobile)
+                                {
+                                    @:</span>
+                                }
+                                <span class="shipping-payment-field" ng-if="payment.Desc.length > 0" data-ng-bind-html="payment.Desc"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (!string.IsNullOrEmpty(@Model.TextBlockBottom))
+        {
+            <div class="row">
+                <div class="col-xs-12 col-p-v">
+                    <div class="site-body-cell site-body-cell-no-left">
+                        @Html.Raw(Model.TextBlockBottom)
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

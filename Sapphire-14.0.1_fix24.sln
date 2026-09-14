@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29020.237
+# Visual Studio Version 18
+VisualStudioVersion = 18.10.12201.205 stable
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantShop.Web.Site", "AdvantShop.Web\AdvantShop.Web.Site.csproj", "{42A43DBA-9D37-4982-BEA6-82E1051EAF1E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantShop.Core", "AdvantShop.Core\AdvantShop.Core.csproj", "{59344E96-1527-4FA3-B7C9-48516A82CC4F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{F311FB63-FCC4-4396-B45E-35B2C8C5FC26}"
@@ -21,7 +19,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantShop.Core.Test", "Tests\UnitTests\AdvantShop.Core.Test\AdvantShop.Core.Test.csproj", "{2CD64919-B41B-41EC-9CA6-4E88E2FC046A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantShop.FileSystemTests", "Tests\UnitTests\AdvantShop.FileSystemTests\AdvantShop.FileSystemTests.csproj", "{A5D31415-50C3-441C-AB1E-1316AEA1E0DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantShop.Module.SmsConfirmation", "Modules\AdvantShop.Module.SmsConfirmation\AdvantShop.Module.SmsConfirmation.csproj", "{3A4A9C8F-A9ED-4E0C-BCD1-836A4ECAABA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantShop.Module.ShippingPaymentPage", "Modules\AdvantShop.Module.ShippingPaymentPage\AdvantShop.Module.ShippingPaymentPage.csproj", "{2C31D1BA-A076-48EE-B3BA-3FBE8D471EAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantShop.Module.Rees46", "Modules\AdvantShop.Module.Rees46\AdvantShop.Module.Rees46.csproj", "{40EE54E7-723C-442A-B13F-0AD4B38E9581}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantShop.Module.YandexSearch", "Modules\AdvantShop.Module.YandexSearch\AdvantShop.Module.YandexSearch.csproj", "{1DBC66BF-8FF2-4473-B56D-2376D11FABF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantShop.Module.RemindAboutReceipt", "Modules\AdvantShop.Module.RemindAboutReceipt\AdvantShop.Module.RemindAboutReceipt.csproj", "{AFA5A36E-6B71-4A39-9578-E6D94C601A87}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdvantShop.FileSystemTests", "Tests\UnitTests\AdvantShop.FileSystemTests\AdvantShop.FileSystemTests.csproj", "{3B901A68-F26D-4AE9-87F3-B84D1713CFCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantShop.Web.Site", "AdvantShop.Web\AdvantShop.Web.Site.csproj", "{42A43DBA-9D37-4982-BEA6-82E1051EAF1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +39,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{42A43DBA-9D37-4982-BEA6-82E1051EAF1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42A43DBA-9D37-4982-BEA6-82E1051EAF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42A43DBA-9D37-4982-BEA6-82E1051EAF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42A43DBA-9D37-4982-BEA6-82E1051EAF1E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{59344E96-1527-4FA3-B7C9-48516A82CC4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{59344E96-1527-4FA3-B7C9-48516A82CC4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59344E96-1527-4FA3-B7C9-48516A82CC4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,10 +59,38 @@ Global
 		{2CD64919-B41B-41EC-9CA6-4E88E2FC046A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CD64919-B41B-41EC-9CA6-4E88E2FC046A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CD64919-B41B-41EC-9CA6-4E88E2FC046A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5D31415-50C3-441C-AB1E-1316AEA1E0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5D31415-50C3-441C-AB1E-1316AEA1E0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5D31415-50C3-441C-AB1E-1316AEA1E0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5D31415-50C3-441C-AB1E-1316AEA1E0DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A8A0182-D955-4D08-BCCF-F979D1FAEC2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A8A0182-D955-4D08-BCCF-F979D1FAEC2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A8A0182-D955-4D08-BCCF-F979D1FAEC2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A8A0182-D955-4D08-BCCF-F979D1FAEC2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A4A9C8F-A9ED-4E0C-BCD1-836A4ECAABA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A4A9C8F-A9ED-4E0C-BCD1-836A4ECAABA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A4A9C8F-A9ED-4E0C-BCD1-836A4ECAABA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A4A9C8F-A9ED-4E0C-BCD1-836A4ECAABA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C31D1BA-A076-48EE-B3BA-3FBE8D471EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C31D1BA-A076-48EE-B3BA-3FBE8D471EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C31D1BA-A076-48EE-B3BA-3FBE8D471EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C31D1BA-A076-48EE-B3BA-3FBE8D471EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40EE54E7-723C-442A-B13F-0AD4B38E9581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40EE54E7-723C-442A-B13F-0AD4B38E9581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40EE54E7-723C-442A-B13F-0AD4B38E9581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40EE54E7-723C-442A-B13F-0AD4B38E9581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DBC66BF-8FF2-4473-B56D-2376D11FABF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DBC66BF-8FF2-4473-B56D-2376D11FABF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DBC66BF-8FF2-4473-B56D-2376D11FABF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DBC66BF-8FF2-4473-B56D-2376D11FABF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFA5A36E-6B71-4A39-9578-E6D94C601A87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFA5A36E-6B71-4A39-9578-E6D94C601A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFA5A36E-6B71-4A39-9578-E6D94C601A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFA5A36E-6B71-4A39-9578-E6D94C601A87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B901A68-F26D-4AE9-87F3-B84D1713CFCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B901A68-F26D-4AE9-87F3-B84D1713CFCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B901A68-F26D-4AE9-87F3-B84D1713CFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B901A68-F26D-4AE9-87F3-B84D1713CFCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42A43DBA-9D37-4982-BEA6-82E1051EAF1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42A43DBA-9D37-4982-BEA6-82E1051EAF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42A43DBA-9D37-4982-BEA6-82E1051EAF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42A43DBA-9D37-4982-BEA6-82E1051EAF1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,7 +98,13 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A72359CC-7834-4949-9B96-EAF7F6DA7516} = {74F07739-E035-4814-9B9A-F41ACEEAE39C}
 		{2CD64919-B41B-41EC-9CA6-4E88E2FC046A} = {A72359CC-7834-4949-9B96-EAF7F6DA7516}
-		{A5D31415-50C3-441C-AB1E-1316AEA1E0DA} = {A72359CC-7834-4949-9B96-EAF7F6DA7516}
+		{8A8A0182-D955-4D08-BCCF-F979D1FAEC2B} = {F311FB63-FCC4-4396-B45E-35B2C8C5FC26}
+		{3A4A9C8F-A9ED-4E0C-BCD1-836A4ECAABA9} = {F311FB63-FCC4-4396-B45E-35B2C8C5FC26}
+		{2C31D1BA-A076-48EE-B3BA-3FBE8D471EAA} = {F311FB63-FCC4-4396-B45E-35B2C8C5FC26}
+		{40EE54E7-723C-442A-B13F-0AD4B38E9581} = {F311FB63-FCC4-4396-B45E-35B2C8C5FC26}
+		{1DBC66BF-8FF2-4473-B56D-2376D11FABF5} = {F311FB63-FCC4-4396-B45E-35B2C8C5FC26}
+		{AFA5A36E-6B71-4A39-9578-E6D94C601A87} = {F311FB63-FCC4-4396-B45E-35B2C8C5FC26}
+		{3B901A68-F26D-4AE9-87F3-B84D1713CFCA} = {74F07739-E035-4814-9B9A-F41ACEEAE39C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {44D9797E-8D49-4E95-98E8-31DAEC71DBE1}

@@ -1,0 +1,15 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.ShippingPaymentPage
+
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>
+    {
+        url + "modules/ShippingPaymentPage/scripts/Admin/ShippingPaymentPageSettings/ShippingPaymentPageSettings.js"
+    };
+    var version = Html.GetModuleVersion(ShippingPaymentPage.ModuleID);
+}
+<div data-oc-lazy-load="[@(string.Join(", ", scripts.Select(x => "'" + x + "?v=" + version + "'")))]">
+    <shipping-payment-page-settings />
+</div>
+

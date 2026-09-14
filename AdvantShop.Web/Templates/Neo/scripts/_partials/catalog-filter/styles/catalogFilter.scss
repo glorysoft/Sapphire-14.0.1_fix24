@@ -1,0 +1,88 @@
+.feature\:site-background-fill{
+    .catalog-filter-content{
+        padding: var(--adv-m-4);
+    }
+}
+
+.catalog-filter-content {
+    border: none;
+}
+
+
+.catalog-filter-block-header,
+.catalog-filter-block-content,
+.catalog-filter-footer {
+    border: none;
+}
+
+
+.catalog-filter-block-title {
+    font-size: var(--adv-text-1);
+    font-weight: 500;
+    line-height: 1.1;
+
+}
+
+.tab-filter {
+    border: none;
+}
+
+.catalog-filter-block-content,
+.catalog-filter-block-content__inner {
+    padding: 0;
+    margin: 0;
+}
+
+
+.catalog-filter-block-header {
+    margin-bottom: var(--adv-m-4);
+    padding: 0 var(--adv-m-4) 0 0;
+
+    &::after {
+        content: "";
+        display: block;
+        mask: url('../../../../images/icons/chevron-right.svg') center no-repeat;
+        mask-size: contain;
+        background-color: currentColor;
+        width: 16px;
+        height: 16px;
+        transform: rotate(90deg);
+        margin-top: -7px;
+    }
+
+}
+.catalog-filter-block-header-open::after {
+    transform: rotate(-90deg);
+}
+.catalog-filter-block {
+    margin-bottom: var(--adv-m-5);
+}
+
+.catalog-filter-row {
+    padding: var(--adv-m-base) 0
+}
+.custom-input-radio-container {
+    align-items: center;
+    display: inline-flex;
+}
+
+.catalog-filter-footer{
+    padding:0;
+}
+
+.catalog-filter-footer > .btn{
+    margin:5px;
+
+}
+
+.catalog-filter-footer > input{
+    &:first-child{
+        margin-left: 0;
+    }
+    &:last-child{
+        margin-right: 0;
+    }
+}
+.catalog-filter-popover{
+    z-index: 99999;
+}

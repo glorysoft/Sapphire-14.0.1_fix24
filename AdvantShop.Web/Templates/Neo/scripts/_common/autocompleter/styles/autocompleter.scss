@@ -1,0 +1,182 @@
+﻿.autocompleter-sub {
+    background-color: var(--cs-11);
+}
+
+.search-item-title {
+    font-size: var(--adv-h6);
+    border: 0;
+    color: var(--cs-8);
+    background-color: inherit;
+    position: relative;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--adv-m-4);
+    padding: 0 var(--adv-m-4);
+    margin: 0 0 var(--adv-m-4);
+
+    &::after {
+        content: "";
+        display: block;
+        height: 1px;
+        background-color: currentColor;
+        flex-grow: 1;
+    }
+}
+
+.autocompleter-list-item {
+    border: 0;
+}
+
+.autocompleter-list-item-category {
+    font-size: var(--adv-text-3);
+    padding: var(--adv-m-base) var(--adv-m-4);
+    margin-bottom: var(--adv-m-1);
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    gap: var(--adv-m-base);
+    align-items: center;
+
+    &:hover {
+        background-color: var(--cs-4);
+        color: var(--cs-6);
+        text-decoration: none;
+    }
+
+    &::before {
+        content: "";
+        display: block;
+        width: 17px;
+        height: 17px;
+        mask: url('../../../../images/icons/categories.svg') center no-repeat;
+        mask-size: contain;
+        background-color: var(--cs-3);
+    }
+
+    .col-xs {
+        padding: 0;
+    }
+}
+
+.autocompleter-list-group:first-child {
+    margin-top: var(--adv-m-4);
+}
+
+.autocompleter-list-group + .autocompleter-list-group {
+    margin-top: var(--adv-m-7);
+}
+
+.autocompleter-product-image {
+    mix-blend-mode: darken;
+}
+
+.autocompleter-product-image-block {
+    padding-right: 0;
+}
+
+.autocompleter-list-item-product {
+    text-decoration: none;
+
+    &:hover {
+        background-color: var(--cs-4);
+        color: var(--cs-6);
+        text-decoration: none;
+    }
+}
+
+.autocompleter-product-name {
+    font-size: var(--adv-text-1);
+    margin-bottom: var(--adv-m-3);
+}
+
+.autocompleter-product-price-text {
+    display: none;
+    padding-top: 0;
+}
+
+.autocompleter-product-price-value {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--adv-m-2);
+    padding-top: 0;
+}
+
+.autocompleter-product-price {
+    .price-current, .price-new {
+        font-weight: 600;
+        font-size: var(--adv-text-1);
+    }
+
+    .price-discount {
+        display: none;
+    }
+
+    .price-old {
+        font-size: var(--adv-text-4);
+    }
+}
+
+.autocompleter-list-link-all {
+    --_btn-height: var(--btn-height, var(--adv-form-control-height));
+    border-radius: var(--adv-rounded-2);
+    min-height: var(--_btn-height);
+    min-width: var(--_btn-width, var(--_btn-height));
+    box-sizing: border-box;
+    padding: var(--adv-m-2) var(--adv-m-3);
+    background-color: var(--cs-4);
+    color: var(--cs-1);
+    text-decoration: none;
+    width: min(90%, 300px);
+    display: inline-flex;
+    font-size: var(--adv-text-2);
+    align-items: center;
+    justify-content: center;
+    gap: var(--adv-m-base);
+
+    &::after {
+        content: "";
+        display: block;
+        mask: url('../../../../images/icons/chevron-right.svg') center no-repeat;
+        mask-size: contain;
+        background-color: currentColor;
+        width: 17px;
+        height: 16px;
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: var(--cs-4);
+        background-color: var(--cs-6);
+    }
+}
+
+[data-autocompleter] .autocompleter-sub {
+    margin-top: var(--adv-m-1);
+}
+
+.autocompleter-list-item-product {
+    > div:first-child {
+        flex-basis: 80px;
+        max-width: 80px;
+    }
+
+    > div:last-child {
+        flex-grow: 1;
+        flex-basis: 0;
+        max-width: 100%;
+    }
+}
+
+.autocompleter-list {
+    max-height: calc(100vh / 2);
+}
+
+.autocompleter-cross {
+    display: none;
+}
+.autocompleter-list-link-all{
+    line-height: 1;
+}

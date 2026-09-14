@@ -1,0 +1,103 @@
+.adv-modal .modal-quickview,
+.adv-modal .adv-modal-inner.modal-quickview {
+    max-width: 75vw;
+    max-height: 90vh;
+}
+
+.modal-quickview .details-rating {
+    margin-left: 0;
+}
+
+.modal-quickview .product-card-photos .gallery-block {
+    background-color: var(--cs-11);
+}
+
+.modal-quickview .modal-content {
+    padding: 0 var(--adv-m-4) 0 0;
+}
+
+.modal-quickview {
+    .adv-modal-close {
+        right: calc(var(--adv-m-4) + 6px);
+    }
+
+    .product-card-panel-float-right {
+        margin-top: var(--modal-close-height);
+    }
+
+    .product-card-info,
+    .product-card-photos .gallery-block {
+        padding-top: var(--adv-m-6);
+        padding-bottom: var(--adv-m-6);
+    }
+
+    .product-card-photos .gallery-block {
+        border-radius: var(--adv-rounded-4) var(--adv-rounded-3) var(--adv-rounded-3) var(--adv-rounded-4);
+        padding-left: var(--adv-m-6);
+    }
+
+    .block-exuding:last-child {
+        margin-bottom: 0;
+        border-bottom-left-radius: var(--adv-rounded-3);
+        border-bottom-right-radius: var(--adv-rounded-3);
+    }
+
+
+    .tabs-horizontal {
+        .tabs-header-item {
+            padding: 0;
+            border-radius: 0;
+            background-color: transparent;
+            border: none;
+            margin: 0;
+
+            &:not(:last-child) {
+                margin-right: var(--adv-m-1);
+            }
+        }
+
+        .tabs-header-item-link {
+            padding: var(--adv-m-2) var(--adv-m-2);
+            font-size: var(--adv-text-3);
+        }
+
+        .tabs-content {
+            padding-top: var(--adv-m-4);
+            font-size: var(--adv-text-2);
+            padding-right: 0;
+        }
+    }
+
+    .details-row > .block {
+        padding-left: var(--adv-m-4);
+        box-sizing: border-box;
+    }
+
+    .gallery-picture {
+        aspect-ratio: 1;
+    }
+}
+
+
+.quickview-arrows-prev::before, .quickview-arrows-next::before {
+    content: "";
+    display: block;
+    mask: url('../../../../images/icons/chevron-right.svg') center no-repeat;
+    mask-size: contain;
+    background-color: currentColor;
+    width: 24px;
+    height: 24px;
+}
+
+.quickview-arrows-prev::before {
+    transform: scale(-1);
+}
+
+.product-card--quickview {
+    align-items: start;
+
+    .product-card-photos--sticky {
+        position: sticky;
+        top: 0;
+    }
+}

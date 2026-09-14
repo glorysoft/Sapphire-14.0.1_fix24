@@ -1,0 +1,16 @@
+﻿.letter{
+    padding: var(--adv-m-1);
+    min-width: 12px;
+    height: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    &.all{
+        height: 12px;
+        padding: var(--adv-m-1);
+    }
+}
+.eng > .letter:nth-child(2){
+    height: 12px;
+    padding: var(--adv-m-1);
+}

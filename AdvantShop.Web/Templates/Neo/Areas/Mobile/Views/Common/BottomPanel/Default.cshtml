@@ -1,0 +1,141 @@
+﻿@using AdvantShop.Core.Services.Auth
+@using AdvantShop.Customers;
+@using AdvantShop.Orders
+@using AdvantShop.Core.Services.Configuration.Settings
+
+@{
+    var isHomePage = (string)Request.RequestContext.RouteData.Values["controller"] == "Home" && (string)Request.RequestContext.RouteData.Values["action"] == "Index";
+    var isWishlistPage = (string)Request.RequestContext.RouteData.Values["controller"] == "Wishlist" && (string)Request.RequestContext.RouteData.Values["action"] == "Index";
+    var isCatalogPage = (string)Request.RequestContext.RouteData.Values["controller"] == "Catalog" || (string)Request.RequestContext.RouteData.Values["controller"] == "Product";
+    var isCart = (string)Request.RequestContext.RouteData.Values["controller"] == "Cart";
+    var isAccountPage = (string)Request.RequestContext.RouteData.Values["controller"] == "User" || (string)Request.RequestContext.RouteData.Values["controller"] == "MyAccount";
+    var isRegistred = CustomerContext.CurrentCustomer.RegistredUser;
+}
+
+<div class="bottom-panel bottom-panel--theme-default">
+    <div class="bottom-panel__menu-block bottom-panel__menu-block--theme-default">
+        <a class="bottom-panel__menu-link @(isHomePage ? "cs-l-6" : "color-gray")" href="@UrlService.GetUrl()">
+            <div class="bottom-panel__menu-icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.5 9.93841C1.5 8.71422 2.06058 7.55744 3.02142 6.79888L8.52142 2.45677C9.97466 1.30948 12.0253 1.30948 13.4786 2.45677L18.9786 6.79888C19.9394 7.55744 20.5 8.71422 20.5 9.93841V16.5C20.5 18.7091 18.7091 20.5 16.5 20.5H15C14.4477 20.5 14 20.0523 14 19.5V16.5C14 15.3954 13.1046 14.5 12 14.5H10C8.89543 14.5 8 15.3954 8 16.5V19.5C8 20.0523 7.55228 20.5 7 20.5H5.5C3.29086 20.5 1.5 18.7091 1.5 16.5L1.5 9.93841Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="bottom-panel__menu-descr">@T("Common.BottomPanel.Main")</div>
+        </a>
+        @if (SettingsMobile.BottomPanelCatalogMenuMode == "Link")
+        {
+            <a data-ng-controller="HeaderCtrl as header" class="bottom-panel__menu-link @(isCatalogPage ? "cs-l-6" : "color-gray")" data-ng-click="header.toggleMenu($event)" data-sidebar-container-state="sidebarMenu">
+                <div class="bottom-panel__menu-icon">
+                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_3555_35704)">
+                            <path d="M19.165 17.2451L15.9713 14.0514M13.3099 15.116C11.2521 15.116 9.58398 13.4478 9.58398 11.39C9.58398 9.33223 11.2521 7.66406 13.3099 7.66406C15.3677 7.66406 17.0359 9.33223 17.0359 11.39C17.0359 13.4478 15.3677 15.116 13.3099 15.116Z" stroke="currentColor" stroke-width="1.9162" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1.91797 3.83203H14.8523" stroke="currentColor" stroke-width="1.9162" stroke-linecap="round"/>
+                            <path d="M1.91797 7.66406H6.70847" stroke="currentColor" stroke-width="1.9162" stroke-linecap="round"/>
+                            <path d="M1.91797 19.1621H12.4571" stroke="currentColor" stroke-width="1.9162" stroke-linecap="round"/>
+                            <path d="M1.91797 11.498H6.70847" stroke="currentColor" stroke-width="1.9162" stroke-linecap="round"/>
+                            <path d="M1.91797 15.3301H6.70847" stroke="currentColor" stroke-width="1.9162" stroke-linecap="round"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_3555_35704">
+                                <rect width="22.9944" height="22.9944" fill="white" transform="translate(0.00195312)"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="bottom-panel__menu-descr">@T("Common.BottomPanel.Catalog")</div>
+            </a>
+        }
+        else if(!SettingsDesign.OnePageCatalog)
+        {
+            <a href="catalog"  class="bottom-panel__menu-link @(isCatalogPage ? "cs-l-6" : "color-gray")" >
+                <div class="bottom-panel__menu-icon">
+                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_3555_35704)">
+                            <path d="M19.165 17.2451L15.9713 14.0514M13.3099 15.116C11.2521 15.116 9.58398 13.4478 9.58398 11.39C9.58398 9.33223 11.2521 7.66406 13.3099 7.66406C15.3677 7.66406 17.0359 9.33223 17.0359 11.39C17.0359 13.4478 15.3677 15.116 13.3099 15.116Z" stroke="currentColor" stroke-width="1.9162" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1.91797 3.83203H14.8523" stroke="currentColor" stroke-width="1.9162" stroke-linecap="round"/>
+                            <path d="M1.91797 7.66406H6.70847" stroke="currentColor" stroke-width="1.9162" stroke-linecap="round"/>
+                            <path d="M1.91797 19.1621H12.4571" stroke="currentColor" stroke-width="1.9162" stroke-linecap="round"/>
+                            <path d="M1.91797 11.498H6.70847" stroke="currentColor" stroke-width="1.9162" stroke-linecap="round"/>
+                            <path d="M1.91797 15.3301H6.70847" stroke="currentColor" stroke-width="1.9162" stroke-linecap="round"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_3555_35704">
+                                <rect width="22.9944" height="22.9944" fill="white" transform="translate(0.00195312)"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="bottom-panel__menu-descr">@T("Common.BottomPanel.Catalog")</div>
+            </a>
+        }
+
+        <a data-ng-controller="HeaderCtrl as header" class="bottom-panel__menu-link @(isCart ? "cs-l-6" : "color-gray")" href="cart">
+            <div class="bottom-panel__menu-icon">
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 9H20.5L19.6654 18.1811C19.5717 19.2112 18.708 20 17.6736 20H7.32643C6.29202 20 5.42829 19.2112 5.33464 18.1811L4.5 9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M8.5 11V8C8.5 5.79086 10.2909 4 12.5 4C14.7091 4 16.5 5.79086 16.5 8V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span class="mobile-header__cart-count cs-bg-6 cs-t-4 ng-cloak" data-ng-show="cartCount.cartData.TotalItems > 0" data-cart-count data-ng-bind-html="cartCount.getValue()">@ShoppingCartService.CurrentShoppingCart.TotalItems</span>
+            </div>
+            <div class="bottom-panel__menu-descr">@T("Common.BottomPanel.Cart")</div>
+        </a>
+        @if (SettingsDesign.WishListVisibility)
+        {
+            <a class="bottom-panel__menu-link @(isWishlistPage ? "cs-l-6" : "color-gray")" href="wishlist">
+                <div class="bottom-panel__menu-icon">
+                    <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5714 10.1422L11.9146 15.7991C11.1335 16.5801 9.86721 16.5801 9.08616 15.7991L3.42931 10.1422C1.47669 8.1896 1.47669 5.02378 3.42931 3.07116C5.38193 1.11853 8.54776 1.11853 10.5004 3.07116C12.453 1.11853 15.6188 1.11853 17.5714 3.07116C19.5241 5.02378 19.5241 8.1896 17.5714 10.1422Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="mobile-header__wishlist-count cs-bg-6 cs-t-4 ng-cloak" data-ng-show="wishlistCount.countObj.count > 0" data-wishlist-count data-start-count="@ShoppingCartService.CurrentWishlist.Count" data-ng-bind="wishlistCount.countObj.count">@ShoppingCartService.CurrentWishlist.Count</span>
+                </div>
+                <div class="bottom-panel__menu-descr">@T("Common.BottomPanel.WishList")</div>
+            </a>
+        }
+
+        @if (CustomerContext.CurrentCustomer.RegistredUser)
+        {
+            <a class="bottom-panel__menu-link @(isAccountPage ? "cs-l-6" : "color-gray")" href="@Url.AbsoluteRouteUrl("MyAccount")">
+                <div class="bottom-panel__menu-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 21C19 17.134 15.866 14 12 14C8.13401 14 5 17.134 5 21M12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7C16 9.20914 14.2091 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="bottom-panel__menu-descr">
+                    @T("Common.BottomPanel.Account")
+                </div>
+            </a>
+        }
+        else
+        {
+            switch (SettingsMain.LoginDisplayMode)
+            {
+                case ELoginDisplayMode.Page:
+                    <a class="bottom-panel__menu-link @(isAccountPage ? "cs-l-6" : "color-gray")" href="@Url.AbsoluteRouteUrl("Login", new {from = UrlService.GetCurrentUrl()})">
+                        <div class="bottom-panel__menu-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 21C19 17.134 15.866 14 12 14C8.13401 14 5 17.134 5 21M12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7C16 9.20914 14.2091 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="bottom-panel__menu-descr">
+                            @T("Common.BottomPanel.SignIn")
+                        </div>
+                    </a>
+                    break;
+                case ELoginDisplayMode.Modal:
+                    <login-modal class="bottom-panel__menu-link @(isAccountPage ? "cs-l-6" : "color-gray")">
+                        <div class="bottom-panel__menu-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 21C19 17.134 15.866 14 12 14C8.13401 14 5 17.134 5 21M12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7C16 9.20914 14.2091 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="bottom-panel__menu-descr">
+                            @T("Common.BottomPanel.SignIn")
+                        </div>
+                    </login-modal>
+                    break;
+            }
+        }
+    </div>
+</div>
+<div class="bottom-panel-spacer bottom-panel-spacer--theme-default"></div>
+

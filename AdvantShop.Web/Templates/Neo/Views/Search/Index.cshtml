@@ -1,0 +1,100 @@
+﻿@using AdvantShop.CMS
+@model AdvantShop.Models.Catalog.SearchCatalogViewModel
+@{
+    Html.AddAsset("catalogSearch");
+}
+@{
+    var sumFounded = Model.Pager.TotalItemsCount + Model.Categories.Categories.Count;
+    string catalogFilterMode = TemplateSettingsProvider.GetSettingValue("CatalogFilterMode");
+    var showSearchColumn = catalogFilterMode == "Default" 
+                           && Model.Filter != null
+                           && SettingsDesign.SearchFilterVisibility
+                           || StaticBlockService.GetPagePartByKeyWithCache("SearchLeftColumn").Enabled;
+}
+<div class="row col-p-v">
+    @if (showSearchColumn)
+    {
+        <div class="col-xs-3 site-body-aside">
+            @if (Model.Filter != null && SettingsDesign.SearchFilterVisibility)
+            {
+                <div data-catalog-filter data-url="search/filter"
+                     data-url-count="search/filterproductCount"
+                     data-found-count="@Model.Pager.TotalItemsCount"
+                     data-parameters='{searchQuery : "@Html.AttributeEncode(Model.SearchCatalogModel.Q)"}'></div>
+            }
+            @Html.StaticBlock("SearchLeftColumn")
+        </div>
+    }
+    <div class="@(showSearchColumn ? "col-xs-9" : "col-xs-12") site-body-main">
+        <div class="page-title-row catalog-title-row">
+            <div class="catalog-title page-title h2">
+                @(string.IsNullOrWhiteSpace(Model.SearchCatalogModel.Q)
+                    ? T("Search.Index.EnterSearchTerm")
+                      : T("Search.Index.Found", sumFounded, Model.SearchCatalogModel.Q.HtmlEncode()))
+            </div>
+        </div>
+        @Html.SingleBreadCrumb(Model.SearchCatalogModel.Q)
+
+        @Html.StaticBlock("SearchRightColumnTop")
+        @Html.RenderModules("search_page_top", Model.SearchCatalogModel.Q)
+
+        @Html.Partial("../Catalog/CategoryList", Model.Categories)
+
+        @if (Model.HasProducts)
+        {
+            <div class="row middle-xs m-b-lg">
+                <div class="col-xs">
+                    <div class="catalog-sorting">
+                        @if (catalogFilterMode == "Sidebar" && Model.Filter != null && SettingsDesign.FilterVisibility)
+                        {
+                            <div data-ng-controller="FilterSidebarController as filterSidebar">
+                                <script type="text/ng-template" id="sidebarFilter">
+                                       <div data-catalog-filter data-url="search/filter"
+                                            data-url-count="search/filterproductCount"
+                                            data-found-count="@Model.Pager.TotalItemsCount"
+                                            data-parameters='{searchQuery : "@Html.AttributeEncode(Model.SearchCatalogModel.Q)"}'
+                                            data-count-visible-collapse="10"></div>
+                                </script>
+                                <button type="button"
+                                        class="catalog-filter-trigger"
+                                        data-ng-click="filterSidebar.toggleFilter($event)"
+                                        data-sidebar-container-state="sidebarFilter">
+                                    <svg style="width:24px; margin-right: var(--adv-m-base)" viewBox="0 0 20 18">
+                                        <path fill-rule="evenodd" stroke="none"
+                                              d="M19.5 14.623h-3.94a3.124 3.124 0 0 1-6.12 0H.5v-1.245h8.94a3.124 3.124 0 0 1 6.12 0h3.94v1.245ZM10.622 14a1.878 1.878 0 1 0 3.755 0 1.878 1.878 0 0 0-3.755 0Z"
+                                              clip-rule="evenodd"></path>
+                                        <path fill-rule="evenodd" stroke="none"
+                                              d="M.5 4.623V3.378h3.94a3.124 3.124 0 0 1 6.12 0h8.94v1.245h-8.94a3.124 3.124 0 0 1-6.12 0H.5ZM5.622 4a1.878 1.878 0 1 0 3.755 0 1.878 1.878 0 0 0-3.755 0Z"
+                                              clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>@T("Js.CatalogFilter.Filters")</span>
+                                </button>
+                            </div>
+                        }
+                        @Html.Partial("../Catalog/Sorting", Model.Filter)
+                    </div>
+                </div>
+                @if (Model.Filter.AllowChangeViewMode)
+                {
+                    <div class="col-xs-slim flex middle-xs products-view-variants-wrap end-xs">
+                        @Html.Action("ChangeMode", "Catalog", new { name = "productViewCatalog", viewMode = Model.Filter.ViewMode })
+                    </div>
+                }
+            </div>
+            <div class="products-view products-view-@Model.Filter.ViewMode products-view-container" data-product-view-mode
+                 data-name="productViewCatalog" data-ng-class="catalog.getViewClass('productViewCatalog')" data-current="@Model.Filter.ViewMode">
+                @Html.Partial("_ProductView", Model.Products)
+            </div>
+            @Html.Paging(Model.Pager)
+        }
+        else if (sumFounded == 0)
+        {
+            <div class="row">
+                <div class="col-xs-12" style="text-align: center;">
+                    @T("Search.Index.NothingFound")
+                </div>
+            </div>
+        }
+        @Html.StaticBlock("SearchRightColumnBottom")
+    </div>
+</div>

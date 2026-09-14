@@ -1,0 +1,34 @@
+<div class="sticky-page-name m-b-sm" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                Список заявок на поступление
+            </h1>
+        </div>
+        <!--<div class="page-name-block-item-additional">
+            <ui-modal-trigger data-controller="'ModalAddEditRarClientCtrl'" controller-as="ctrl" on-close="$ctrl.gridClients.fetchData()"
+                              template-url="../modules/RemindAboutReceipt/content/scripts/clientsList/modal/AddEditRarClient.html">
+                <button class="btn btn-sm btn-success" type="button">
+                    <span class="fa fa-plus"></span>
+                    Добавить заявку
+                </button>
+            </ui-modal-trigger>
+        </div>-->
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-11">
+            <ui-grid-custom grid-unique-id="gridClients"
+                            grid-row-identificator="'Id'"
+                            grid-on-init="$ctrl.gridClientsOnInit(grid)"
+                            grid-options="$ctrl.gridClientsOptions"
+                            grid-url="'../module/raradmin/getClients'"
+                            grid-inplace-url="'../module/raradmin/inplaceClient'"
+                            grid-extend-ctrl="$ctrl">
+                <ui-grid-custom-footer class="ui-grid-custom-footer" ng-bind="$ctrl.gridClients.TotalString">
+                </ui-grid-custom-footer>
+            </ui-grid-custom>
+        </div>
+    </div>
+</div>

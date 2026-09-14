@@ -1,0 +1,69 @@
+﻿@using AdvantShop.Catalog
+@using AdvantShop.Helpers
+@model AdvantShop.ViewModel.Home.MainPageProductsViewModel
+
+@Html.RenderModules("mainpage_products_before")
+<div class="products-specials-container" id="homeMainPageProducts">
+    @foreach (var productList in Model.ProductLists)
+    {
+        if (productList.Products.Count > 0)
+        {
+            var cssClass = "";
+
+            if (productList.Type == EProductOnMain.Best)
+            {
+                cssClass = "products-specials-best-h";
+            }else if (productList.Type == EProductOnMain.New || productList.Type == EProductOnMain.NewArrivals)
+            {
+                cssClass = "products-specials-new-h";
+            }else if (productList.Type == EProductOnMain.Sale)
+            {
+                cssClass = "products-specials-discount-h";
+            }
+                    
+            <article class="products-specials-block products-specials-list cs-br-1">
+                <header class="products-specials-header">
+                    <h2
+                        @Html.Raw(SettingsDesign.OnePageCatalog && productList.UrlPath.IsNotEmpty() ? "id=\"" + StringHelper.ToAnchor(productList.UrlPath) + "\"" : "")
+                        class="h-inline @cssClass">
+                        @Html.Raw(productList.Title)
+                    </h2>
+                    @{
+                        var routeParams = new
+                        {
+                            type = productList.Type.ToString().ToLower(),
+                            list = productList.Type == EProductOnMain.List ? productList.UrlPath : null
+                        };
+                    }
+                    @if (!SettingsDesign.OnePageCatalog)
+                    {
+                        <a href="@Url.AbsoluteRouteUrl("ProductList", routeParams)" class="products-specials-more">
+                            @Html.Raw(productList.LinkText)
+                        </a>
+                    }
+                </header>
+                <div class="products-view products-view-tile row">
+                    @Html.Partial("_ProductView", productList)
+                </div>
+            </article>
+        }
+        
+        switch (productList.Type)
+        {
+            case EProductOnMain.Best:
+                @Html.StaticBlock("NeoMainpageUnderBest", "static-block-neo-after-best static-block-neo-after-best-desktop")
+                break;
+            case EProductOnMain.New:
+            case EProductOnMain.NewArrivals:
+                @Html.StaticBlock("NeoMainpageUnderNew", "static-block-neo-after-news static-block-neo-after-news-desktop")
+                break;
+            case EProductOnMain.Sale:
+                @Html.StaticBlock("NeoMainpageUnderSale", "static-block-neo-after-sales static-block-neo-after-sales-desktop")
+                break;
+            case EProductOnMain.List:
+                @Html.StaticBlock("NeoMainpageUnderProductlist" + productList.Id.ToString(), "static-block-neo-after-productlist-desktop static-block-neo-after-productlist" + productList.Id.ToString())
+                break;
+        }
+    }
+</div>
+@Html.RenderModules("mainpage_products")

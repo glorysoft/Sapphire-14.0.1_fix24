@@ -1,0 +1,72 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="remind-about-receipt-adv-modal-inner" ng-switch="rarShowNF.currentPage">
+                <div ng-switch-when="main" class="remind-module-show-notification-form">
+                    <a href="" class="adv-modal-close adv-modal-close-main icon-cancel-after link-text-decoration-none adv-close-outside remind-about-receipt-adv-modal-close-main" data-ng-click="modal.close()" data-ng-if="::modal.crossEnable === true" data-translate="Js.Modal.Close">Закрыть</a>
+                    <div data-ng-transclude="" class="modal-header modal-header js-modal-header remind-about-receipt-modal-header" style="text-align:center;" data-modal-header="">
+                        <div class="modal-header-icon remind-about-receipt-modal-header-icon"></div>
+                    </div>
+                    <div class="container-fluid remind-about-receipt-modal-wrap">
+                        <div class="remind-about-receipt-modal-text center-aligner">
+                            {{rarShowNF.form.HeaderForm}}
+                        </div>
+                        <div class="row remind-about-receipt-row" ng-if="rarShowNF.form.ShowEmailInForm">
+                            <span class="col-xs-12 form-field-input vertical-interval-middle">
+                                <input type="email" class="input-small remind-about-receipt-input-small" ng-model="rarShowNF.FormRequest.Email" placeholder="Email" autocomplete="email" required />
+                            </span>
+                        </div>
+                        <div class="row remind-about-receipt-row" ng-if="rarShowNF.form.ShowNameInForm">
+                            <span class="col-xs-12 form-field-input vertical-interval-middle">
+                                <input type="text" class="input-small remind-about-receipt-input-small" ng-model="rarShowNF.FormRequest.Name" placeholder="Имя" autocomplete="name" required />
+                            </span>
+                        </div>
+                        <div class="row remind-about-receipt-row" ng-if="rarShowNF.form.ShowSurnameInForm">
+                            <span class="col-xs-12 form-field-input vertical-interval-middle">
+                                <input type="text" class="input-small remind-about-receipt-input-small" ng-model="rarShowNF.FormRequest.Surname" placeholder="Фамилия" autocomplete="surname" required />
+                            </span>
+                        </div>
+                        <div class="row remind-about-receipt-row" ng-if="rarShowNF.form.ShowPhoneNumberInForm">
+                            <span class="col-xs-12 form-field-input vertical-interval-middle">
+                                <input type="text" class="input-small remind-about-receipt-input-small" ng-model="rarShowNF.FormRequest.PhoneNumber" placeholder="Номер телефона" data_ui_mask_placeholder data-ui-mask="+7(999)999-99-99" autocomplete="on" required />
+                            </span>
+                        </div>
+                        <div class="row remind-about-receipt-row" ng-if="rarShowNF.form.ShowCommentInForm">
+                            <span class="col-xs-12 form-field-input vertical-interval-middle">
+                                <input type="text" class="input-small remind-about-receipt-input-small" ng-model="rarShowNF.FormRequest.Comment" placeholder="Дополнительная информация" required />
+                            </span>
+                        </div>
+                        <div class="row remind-about-receipt-row">
+                            <span class="col-xs-12">
+                                <button type="button" class="btn btn-middle btn-submit vertical-interval-middle" button-validation-success="rarShowNF.sending();" data-button-validation>
+                                    Уведомить о поступлении
+                                </button>
+                            </span>
+                        </div>
+                        <label class="row remind-about-receipt-row" data-ng-if="rarShowNF.form.IsShowUserAgreementText">
+                            <span class="col-xs-12 vertical-interval-middle">
+                                <span class="form-field-input">
+                                    <input class="custom-input-native" type="checkbox" data-ng-model="rarShowNF.FormRequest.Agreement"
+                                           name="agreement" data-ng-init="rarShowNF.FormRequest.Agreement=false"
+                                           data-ng-value="rarShowNF.FormRequest.Agreement" />
+                                    <span class="custom-input-checkbox"></span>
+                                    <span data-ng-bind-html="rarShowNF.form.UserAgreementText"></span>
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div ng-switch-when="success">
+                    <a href="" class="adv-modal-close adv-modal-close-success icon-cancel-after link-text-decoration-none adv-close-outside remind-about-receipt-adv-modal-close-success" data-ng-click="modal.close()" data-ng-if="::modal.crossEnable === true" data-translate="Js.Modal.Close">Закрыть</a>
+                    <div class="modal-success">
+                        <div class="modal-success-icon remind-about-receipt-modal-success-icon"></div>
+                        <div class="modal-success-text remind-about-receipt-modal-success-text"><p data-ng-bind-html="rarShowNF.form.AfterFormTextForUser"></p></div>
+                        <button type="button" class="btn btn-middle btn-submit vertical-interval-middle modal-success-button remind-about-receipt-modal-success-button" ng-click="modal.close();" style="font-size: 16px; font-weight: bold; width: 410px; margin-left: 40px; height: 42px; background-color: #434142;">
+                            <span>Спасибо</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

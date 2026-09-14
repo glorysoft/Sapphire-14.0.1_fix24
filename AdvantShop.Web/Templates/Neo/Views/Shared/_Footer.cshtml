@@ -1,0 +1,24 @@
+﻿<footer class="site-footer">
+    <div class="container-fluid">
+        @Html.Action("NewsSubscription", "News")
+        <div class="row">
+            @Html.StaticBlock("NeoFooterBlock", "footer__static-block col-xs-3")
+            <div class="footer__menu-bottom col-xs-12">
+                @Html.Action("MenuBottom", "Common")
+            </div>
+        </div>
+        <div class="footer-bottom-level">
+            <div class="row between-xs middle-xs">
+                <div class="col-xs-slim footer__social-links">
+                    @Html.Partial("../Common/SocialLinks")
+                </div>
+                <div class="col-xs-slim">
+                    @Html.StaticBlock("RightBottom")
+                </div>
+            </div>
+        </div>
+        <div class="footer__copyright">
+            @Html.Action("Copyright", "Common")
+        </div>
+    </div>
+</footer>

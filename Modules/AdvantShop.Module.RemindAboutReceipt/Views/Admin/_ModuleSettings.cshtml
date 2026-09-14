@@ -1,0 +1,16 @@
+@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.RemindAboutReceipt.Service
+
+@model string
+
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>
+    {
+        url + "modules/" + ModuleSettings.ModuleID + "/content/scripts/modulesettings/controllers/modulesettingsController.js",
+    };
+}
+
+<div data-oc-lazy-load="[@String.Join(",",scripts.Select(x => "'" + x + "?" + ModuleSettings.Version + "'" ))]">
+    <rar-module-settings></rar-module-settings>
+</div>

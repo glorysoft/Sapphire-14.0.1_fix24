@@ -1,0 +1,59 @@
+﻿.cat-image-wrap {
+    padding: var(--adv-m-5) var(--adv-m-1);
+    border-radius: var(--adv-rounded-3);
+
+    img {
+        mix-blend-mode: darken;
+    }
+}
+
+.catalog-view-table {
+    display: block;
+    padding-inline: var(--adv-m-5);
+
+    tbody {
+        display: contents;
+    }
+
+    tr {
+        display: flex;
+        gap: var(--adv-m-1);
+    }
+
+    .cat-cell {
+        padding: var(--adv-m-5) 0;
+        border-radius: var(--adv-rounded-3);
+        margin: 0 0 var(--adv-m-5) 0;
+        flex-basis: 50%;
+        max-width: 50%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cat-name {
+        font-size: var(--adv-text-4);
+    }
+}
+
+.catalog-list {
+    .catalog-product-item {
+        border: 0;
+        margin: 0 var(--adv-m-5) var(--adv-m-1);
+        border-radius: var(--adv-rounded-2);
+
+        &:first-child {
+            border: 0;
+        }
+    }
+
+    .prod-name::after {
+        content: "";
+        mask: url("../../../../images/icons/chevron-right.svg") center no-repeat;
+        mask-size: contain;
+        width: 16px;
+        height: 16px;
+        background-color: currentColor;
+    }
+}

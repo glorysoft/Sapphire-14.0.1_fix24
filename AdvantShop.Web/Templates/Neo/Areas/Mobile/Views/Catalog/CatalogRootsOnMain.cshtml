@@ -1,0 +1,117 @@
+﻿@using AdvantShop.Core.Services.Configuration.Settings
+@using AdvantShop.Areas.Mobile.Models.Catalog
+@using AdvantShop.Catalog
+@using AdvantShop.Core.Services.Catalog.Warehouses
+@model CatalogMenuModel
+@{
+    List<CatalogMenuItem> items = Model.Items;
+    var warehouseIds = WarehouseContext.GetAvailableWarehouseIds();
+
+    var categories =
+        CategoryService.GetCategoriesOnMainPage(SettingsDesign.CountMainPageCategoriesInSection, warehouseIds)
+            .Select(cat => CategoryService.GetCategory(cat.CategoryId))
+            .Where(cat => cat != null && cat.Enabled && cat.ParentsEnabled && !cat.Hidden)
+            .ToList();
+}
+
+@if (categories.Count() > 0)
+{
+    if (TemplateSettingsProvider.Items["MainPageCategoriesViewMode"] == "Tile")
+    {
+        <div class="categories-root-wrap"
+             @Html.Raw(Model.IsFixedCategoriesOnMain && Model.ViewMode != SettingsMobile.eViewCategoriesOnMain.BlocksMode ? "data-sticky-element=\"\" data-ng-class=\"{'cs-bg-7':stickyElement.isPinned}\"" : "")>
+            <div
+                class="categories-root @(Model.ViewMode == SettingsMobile.eViewCategoriesOnMain.WithIcons ? "categories-root--with-icon" : "") @(Model.ViewMode == SettingsMobile.eViewCategoriesOnMain.BlocksMode ? "categories-root--blocks-mode" : "")">
+
+                @if (Model.ViewMode == SettingsMobile.eViewCategoriesOnMain.WithIcons && Model.RootCategoryName.IsNotEmpty())
+                {
+                    <div class="categories-root__header">
+                        <div class="categories-root__header-title">@Model.RootCategoryName</div>
+                    </div>
+                }
+
+                <div
+                    class="categories-root__items @(Model.ViewMode == SettingsMobile.eViewCategoriesOnMain.BlocksMode ? "categories-root__items--blocks-mode" : "")">
+                    @foreach (var category in categories)
+                    {
+                        <a @Html.LinkHref(Url.RouteUrl("Category", new { url = category.UrlPath }))
+                           class="categories-root__item cs-bg-4 cs-l-2 @(Model.ViewMode == SettingsMobile.eViewCategoriesOnMain.BlocksMode ? "categories-root__item--blocks-mode" : "")">
+                            <div
+                                class="categories-root__item-inner @(Model.ViewMode == SettingsMobile.eViewCategoriesOnMain.BlocksMode ? "categories-root__item-inner--blocks-mode" : "")">
+                                @if (Model.ViewMode == SettingsMobile.eViewCategoriesOnMain.BlocksMode && category.MiniPicture != null)
+                                {
+                                    <div
+                                        class="categories-root__item-icon-wrap categories-root__item-icon-wrap--blocks-mode">
+                                        <img class="categories-root__item-icon"
+                                             src="@category.MiniPicture.ImageSrcSmall()" alt="@category.MiniPicture.Alt"
+                                             title="@category.MiniPicture.Title" />
+                                    </div>
+                                }
+                                else
+                                {
+                                    if (category.Icon != null && !string.IsNullOrEmpty(category.Icon.IconSrc(true)) && Model.ViewMode == SettingsMobile.eViewCategoriesOnMain.WithIcons)
+                                    {
+                                        <div class="categories-root__item-icon-wrap">
+                                            <img class="categories-root__item-icon" src="@category.Icon.IconSrc(true)"
+                                                 width="@(Model.PhotoWidth)" height="@(Model.PhotoHeight)"
+                                                 alt="@category.Icon.Alt" title="@category.Icon.Title" />
+                                        </div>
+                                    }
+                                }
+
+                                <div
+                                    class="categories-root__item-name @(Model.ViewMode == SettingsMobile.eViewCategoriesOnMain.BlocksMode ? "categories-root__item-name--blocks-mode" : "")">@category.Name</div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        foreach (var category in categories)
+        {
+            var products = ProductService.GetProductsByCategory(category.CategoryId, SettingsDesign.CountMainPageProductInSection, ESortOrder.NoSorting);
+
+            if (!products.Any())
+            {
+                continue;
+            }
+
+            var productViewModel = new ProductViewModel(products, true);
+            productViewModel.CountProductsInLine = SettingsDesign.CountMainPageProductInLine;
+            productViewModel.ShowBriefDescription = SettingsMain.MainPageVisibleBriefDescription;
+            
+            <div class="prodList-section mainpage-products">
+                <div class="cs-t-9 mainpage-products__header">
+                    <div class="mainpage-products__header-title">
+
+                        <a href="@Url.RouteUrl("Category", new { url = category.UrlPath })">
+                            @Html.Raw(category.Name)
+                        </a>
+
+
+                    </div>
+
+                    <div class="mainpage-products__all">
+                        <a class="mainpage-products__all-link"
+                           href="@Url.RouteUrl("Category", new { url = category.UrlPath })">
+                            Подробнее
+                        </a>
+                    </div>
+
+                </div>
+                <div
+                    data-ng-class="prodList-section__content">
+                    <div class="catalog-view products-view-mobile-modern-tile">
+                        <div class="catalog-view__product-item-wrap">
+                            @Html.Partial("_ProductView", productViewModel)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    }
+}

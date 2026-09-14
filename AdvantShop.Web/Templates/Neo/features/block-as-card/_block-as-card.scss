@@ -1,0 +1,27 @@
+﻿%block-as-card {
+    background-color: var(--cs-11);
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+
+%block-as-card-xs-radius {
+    @extend %block-as-card;
+    border-radius: var(--adv-rounded-1);
+}
+
+%block-as-card-sm-radius {
+    @extend %block-as-card;
+    border-radius: var(--adv-rounded-2);
+}
+
+%block-as-card-md-radius {
+    @extend %block-as-card;
+    border-radius: var(--adv-rounded-3);
+}
+
+%block-as-card-lg-radius {
+    @extend %block-as-card;
+    border-radius: var(--adv-rounded-4);
+}
+

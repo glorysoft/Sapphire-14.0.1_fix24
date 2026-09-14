@@ -1,0 +1,9 @@
+.products-view-mobile-modern-list {
+    .mobile-product-view-item-image-inner {
+        --product-view-photo-size: 130px;
+    }
+    .products-view__meta{
+        flex-grow: 1;
+        width: 100%;
+    }
+}

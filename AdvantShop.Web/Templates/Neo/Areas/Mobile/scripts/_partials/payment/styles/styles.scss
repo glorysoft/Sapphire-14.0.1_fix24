@@ -1,0 +1,18 @@
+﻿.payment-item {
+    &__title {
+        font-size: var(--adv-text-2) !important;
+        line-height: 1.2;
+    }
+
+    &__description {
+        font-size: var(--adv-text-3) !important;
+        line-height: 1.2;
+        padding-top: 0;
+        color: var(--cs-3);
+    }
+
+    &--more {
+        font-size: var(--adv-text-2);
+        line-height: 1.2;
+    }
+}

@@ -1,0 +1,21 @@
+@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.RemindAboutReceipt.Service
+@using AdvantShop.Web.Infrastructure.Extensions;
+
+@model string
+
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>
+{
+        url + "modules/" + ModuleSettings.ModuleID + "/content/scripts/clientsList/clientsList.js",
+        url + "modules/" + ModuleSettings.ModuleID + "/content/scripts/clientsList/modal/ModalAddEditRarClientCtrl.js",
+    };
+    var version = Html.GetModuleVersion(ModuleSettings.ModuleID);
+}
+
+<div data-oc-lazy-load="[@String.Join(",",scripts.Select(x => "'" + x + "?" + version + "'" ))]">
+    <rar-module-clients-list></rar-module-clients-list>
+</div>
+
+@Html.Action("GetPromoContentBannersData", "RARAdmin")

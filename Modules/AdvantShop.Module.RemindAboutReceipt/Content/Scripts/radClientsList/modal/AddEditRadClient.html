@@ -1,0 +1,49 @@
+﻿<form novalidate name="addEditRadClientForm">
+    <div class="modal-header">
+        <ui-modal-cross></ui-modal-cross>
+        <h2 class="modal-header-title">{{ ctrl.mode == 'add' ? 'Новая заявка' : 'Редактирование заявки' }} </h2>
+    </div>
+    <div class="modal-body" ng-init="ctrl.addEditRadClientForm = addEditRadClientForm">
+        <div class="form-group row">
+            <label class="col-xs-4 control-label">
+                <span class="required">
+                    Email
+                </span>
+            </label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" ng-model="ctrl.client.Email" validation-input-text="Email" required />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                Отправлено
+            </div>
+            <div class="col-xs-8">
+                <label class="adv-checkbox-label control-checkbox">
+                    <input type="checkbox" class="adv-checkbox-input" ng-model="ctrl.client.SendNotification" />
+                    <span class="adv-checkbox-emul"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                Лид
+            </div>
+            <div class="col-xs-8">
+                <a ng-if="ctrl.client.LeadId !== null && ctrl.client.LeadId > 0" href="leads?salesFunnelId=-1&useKanban=False#?leadIdInfo={{ ctrl.client.LeadId }}" target="_blank">
+                    <span ng-bind="ctrl.client.LeadTitle"></span>
+                </a>
+                <button class="btn btn-sm btn-success" ng-if="ctrl.client.LeadId === null || ctrl.client.LeadId <= 0" ng-click="ctrl.createLead();">
+                    <i class="fa fa-plus"></i>Создать лид
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-save btn-primary" type="button"
+                data-button-validation-success="ctrl.save()" data-button-validation ladda="ctrl.btnSleep"
+                disabled ng-disabled="ctrl.mode == 'edit' && (!ctrl.formInited || !addEditRadClientForm.modified)"
+                ng-bind="ctrl.mode == 'add' ? 'Добавить' : 'Сохранить'"></button>
+        <button class="btn btn-default btn-cancel" type="button" ng-click="ctrl.close()">Отмена</button>
+    </div>
+</form>

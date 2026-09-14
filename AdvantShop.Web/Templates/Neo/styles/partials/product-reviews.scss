@@ -1,0 +1,79 @@
+﻿
+.product-review-card{
+    background-color: var(--cs-11);
+    border: 0;
+    flex-grow: 1;
+    &:hover{
+        box-shadow: none;
+    }
+
+    &__product-name {
+        --_title-line-clamp: var(--title-line-clamp, 3);
+        font-weight: 500;
+        line-height: 1.2;
+        font-size: var(--adv-h7);
+        display: -webkit-box;          /* Включаем флексбокс-модель (старая версия) */
+        -webkit-box-orient: vertical;  /* Вертикальное направление содержимого */
+        -webkit-line-clamp: var(--_title-line-clamp);         /* Ограничиваем количество строк */
+        overflow: hidden;              /* Скрываем выходящий за границы текст */
+    }
+
+    &__name{
+        font-weight: 500;
+        font-size: var(--adv-m-6);
+    }
+    &__text{
+        padding: 0;
+        font-size: var(--adv-text-3);
+    }
+
+    &__inner{
+        display: flex;
+        flex-direction: column;
+    }
+    &__rating{
+        order: -1;
+    }
+    &-container{
+        display: flex;
+        align-items: start;
+        background-color: var(--cs-11);
+        border-radius: var(--adv-rounded-4);
+        padding: 16px;
+        height: 100%;
+    }
+    &__product-photo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        margin-bottom: 18px;
+        width: 20%;
+        img{
+            mix-blend-mode: darken;
+        }
+    }
+
+    &__add-date {
+        color: var(--cs-3);
+    }
+
+    &__author-name {
+        font-size: var(--adv-text-4);
+        color: var(--cs-3);
+    }
+}
+
+.product-review-card-rating {
+    &__count {
+        &--dislikes,
+        &--likes {
+            color: var(--cs-3);
+        }
+    }
+}
+@media (width >=992px) {
+    .product-review-card-wrap-container {
+        padding-inline: 0.625rem;
+    }
+}

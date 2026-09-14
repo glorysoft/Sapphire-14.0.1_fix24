@@ -1,0 +1,18 @@
+﻿.order-product__service-message{
+    font-size: var(--adv-h6);
+    letter-spacing: -1px;
+}
+.order-product__data,
+.mobile-product-view-item-price-data{
+    padding-inline: 0;
+}
+.order-product__last-order{
+    font-size: var(--adv-text-2);
+}
+.order-product__data--mobile,
+.mobile-product-view-item-price-data{
+    text-align: left;
+}
+.order-product__last-order{
+    display: block;
+}

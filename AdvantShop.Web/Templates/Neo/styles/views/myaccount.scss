@@ -1,0 +1,59 @@
+﻿.myaccount-page {
+    &__tabs {
+        padding: var(--adv-m-4) 0;
+        border-radius: var(--adv-rounded-4);
+        table-layout: fixed;
+
+        .tabs-header-item.cs-bg-1 {
+            background-color: var(--cs-11);
+            border-radius: var(--adv-rounded-2);
+
+        }
+
+        .tabs-header-item-link.cs-l-4 {
+            color: var(--cs-1);
+        }
+
+        .tabs-header-item-link {
+            padding: var(--adv-m-3) var(--adv-m-4);
+            font-size: var(--adv-text-1);
+        }
+
+        .tabs-headers {
+            padding-right: var(--adv-m-4);
+            width: 30%;
+        }
+    }
+
+    &__bonus-tab-header {
+        display: flex;
+        align-items: center;
+        column-gap: 12px;
+
+        > span {
+            font-size: var(--adv-text-5);
+            line-height: 1;
+        }
+    }
+}
+
+.myaccount-subtitle {
+    margin-bottom: var(--adv-m-7);
+}
+
+.myaccount-btn-logout {
+    display: flex;
+    justify-content: start;
+    color: red;
+}
+
+
+@media(min-width: 1024px){
+    .myaccount-page {
+        &__tabs {
+            .tabs-headers {
+                width: 25%;
+            }
+        }
+    }
+}

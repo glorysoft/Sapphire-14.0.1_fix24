@@ -1,0 +1,71 @@
+<div class="sms-confirmation-add-field">
+    <div class="row middle-xs" ng-if="moduleSmsConfirmation.errorReset">
+        <div class="col-xs-12">
+            <div class="alert" ng-bind="moduleSmsConfirmation.errorReset"></div>
+        </div>
+    </div>
+    <div ng-switch="moduleSmsConfirmation.isMobile">
+    <div class="row middle-xs" ng-switch-when="false">
+        <div class="col-xs-12 col-sm-4">
+            <span class="form-field-name vertical-interval-xsmall input-required">Код подтверждения:</span>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+            <span class="form-field-input vertical-interval-xsmall">
+                <input type="text"
+                       class="input-small"
+                       data-ng-model="moduleSmsConfirmation.smsCode"
+                       id="moduleSmsConfirmationSmsCode"
+                       maxlength="4"
+                       name="smsConfirmationSmsCode"
+                       required="required"
+                       data-ng-change="moduleSmsConfirmation.confirmSmsCode();"
+                       ng-disabled="!moduleSmsConfirmation.smsCodeEnabled">
+            </span>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <button type="button" class="btn btn-small btn-action" style="cursor: pointer;" data-ng-if="!moduleSmsConfirmation.smsCodeConfirmed" data-ng-click="moduleSmsConfirmation.sendSmsCode();" data-ng-disabled="!moduleSmsConfirmation.enableRetrySend">
+                Получить код
+            </button>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4" data-ng-switch="moduleSmsConfirmation.smsCodeConfirmed">
+            <div data-ng-switch-when="true">
+                <span style="color: #04ab1a;">Телефон подтвержден</span>
+            </div>
+            <div data-ng-switch-when="false">
+                <span style="color: #ff0000;">Телефон не подтвержден</span>
+            </div>
+        </div>
+    </div>
+    <div class="row middle-xs" ng-switch-when="true">
+        <div class="col-xs-12 col-md-4">
+            <div class="form-input-value">
+                <input type="text"
+                       class="input-middle"
+                       data-ng-model="moduleSmsConfirmation.smsCode"
+                       id="smsConfirmationSmsCode"
+                       maxlength="4"
+                       name="smsConfirmationSmsCode"
+                       required="required"
+                       placeholder="Код подтверждения"
+                       data-ng-change="moduleSmsConfirmation.confirmSmsCode();"
+                       ng-disabled="!moduleSmsConfirmation.smsCodeEnabled">
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="form-input-value" data-ng-switch="moduleSmsConfirmation.smsCodeConfirmed">
+                <span data-ng-switch-when="true">
+                    <span style="color: #04ab1a;">Телефон подтвержден</span>
+                </span>
+                <span data-ng-switch-when="false">
+                    <span style="color: #ff0000;">Телефон не подтвержден</span>
+                </span>
+            </div>
+        </div>
+        <span class="col-xs-12 col-md-4">
+            <button type="button" class="btn btn-small btn-action" data-ng-if="!moduleSmsConfirmation.smsCodeConfirmed" data-ng-click="moduleSmsConfirmation.sendSmsCode();" data-ng-disabled="!moduleSmsConfirmation.enableRetrySend">
+                Получить код
+            </button>
+        </span>
+    </div>
+    </div>
+</div>

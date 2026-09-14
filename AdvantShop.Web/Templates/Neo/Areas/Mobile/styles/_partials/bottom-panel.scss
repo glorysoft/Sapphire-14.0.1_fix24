@@ -1,0 +1,28 @@
+﻿.bottom-panel {
+    &__menu-icon {
+        line-height: normal;
+        min-height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: var(--adv-m-base);
+    }
+
+    &--theme-default {
+        padding: 0 var(--adv-m-5) var(--adv-m-2);
+        background-color: transparent;
+        border: 0;
+        position: fixed;
+    }
+    &__menu-block{
+        &--theme-default {
+            background-color: var(--cs-2);
+            padding: var(--adv-m-1) var(--adv-m-5);
+            border-radius: var(--adv-rounded-3);
+        }
+    }
+    &-spacer--theme-default{
+        height: var(--feature-sticky-buy-button-bottom);
+        background-color: var(--cs-5);
+    }
+}

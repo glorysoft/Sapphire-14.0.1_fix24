@@ -1,0 +1,28 @@
+﻿.shipping-item {
+    &__title-wrap {
+        --row-gap-shipping-list: 5px
+    }
+
+    &__price,
+    &__title {
+        font-size: var(--adv-text-2);
+        line-height: 1.2;
+    }
+
+    &__note,
+    &__delivery-time,
+    &__description {
+        font-size: var(--adv-text-3);
+        line-height: 1.2;
+    }
+
+    .btn {
+        text-transform: none;
+        padding: 8px 14px;
+    }
+
+    &--more {
+        font-size: var(--adv-text-2);
+        line-height: 1.2;
+    }
+}

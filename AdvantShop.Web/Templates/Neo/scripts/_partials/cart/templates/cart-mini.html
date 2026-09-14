@@ -1,0 +1,124 @@
+<div class="js-cart-mini-block cart-mini-block"
+     data-ng-class="{'cart-mini-empty': cartMiniList.cartData.CartProducts.length === 0}">
+    <div class="cart-mini-client-code" data-ng-if="cartMiniList.cartData.ClientCode">
+        <span class="cart-mini-client-code__symbol">№</span>
+        <span  class="cart-mini-client-code__value" data-ng-bind="cartMiniList.cartData.ClientCode"></span>
+    </div>
+    <div class="cart-mini-scrollbar-block"
+         data-window-click="cartMiniList.clickOut(event)">
+        <div class="cart-mini-scrollbar"
+             data-ng-switch="cartMiniList.cartData.CartProducts.length > 0">
+            <ul class="cart-mini-list"
+                data-ng-switch-when="true"
+                data-window-scroll="cartMiniList.windowScroll(event)">
+                <li class="cart-mini-list__item cart-mini-product"
+                    data-ng-repeat="item in cartMiniList.cartData.CartProducts track by item.ShoppingCartItemId">
+                    <div class="cart-mini-product__info">
+                        <figure class="cart-mini-product__photo">
+                            <a class="cart-mini-product__photo-link" href="{{::item.Link}}">
+                                <img data-ng-src="{{::item.PhotoPath}}" alt="{{::item.PhotoAlt}}"/>
+                            </a>
+                        </figure>
+                        <div class="cart-mini-product__info-inner">
+                            <div class="cart-mini-product__price">
+                                <div class="cart-mini-product__price-inner">
+                                    <div data-ng-if="item.Discount.HasValue && !item.IsGift"
+                                         class="cart-mini-product__price-value cart-mini-product__price-value--with-discount">
+                                        <span data-ng-bind="item.Cost"></span>
+                                        <span class="cart-mini-product__price-unit" data-ng-if="cartMiniList.cartData.IsShowUnits && item.Unit"
+                                              data-ng-bind="'/' + item.Unit"></span>
+                                    </div>
+                                    <div class="cart-mini-product__price-value"
+                                         data-ng-class="{'cart-mini-product__price-value--old-price' : item.Discount.HasValue && !item.IsGift}">
+                                        <span data-ng-bind="item.CostWithoutDiscount"></span>
+                                        <span class="cart-mini-product__price-unit" data-ng-if="cartMiniList.cartData.IsShowUnits && item.Unit"
+                                              data-ng-bind="'/' + item.Unit"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="cart-mini-product__name">
+                                <a href="{{::item.Link}}" class="cart-mini-product__name-link" data-ng-bind="::item.Name"></a>
+                            </div>
+                            <div class="cart-mini-product__attributes">
+                                <div class="cart-mini-product__properties-item" data-ng-if="item.SizeName">
+                                    <span class="cart-mini-product__properties-name cs-t-3"
+                                          data-ng-bind="(cartMiniList.cartData.SizeHeader + ':')"></span>
+                                    <span class="cart-mini-product__properties-value" data-ng-bind="item.SizeName"></span>
+                                </div>
+                                <div class="cart-mini-product__properties-item" data-ng-if="item.ColorName">
+                                    <span class="cart-mini-product__properties-name cs-t-3"
+                                          data-ng-bind="(cartMiniList.cartData.ColorHeader + ':')"></span>
+                                    <span class="cart-mini-product__properties-value" data-ng-bind="item.ColorName"></span>
+                                </div>
+
+                                <div class="cart-mini-product__custom-option" data-ng-if="item.SelectedOptions.length > 0"
+                                     data-ng-repeat="option in item.SelectedOptions track by $index">
+                                    <span class="cs-t-3" data-ng-bind="(option.CustomOptionTitle + ':&nbsp;')"></span>
+                                    <span>
+                                            <span
+                                                data-ng-if="!option.OptionTitle && !option.OptionText && !option.FormatPrice && !(option.OptionAmount > 1)">
+                                                {{option.CustomOptionTitle + option.OptionTitle}}
+                                            </span>
+                                            <span data-ng-bind="option.OptionTitle"></span>
+                                            <span data-ng-bind="option.OptionText"></span>
+                                            <span data-ng-bind="option.FormatPrice"></span>
+                                            <span
+                                                data-ng-if="option.OptionAmount != null && option.OptionAmount > 1"
+                                                data-ng-bind="'x ' + option.OptionAmount"></span>
+                                        </span>
+                                </div>
+                            </div>
+                            <div class="cart-mini-product__controls">
+                                <div class="cart-mini-product__count"
+                                     data-ng-if="!item.FrozenAmount || item.Avalible.length > 0 || (item.Avalible == '' && item.AvailableAmount == 0)">
+                                    <div class="cart-mini-product__amount-control spinbox--mobile" data-ng-if="!item.FrozenAmount" data-spinbox=""
+                                         data-value="item.Amount"
+                                         data-proxy="item.ShoppingCartItemId" data-update-fn="cartMiniList.updateAmount(value, proxy)"
+                                         data-step="item.Multiplicity" data-max="item.MaxAmount" data-min="item.MinAmount">
+                                        <div class="row middle-xs">
+                                            <div>
+                                                <a href="javascript:void(0)" class="spinbox-more icon-plus-before link-text-decoration-none"
+                                                   data-ng-click="spinbox.more()"
+                                                   data-ng-class="{'cs-l-3 spinbox-button-disabled':spinbox.moreBtnDisabled}"></a>
+                                                <a href="javascript:void(0)"
+                                                   class="spinbox-less icon-minus-before link-text-decoration-none cs-l-3 spinbox-button-disabled"
+                                                   data-ng-click="spinbox.less()"
+                                                   data-ng-class="{'cs-l-3 spinbox-button-disabled':spinbox.lessBtnDisabled}"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cart-mini-product__amount-error-wrap" data-ng-if="item.Avalible.length > 0">
+                                        <div class="cart-mini-product__amount-error" data-ng-bind="item.Avalible"></div>
+                                    </div>
+                                    <div class="cart-mini-product__amount-error-wrap" data-ng-if="item.Avalible == '' && item.AvailableAmount == 0">
+                                        <div class="cart-mini-product__amount-error">{{::'Js.Cart.PreOrder' | translate }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cart-mini-product__remove-item-block">
+                                    <button type="button" data-ng-click="cartMiniList.remove(item.ShoppingCartItemId)"
+                                            class="btn cart-mini-remove-btn cart-mini-product__remove-item"
+                                            title="{{ ::'Js.Cart.Delete' | translate }}"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+            <div data-ng-switch-when="false">
+                <div class="cart-mini-empty-text">
+                    {{ ::'Js.Cart.EmptyCart' | translate }}
+                </div>
+                <a href="."
+                   data-ng-bind="::'Js.Cart.GoToCatalog' | translate"
+                   class="btn-middle btn btn-confirm btn-block">К покупкам</a>
+            </div>
+        </div>
+    </div>
+    <div class="cart-mini__footer-custom" data-ng-if="cartMiniList.cartData.CartProducts.length > 0">
+        <div class="cart-mini__module" data-module data-key="minicartmessage" data-update-on-load="true"></div>
+        <div class="cart-mini__result-block-custom" data-cart-mini-footer data-cart-data="cartMiniList.cartData"></div>
+    </div>
+</div>

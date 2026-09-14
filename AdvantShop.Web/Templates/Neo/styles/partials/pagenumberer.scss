@@ -1,0 +1,28 @@
+
+
+.pagenumberer-next,
+.pagenumberer-prev {
+    text-decoration: none;
+    vertical-align: middle;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.pagenumberer-prev .icon-left-open-after,
+.pagenumberer-next .icon-right-open-after{
+
+    &::after {
+        mask: url('../../images/icons/chevron-right.svg') center no-repeat;
+        mask-size: contain;
+        background-color: currentColor;
+        width: 16px;
+        height: 16px;
+        margin-top: -7px;
+    }
+}
+
+.pagenumberer-prev .icon-left-open-after::after {
+        transform: rotate(180deg);
+}

@@ -1,0 +1,107 @@
+﻿.products-specials-block {
+    margin-bottom: var(--adv-m-11);
+}
+
+.products-specials-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.products-specials-header h1,
+.products-specials-header .h1,
+.products-specials-header h2,
+.products-specials-header .h2,
+.products-specials-more {
+    margin-bottom: var(--adv-m-9);
+}
+
+.carousel-main-wrap {
+    padding: 0;
+}
+
+html:not(.mobile-version) .feature\:carousel-change-mode--dynamic-cursor {
+    .carousel-main {
+        .carousel-inner {
+            z-index: 5;
+        }
+
+        .carousel-inner {
+            pointer-events: none;
+        }
+
+        .carousel-text-block__title,
+        .carousel-text-block__text {
+            a {
+                pointer-events: auto;
+            }
+        }
+
+        .carousel-button {
+            pointer-events: auto;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+
+        .carousel-nav-prev,
+        .carousel-nav-next {
+            border-radius: 0;
+        }
+    }
+}
+
+.carousel-main-item img,
+.carousel-main-item video {
+    border-radius: var(--adv-rounded-4);
+    width: 100%;
+    height: auto;
+}
+
+.products-specials-more {
+    font-size: var(--adv-text-1);
+}
+
+.slider-main-block, stories-list, .static-block-on-main-page, .reviews-sliders {
+    margin-bottom: var(--adv-m-9);
+}
+
+.slider-main-block:not(:has(>*)) {
+    display: none;
+}
+
+.slider-main-block:has(.buy-in-time-block) {
+    display: flex;
+}
+
+.carousel-main-wrap--change-mode-default{
+    .carousel-horizontal.carousel-main {
+        .carousel-main-prev{
+            left: 20px;
+        }
+        .carousel-main-next{
+            right: 20px;
+        }
+        .carousel-main-prev,
+        .carousel-main-next {
+            opacity: 0;
+        }
+
+        &:hover {
+            .carousel-main-prev,
+            .carousel-main-next {
+                opacity: 1;
+            }
+        }
+        .carousel-text-block-wrap{
+            margin-inline: var(--adv-m-10);
+        }
+    }
+}
+#homeMainPageProducts{
+    margin-top: var(--adv-m-9);
+}

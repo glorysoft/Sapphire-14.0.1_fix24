@@ -1,0 +1,78 @@
+﻿@using AdvantShop.CMS;
+@using AdvantShop.Core.Services.Configuration.Settings
+@model AdvantShop.Areas.Mobile.Models.Home.HomeMobileViewModel
+@{
+    Html.AddAsset("home");
+}
+
+@Html.Partial("_HomeHead", Model)
+
+<div id="content">
+    @* @Html.Action("GeoMode", "Home", new { area = "Mobile" }) *@
+    @Html.StaticBlock("mainpage_before_carousel")
+    @Html.Action("Carousel", "Home")
+    @Html.RenderModules("mobile_after_carousel")
+    @Html.RenderModules("module_stories")
+    @if (!StaticBlockService.GetPagePartByKeyWithCache("TextOnMain").Content.Contains("Это тег H1"))
+    {
+        <div class="mobile-content-padding">
+            @Html.StaticBlock("TextOnMain")
+        </div>
+    }
+    @if (SettingsMobile.SearchBlockLocation == SettingsMobile.eSearchBlockLocation.OnlyOnMainPage)
+    {
+        <div class="search-block search-block--only-on-main-page">
+            @using (Html.BeginForm("Index", "Search", new { area = "" }, FormMethod.Get, new { @class = "search-block__form search-block__form--only-on-main-page", novalidate = "novalidate" }))
+            {
+            <div class="search-block__button-container search-block__button-container--only-on-main-page">
+                <button type="submit" class="search-block__button search-block__button--only-on-main-page"
+                        aria-label="@T("Search.Index.SearchTitle")">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20"
+                         class="mobile-header__icon mobile-header__search-icon">
+                        <path fill="currentColor"
+                              d="M495,466.2L377.2,348.4c29.2-35.6,46.8-81.2,46.8-130.9C424,103.5,331.5,11,217.5,11C103.4,11,11,103.5,11,217.5   S103.4,424,217.5,424c49.7,0,95.2-17.5,130.8-46.7L466.1,495c8,8,20.9,8,28.9,0C503,487.1,503,474.1,495,466.2z M217.5,382.9   C126.2,382.9,52,308.7,52,217.5S126.2,52,217.5,52C308.7,52,383,126.3,383,217.5S308.7,382.9,217.5,382.9z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="search-block__input-container search-block__input-container--only-on-main-page">
+                <div class="autocompleter search-block__autocompleter search-block__autocompleter--only-on-main-page"
+                     data-autocompleter
+                     data-field="Name"
+                     data-link-all="search"
+                     data-template-path="./scripts/_common/autocompleter/templates/categoriesProducts.html"
+                     data-request-url="search/autocomplete">
+                    <input data-autocompleter-input
+                           type="search"
+                           autocomplete="off"
+                           placeholder="@T("Search.SearchBlockMobile.SearchPlaceholder")"
+                           required
+                           name="q"
+                           data-ng-model="app.searchQuery"
+                           class=" search-block__input search-block__input--only-on-main-page input-small"/>
+                </div>
+            </div>
+            }
+        </div>
+    }
+    @Html.RenderModules("mainpage_block")
+    @Html.Action("CatalogRootsOnMain", "Catalog")
+    @Html.RenderModules("mainpage_products_before")
+
+    @if (Model.MainPageCatalogView != SettingsMobile.eMainPageCatalogView.None)
+    {
+        foreach (var productList in Model.ProductLists)
+        {
+            @Html.Action("MainPageProducts", "Home", new { products = productList })
+        }
+    }
+
+    @Html.RenderModules("mainpage_products")
+    @Html.RenderModules("store_reviews")
+
+    @Html.Action("ProductReviewsOnMain", "Product", new { count = 10, area = "" })
+    <div class="mobile-content-padding">
+        @Html.StaticBlock("TextOnMain2")
+    </div>
+    @Html.Action("NewsBlock", "News", new { area = "" })
+</div>

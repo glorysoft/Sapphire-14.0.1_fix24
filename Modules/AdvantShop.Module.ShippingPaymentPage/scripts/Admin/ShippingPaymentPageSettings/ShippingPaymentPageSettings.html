@@ -1,0 +1,156 @@
+﻿<form is-mobile ng-class="{'container-fluid' : !isMobile.value}" novalidate="novalidate" name="settingsform">
+    <div class="form-group row middle-xs">
+        <label class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+            Средний вес для расчета
+        </label>
+        <div class="col-xs-12 col-md-9 relative">
+            <div class="input-group module__price-margin-in-numbers">
+                <input type="number" class="form-control"
+                       ng-model="$ctrl.settings.DefaultWeight">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" value=""><span>кг</span></button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <label class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+            Средние ширина, высота, длина для расчёта
+        </label>
+        <div class="col-xs-12 col-md-9 relative">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="input-group module__price-margin-in-numbers">
+                        <input type="number" class="form-control"
+                               ng-model="$ctrl.settings.DefaultWidth">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" value=""><span>мм</span></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    <div class="input-group module__price-margin-in-numbers">
+                        <input type="number" class="form-control" ng-class="{'m-l-sm' : !isMobile.value}"
+                               ng-model="$ctrl.settings.DefaultHeight">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" value=""><span>мм</span></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    <div class="input-group module__price-margin-in-numbers">
+                        <input type="number" class="form-control" ng-class="{'m-l-sm' : !isMobile.value}"
+                               ng-model="$ctrl.settings.DefaultLength">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" value=""><span>мм</span></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <label class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+            Средняя цена для расчета
+        </label>
+        <div class="col-xs-12 col-md-4">
+            <div class="input-group module__price-margin-in-numbers--more-btns">
+                <input type="number" class="form-control"
+                       ng-model="$ctrl.settings.DefaultPrice">
+                <span ng-if="$ctrl.settings.CurrencyList.length <= 5" class="input-group-btn">
+                    <button ng-repeat="currency in $ctrl.settings.CurrencyList"
+                            type="button" class="btn btn-default" ng-click="$ctrl.settings.DefaultPriceCurrencyIso3 = currency.Value"
+                            ng-class="{'product-currency-active': $ctrl.settings.DefaultPriceCurrencyIso3 === currency.Value}">
+                        <span>{{currency.Text}}</span>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div>
+            <select ng-if="$ctrl.settings.CurrencyList.length > 5"
+                    class="form-control input-alt"
+                    ng-model="$ctrl.settings.DefaultPriceCurrencyIso3"
+                    ng-options="option.Value as option.Text for option in $ctrl.settings.CurrencyList">
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <label class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+            Цена доставки единицы товара
+        </label>
+        <div class="col-xs-12 col-md-3">
+            <div class="input-group">
+                <input type="number" class="form-control input-alt"
+                       ng-model="$ctrl.settings.DefaultShippingPrice">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <label class="col-xs-12 col-md-3 control-label" ng-class="{'control-label' : isMobile.value}">
+            Текстовый блок над таблицей результатов
+        </label>
+        <div class="col-xs-12 col-md-9">
+            <textarea ckeditor ng-model="$ctrl.settings.ShippingTextBlock"
+                      class="wysiwyg" multiple></textarea>
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <label class="col-xs-12 col-md-3 control-label" ng-class="{'control-label' : isMobile.value}">
+            Текстовый блок под таблицей результатов
+        </label>
+        <div class="col-xs-12 col-md-9">
+            <textarea ckeditor ng-model="$ctrl.settings.ShippingTextBlockBottom"
+                      class="wysiwyg" multiple></textarea>
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <label class="col-xs-12 col-md-3 control-label" ng-class="{'control-label' : isMobile.value}">
+            Title
+        </label>
+        <div class="col-xs-12 col-md-9">
+            <input type="text" class="form-control input-alt" ng-model="$ctrl.settings.Title" />
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <label class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+            Keywords
+        </label>
+        <div class="col-xs-12 col-md-9 relative">
+            <textarea style="min-height:10rem; resize:vertical;" ng-model="$ctrl.settings.MetaKeywords"
+                      class="form-control input-alt"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group row middle-xs">
+        <label class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+            Decription
+        </label>
+        <div class="col-xs-12 col-md-9 relative">
+            <textarea style="min-height:10rem; resize:vertical;" ng-model="$ctrl.settings.MetaDescription"
+                      class="form-control input-alt"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-12 col-md-6">
+            <button type="button" class="btn btn-sm btn-success" ng-class="{'m-b-sm m-r-sm' : isMobile.value}"
+                    data-button-validation-success="$ctrl.saveSettings(); $ctrl.btnSave = true;"
+                    data-button-validation ladda="$ctrl.btnSave">
+                Сохранить
+            </button>
+
+            <button type="button" class="btn btn-sm btn-default" ng-class="{'m-b-sm' : isMobile.value}" ng-click="$ctrl.goToModulePage()">
+                Перейти на страницу модуля
+            </button>
+        </div>
+    </div>
+</form>

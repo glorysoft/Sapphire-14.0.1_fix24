@@ -1,0 +1,94 @@
+﻿@using AdvantShop.Catalog
+@using AdvantShop.Customers
+@model AdvantShop.ViewModel.Home.MainPageCategoriesViewModel
+@{
+    var width = 100 / (float)(Model.CountMainPageCategoriesInLine != 0 ? Model.CountMainPageCategoriesInLine : 4);
+    var widthString = width.ToInvariantString() + "%";
+
+    var categories =
+        Model.Categories
+            .Select(cat => CategoryService.GetCategory(cat.CategoryId))
+            .Where(cat => cat != null && cat.Enabled && cat.ParentsEnabled && !cat.Hidden)
+            .ToList();
+}
+@if (categories.Count > 0)
+{
+    if (TemplateSettingsProvider.Items["MainPageCategoriesViewMode"] == "Tile")
+    {
+        <div class="categories-specials-container">
+            <article class="categories-specials-block categories-specials-best cs-br-1">
+                <header class="categories-specials-header">
+                    <div class="h2 h-inline categories-specials-best-h">@T("Home.MainPageCategoriesTitle")</div>
+                </header>
+                <div class="row categories-view categories-view-tile row">
+                    @foreach (var category in categories)
+                    {
+                        <div class="product-categories-item-slim"
+                             style="-webkit-flex-basis: @(widthString); -ms-flex-preferred-size: @(widthString); flex-basis: @(widthString); max-width: @(widthString);">
+                            <div class="product-categories-item-inner-slim">
+                                <div
+                                    class="product-categories-header-slim @(!string.IsNullOrEmpty(category.MiniPicture.PhotoName) ? "product-categories-header-slim-extend" : "")">
+                                    <div class="product-categories-header-container">
+                                        <a href="@Url.AbsoluteRouteUrl("Category", new { url = category.UrlPath })"
+                                           class="product-categories-header-slim-title">@Html.Raw(category.Name)</a>
+                                    </div>
+                                </div>
+                                @if (!string.IsNullOrEmpty(category.MiniPicture.PhotoName) || InplaceEditorService.CanUseInplace(RoleAction.Catalog))
+                                {
+                                    <figure class="product-categories-item-picture-slim center-aligner">
+                                        <a href="@Url.AbsoluteRouteUrl("Category", new { url = category.UrlPath })"
+                                           class="product-categories-item-photo-link-slim"
+                                           style="height: @(SettingsPictureSize.SmallCategoryImageHeight)px;">
+                                            <img class="product-categories-item-picture-obj-slim" data-qazy
+                                                 src="@category.MiniPicture.ImageSrcSmall()"
+                                                 alt="@category.MiniPicture.Alt" title="@category.MiniPicture.Title"
+                                                 @Html.InplaceImageCategory(category.CategoryId, ImageInplaceField.CategorySmall) />
+                                        </a>
+                                    </figure>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </article>
+
+        </div>
+    }
+    else
+    {
+        foreach (var category in categories)
+        {
+            var products = ProductService.GetProductsByCategory(category.CategoryId, SettingsDesign.CountMainPageProductInSection, ESortOrder.NoSorting);
+            if (!products.Any())
+            {
+                continue;
+            }
+            var productViewModel = new ProductViewModel(products);
+            productViewModel.CountProductsInLine = SettingsDesign.CountMainPageProductInLine;
+            productViewModel.ShowBriefDescription = SettingsMain.MainPageVisibleBriefDescription;
+            
+            <div class="product-categories-thin">
+                <div class="product-categories-item-thin">
+                    <div class="product-categories-header-thin @(category.Available_Products_Count > 0 ? "" : "no-products")">
+                        <a href="@Url.AbsoluteRouteUrl("Category", new {url = category.UrlPath})" class="product-categories-header-thin h2">@category.Name</a>
+                        @if (SettingsCatalog.ShowProductsCount)
+                        {
+                            <span class="product-categories-header-count-thin">(@category.ProductsCount)</span>
+                        }
+                    </div>
+                    <div class="product-categories-view products-view products-view-tile products-view-container">
+                        @Html.Partial("_ProductView", productViewModel)
+                    </div>
+                    <a href="@Url.AbsoluteRouteUrl("Category", new {url = category.UrlPath})" class="product-categories-thin-total cs-bg-i-1 link-text-decoration-none">
+                        <span
+                            class="product-categories-thin-total-text cs-t-8">@T("Catalog.CategoryListWithProducts.AllProducts")</span>
+                        @if (SettingsCatalog.ShowProductsCount)
+                        {
+                            <span class="product-categories-thin-total-count cs-t-8">@category.ProductsCount</span>
+                        }
+                    </a>
+                </div>
+            </div>
+        }
+    }
+}

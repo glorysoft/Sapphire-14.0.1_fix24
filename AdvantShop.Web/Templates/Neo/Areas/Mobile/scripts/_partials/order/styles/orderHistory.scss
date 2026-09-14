@@ -1,0 +1,14 @@
+﻿.order-history-list {
+    &__item-date,
+    &__item-cost {
+        width: 100%;
+    }
+
+    &__item-date {
+        margin-bottom: var(--adv-m-1);
+    }
+    &__item-photo-list{
+        max-width: 87px;
+        flex-shrink: 0;
+    }
+}

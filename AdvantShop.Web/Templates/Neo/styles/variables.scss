@@ -1,0 +1,62 @@
+﻿@use "../../../styles/functions/util" with (
+ $default-max-bp: 1920px
+);
+
+:root {
+    --adv-site-width: 1920px;
+    --adv-site-min-width: 940px;
+    --adv-form-control-height: #{util.clamped(42px, 52px)};
+}
+
+:root {
+    --margin-inline--main: 40px;
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --margin-inline--main: #{util.clamped(50px, 110px)};
+    }
+}
+
+:root {
+    --adv-rounded-1: 4px;
+    --adv-rounded-2: 8px;
+    --adv-rounded-3: 12px;
+    --adv-rounded-4: 20px;
+}
+
+:root {
+    --adv-h1: #{util.clamped(28px, 50px)};
+    --adv-h2: #{util.clamped(26px, 44px)};
+    --adv-h3: #{util.clamped(24px, 40px)};
+    --adv-h4: #{util.clamped(22px, 36px)};
+    --adv-h5: #{util.clamped(22px, 28px)};
+    --adv-h6: #{util.clamped(22px, 24px)};
+    --adv-h7: #{util.clamped(20px, 22px)};
+    --adv-menu-text: #{util.clamped(14px, 16px)};
+    --adv-text-1: #{util.clamped(16px, 20px)};
+    --adv-text-1_5: #{util.clamped(16px, 18px)};
+    --adv-text-2: #{util.clamped(14px, 16px)};
+    --adv-text-3: #{util.clamped(14px, 16px)};
+    --adv-text-3_5: #{util.clamped(14px, 15px)};
+    --adv-text-4: 14px;
+    --adv-text-5: 12px;
+    --adv-button-text: #{util.clamped(16px, 20px)};
+}
+
+:root {
+    --adv-m-base: 4px;
+    --adv-m-1: 8px;
+    --adv-m-base-col: 10px;
+    --adv-m-2: #{util.clamped(8px, 12px)};
+    --adv-m-3: #{util.clamped(8px, 16px)};
+    --adv-m-4: #{util.clamped(10px, 20px)};
+    --adv-m-5: #{util.clamped(16px, 24px)};
+    --adv-m-6: #{util.clamped(18px, 30px)};
+    --adv-m-7: #{util.clamped(20px, 40px)};
+    --adv-m-8: #{util.clamped(30px, 50px)};
+    --adv-m-9: #{util.clamped(40px, 60px)};
+    --adv-m-10: #{util.clamped(50px, 80px)};
+    --adv-m-11: #{util.clamped(60px, 100px)};
+    --adv-m-12: #{util.clamped(70px, 160px)};
+}
