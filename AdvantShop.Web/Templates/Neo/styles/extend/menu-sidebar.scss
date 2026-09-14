@@ -1,0 +1,26 @@
+﻿.menu__item {
+    font-size: var(--adv-text-2);
+
+    &--root {
+        border-width: 0 !important;
+    }
+    .site-head-userid{
+        font-size: var(--adv-text-2);
+    }
+}
+
+.menu_item {
+    &--nav-site {
+        border-top: 1px solid var(--cs-2);
+    }
+}
+.menu__arrow-right{
+    &:before {
+        content: "";
+        mask-image: url('../../images/icons/chevron-right.svg');
+        mask-size: contain;
+        width: 20px;
+        height: 20px;
+        background-color: currentColor;
+    }
+}

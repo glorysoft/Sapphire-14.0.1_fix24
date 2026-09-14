@@ -1,0 +1,307 @@
+﻿@using AdvantShop.Orders
+@using AdvantShop.Catalog;
+@using AdvantShop.ViewCommon
+@model AdvantShop.ViewModel.ProductDetails.ProductDetailsViewModel
+@{
+    Html.AddAsset("product");
+}
+@{
+    var product = Model.Product;
+    var offer = Model.Offer;
+    var ngOffer = "{{product.offerSelected.OfferId || '" + (offer != null ? offer.OfferId.ToString() : "") + "'}}";
+
+    var currentZone = AdvantShop.Repository.IpZoneContext.CurrentZone;
+    var filterPhotosEnable = Model.Product.ProductPhotos.Any(x => x.ColorID.HasValue);
+    var isShowDeliveryWidget = TemplateSettingsProvider.GetSettingValue("ShowDeliveryWidgetOnAllPages").TryParseBool();
+    var notAllowBuyOutOfStockProducts = (!Model.AllowBuyOutOfStockProducts).ToLowerString();
+
+    var artNo = offer != null ? offer.ArtNo : product.ArtNo;
+}
+@if (isShowDeliveryWidget)
+{
+    @Html.Action("GeoMode", "Home", new { area = "" })
+}
+
+
+@Html.RenderModules("product_page_before", new { product, offer, Model.FinalPrice, Model.FinalDiscount })
+<div data-ng-init="product.loadData(@product.ProductId, @(Model.ColorId != null ? Model.ColorId.ToString() : "null"), @(Model.SizeId != null ? Model.SizeId.ToString() : "null"), @Model.HidePrice.ToLowerString(), @filterPhotosEnable.ToLowerString())"></div>
+<div class="col-p-v" @(product.ExportOptions.Adult ? "" : "itemscope itemtype=https://schema.org/Product")>
+    @Html.Action("BreadCrumbs", "Common", new { breadCrumbs = Model.BreadCrumbs })
+    <div class="row top-xs">
+        <div class="col-xs-9 details-block">
+            <div class="row">
+                <div class="col-xs-8">
+                    @Html.Action("ProductPhotos", new { productModel = Model, enabledModalPreview = true })
+                </div>
+                <div class="col-xs-4">
+                    <div class="page-title-row details-title-row">
+                        <div class="details-title page-title">
+                            <h1 @(product.ExportOptions.Adult ? "" : "itemprop=name") data-ng-init="product.productName='@Html.AttributeEncode(Html.GetPageH1())'" @Html.InplaceMeta(product.ProductId, AdvantShop.SEO.MetaType.Product)>@Html.GetPageH1()</h1>
+                        </div>
+                    </div>
+                    @Html.Partial("ProductInfo", Model)
+                </div>
+            </div>
+            <div class="m-t-xl">
+                @Html.StaticBlock("details-2")
+                @Html.RenderModules("product_middle", new { product, offer })
+                @Html.Action("ProductTabs", Model)
+                @Html.StaticBlock("details-after-tabs")
+            </div>
+            <div class="details-row">
+                @Html.Action("RelatedProducts", new { Model.Product, type = RelatedType.Related })
+            </div>
+            <div class="details-row">
+                @Html.Action("RelatedProducts", new { Product = product, type = RelatedType.Alternative })
+            </div>
+        </div>
+        <div class="col-xs-3 details-payment-wrap-sticky">
+            <aside class="details-aside">
+                @Html.StaticBlock("bannerDetails")
+                @if (offer != null)
+                {
+                    <div class="flex middle-xs end-xs" style="gap:var(--adv-m-4); margin-bottom: var(--adv-m-7)">
+                        @if (SettingsCatalog.ShowProductArtNoOnProductCard)
+                        {
+                            <div class="details-sku">
+                                <div class="details-param-name">@T("Product.ProductInfo.Sku"):</div>
+
+                                <div class="details-param-value inplace-offset"
+                                     data-ng-bind="product.offerSelected.ArtNo"
+                                     data-ng-init="product.offerSelected.ArtNo = '@artNo'"
+                                     @(offer != null ? Html.InplaceOfferArtNo(ngOffer, true, "product.handleChangeInplaceArtNo(value, $scope)") : Html.InplaceProduct(product.ProductId, ProductInplaceField.ArtNo, true))>
+                                    @artNo
+                                </div>
+                                @if (!product.ExportOptions.Adult)
+                                {
+                                    if (!string.IsNullOrEmpty(product.ExportOptions.Mpn))
+                                    {
+                                        <meta itemprop="mpn" content="@product.ExportOptions.Mpn"/>
+                                    }
+
+                                    <meta itemprop="sku" content="@artNo"/>
+                                }
+                                @if (!string.IsNullOrEmpty(product.ExportOptions.Gtin))
+                                {
+                                    <meta itemprop="gtin" content="@product.ExportOptions.Gtin"/>
+                                }
+                            </div>
+                        }
+                        @Html.Action("CompareBlock", "Compare", new { OnlyIcon = true, NgOfferId = "product.offerSelected.OfferId", NgNameCallbackInit = "product.compareInit", Mode = "product", Checked = ShoppingCartService.CurrentCompare.Any(x => x.OfferId == offer.OfferId), OfferId = offer.OfferId })
+                        @Html.Action("WishListBlock", "Wishlist", new { OnlyIcon = true, OfferId = offer.OfferId, NgOfferId = "product.offerSelected.OfferId", NgNameCallbackInit = "product.wishlistControlInit", Mode = "product", Checked = ShoppingCartService.CurrentWishlist.Any(x => x.OfferId == offer.OfferId) })
+                    </div>
+
+                    if (!Model.HidePrice || !string.IsNullOrEmpty(Model.TextInsteadOfPrice))
+                    {
+                        <div class="cs-bg-4 block-exuding details-actions-list">
+
+
+                            @if (!Model.HidePrice)
+                            {
+                                <div class="details-payment-cell details-payment-price" data-ng-init="product.discount=@product.Discount.Percent.ToInvariantString(); product.discountAmount=@product.Discount.Amount.ToInvariantString(); product.Price.PriceNumber=@Model.FinalPrice.ToInvariantString(); product.visibilityFirstPaymentButton = @(Model.IsAvailableForPurchaseOnCredit.ToLowerString());">
+                                    @if (Model.MicrodataOffers != null && Model.MicrodataAggregateOffer != null && !product.ExportOptions.Adult)
+                                    {
+                                        <div class="contents" itemprop="offers" itemscope itemtype="https://schema.org/AggregateOffer">
+                                            <meta itemprop="priceCurrency" content="@Model.MicrodataAggregateOffer.Currency">
+                                            <meta itemprop="highPrice" content="@Model.MicrodataAggregateOffer.HighPrice">
+                                            <meta itemprop="lowPrice" content="@Model.MicrodataAggregateOffer.LowPrice">
+                                            <meta itemprop="offerCount" content="@Model.MicrodataOffers.Count">
+                                            @foreach (var offerItem in Model.MicrodataOffers)
+                                            {
+                                                <div class="contents" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                                    <meta itemprop="price" content="@offerItem.Price">
+                                                    <meta itemprop="priceCurrency" content="@Model.MicrodataAggregateOffer.Currency">
+                                                    <meta itemprop="sku" content="@offerItem.Name">
+                                                    <link itemprop="url" href="@Url.AbsoluteRouteUrl("Product", new { url = product.UrlPath, color = offerItem.ColorId, size = offerItem.SizeId })">
+                                                    <meta itemprop="priceValidUntil" content="@DateTime.Now.AddHours(1).ToString("yyyy-MM-dd HH:mm:ss")">
+                                                    <link itemprop="availability" href="@(offerItem.Available ? "https://schema.org/InStock" : "https://schema.org/OutOfStock")"/>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    <div class="price">
+                                        <div class="contents" data-ng-if="product.Price.PriceString == null" @Html.InplaceOfferPrice()>
+                                            @Html.Raw(Model.PreparedPrice)
+                                        </div>
+                                        <div class="contents" @Html.InplaceOfferPrice() data-ng-bind-html="product.Price.PriceString"></div>
+                                    </div>
+                                    <span class="first-payment-price" data-ng-class="{'ng-hide': product.visibilityFirstPaymentButton === false || (product.offerSelected.Amount === 0 && @notAllowBuyOutOfStockProducts) || product.Price.PriceNumber === 0 || product.FirstPaymentPrice == null}">
+                                        <span data-ng-bind-html="product.FirstPaymentPrice"></span>
+                                    </span>
+                                    @if (!string.IsNullOrEmpty(Model.BonusPrice))
+                                    {
+                                        <span class="bonus-string-sum" data-ng-if="product.Price.Bonuses == null">@T("Product.ProductInfo.BonusesOnCard", Model.BonusPrice)</span>
+                                        <span class="bonus-string-sum" data-ng-if="product.Price.Bonuses != null" data-ng-bind-html="product.Price.Bonuses"></span>
+                                    }
+                                    @if (Model.ShowAddButton)
+                                    {
+                                        var IsAvailableForPurchase = !Model.IsAvailableForPurchase ? "true" : "false";
+                                        <div class="details-payment-item details-payment-inline @(!Model.IsAvailableForPurchase ? "ng-hide" : string.Empty)"
+                                             data-ng-class="{'ng-hide': product.dirty === false ? @(!Model.IsAvailableForPurchase ? "true" : "false") : !product.offerSelected.IsAvailableForPurchase }">
+                                            @Html.Partial("_CartAdd", new CartAddViewModel()
+                                            {
+                                                NgCartAddValid = "product.validate()",
+                                                NgOfferId = "product.offerSelected.OfferId",
+                                                ProductId = product.ProductId,
+                                                NgAmount = "product.offerSelected.AmountBuy",
+                                                BtnContent = SettingsCatalog.BuyButtonText,
+                                                NgAttributesXml = "product.customOptions.xml",
+                                                CartAddType = SettingsDesign.eCartAddTypeButton.WithSpinbox,
+                                                AllowAddProductToCart = true,
+                                                CartAddBlockWidth = "100%"
+                                            })
+
+                                        </div>
+                                    }
+
+                                    @if (Model.ShowPreOrderButton)
+                                    {
+                                        <div class="details-payment-item details-payment-inline @(Model.IsAvailableForPurchase ? "ng-hide" : string.Empty)"
+                                             data-ng-class="{'ng-hide': product.dirty === false ? @(Model.IsAvailableForPurchase ? "true" : "false") : product.offerSelected.IsAvailableForPurchase }">
+                                            <a href="javascript:void(0)" class="btn btn-middle btn-action btn-block" data-pre-order-trigger data-pre-order-modal="modalPreOrder_@product.ProductId">
+                                                @Model.PreOrderButtonText
+                                                <div id="modalPreOrder_@product.ProductId" class="modal ng-hide"
+                                                     data-modal-control
+                                                     data-modal-class="pre-order-dialog"
+                                                     data-callback-close="preOrderTrigger.modalCallbackClose(modalScope)">
+                                                    <div data-modal-header class="modal-header">
+                                                        @T("PreOrder.Index.Header") - @product.Name
+                                                    </div>
+                                                    <div class="modal-content">
+                                                        <div data-pre-order-form
+                                                             data-form-init="preOrderTrigger.formInit(form)"
+                                                             data-success-fn="preOrderTrigger.successFn(result)"
+                                                             data-offer-id="product.offerSelected.OfferId"
+                                                             data-product-id="@product.ProductId"
+                                                             data-amount="product.offerSelected.AmountBuy"
+                                                             data-pre-order-valid="product.validate()"
+                                                             data-json-hash="product.customOptions.jsonHash">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    }
+
+                                    @if (Model.ShowCreditButton)
+                                    {
+                                        <div class="details-payment-item details-payment-inline" data-ng-init="product.creditButtonText = product.creditButtonText || '@Model.CreditButtonText'"
+                                             data-ng-class="{'ng-hide': product.visibilityFirstPaymentButton === false || !product.offerSelected.IsAvailableForPurchase}">
+                                            @Html.Partial("_CartAdd", new CartAddViewModel()
+                                            {
+                                                Classes = "btn btn-action",
+                                                NgCartAddValid = "product.validate()",
+                                                NgOfferId = "product.offerSelected.OfferId",
+                                                ProductId = product.ProductId,
+                                                NgAmount = "product.offerSelected.AmountBuy",
+                                                NgPayment = "product.firstPaymentId",
+                                                NgBtnText = "product.creditButtonText",
+                                                NgAttributesXml = "product.customOptions.xml",
+                                                Payment = Model.FirstPaymentId,
+                                                BtnContent = Model.CreditButtonText,
+                                            })
+                                        </div>
+                                    }
+
+                                    @if (Model.ShowBuyOneClick)
+                                    {
+                                        <div class="details-payment-item @(!Model.IsAvailableForPurchaseOnBuyOneClick ? "ng-hide" : string.Empty)"
+                                             data-ng-class="{'ng-hide': product.dirty === false ? @(!Model.IsAvailableForPurchaseOnBuyOneClick ? "true" : "false") : !product.offerSelected.IsAvailableForPurchaseOnBuyOneClick}">
+                                            <div class="details-buy-one-click">
+                                                <a href="javascript:void(0)" class="btn btn-action btn-block btn-middle" data-buy-one-click-trigger data-buy-one-click-modal="modalBuyOneClick_@product.ProductId">
+                                                    @SettingsCheckout.BuyInOneClickLinkText
+                                                    <div id="modalBuyOneClick_@product.ProductId" class="modal ng-hide"
+                                                         data-modal-control
+                                                         data-modal-overlay-class="buy-one-ckick-very-top"
+                                                         data-modal-class="buy-one-click-dialog"
+                                                         data-callback-close="buyOneClickTrigger.modalCallbackClose(modalScope)">
+                                                        <div data-modal-header class="modal-header">
+                                                            @T("Product.BuyInOneClick.BuyInOneClickHeader")
+                                                        </div>
+                                                        <div class="modal-content">
+                                                            <div data-buy-one-click-form="true"
+                                                                 data-form-init="buyOneClickTrigger.formInit(form)"
+                                                                 data-success-fn="buyOneClickTrigger.successFn(result)"
+                                                                 data-page="@AdvantShop.Orders.BuyInOneclickPage.Product"
+                                                                 data-order-type="@AdvantShop.Core.Services.Orders.OrderType.OneClick"
+                                                                 data-offer-id="product.offerSelected.OfferId"
+                                                                 data-product-id="@product.ProductId"
+                                                                 data-amount="product.offerSelected.AmountBuy"
+                                                                 data-buy-one-click-valid="product.validate()"
+                                                                 data-attributes-xml="product.customOptions.xml"
+                                                                 data-enable-phone-mask="@SettingsMain.EnablePhoneMask.ToLowerString()">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else if (!string.IsNullOrEmpty(Model.TextInsteadOfPrice))
+                            {
+                                <div class="details-payment-cell details-payment-price">
+                                    <a href="@Url.Action("Login", "User")" class="btn btn-action instead__text-price flex middle-xs center-xs">
+                                        @Html.Raw(Model.TextInsteadOfPrice)
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    }
+
+                    if (!Model.HidePrice && (SettingsPriceRules.ShowAmountsTableInProduct || SettingsPriceRules.ShowCartSumAmountsTableInProduct))
+                    {
+                        <div class="cs-bg-4 block-exuding details-actions-list" data-ng-show="product.priceAmountList.hasItems">
+
+                            <div class="details-actions-title">
+                                @T("Product.PriceAmount.Title")
+                            </div>
+                            <div class="details-row__amount-table">
+                                <div data-price-amount-list
+                                     show-head="false"
+                                     data-product-id="@product.ProductId"
+                                     data-start-offer-id="@offer.OfferId"
+                                     data-offer-id="product.offerSelected.OfferId"
+                                     data-init-fn="product.addPriceAmountList(priceAmountList)"
+                     data-source="product">
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="cs-bg-4 block-exuding details-actions-list">
+
+                        @if (Model.RenderShippings)
+                        {
+                            <div class=" details-shipping">
+                                <div class="top-shipping-row">
+                                    @T("Product.Index.ShippingTo")
+                                    <a class="link-dotted-invert cs-l-d-2 zone-dialog-trigger-link" href="javascript:void(0)" role="link" data-zone-dialog-trigger>
+                                        <span data-zone-current data-ng-bind="zone.City || '@T("Product.Index.ShippingTo.ChooseCity")'" data-start-val="{City: '@currentZone.City'}">@currentZone.City</span>
+                                    </a>
+                                </div>
+                                @{
+                                    var prodMinAmount = product.GetMinAmount();
+                                }
+                                <div data-shipping-variants
+                                     data-type="@Model.ShowShippingsMethods"
+                                     data-start-offer-id="@offer.OfferId"
+                                     data-start-amount="@prodMinAmount"
+                                     data-offer-id="product.offerSelected.OfferId"
+                                     data-amount="product.offerSelected.AmountBuy"
+                                     data-sv-custom-options="product.customOptions.xml"
+                                     data-zip="@currentZone.Zip"
+                                     data-init-fn="product.addShippingVariants(shippingVariants)"
+                                     class="details-shipping__shipping-variants">
+                                </div>
+                            </div>
+                        }
+                        @Html.Action("SocialButtons", "Common")
+                    </div>
+                    @Html.RenderModules("product_right", new { product, offer })
+                }
+            </aside>
+        </div>
+    </div>
+</div>

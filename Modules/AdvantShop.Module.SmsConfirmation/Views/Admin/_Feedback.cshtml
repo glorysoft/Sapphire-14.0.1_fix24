@@ -1,0 +1,18 @@
+@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.SmsConfirmation.Service
+
+@model string
+
+@{ 
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>
+    {
+        url + "modules/" + SmsConfirmationSettings.ModuleID + "/content/scripts/promofeedback/controllers/promofeedbackController.js",
+    };
+}
+
+<div data-oc-lazy-load="[@String.Join(",",scripts.Select(x => "'" + x + "?" + SmsConfirmationSettings.Version + "'" ))]">
+    <promo-feedback data-feedback-string="@Model"></promo-feedback>
+</div>
+
+@Html.Action("GetPromoContentBannersData", "SmsConfirmationAdmin")

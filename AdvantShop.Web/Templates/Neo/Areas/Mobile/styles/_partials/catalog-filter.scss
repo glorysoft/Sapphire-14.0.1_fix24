@@ -1,0 +1,23 @@
+.catalog-filter-trigger--mobile {
+    padding: 0
+}
+
+.catalog-filter-trigger--selected:after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: var(--cs-6);
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    top: 0;
+    right: -6px;
+}
+.catalog-filter-block-header, .catalog-filter-block-content, .catalog-filter-footer{
+    border: 0;
+}
+.catalog-filter-block-title{
+    font-size: var(--adv-text-2);
+    font-weight: 500;
+    line-height: 1.1;
+}

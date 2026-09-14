@@ -1,0 +1,53 @@
+﻿@use "../../../../../styles/functions/util" with (
+ $default-min-bp: 1,
+ $default-max-bp: 896px
+);
+
+:root {
+    --adv-site-width: 100vw;
+    --adv-form-control-height: #{util.clamped(34px, 44px)};
+}
+
+:root {
+    --margin-inline--main: 0;
+}
+
+:root {
+    --adv-rounded-1: 4px;
+    --adv-rounded-2: 8px;
+    --adv-rounded-3: 12px;
+    --adv-rounded-4: 20px;
+}
+
+:root {
+    --adv-h1: 28px;
+    --adv-h2: 26px;
+    --adv-h3: 24px;
+    --adv-h4: 22px;
+    --adv-h5: 20px;
+    --adv-h6: 18px;
+    --adv-menu-text: 14px;
+    --adv-text-1: 20px;
+    --adv-text-2: 16px;
+    --adv-text-3: 14px;
+    --adv-text-4: 14px;
+    --adv-text-5: 13px;
+    --adv-button-text: 16px;
+}
+
+:root {
+    --adv-m-base: 4px;
+    --adv-m-1: 8px;
+    --adv-m-base-col: 10px;
+    --adv-m-2: 10px;
+    --adv-m-3: 12px;
+    --adv-m-4: 15px;
+    --adv-m-5: 16px;
+    --adv-m-6: 18px;
+    --adv-m-7: 20px;
+    --adv-m-8: 22px;
+    --adv-m-9: 24px;
+    --adv-m-10: 26px;
+    --adv-m-11: 28px;
+    --adv-m-12: 30px;
+}

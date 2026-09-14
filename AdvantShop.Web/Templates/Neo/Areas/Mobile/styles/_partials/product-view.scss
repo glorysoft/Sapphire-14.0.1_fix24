@@ -1,0 +1,91 @@
+﻿.mobile-product-view-item,
+.mobile-product-view-item__inner,
+.mobile-product-view-item-price-data {
+    padding: var(--adv-m-1) 0;
+    border-radius: var(--adv-rounded-2);
+}
+.products-view-item--fill-productcard{
+    .mobile-product-view-item,
+    .mobile-product-view-item__inner,
+    .mobile-product-view-item-price-data{
+        padding: var(--adv-m-1) var(--adv-m-base);
+    }
+}
+.mobile-product-view-item-price-data{
+    padding-top: 0;
+}
+.mobile-product-view-item-image,
+.products-view-picture {
+    mix-blend-mode: darken;
+}
+
+.mobile-prod-info-wrap,
+.mobile-products-view-description {
+    text-align: left;
+}
+
+.mobile-product-view-item__name {
+    font-weight: 500;
+}
+
+.mobile-product-view-item__controls {
+    .compare-control {
+        background-color: var(--cs-4);
+        box-shadow: 0 0 3px -1px rgba(0, 0, 0, 0.5);
+        border-radius: var(--adv-rounded-1);
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .compare-state-add{
+        color: var(--cs-6);
+    }
+}
+.mobile-product-view-item-image-wrap{
+    border-radius: var(--adv-rounded-2);
+    overflow: hidden;
+}
+.mobile-product-view-item__colors-wrap{
+    margin-bottom: 0;
+}
+
+.catalog-view__product-item-wrap{
+    padding-inline: var(--adv-m-5);
+    gap: var(--adv-m-base);
+}
+
+.products-view-mobile-modern-tile .mobile-product-view-item{
+    max-width: calc(50% - calc(var(--adv-m-base) / 2));
+    flex-basis: calc(50% - calc(var(--adv-m-base) / 2));
+}
+.products-view-rating{
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    gap: var(--adv-m-base);
+}
+.mobile-product-view-item-price-data .price-discount{
+    display: none;
+}
+
+.products-view__meta {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+    .products-view-rating,
+    .products-view__reviews {
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+        flex-basis: auto;
+    }
+}
+
+.catalog-view .prod-name::after,
+.catalog-list .prod-name::after {
+    background: inherit;
+}

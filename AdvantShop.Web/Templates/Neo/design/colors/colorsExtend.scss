@@ -1,0 +1,148 @@
+@use 'sass:color';
+
+@mixin colorSchemeCommon($c1, $c2, $c4, $c6, $c10, $c11) {
+    :root {
+        --btn-bg: #{$c11};
+        --btn-color: #{$c6};
+        --btn-bg-hover: #{color.adjust($c4, $lightness: - 5%)};
+        --btn-color-hover: #{$c6};
+        --btn-bg-active: #{color.adjust($c4, $lightness: - 10%)};
+        --btn-color-active: #{$c6};
+    }
+    .menu-dropdown-root {
+        background-color: $c6;
+    }
+
+    html:not(.root-menu--active) .feature\:carousel--as-background {
+        .site-head:not(.is-pinned) {
+            color: #fff;
+
+            .cs-t-1,
+            .cs-l-2,
+            .cs-l-3,
+            .menu-dropdown-list,
+            .site-head-inner--type2 .icon-search-block,
+            .harmonica-tile-dots,
+            a:not(.menu-dropdown-root),
+            .select-custom{
+                color: #fff;
+            }
+
+            .menu-general-submenu a {
+                color: $c1;
+            }
+
+            .menu-general-item:hover{
+                a,
+                .harmonica-tile-dots{
+                    color: $c1;
+                }
+            }
+
+            .cs-bg-4,
+            .menu-dropdown-list,
+            {
+                .cs-t-1,
+                .cs-l-2,
+                .cs-l-3,
+                a {
+                    color: initial;
+                }
+            }
+
+            .icon-search-block,
+            .menu-dropdown-link-wrap {
+                color: initial;
+            }
+
+            [type="text"],[type="search"],
+            .autocompleter-sub, .autocompleter-sub a{
+                color: var(--cs-1)
+            }
+        }
+    }
+
+    input:not([type="button"]):not([type="submit"]),
+    textarea,
+    body .flatpickr-custom__toggle,
+    .select-custom > select {
+        --_cs-input-bg: var(--cs-input-bg, #{$c11});
+        --_cs-input-border: var(--cs-input-border, #{$c11});
+        background-color: var(--_cs-input-bg);
+        border-color: var(--_cs-input-border);
+    }
+    select.cs-bg-2, body .select-custom {
+        color: var(--_cs-input-text, $c1);
+    }
+    .cs-inputs-invert, .checkout-cart {
+        --cs-input-bg: #{$c4};
+        --cs-input-border: #{$c10};
+    }
+
+    .products-view-item--fill-productcard,
+    .product-categories-slim--fill-productcard,
+    .catalog-product-item--fill-productcard,
+    .details-actions-list,
+    .cart-page__products-summary {
+        --cs-input-bg: #{$c4};
+        --btn-bg: #{$c4};
+        --btn-color: #{$c6};
+        --price-amount-even-bg: var(--cs-4);
+        --price-amount-odd-bg: var(--cs-4);
+    }
+
+    .products-view-item--fill-productcard,
+    .products-view-item--fill-productphoto .products-view-pictures,
+    .products-view-item--fill-productphoto .mobile-product-view-item-image-inner,
+    .product-categories-slim--fill-productcard,
+    .product-categories-slim--fill-productphoto .product-categories-item-picture-slim,
+    .catalog-product-item--fill-productcard,
+    .catalog-product-item--fill-productphoto .cat-image-wrap,
+    .catalog-product-item--fill-productphoto .prod-photo {
+        background-color: var(--product-view-bg, #{$c11});
+    }
+    .feature\:site-background-fill {
+        --btn-bg: #{color.adjust($c4, $lightness: - 5%)};
+        --btn-bg-hover: #{color.adjust($c4, $lightness: - 10%)};
+        --cs-input-bg: #{$c4};
+        --cs-input-border: #{$c4};
+
+        .products-view-item--fill-productcard {
+            --cs-input-bg: #{$c11};
+        }
+
+        .products-view-item--fill-productcard,
+        .products-view-item--fill-productphoto .products-view-pictures,
+        .payment-item,
+        .shipping-item{
+            background-color: var(--product-view-bg, #{$c4});
+        }
+
+        input:not([type="button"]):not([type="submit"]) {
+            --_cs-input-bg: var(--cs-input-bg, #{$c4});
+        }
+        .btn-buy{
+            background-color: var(--btn-bg, #{$c4});
+            &:hover{
+                background-color: var(--cs-6, #{$c6});
+            }
+        }
+    }
+
+    .site-footer-wrap,
+    #footer {
+        .subscribe-block input[type=email] {
+            --cs-input-bg: var(--cs-8);
+            --cs-input-border: var(--cs-8);
+        }
+    }
+
+    .mobile-version .page-title.cs-bg-4--mobile {
+        background-color: transparent;
+    }
+
+    .site-head.is-pinned {
+        --cs-input-bg: #{$c11};
+        --cs-input-border: #{$c11};
+    }
+}

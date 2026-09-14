@@ -1,0 +1,23 @@
+﻿.sidebar {
+    background-color: var(--cs-4);
+
+    &__header{
+        border: 0;
+        font-size: var(--adv-h3);
+        font-weight: 600;
+        text-transform: none;
+    }
+
+    .footer-menu-link {
+        color: var(--cs-4);
+    }
+    .social--yandex-zen{
+        color: var(--cs-1);
+    }
+}
+
+#sidebar, .sidebar {
+    width: auto;
+    right: 0;
+    left: 0;
+}

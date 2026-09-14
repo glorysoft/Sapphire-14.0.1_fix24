@@ -1,0 +1,16 @@
+﻿.address-list {
+    &-radio-wrap {
+        display: flex;
+    }
+    &-address-text {
+        font-size: var(--adv-text-3);
+    }
+
+    &-change-text {
+        align-items: center;
+    }
+}
+
+.address-controls-item{
+    font-size: var(--adv-text-3);
+}

@@ -1,0 +1,43 @@
+.adv-modal{
+    --modal-close-width: 26px;
+    --modal-close-height: 26px;
+}
+.adv-modal .adv-modal-close,
+.adv-modal-floating .adv-modal-close {
+    top: 0;
+    right: var(--adv-m-4);
+    left: auto;
+    transform: translateY(50%);
+    width: var(--modal-close-width);
+    height: var(--modal-close-height);
+
+    &::after {
+        mask: url('../../../../images/icons/close.svg') no-repeat center;
+        mask-size: contain;
+        width: var(--modal-close-width);
+        height: var(--modal-close-height);
+        color: var(--cs-1);
+
+    }
+}
+
+.adv-modal .modal-header, .adv-modal-floating .modal-header {
+    border: 0;
+    padding: var(--adv-m-4) var(--adv-m-4) 0;
+    font-weight: 500;
+    font-size: var(--adv-h5);
+    letter-spacing: -1px;
+}
+
+.adv-modal .modal-content {
+    padding: var(--adv-m-4) var(--adv-m-4) var(--adv-m-7);
+}
+
+.adv-modal .adv-modal-inner {
+    border-radius: var(--adv-rounded-4);
+}
+
+.adv-modal .modal-footer, .adv-modal-floating .modal-footer {
+    border: 0;
+    background-color: transparent;
+}

@@ -1,0 +1,64 @@
+﻿.sidebar--filter {
+    width: 495px;
+    transform: translate3d(-100%, 0, 0);
+    border-radius: 0 var(--adv-rounded-4)    var(--adv-rounded-4) 0;
+
+    .sidebar__content {
+        margin-top: 5px;
+        overflow-y: visible;
+    }
+
+    .catalog-filter {
+        margin: 0;
+        height: inherit;
+        > div{
+            height: inherit;
+        }
+    }
+
+    .catalog-filter-content{
+        height: calc(100% - 100px);
+    }
+    .catalog-filter-block-list {
+        padding: 0 40px 0 46px;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: initial;
+    }
+
+    .catalog-filter-footer{
+        padding: 0 40px var(--adv-m-7) 46px;
+    }
+    .sidebar__header {
+        margin: var(--adv-m-7) var(--adv-m-7) 0 var(--adv-m-7);
+        padding: 0;
+        border: none;
+        font-weight: 500;
+        font-size: var(--adv-h3);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .sidebar__close {
+        right: 0;
+        top: 0;
+        position: relative;
+    }
+}
+
+.sidebars-container.sidebars-container--activated {
+    .sidebar {
+        transform: translate3d(0, 0, 0);
+    }
+}
+.sidebar__close{
+    mask: url('../../../images/icons/close.svg') no-repeat center;
+    mask-size: contain;
+    width: 26px;
+    height: 26px;
+    background-color: var(--cs-1);
+    svg{
+        display: none;
+    }
+}

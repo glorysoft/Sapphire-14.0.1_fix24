@@ -1,0 +1,44 @@
+.menu-general-item {
+    color: var(--cs-1);
+    font-size: var(--adv-text-2);
+
+    &::before {
+        display: none;
+    }
+
+    &:hover,
+    &.cs-selected{
+        background-color: var(--cs-11);
+    }
+
+    .harmonica-tile-list{
+        background-color: var(--cs-11);
+        box-shadow: none;
+    }
+}
+
+.menu-general-root-link,
+.menu-general-tile-submenu,
+.menu-general-category-parent,
+.menu-general-sub-category-parent,
+.menu-general-sub-brand-title{
+    color: var(--cs-1);
+    font-size: var(--adv-text-2);
+}
+
+.menu-general-root-link:hover {
+    color: var(--cs-1);
+}
+
+.menu-general-submenu {
+    background-color: var(--cs-11);
+    color: var(--cs-1);
+
+    a {
+        color: var(--cs-1);
+
+        &:hover {
+            color: var(--cs-1);
+        }
+    }
+}

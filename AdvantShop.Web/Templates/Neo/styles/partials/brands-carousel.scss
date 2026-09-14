@@ -1,0 +1,42 @@
+﻿.carousel-logo .h2{
+    margin-bottom: var(--adv-m-9);
+}
+.carousel-logo-list {
+    display: flex;
+    gap: var(--adv-m-4);
+}
+
+.carousel-logo::before {
+    display: none;
+}
+
+.carousel-logo-name {
+    font-size: var(--adv-text-1);
+    line-height: normal;
+}
+
+.carousel-logo-link {
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--adv-m-4);
+    padding-left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-logo-image-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--adv-m-7);
+    border-radius: var(--adv-rounded-4);
+    flex-grow: 1;
+
+    img {
+        mix-blend-mode: darken;
+    }
+}
+
+.carousel-logo-item {
+    text-align: left;
+}

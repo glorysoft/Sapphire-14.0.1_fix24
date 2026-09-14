@@ -1,0 +1,67 @@
+﻿.myaccount {
+    &-mobile &-subtitle {
+        font-size: var(--adv-h2);
+        font-weight: bold;
+        margin-top: 15px;
+        margin-bottom: 18px;
+    }
+
+    &-title &-main-title {
+        &--left-arrow {
+            letter-spacing: normal;
+            font-size: var(--adv-text-3);
+            background-color: var(--cs-4);
+            line-height: 1;
+            padding: var(--adv-m-4);
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+
+            &::before {
+                position: static;
+                display: inline-block;
+                background-repeat: no-repeat;
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    &-mobile .tabs-header-item:first-child .tabs-header-item-link {
+        border: 0;
+    }
+
+    &-content-mobile {
+        .mobile-tabs-vertical .tabs-header-item-link {
+            background-color: transparent;
+            border: 0;
+            font-size: var(--adv-h3);
+            font-weight: 600;
+            text-transform: lowercase;
+            letter-spacing: -1px;
+
+            &::after {
+                background: currentColor none;
+                mask: url('../../../../images/icons/chevron-right.svg') center no-repeat;
+                mask-size: contain;
+                width: 16px;
+                height: 16px;
+                transform: translateY(-50%);
+            }
+        }
+
+        .tab-header-subtext {
+            font-size: var(--adv-text-3);
+            font-weight: 400;
+            vertical-align: top;
+        }
+    }
+}
+.myaccount-btn-logout-wrap{
+    text-align: center;
+    margin-block: var(--adv-m-12);
+}
+.myaccount-btn-logout{
+    font-weight: 500;
+    color: #FF0000;
+    font-size: var(--adv-text-2);
+}

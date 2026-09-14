@@ -1,0 +1,121 @@
+﻿@use '../../../../scripts/_common/carousel/styles/carousel.scss';
+// для модуля рекомендованные товары в корзине
+
+.cart-add--with-spinbox-theme-standart {
+    --cart-add-spinbox-color: currentColor;
+    --cart-add-spinbox-width: calc(var(--adv-text-4) + var(--adv-m-2) * 2);
+
+    position: relative;
+}
+
+
+.cart-title {
+    h1 {
+        font-size: var(--adv-h4);
+    }
+}
+
+#modalBuyOneClickInCart {
+    .modal-content {
+        padding: 20px;
+
+        .form-field-name {
+            font-size: 14px;
+        }
+
+        .form-field-input {
+            input {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .modal-header {
+        padding: 15px 20px;
+    }
+
+    .buy-one-click-text {
+        font-size: 14px;
+    }
+}
+
+.sidebar {
+    .cart-mini--sidebar {
+        height: 100%;
+        box-sizing: border-box;
+        width: 100%;
+    }
+}
+
+.cart-mini--sidebar {
+    .spinbox-block {
+        .spinbox__arrows {
+            position: static;
+        }
+    }
+}
+
+
+.cart-add--with-spinbox {
+    border-radius: 8px;
+}
+
+.cart-add {
+    &--with-spinbox-theme-standart,
+    &--with-spinbox {
+        border-radius: var(--adv-rounded-2);
+    }
+}
+
+.cart-add--with-spinbox-theme-standart .cart-add__button-add,
+.cart-add--with-spinbox-theme-standart .cart-add__spinbox-input,
+.cart-add--with-spinbox-theme-standart .cart-add__button-loading {
+    box-sizing: border-box;
+}
+
+.cart-add__button-add::before,
+.cart-add::before,
+.cart-add--simple.icon-bag-before:before{
+    display: none;
+}
+.cart-add-container{
+    --cart-add-pad-left: var(--adv-m-5);
+    --cart-add-pad-right: var(--cart-add-pad-left);
+    --cart-add-spinbox-main-br-width: 0;
+}
+.cart-add--simple{
+    min-width: min(200px, 100%);
+}
+
+.cart-add__button-add,
+.cart-add__button-loading{
+    border-radius: 0;
+}
+
+.cart-add__button-loading.ladda-button{
+    position: static;
+    overflow: initial;
+
+}
+.cart-full-price-amount-list {
+    padding: 0.625rem;
+    margin-top: 0.625rem;
+    background-color: var(--cs-11);
+    border-radius: 15px;
+}
+
+.cart-full-price-amount-list .cart-full-price-amount-list__row {
+    grid-template-columns: 2fr 1fr;
+    font-size: 13px;
+}
+
+.cart-full-mobile-price-rule-next-discount {
+    font-size: 13px;
+    text-align: center;
+}
+
+.cart-add--separate-with-spinbox {
+    .cart-add__spinbox {
+        background: transparent;
+    }
+}

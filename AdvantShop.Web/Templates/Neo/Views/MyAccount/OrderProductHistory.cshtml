@@ -1,0 +1,6 @@
+﻿@model AdvantShop.ViewModel.MyAccount.OrderProductHistoryViewModel
+@{
+    string productCardBackground = TemplateSettingsProvider.Items["ProductCardBackground"];
+}
+<div data-order-product data-product-view-options="{showProductArtNo : @Model.ShowProductArtNo.ToLowerString(), itemClass: 'products-view-item--fill-@(productCardBackground.ToLower())', photoHeight: '@(SettingsPictureSize.SmallProductImageHeight)px'}" 
+     data-link-as-quickview="@SettingsDesign.OnePageCatalog.ToLowerString()"></div>

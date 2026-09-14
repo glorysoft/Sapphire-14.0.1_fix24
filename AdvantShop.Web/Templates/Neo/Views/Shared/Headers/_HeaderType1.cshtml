@@ -1,0 +1,206 @@
+﻿@using AdvantShop.Customers
+@using AdvantShop.Handlers.Common
+@using AdvantShop.Orders
+@using AdvantShop.Core.Services.Auth
+@using AdvantShop.Models.Common
+@{
+    var topPanelModel = new TopPanelHandler().Get();
+    bool isCarouselAsBackgroundOnMainPage = TemplateSettingsProvider.Items["CarouselAsBackgroundOnMainPage"].TryParseBool();
+    var currentController = Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+    bool isHome = currentController == "home";
+    bool showTextIconsInHeader = TemplateSettingsProvider.Items["ShowTextIconsInHeader"].TryParseBool();
+    var menuTopDisplaySubItems = TemplateSettingsProvider.GetSettingValue("MenuTopDisplaySubItems").TryParseBool();
+}
+@helper MyAccountButton(string text)
+{
+    <div class="site-head-button__icon">
+        <svg class="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M19 21C19 17.134 15.866 14 12 14C8.13401 14 5 17.134 5 21M12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7C16 9.20914 14.2091 11 12 11Z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <div class="site-head-button__text">
+        @text
+    </div>
+}
+<div class="site-head__col site-head__col--left hidden--on-pinned">
+        @if (topPanelModel.IsShowCity)
+        {
+            <div class="site-head__city">
+                <span data-popover-control data-popover-id="zonePopover" data-popover-trigger="null"
+                      data-popover-trigger-hide="null">
+                    <button type="button" class="zone-dialog-trigger-link btn-link p-0" data-zone-dialog-trigger>
+                        <span data-zone-current data-ng-bind="zone.City || '@T("Product.Index.ShippingTo.ChooseCity")'"
+                              data-start-val="{City: '@topPanelModel.CurrentCity'}">@(topPanelModel.CurrentCity.IsNotEmpty() 
+                                                                                        ? topPanelModel.CurrentCity 
+                                                                                        : T("Product.Index.ShippingTo.ChooseCity").ToString())</span>
+                    </button>
+                </span>
+            </div>
+        }
+        @if (topPanelModel.IsShowCurrency)
+        {
+            <div class="site-head__currency curency-item"
+                 data-oc-lazy-load="[{files: [@Html.RenderAssetFilesList("currency")]}]">
+                <span data-ng-controller="currencyController as curCtrl"
+                      class="top-panel-select text-static select-custom select-custom--slim icon-down-open-after-abs">
+                    @Html.DropDownList("ddlCurrency", topPanelModel.Currencies, new
+                    {
+                        data_ng_change = "curCtrl.changeCurrency(curCtrl.currency)",
+                        data_ng_model = "curCtrl.currency", data_ng_init = "curCtrl.currency = '" + topPanelModel.CurrentCurrency.Iso3 + "'", @class = "cs-bg-9"
+                    })
+                </span>
+            </div>
+        }
+    </div>
+    <div class="site-head__col site-head__col--center hidden--on-pinned">
+        <div class="site-head__menu">
+            @Html.StaticBlock("headerCenterBlock", "header-static-block-center")
+            @if (menuTopDisplaySubItems)
+            {
+                @Html.Partial("MenuTopWithChilds")
+            }
+            else
+            {
+                @Html.Action("MenuTop", "Common", new {alwaysRender = true})
+            }
+            @Html.StaticBlock("headerCenterBlockAlt", "header-static-block-center-alt")
+        </div>
+    </div>
+    <div class="site-head__col site-head__col--right hidden--on-pinned">
+        <div class="site-head__phone">
+            @Html.StaticBlock("headerRightBlock", "header-static-block-right")
+            <div class="cs-t-1 site-head-phone" data-zone-current data-ng-bind-html="zone.Phone"
+                 data-start-val="{Phone: '@Html.GetCityPhone(isPhoneLink: true)'}">@Html.GetCityPhone(isPhoneLink: false)</div>
+            @Html.StaticBlock("email", "static-block-email-header")
+        </div>
+    </div>
+    <div class="site-head__col site-head__col--left">
+        <div class="site-head__content site-head__content--one-line">
+            <div class="site-head__logo">
+                @if (isCarouselAsBackgroundOnMainPage && SettingsMain.UseAlternativeLogoImage && isHome)
+                {
+                    <div class="site-head__logo-wrap--alt"
+                         data-ng-show="!stickyElement.isPinned && !home.isOpenCatalogMenu">
+                        @Html.Action("Logo", "Common", new LogoModel(isAlternative: true))
+
+                    </div>
+                    <div class="ng-cloak site-head__logo-wrap"
+                         data-ng-show="stickyElement.isPinned || home.isOpenCatalogMenu">
+                        @Html.Action("Logo", "Common")
+                    </div>
+                }
+                else
+                {
+                    <div class="site-head__logo-wrap">
+                        @Html.Action("Logo", "Common")
+                    </div>
+                }
+            </div>
+            <div class="site-head__catalog">
+                <div class="site-head__catalog-list">
+                    @Html.Action("MenuCatalog", "Catalog", new { InLayout = true, IsExpanded = false })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-head__col site-head__col--center">
+        @if (SettingsDesign.SearchBlockLocation == SettingsDesign.eSearchBlockLocation.TopMenu)
+        {
+            <div class="site-head__search">
+                @Html.Action("SearchBlock", "Search")
+            </div>
+        }
+    </div>
+    <div class="site-head__col site-head__col--right">
+        <div class="site-head__user-controls @(showTextIconsInHeader ? "site-head__user-controls--icons-with-text" : "site-head__user-controls--icons-without-text")">
+            <div class="site-head__myaccount">
+                @if (topPanelModel.IsRegistered)
+                {
+                    <a class="site-head-button cs-l-2 link-text-decoration-none"
+                       href="@Url.AbsoluteRouteUrl("MyAccount")"
+                       @Html.Raw(!showTextIconsInHeader ? "title=\"" + @T("Common.TopPanel.MyAccount") + "\"" : "")>
+                        @MyAccountButton(showTextIconsInHeader ? CustomerContext.CurrentCustomer.FirstName : "")
+                    </a>
+                }
+                else
+                {
+                    switch (SettingsMain.LoginDisplayMode)
+                    {
+                        case ELoginDisplayMode.Page:
+                            <a class="site-head-button cs-l-2 link-text-decoration-none"
+                               href="@Url.AbsoluteRouteUrl("Login", new { from = UrlService.GetCurrentUrl() })"
+                               @Html.Raw(!showTextIconsInHeader ? "title=\"" + @T("Common.TopPanel.Login") + "\"" : "")>
+                                @MyAccountButton(showTextIconsInHeader ? T("Common.TopPanel.Login").ToString() : "")
+                            </a>
+                            break;
+                        case ELoginDisplayMode.Modal:
+                            <login-modal class="site-head-button cs-l-2 link-text-decoration-none"
+                                         @Html.Raw(!showTextIconsInHeader ? "title=\"" + @T("Common.TopPanel.Login") + "\"" : "")>
+                                @MyAccountButton(showTextIconsInHeader ? T("Common.TopPanel.Login").ToString() : "")
+                            </login-modal>
+                            break;
+                    }
+                }
+            </div>
+            @if (SettingsCatalog.EnableCompareProducts)
+            {
+                <div class="site-head__compare">
+                    <a href="@Url.AbsoluteRouteUrl("Compare")"
+                       class="site-head-button cs-l-2  link-text-decoration-none"
+                       @Html.Raw(!showTextIconsInHeader ? "title=\"" + @T("Compare.CompareName") + "\"" : "")>
+                        <span class="site-head-button__icon">
+                            <svg width="20" height="18" viewBox="0 0 20 18" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7 8V17M7 8H2.59961C2.03956 8 1.75981 8 1.5459 8.10899C1.35774 8.20487 1.20487 8.35774 1.10899 8.5459C1 8.75981 1 9.04004 1 9.6001V17H7M7 8V2.6001C7 2.04004 7 1.75981 7.10899 1.5459C7.20487 1.35774 7.35774 1.20487 7.5459 1.10899C7.75981 1 8.03956 1 8.59961 1H11.3996C11.9597 1 12.2403 1 12.4542 1.10899C12.6423 1.20487 12.7948 1.35774 12.8906 1.5459C12.9996 1.75981 13 2.04005 13 2.6001V5M7 17H13M13 17L19 17.0001V6.6001C19 6.04005 18.9996 5.75981 18.8906 5.5459C18.7948 5.35774 18.6429 5.20487 18.4548 5.10899C18.2409 5 17.9601 5 17.4 5H13M13 17V5"
+                                    stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                                    stroke-linejoin="round"/>
+                            </svg>
+                            <span
+                                class="site-head-button__badge cs-bg-6 cs-t-4 @(ShoppingCartService.CurrentCompare.Count == 0 ? "ng-cloak" : "")"
+                                data-compare-count data-ng-show="compareCount.countObj.count > 0"
+                                data-start-count="@ShoppingCartService.CurrentCompare.Count"
+                                data-ng-bind="compareCount.countObj.count">@ShoppingCartService.CurrentCompare.Count</span>
+                        </span>
+                        @if (showTextIconsInHeader)
+                        {
+                            <span class="site-head-button__text">@T("Compare.CompareName")</span>
+                        }
+                    </a>
+                </div>
+            }
+            @if (SettingsDesign.WishListVisibility)
+            {
+                <div class="site-head__wishlist">
+                    <a href="@Url.AbsoluteRouteUrl("WishList")"
+                       class="site-head-button cs-l-2  link-text-decoration-none"
+                       @Html.Raw(!showTextIconsInHeader ? "title=\"" + @T("Common.ToolBarBottom.Wishlist") + "\"" : "")>
+                        <span class="site-head-button__icon">
+                            <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.5714 10.1422L11.9146 15.7991C11.1335 16.5801 9.86721 16.5801 9.08616 15.7991L3.42931 10.1422C1.47669 8.1896 1.47669 5.02378 3.42931 3.07116C5.38193 1.11853 8.54776 1.11853 10.5004 3.07116C12.453 1.11853 15.6188 1.11853 17.5714 3.07116C19.5241 5.02378 19.5241 8.1896 17.5714 10.1422Z"
+                                    stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                                    stroke-linejoin="round"/>
+                            </svg>
+                            <span
+                                class="site-head-button__badge cs-bg-6 cs-t-4 @(ShoppingCartService.CurrentWishlist.Count == 0 ? "ng-cloak" : "")"
+                                data-wishlist-count data-ng-show="wishlistCount.countObj.count > 0"
+                                data-start-count="@ShoppingCartService.CurrentWishlist.Count"
+                                data-ng-bind="wishlistCount.countObj.count">@topPanelModel.WishCount</span>
+                        </span>
+                        @if (showTextIconsInHeader)
+                        {
+                            <span class="site-head-button__text">@T("Common.ToolBarBottom.Wishlist")</span>
+                        }
+                    </a>
+                </div>
+            }
+            <div class="site-head__cart">
+                @Html.Action("ShoppingCart", "Cart")
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,30 @@
+﻿@use "../../../../styles/functions/util";
+
+.feature\:sticky-buy-button {
+    --_feature-sticky-buy-button-bottom: var(--feature-sticky-buy-button-bottom, 0px);
+
+    .cart-full-mobile {
+        &__buy-btn-wrap {
+            position: sticky;
+            bottom: var(--_feature-sticky-buy-button-bottom);
+            background-color: var(--cs-4);
+
+            button[data-buy-one-click-trigger] {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .product__buttons--wrapper{
+        background-color: var(--cs-4);
+    }
+
+    .connector {
+        bottom: calc(var(--_feature-sticky-buy-button-bottom) + 130px);
+    }
+    &:has(.bottom-panel):has(.product__buttons--wrapper.sticky-element--initialized) {
+        .connector{
+            bottom: 192px !important;
+        }
+    }
+}

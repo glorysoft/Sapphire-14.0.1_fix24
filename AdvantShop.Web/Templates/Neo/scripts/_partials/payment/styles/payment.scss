@@ -1,0 +1,67 @@
+﻿@use '../../../../features/block-as-card/block-as-card';
+
+.payment-item {
+    $parent: &;
+
+    @extend %block-as-card-sm-radius;
+    cursor: pointer;
+
+    &--tile {
+        padding: 10px;
+        #{$parent}__title {
+            font-size: var(--adv-text-4);
+            line-height: 1;
+        }
+    }
+
+    &__title {
+        font-size: var(--adv-text-1);
+    }
+
+    &__description{
+        font-size: var(--adv-text-4);
+        line-height: 1.2;
+    }
+
+    &__description{
+        padding-top: 5px;
+        font-size: var(--adv-text-4);
+        line-height: 1.2;
+    }
+
+    .help-trigger-icon {
+        padding: 0;
+        height: 14px;
+    }
+
+    &__additional {
+        .form-field-name {
+            font-size: 14px;
+            line-height: 1.2;
+        }
+
+        textarea,
+        input:not([type=button]):not([type=submit]):not([type=ridio]):not([type=checkbox]) {
+            background-color: var(--cs-4);
+            padding: 10px;
+            height: 42px;
+        }
+    }
+
+    &__description-help-trigger-content {
+        font-size: 14px;
+        line-height: 1.2;
+    }
+
+    &__more {
+        grid-template-rows: none;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        font-size: var(--adv-text-3);
+        margin: 0;
+    }
+}
+
+
+

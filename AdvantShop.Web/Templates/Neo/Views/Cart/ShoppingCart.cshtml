@@ -1,0 +1,38 @@
+﻿@model AdvantShop.ViewModel.Common.ShoppingCartViewModel
+@{
+    bool showTextIconsInHeader = TemplateSettingsProvider.Items["ShowTextIconsInHeader"].TryParseBool();
+}
+<div data-cart-mini>
+    <a @Html.Raw(Model.EnableShoppingCartPopup ? "data-cart-mini-trigger" : "") href="@Url.RouteUrl("Cart")"
+       @Html.Raw(!showTextIconsInHeader? "title=\"" + @T("Cart.ShoppingCart.ShoppingCart") + "\"": "")                                                                       
+       class="site-head-button cs-l-2  link-text-decoration-none">
+        <span class="site-head-button__icon">
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M4.5 9H20.5L19.6654 18.1811C19.5717 19.2112 18.708 20 17.6736 20H7.32643C6.29202 20 5.42829 19.2112 5.33464 18.1811L4.5 9Z"
+                    stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M8.5 11V8C8.5 5.79086 10.2909 4 12.5 4C14.7091 4 16.5 5.79086 16.5 8V11"
+                      stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span class="site-head-button__badge cs-bg-6 cs-t-4 @(Model.TotalItems == 0 ? "ng-cloak" : "")"
+                  data-cart-count data-ng-show="cartCount.getValue() > 0"
+                  data-ng-bind-html="cartCount.getValue()">@Model.TotalItems</span>
+        </span>
+        @if (showTextIconsInHeader)
+        {
+            <span class="site-head-button__text">@T("Cart.ShoppingCart.ShoppingCart")</span>
+        }
+    </a>
+
+    @if (Model.EnableShoppingCartPopup)
+    {
+        <div
+            @Html.Raw(Model.ShoppingCartPopupType == SettingsDesign.EShoppingCartPopupType.Mini ? "data-cart-mini-popup" :
+                Model.ShoppingCartPopupType == SettingsDesign.EShoppingCartPopupType.Sidebar ? "data-cart-mini-sidebar" : "")>
+
+            <div data-cart-mini-list data-cart-data="cartMini.cartData"
+                 data-link-as-quickview="@SettingsDesign.OnePageCatalog.ToLowerString()">
+            </div>
+        </div>
+    }
+</div>

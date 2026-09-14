@@ -1,0 +1,371 @@
+#NotificationBtn:hover {
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 
+                0 4px 15px 0 rgba(0,0,0,.15);
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 
+                        0 4px 15px 0 rgba(0,0,0,.15);
+}
+
+.remind-about-receipt-adv-modal-inner {
+    width: 500px;
+}
+.remind-about-receipt-adv-modal-inner .adv-modal-close{
+    background: transparent !important;
+}
+
+.remind-about-receipt-modal-header {
+    height: 195px;
+    background: #56c1ad;
+}
+
+.remind-about-receipt-modal-header-icon {
+    background: url(../../icon.jpg) no-repeat;
+    background-size: 170px 190px;
+    background-position: center;
+    width: 100%;
+    height: 190px;
+}
+
+.remind-about-receipt-row input {
+    height: 42px;
+}
+
+.remind-about-receipt-adv-modal-inner button {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    background-color: #434142;
+}
+
+.remind-about-receipt-input-small {
+    padding: 0.5625rem 1.2rem;
+}
+
+.remind-about-receipt-input-small::placeholder {
+    color: #c3c3c3 !important;
+}
+
+.remind-about-receipt-modal-success-text {
+    text-align: center;
+    font-size: 18px;
+    color: #000;
+}
+
+.remind-about-receipt-modal-success-icon {
+    background: url(../../Content/images/tick.png) no-repeat;
+    background-size: 90px 90px;
+    background-position: center;
+    width: 100%;
+    height: 190px;
+}
+
+.remind-about-receipt-modal-success-button {
+    margin-bottom: 38px;
+}
+
+.remind-about-receipt-adv-modal-inner .adv-modal-close {
+    left: 90%;
+    top: 10px;
+}
+
+.remind-about-receipt-adv-modal-close-main:before, .remind-about-receipt-adv-modal-close-success:before {
+    content: "";
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.remind-about-receipt-adv-modal-close-main:before {
+    background: url(../../Content/images/cross.png) no-repeat;
+}
+.remind-about-receipt-adv-modal-container .adv-modal-close:not(.remind-about-receipt-adv-modal-close-main){
+    display: none;
+}
+.remind-about-receipt-adv-modal-close-main:after{
+    display: none;
+}
+
+.remind-module-show-notification-form > .adv-modal-close {
+    overflow: unset !important;
+}
+
+.adv-modal .modal-content .remind-about-receipt-adv-modal-inner .remind-about-receipt-adv-modal-close-success {
+    overflow: unset !important;
+}
+
+.adv-modal[id*="RemindDiscountModuleShowNotificationFormQv_"] .modal-content .remind-about-discount-adv-modal-inner .remind-about-discount-adv-modal-close-success {
+    overflow: unset !important;
+}
+
+#RemindModuleShowNotificationForm .adv-modal-inner > .adv-modal-close {
+    display: none;
+}
+
+.remind-about-receipt-adv-modal-close-success:before {
+    background: url(../../Content/images/cross-black.png) no-repeat;
+}
+
+.remind-about-receipt-adv-modal-close {
+    overflow: unset !important;
+}
+.remind-about-receipt-adv-modal-close-main:after,
+#RemindModuleShowNotificationForm .adv-modal-close:after {
+    display: none;
+}
+
+.remind-about-discount-adv-modal-inner {
+    width: 500px;
+}
+
+.remind-about-discount-modal-header {
+    height: 236px;
+    background: #1588bf;
+}
+
+.remind-about-discount-modal-header-icon {
+    background: url(../../icon.jpg) no-repeat;
+    background-size: 170px 190px;
+    background-position: center;
+    width: 100%;
+    height: 190px;
+}
+
+.remind-about-discount-row input {
+    height: 42px;
+    width: 100%;
+    font-size: 0.75rem;
+    box-sizing: border-box;
+    border: 1px #e2e3e4 solid;
+    border-radius: 5px;
+}
+
+.remind-about-discount-adv-modal-inner button,
+.remind-about-receipt-adv-modal-inner button{
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    background-color: #434142;
+    color: #fff;
+    border: 0;
+    border-radius: 0.3125rem;
+}
+.js-landing-page .remind-about-discount-adv-modal-inner button,
+.js-landing-page .remind-about-receipt-adv-modal-inner button{
+    height: auto;
+}
+
+.remind-about-discount-input-small {
+    padding: 0.5625rem 1.2rem;
+}
+
+.remind-about-discount-input-small::placeholder {
+    color: #c3c3c3 !important;
+}
+
+.remind-about-discount-modal-success-text {
+    text-align: center;
+    font-size: 18px;
+    color: #000;
+}
+
+.remind-about-discount-modal-success-icon {
+    background: url(../../Content/Images/tick.png) no-repeat;
+    background-size: 90px 90px;
+    background-position: center;
+    width: 100%;
+    height: 190px;
+}
+
+.remind-about-discount-modal-success-button {
+    margin-bottom: 38px;
+}
+
+.remind-about-discount-adv-modal-inner .adv-modal-close {
+    left: 90%;
+    top: 10px;
+    background: transparent !important;
+    
+    &:after{
+        display: none;
+    }
+}
+
+
+.remind-about-discount-adv-modal-close-main:before, .remind-about-discount-adv-modal-close-success:before,
+.remind-about-discount-adv-modal-close-main:after, .remind-about-discount-adv-modal-close-success:after {
+    content: "";
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.js-landing-page .remind-about-discount-adv-modal-close-main:after {
+    display: none;
+}
+.rad-notification-modal > .adv-modal-close{
+    display: none;
+}
+
+.remind-about-discount-adv-modal-close-main:before {
+    background: url(../../Content/Images/cross.png) no-repeat;
+}
+
+.remind-about-discount-adv-modal-close-success:before {
+    background: url(../../Content/Images/cross-black.png) no-repeat;
+}
+
+.remind-about-discount-adv-modal-close {
+    overflow: unset !important;
+}
+
+.remind-about-discount-adv-modal-close-main {
+    overflow: unset !important;
+}
+
+.remind-about-receipt-modal-wrap {
+    max-width: 420px;
+}
+
+.remind-about-receipt-modal-text {
+    margin: 30px 0 20px;
+    font-size: 16px;
+    color: #000;
+    text-align: center;
+}
+
+.remind-about-receipt-legal {
+    margin: 20px 0 30px;
+    font-size: 16px;
+    color: #000;
+    text-align: center;
+}
+
+.remind-about-discount-modal-header-icon:nth-child(2) {
+    display: none;
+}
+
+.rad-notification-modal{
+    border: 0;
+}
+.rad-notification-modal .container-fluid,
+.rad-notification-modal .modal-content {
+    padding: 0;
+}
+
+.adv-modal[id*="RemindDiscountModuleShowNotificationFormQv_"] .adv-modal-inner {
+    border-width: 0;
+}
+
+#RemindDiscountModuleShowNotificationForm {
+    margin-bottom: 5px;
+}
+@media (max-width: 767px) {
+    .remind-about-discount-adv-modal-inner,
+    .remind-about-receipt-adv-modal-inner {
+        width: 100%;
+    }
+
+    .remind-about-receipt-modal-text {
+        margin: 10px 0 10px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .remind-about-discount-modal-header,
+    .remind-about-receipt-modal-header {
+        height: 100px;
+    }
+
+    .remind-about-discount-modal-header-icon,
+    .remind-about-receipt-modal-header-icon {
+        background-size: 90px;
+        height: 100px;
+    }
+
+    .remind-about-discount-adv-modal-inner button,
+    .remind-about-receipt-adv-modal-inner button {
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: normal;
+        text-transform: none;
+    }
+
+    .remind-about-receipt-legal {
+        margin: 0 0 10px;
+        font-size: 12px;
+        line-height: 16px;
+        color: #000;
+    }
+
+    .remind-about-discount-adv-modal-close-main:before,
+    .remind-about-discount-adv-modal-close-success:before,
+    .remind-about-receipt-adv-modal-close-main:before,
+    .remind-about-receipt-adv-modal-close-success:before {
+        right: 0;
+        top: 0;
+    }
+}
+
+.vertical-interval-middle {
+    margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
+}
+
+.remind-about-receipt-button-wrapper .modal-content {
+    text-align: left;
+}
+.remind-about-receipt-button-wrapper {
+    margin-left: 0 !important;
+}
+
+.products-view-block .remind-about-receipt-button-wrapper .btn {
+    width: 100%;
+}
+
+
+.is-mobile .products-view-mobile-modern-tile .remind-about-receipt-button-wrapper .btn,
+.is-mobile .products-view-mobile-modern-list .remind-about-receipt-button-wrapper .btn {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.remind-about-receipt-button-discount{
+    margin-top: 10px;
+}
+@media (max-width: 767px) {
+    .landing-product-view-modal #NotificationDiscount {
+        font-size: 13px;
+        margin-bottom: 20px;
+        display: inline-block;
+    }
+    .landing-product-view-modal .lp-product-info__sizes .modal-content {
+        padding: 0;
+    }
+    .remind-about-discount-adv-modal-inner .remind-about-discount-row {
+        padding-right: .625rem;
+        padding-left: .625rem;
+    }
+    .remind-about-receipt-adv-modal-inner .adv-modal-close {
+        right: 15px;
+        top: 9px;
+    }
+    .remind-about-discount-adv-modal-inner .adv-modal-close {
+        right: 15px;
+        top: 9px;
+    }
+    .remind-about-discount-adv-modal-inner .remind-about-discount-modal-success-button {
+        width: calc(100% - 1.25rem) !important;
+        margin: 10px auto 20px !important;
+        display: block;
+    }
+    .remind-about-receipt-button-wrapper .modal-content {
+        text-align: center;
+        padding: 16px;
+    }
+}

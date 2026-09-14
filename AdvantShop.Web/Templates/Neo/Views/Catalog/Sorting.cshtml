@@ -1,0 +1,14 @@
+﻿@model AdvantShop.Models.Catalog.CategoryFiltering
+@{
+    bool isSiteBackgroundFill = TemplateSettingsProvider.Items["SiteBackgroundFill"].TryParseBool();
+}
+
+<div class="products-view-sort" data-catalog-filter-select-sort>
+    <ng-choices
+        class="products-view-sort-select cs-t-1 select-custom icon-down-open-after-abs @(isSiteBackgroundFill ? "products-view-sort-select--fill" : "")"
+        data-ng-init="catalogFilterSort.sorting = '@(Model.Sorting)'"
+        data-ng-model="catalogFilterSort.sorting"
+        data-on-choice="catalogFilterSort.sortBy()">
+        @Html.DropDownListFor(x => x.Sorting, Model.Sortings)
+    </ng-choices>
+</div>

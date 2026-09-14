@@ -1,0 +1,21 @@
+﻿#sidebar, #sidebar_overlay, .sidebar, .sidebar_overlay {
+    top: 0;
+    height: var(--min-full-height, 100dvh);
+}
+
+.sidebar-menu-items {
+    width: 30%;
+    padding: var(--adv-m-9) var(--adv-m-7) var(--adv-m-7);
+    box-sizing: border-box;
+
+    .sidebar__close {
+        width: 32px;
+        height: 33px;
+        top: 18px;
+        right: 10px;
+    }
+
+    .menu__item:has(> .menu__submenu:not(.ng-hide)) > .menu__item-inner{
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row col-xs-12">
+        <h3>Обратная связь</h3> 
+    </div>
+    <div class="row col-xs-12" style="margin-bottom: 20px">
+        <small>
+            Через данную форму обратной связи вы можете отправить вопросы, уточнения и пожелания по работе модуля.
+        </small>
+    </div>
+    <div class="row">
+        <div class="col-xs-7">
+            <form role="form" name="fbForm" novalidate class="form-inline">
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        ФИО:
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="$ctrl.feedback.Name" style="width: 300px;">
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        Email:
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="$ctrl.feedback.Email" style="width: 300px;">
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        Телефон:
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="$ctrl.feedback.Phone" style="width: 300px;">
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <div class="col-xs-6">
+                        Сообщение:
+                    </div>
+                    <div class="col-xs-6">
+                        <textarea style="min-width: 300px; min-height: 150px; max-width: 300px; max-height: 150px;" ng-model="$ctrl.feedback.Message" required></textarea>
+                    </div>
+                </div>
+                <div class="row m-b-md">
+                    <input type="submit" ng-disabled="fbForm.$invalid" ng-click="$ctrl.send(fbForm)" class="btn btn-sm btn-success" value="Отправить письмо" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

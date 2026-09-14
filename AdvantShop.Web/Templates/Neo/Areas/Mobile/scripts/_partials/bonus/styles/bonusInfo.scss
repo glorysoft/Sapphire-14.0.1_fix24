@@ -1,0 +1,36 @@
+﻿.plastic-card {
+    max-width: 320px;
+    min-width: 252px;
+    max-height: 190px;
+    width: 100%;
+    box-sizing: border-box;
+    background-size: 50%;
+
+    &__name {
+        font-size: var(--adv-text-2);
+    }
+
+    &__header {
+        align-items: baseline;
+    }
+
+    &__level-value,
+    &__level-note {
+        font-size: var(--adv-text-3);
+    }
+}
+
+.bonus-info {
+    &__title {
+        font-size: var(--adv-h2);
+        &::before {
+            width: 32px;
+            height: 39px;
+        }
+    }
+}
+
+.bonus-transactions-mode.btn {
+    min-width: fit-content;
+    text-transform: none;
+}

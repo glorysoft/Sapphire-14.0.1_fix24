@@ -1,0 +1,112 @@
+﻿<div data-ng-init="bonusInfo.setTransactions()" class="bonus-info">
+    <article class="bonus-info__plastic-card cs-bg-1 plastic-card">
+        <header class="plastic-card__header">
+            <div>
+                <h2 class="plastic-card__name">{{ ::'Js.PersonalAccount.Bonus.Title' | translate }}</h2>
+                <p class="plastic-card__level">
+                    <span class="plastic-card__level-note">{{ ::'Js.PersonalAccount.Bonus.LoyaltyLevel' | translate }}:</span>
+                    <span class="plastic-card__level-value cs-t-6" data-ng-bind="bonusInfo.bonusData.BonusGradeName"></span>
+                </p>
+            </div>
+
+            <div class="plastic-card__discount">
+                <span class="plastic-card__discount-value cs-t-6" data-ng-bind="bonusInfo.bonusData.BonusPercent + '%'"></span>
+                <span class="plastic-card__discount-note ">{{ ::'Js.PersonalAccount.Bonus.Cashback' | translate }}</span>
+            </div>
+        </header>
+        <div class="plastic-card__footer">
+            <div class="plastic-card__bonuses">
+                <div class="plastic-card__bonuses-note cs-l-4">{{ ::'Js.Bonus.CardBonuses' | translate }}:</div>
+                <div class="plastic-card__bonuses-value cs-l-4" data-ng-bind="bonusInfo.bonusData.BonusAmount"></div>
+            </div>
+
+            <div class="plastic-card__number">
+                <span class="plastic-card__number-value"
+                  data-ng-bind="bonusInfo.bonusData.CardNumber"></span>
+                <span class="plastic-card__number-value plastic-card__number-value--blocked"
+                      data-ng-if="bonusInfo.bonusData.Blocked">{{ ::'Js.PersonalAccount.Bonus.CardBlocked' | translate }}</span>
+            </div>
+        </div>
+    </article>
+
+
+    <section class="bonus-info__bonus-temporaries" data-ng-show="bonusInfo.bonusData.TemporaryBonuses.length > 0">
+        <h2 class="bonus-info__title h3">
+            {{ ::'Js.Bonus.TemporaryBonuses.Title' | translate }}!
+        </h2>
+        <table class="bonus-temporaries">
+            <tbody>
+                <tr class="bonus-temporaries-body-item-row" data-ng-repeat="tempBonus in bonusInfo.bonusData.TemporaryBonuses">
+                    <td class="bonus-temporaries-body-item bonus-temporaries-body-item__name" data-ng-bind="tempBonus.Name"></td>
+                    <td class="bonus-temporaries-body-item bonus-temporaries-body-item__amount" data-ng-bind="tempBonus.Amount"></td>
+                    <td class="bonus-temporaries-body-item bonus-temporaries-body-item__start-date" data-ng-bind="tempBonus.StartDate"></td>
+                    <td class="bonus-temporaries-body-item bonus-temporaries-body-item__end-date" data-ng-bind="tempBonus.EndDate"></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <div>
+        <ul class="bonus-info__transactions-modes-list">
+            <li>
+                <button
+                    type="button"
+                    class="bonus-transactions-mode btn btn-link"
+                    data-ng-class="{'bonus-transactions-mode--selected': bonusInfo.bonusData.TransactionsMode === 0}"
+                    data-ng-click="bonusInfo.setTransactions(0)"
+                    data-ng-bind="'Js.Bonus.TransactionsMode.All' | translate"></button>
+            </li>
+            <li>
+                <button
+                    type="button"
+                    class="bonus-transactions-mode btn btn-link"
+                    data-ng-class="{'bonus-transactions-mode--selected': bonusInfo.bonusData.TransactionsMode === 1}"
+                    data-ng-click="bonusInfo.setTransactions(1)"
+                    data-ng-bind="'Js.Bonus.TransactionsMode.Add' | translate"></button>
+            </li>
+            <li>
+                <button
+                    type="button"
+                    class="bonus-transactions-mode btn btn-link"
+                    data-ng-class="{'bonus-transactions-mode--selected': bonusInfo.bonusData.TransactionsMode === 2}"
+                    data-ng-click="bonusInfo.setTransactions(2)"
+                    data-ng-bind="'Js.Bonus.TransactionsMode.Subtract' | translate"></button>
+            </li>
+        </ul>
+        <div class="bonus-history" data-ng-switch="bonusInfo.transactions.length > 0">
+            <div class="bonus-history-table" data-ng-switch-when="true">
+                <div class="bonus-history-body">
+                    <div class="bonus-history-body-item-row" ng-repeat="transaction in bonusInfo.transactions">
+                        <div class="bonus-history-body-item bonus-history-body-item__action-and-date">
+                            <span class="bonus-history-body-item__inner">
+                                <span
+                                    class="bonus-history-body-item__action"
+                                    ng-if="transaction.IsAdd"
+                                    data-ng-bind="'Js.Bonus.Add' | translate"></span>
+                                <span
+                                    class="bonus-history-body-item__action"
+                                    ng-if="!transaction.IsAdd"
+                                    data-ng-bind="'Js.Bonus.Subtract' | translate">
+                                </span>
+                                <time class="bonus-history-body-item__date" data-ng-bind="transaction.Date"></time>
+                            </span>
+                        </div>
+                        <div class="bonus-history-body-item bonus-history-body-item__foundation">{{transaction.Foundation}}</div>
+                        <div class="bonus-history-body-item bonus-history-body-item__amount">
+                            <span
+                                data-ng-class="{'bonus-history-body-item__amount-add': transaction.IsAdd, 'bonus-history-body-item__amount-subtract': !transaction.IsAdd}"
+                                data-ng-bind="(transaction.IsAdd ? '+' : '') + transaction.Amount">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bonus-history-empty" data-ng-switch-default="" data-ng-bind="'Js.Bonus.BonusHistory.Empty' | translate"></div>
+        </div>
+    </div>
+
+    <!--<div>
+        <a href="javascript:void(0)" data-ng-click="bonusInfo.dialogOpen()">{{ ::'Js.Bonus.EditInfo' | translate }}</a>
+    </div>-->
+</div>

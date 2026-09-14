@@ -1,0 +1,22 @@
+.products-view-mobile-modern-tile {
+
+    .cart-add,
+    .cart-add__button-add,
+    .products-view-buy{
+        width: 100%;
+    }
+    .cart-add--with-spinbox-theme-standart{
+        --_cart-add-width: 100%;
+    }
+
+    .products-view-rating, .products-view__reviews {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--adv-m-base);
+        margin-top: 0;
+        font-size: var(--adv-text-4);
+    }
+}
+.products-view-tile .products-view-name-default{
+    height: auto;
+}

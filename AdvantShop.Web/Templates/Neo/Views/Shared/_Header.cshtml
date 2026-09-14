@@ -1,0 +1,34 @@
+﻿@using AdvantShop.Core.Services.Diagnostics
+@{
+    bool isRenderCriticalCss = DebugMode.IsDebugMode(eDebugMode.CriticalCss);
+    var headerType = TemplateSettingsProvider.Items["Header"];
+    var maxHeightLogo = TemplateSettingsProvider.Items["LogoMaxHeight"].TryParseInt();
+}
+
+<div class="container container-fluid site-head-inner site-head-inner--@headerType.ToLower()" data-set-css-custom-props="{'header-height': 'height'}"
+     data-set-css-custom-props-watch="true" style="@(maxHeightLogo > 0 ? String.Format("--logo-max-height: {0}px; --logo-max-height--pinned:{0}px", maxHeightLogo) : "")">
+
+    @if (isRenderCriticalCss)
+    {
+        @Html.Partial("Headers/_HeaderType1")
+        @Html.Partial("Headers/_HeaderType2")
+        @Html.Partial("Headers/_HeaderType3")
+    }
+    else
+    {
+        if (headerType == "Type1")
+        {
+            @Html.Partial("Headers/_HeaderType1")
+        }
+        else if (headerType == "Type2")
+        {
+            @Html.Partial("Headers/_HeaderType2")
+        }
+        else if (headerType == "Type3")
+        {
+            @Html.Partial("Headers/_HeaderType3")
+        }
+    }
+</div>
+
+

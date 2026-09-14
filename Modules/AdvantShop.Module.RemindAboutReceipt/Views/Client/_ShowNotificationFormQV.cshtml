@@ -1,0 +1,22 @@
+@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.RemindAboutReceipt.Service
+@using AdvantShop.Web.Infrastructure.Extensions;
+
+@model AdvantShop.Catalog.Offer
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>
+{
+        url + "modules/" + ModuleSettings.ModuleID + "/content/scripts/showNotificationForm/controllers/showNFController.js"
+    };
+    var version = Html.GetModuleVersion(ModuleSettings.ModuleID);
+}
+
+<div data-oc-lazy-load="[@String.Join(" ,", scripts.Select(x=>"'" + x + "?" + version + "'" ))]" style="width: 100%;">
+    <div ng-show="!product.offerSelected.IsAvailableForPurchase">
+        <div class="modal-content">
+            <rar-show-n-f data-product-offer-id="product.offerSelected.ArtNo" data-product-id="product.productId"></rar-show-n-f>
+
+        </div>
+    </div>
+</div>

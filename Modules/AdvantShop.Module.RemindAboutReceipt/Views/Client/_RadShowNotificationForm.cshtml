@@ -1,0 +1,22 @@
+@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.RemindAboutReceipt.Service
+@using AdvantShop.Web.Infrastructure.Extensions;
+
+
+@model AdvantShop.Catalog.Offer
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>
+{
+        url + "modules/" + ModuleSettings.ModuleID + "/content/scripts/radShowNotificationForm/controllers/radShowNFController.js"
+    };
+    var version = Html.GetModuleVersion(ModuleSettings.ModuleID);
+}
+
+<div data-oc-lazy-load="[@String.Join(" ,", scripts.Select(x=>"'" + x + "?" + version + "'" ))]" style="width: 100%;">
+    <div id="RemindDiscountModuleShowNotificationFormBlock" class="remind-about-receipt-button-wrapper remind-about-receipt-button-discount">
+        <div class="modal-content">
+            <rad-show-n-f></rad-show-n-f>
+        </div>
+    </div>
+</div>

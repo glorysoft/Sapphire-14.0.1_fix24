@@ -318,8 +318,9 @@ packages/*.html
 /AdvantShop.Web/Content/upload_images/
 /AdvantShop.Web/Modules/
 /AdvantShop.Web/userfiles/
-/AdvantShop.Web/Templates/
+#/AdvantShop.Web/Templates/
 /AdvantShop.Web/videos/
+/AdvantShop.Web/export/
 # files
 /AdvantShop.Web/App_Data/LogTempData.txt
 /AdvantShop.Web/Web.ConnectionString.config
@@ -339,7 +340,7 @@ _criticalcss
 dist
 
 # Modules folder
-/Modules
+#/Modules
 
 # Selenium tests
 /Tests/Selenium/AdvantShop.Selenium.Test.*/app.config

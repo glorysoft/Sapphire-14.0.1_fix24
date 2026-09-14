@@ -1,0 +1,83 @@
+﻿@use "../../../../styles/functions/util";
+
+.feature\:carousel--as-background {
+    .site-head {
+        position: absolute;
+        width: 100%;
+
+        &.is-pinned {
+            position: fixed;
+        }
+
+        &:not(.is-pinned) .site-head-inner {
+            padding-bottom: 0;
+        }
+    }
+
+
+    .slider-main-block {
+        --viewport-width: max(var(--adv-site-min-width), calc(100vw - var(--scrollbar-width, 0px)));
+        @include util.child-outside();
+    }
+
+    .carousel-main-wrap {
+        padding: 0;
+    }
+
+    .carousel-main-item {
+        img, video {
+            border-radius: 0;
+        }
+    }
+
+    .carousel-horizontal .carousel-nav-inside {
+        .carousel-nav-prev,
+        .carousel-nav-next {
+            transform: translateY(calc(-50% + var(--header-height) / 2));
+        }
+
+        .carousel-nav-prev {
+            left: 25px;
+        }
+
+        .carousel-nav-next {
+            right: 25px;
+        }
+    }
+
+
+    .carousel-main-dots {
+        bottom: 20px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50px);
+    }
+
+    .menu-dropdown-list {
+        min-width: 250px;
+    }
+
+    .carousel-text-block-wrap {
+        opacity: 0;
+        transition: .3s ease;
+        will-change: opacity;
+        animation: fadeIn 1s ease-in-out;
+        animation-fill-mode: forwards;
+        animation-delay: 1s;
+        margin-block-start: var(--header-height);
+    }
+}
+
+.feature\(off\)\:carousel--as-background {
+    border-radius: var(--adv-rounded-4);
+    --header-height: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

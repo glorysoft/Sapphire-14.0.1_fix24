@@ -1,0 +1,51 @@
+﻿.menu_item {
+    &--catalog {
+        .menu__item {
+            font-size: var(--adv-h3);
+            font-weight: 600;
+            padding-block: 0;
+            border: 0;
+        }
+
+        .menu__arrow-right,
+        .menu__arrow-left {
+            &::before {
+                content: "";
+                mask-image: url("../../../../images/icons/chevron-right.svg");
+                mask-position: center;
+                mask-size: contain;
+                mask-repeat: no-repeat;
+                width: 16px;
+                height: 16px;
+                background-color: currentColor;
+            }
+        }
+
+        .menu__arrow-left::before {
+            mask-image: url("../../../../images/icons/chevron-right.svg");
+            transform: rotate(180deg);
+        }
+
+        .menu__link {
+            padding-block: var(--adv-m-2);
+        }
+    }
+
+    &--nav-site {
+        .menu__item {
+            font-size: var(--adv-text-2);
+            font-weight: 500;
+            border: 0 !important;
+        }
+
+        .menu__link {
+            padding-block: var(--adv-m-2);
+        }
+    }
+}
+.menu__item-inner--in-submenu{
+    padding-left: 44px;
+}
+.menu__link--all{
+    font-weight: 400;
+}

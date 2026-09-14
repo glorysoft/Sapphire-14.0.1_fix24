@@ -1,0 +1,17 @@
+﻿.product-reviews-sliders {
+    &-title {
+        font-size: var(--adv-h3);
+        letter-spacing: -1px;
+        font-weight: 500;
+    }
+}
+
+.product-review-card{
+    padding: 0 !important;
+
+    &-container{
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+    }
+}

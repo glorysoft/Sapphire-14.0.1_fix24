@@ -1,0 +1,69 @@
+﻿<form is-mobile ng-class="{'container-fluid' : !isMobile.value}" novalidate="novalidate" > 
+
+    <div class="form-group row">
+        <div class="col-xs-12 col-md-2" ng-class="{'control-label' : isMobile.value}">
+            Создать Яндекс-Поиск для интернет-магазинов
+        </div>
+        <div class="col-xs-12 col-md-5 relative">
+            <a target="_blank" href="https://site.yandex.ru/catalogs/new/">https://site.yandex.ru/catalogs/new/</a>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-12 col-md-2" ng-class="{'control-label' : isMobile.value}">
+            API-ключ
+        </div>
+        <div class="col-xs-12 col-md-5 relative" ng-class="{'flex middle-xs' : isMobile.value}">
+            <input type="text" ng-model="$ctrl.settings.ApiKey" class="form-control input-alt" required validation-input-text="Укажите API-ключ" />
+            <help-trigger class="ng-cloak help-trigger-icon-abs" ng-class="{'m-l-sm p-l-xs' : isMobile.value}">
+                API-ключ можно получить в личном кабинете
+            </help-trigger>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-12 col-md-2" ng-class="{'control-label' : isMobile.value}">
+            Идентификатор поиска
+        </div>
+        <div class="col-xs-12 col-md-5 relative" ng-class="{'flex middle-xs' : isMobile.value}">
+            <input type="text" ng-model="$ctrl.settings.SearchId" class="form-control input-alt" required validation-input-text="Укажите индентификатор поиска"/>
+            <help-trigger class="ng-cloak help-trigger-icon-abs" ng-class="{'m-l-sm p-l-xs' : isMobile.value}">
+                Можно получить в личном кабине в адресной строке, например "789746"
+            </help-trigger>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-12 col-md-2" ng-class="{'control-label' : isMobile.value}">
+            Идентификатором товарного предложения является
+        </div>
+        <div class="col-xs-12 col-md-5 relative" ng-class="{'flex middle-xs' : isMobile.value}">
+            <select class="form-control input-alt" ng-model="$ctrl.settings.OfferIdType" required validation-input-text="Идентификатором товарного предложения является">
+                <option value="id">Идентификатор модификации</option>
+                <option value="artno">Артикул модификации</option>
+            </select>
+            <help-trigger class="ng-cloak help-trigger-icon-abs" ng-class="{'m-l-sm p-l-xs' : isMobile.value}">
+                Выставлять в соответствии с настройками экспортируемого yml-файла, который подается для яндекс поиска
+            </help-trigger>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-12 col-md-2" ng-class="{'control-label' : isMobile.value}">
+            Максимальное количество найденных результатов
+        </div>
+        <div class="col-xs-12 col-md-5 relative" ng-class="{'flex middle-xs' : isMobile.value}">
+            <input type="number" ng-model="$ctrl.settings.SearchMaxItems" class="form-control input-alt" min="100" max="10000" required validation-input-text="Укажите максимальное количество найденных результатов"/>
+            <help-trigger class="ng-cloak help-trigger-icon-abs" ng-class="{'m-l-sm p-l-xs' : isMobile.value}">
+                Число указывает на значение возвращённых результатов. Чем больше число, тем больше могут быть разбросаны результаты.
+            </help-trigger>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-12">            
+            <button type="button" class="btn btn-sm btn-success" button-validation button-validation-success="$ctrl.saveSettings()">Сохранить</button>
+        </div>
+    </div>
+
+</form>

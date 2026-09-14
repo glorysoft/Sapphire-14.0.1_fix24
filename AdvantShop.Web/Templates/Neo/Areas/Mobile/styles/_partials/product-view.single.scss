@@ -1,0 +1,10 @@
+.products-view-mobile-modern-single {
+    .cart-add,
+    .cart-add__button-add,
+    .products-view-buy{
+        width: 100%;
+    }
+    .cart-add--with-spinbox-theme-standart{
+        --_cart-add-width: 100%;
+    }
+}

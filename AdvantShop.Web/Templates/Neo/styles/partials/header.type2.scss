@@ -1,0 +1,22 @@
+﻿.site-head-inner--type2{
+    grid-template-columns:max(320px, 15%) 1fr max(320px, 15%);
+    grid-template-rows: 1fr;
+
+    .site-head__logo-wrap,
+    .site-head__logo-wrap--alt{
+        text-align: center;
+    }
+
+    // Блок иконок шире своей колонки и выходит за неё влево. Чтобы его
+    // реальную ширину можно было измерить (data-set-css-custom-props ->
+    // --header-user-controls-width), делаем бокс по содержимому и прижимаем
+    // к правому краю колонки.
+    .site-head__col--right {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .site-head__user-controls {
+        width: max-content;
+    }
+}

@@ -1,0 +1,208 @@
+<div class="container-fluid">
+    <div class="row sms-confirmation-modal">
+        <div class="col-xs-12">
+            <form name="smsConfirmationAuthForm" novalidate="novalidate">
+                <div ng-switch="moduleSmsConfirmation.currentForm">
+                    <div class="first" ng-switch-when="first">
+                        <div class="row middle-xs">
+                            <span class="col-xs-12">
+                                <span class="form-field-input vertical-interval-middle">
+                                    <input autocomplete="tel"
+                                           class="input-small"
+                                           data-mask-control
+                                           data-mask-control-preset="phone"
+                                           data-ng-init="moduleSmsConfirmation.phone=''"
+                                           data-ng-model="moduleSmsConfirmation.phone"
+                                           id="smsConfirmationPhone"
+                                           maxlength="70"
+                                           name="smsConfirmationPhone"
+                                           placeholder="Номер телефона"
+                                           required="required"
+                                           type="text">
+                                </span>
+                            </span>
+                        </div>
+                        <div class="row middle-xs" ng-if="moduleSmsConfirmation.errorPhone">
+                            <div class="col-xs-12">
+                                <div class="alert">
+                                    Укажите корректный номер телефона
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row middle-xs" ng-if="moduleSmsConfirmation.errorReset">
+                            <div class="col-xs-12">
+                                <div class="alert" ng-bind="moduleSmsConfirmation.errorReset"></div>
+                            </div>
+                        </div>
+
+                        <div class="row middle-xs" ng-if="moduleSmsConfirmation.settings.FormContent !== null && moduleSmsConfirmation.settings.FormContent !== ''">
+                            <span class="col-xs text-justify sms-confirmation-text" data-ng-bind-html="moduleSmsConfirmation.settings.FormContent"></span>
+                        </div>
+
+                        <div data-ng-if="moduleSmsConfirmation.settings.useCaptcha">
+                            <div class="row middle-xs">
+                                <span class="col-xs-12">
+                                    <span class="form-field-name vertical-interval-middle" data-ng-bind-html="moduleSmsConfirmation.CaptchaCode"></span>
+                                </span>
+                            </div>
+                            <div class="row middle-xs">
+                                <span class="col-xs-12">
+                                    <span class="form-field-input vertical-interval-middle" data-bind-html-compile="moduleSmsConfirmation.captchaHtml">
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="row middle-xs" ng-if="moduleSmsConfirmation.errorCaptcha">
+                                <div class="col-xs-12">
+                                    <div class="alert">
+                                        Неверно указан код
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row middle-xs" ng-if="moduleSmsConfirmation.enableRetrySend">
+                            <div class="col-xs-12">
+                                <button type="button" class="btn btn-small btn-submit" data-ng-click="moduleSmsConfirmation.sendSmsCode();">Выслать код</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-switch-when="second">
+                        <div class="row middle-xs">
+                            <div class="col-xs-12">
+                                <p>Мы отправили код подтверждения на номер <span ng-bind="moduleSmsConfirmation.phoneText"></span></p>
+                            </div>
+                        </div>
+                        <div class="row middle-xs">
+                            <!--<span class="col-xs-6">
+                                <span class="form-field-name vertical-interval-middle input-required">Код из смс</span>
+                            </span>-->
+                            <span class="col-xs-12" ng-if="!moduleSmsConfirmation.isMobile">
+                                <span class="form-field-input vertical-interval-middle numeral" style="width: 48px; display: inline-block; margin-right: 15px;">
+                                    <input type="text"
+                                           class="input-small"
+                                           data-ng-init="moduleSmsConfirmation.smsCodeModel[0]=''"
+                                           data-ng-model="moduleSmsConfirmation.smsCodeModel[0]"
+                                           id="smsConfirmationSmsCode0"
+                                           maxlength="1"
+                                           name="smsConfirmationSmsCode0"
+                                           data-ng-change="moduleSmsConfirmation.confirmSmsCode();"
+                                           required="required"
+                                           style="text-align: center;color: #4b4f58;"
+                                           ng-class="{ 'sms-confirmation-error-code': moduleSmsConfirmation.errorCode }"
+                                           ng-keypress="moduleSmsConfirmation.setFocus('smsConfirmationSmsCode0', 'smsConfirmationSmsCode1');"
+                                           autofocus>
+                                </span>
+                                <span class="form-field-input vertical-interval-middle numeral" style="width: 48px; display: inline-block; margin-right: 15px;">
+                                    <input type="text"
+                                           class="input-small"
+                                           data-ng-init="moduleSmsConfirmation.smsCodeModel[1]=''"
+                                           data-ng-model="moduleSmsConfirmation.smsCodeModel[1]"
+                                           id="smsConfirmationSmsCode1"
+                                           maxlength="1"
+                                           name="smsConfirmationSmsCode1"
+                                           data-ng-change="moduleSmsConfirmation.confirmSmsCode();"
+                                           required="required"
+                                           style="text-align: center;color: #4b4f58;"
+                                           ng-class="{ 'sms-confirmation-error-code': moduleSmsConfirmation.errorCode }"
+                                           ng-keypress="moduleSmsConfirmation.setFocus('smsConfirmationSmsCode1', 'smsConfirmationSmsCode2');">
+                                </span>
+                                <span class="form-field-input vertical-interval-middle numeral" style="width: 48px; display: inline-block; margin-right: 15px;">
+                                    <input type="text"
+                                           class="input-small"
+                                           data-ng-init="moduleSmsConfirmation.smsCodeModel[2]=''"
+                                           data-ng-model="moduleSmsConfirmation.smsCodeModel[2]"
+                                           id="smsConfirmationSmsCode2"
+                                           maxlength="1"
+                                           name="smsConfirmationSmsCode2"
+                                           data-ng-change="moduleSmsConfirmation.confirmSmsCode();"
+                                           required="required"
+                                           style="text-align: center;color: #4b4f58;"
+                                           ng-class="{ 'sms-confirmation-error-code': moduleSmsConfirmation.errorCode }"
+                                           ng-keypress="moduleSmsConfirmation.setFocus('smsConfirmationSmsCode2', 'smsConfirmationSmsCode3');">
+                                </span>
+                                <span class="form-field-input vertical-interval-middle numeral" style="width: 48px; display: inline-block; margin-right: 15px;">
+                                    <input type="text"
+                                           class="input-small"
+                                           data-ng-init="moduleSmsConfirmation.smsCodeModel[3]=''"
+                                           data-ng-model="moduleSmsConfirmation.smsCodeModel[3]"
+                                           id="smsConfirmationSmsCode3"
+                                           maxlength="1"
+                                           name="smsConfirmationSmsCode3"
+                                           data-ng-change="moduleSmsConfirmation.confirmSmsCode();"
+                                           required="required"
+                                           style="text-align: center;color: #4b4f58;"
+                                           ng-class="{ 'sms-confirmation-error-code': moduleSmsConfirmation.errorCode }">
+                                </span>
+                            </span>
+                            <span class="col-xs-6" ng-if="moduleSmsConfirmation.isMobile">
+                                <span class="form-field-input vertical-interval-middle">
+                                    <input type="text"
+                                           class="input-small"
+                                           data-ng-init="moduleSmsConfirmation.smsCode=''"
+                                           data-ng-model="moduleSmsConfirmation.smsCode"
+                                           id="smsConfirmationSmsCode"
+                                           maxlength="4"
+                                           name="smsConfirmationSmsCode"
+                                           data-ng-change="moduleSmsConfirmation.confirmSmsCode();"
+                                           required="required"
+                                           style="color: #4b4f58;"
+                                           ng-class="{ 'sms-confirmation-error-code': moduleSmsConfirmation.errorCode }"
+                                           autofocus>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="row middle-xs" ng-if="moduleSmsConfirmation.errorCode">
+                            <div class="col-xs-12">
+                                <p class="alert">
+                                    Неверный код. Попробуйте ещё раз
+                                </p>
+                            </div>
+                        </div>
+                        <!--<div class="row middle-xs" style="padding: 10px 0px 0px 10px;">
+                            <button type="button" class="btn btn-small btn-submit" style="cursor: pointer;" data-ng-click="moduleSmsConfirmation.confirmSmsCode();">Войти</button>
+                        </div>-->
+                        <div class="row middle-xs " ng-if="!moduleSmsConfirmation.enableRetrySend && moduleSmsConfirmation.countdownSeconds > 0">
+                            <div class="col-xs-12">
+                                <div class="timer" id="smsConfirmationCountdownTimer"></div>
+                            </div>
+                        </div>
+                        <div class="row middle-xs" ng-if="moduleSmsConfirmation.enableRetrySend">
+                            <div class="col-xs-12">
+                                <div class="re-code">
+                                    <a href="javascript:void(0);" class="link-dotted-invert" data-ng-click="moduleSmsConfirmation.sendSmsCode();">Выслать код повторно</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row middle-xs">
+                            <div class="col-xs-12">
+                                <div class="edit-phone">
+                                    <a href="javascript:void(0);" class="link-dotted-invert" data-ng-click="moduleSmsConfirmation.returnToFirstStep();">Изменить номер телефона</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row middle-xs">
+                        <div class="col-xs">
+                            <div class="login-link">
+                                <a href="login" class="link-dotted-invert">Вход или регистрация по email</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="moduleSmsConfirmation.currentForm === 'first' && moduleSmsConfirmation.settings.SocialLinks !== null">
+                    <div class="row middle-xs">
+                        <div class="col-xs">
+                            <div class="social-link">
+                                <a href="javascript:void(0);">Вход через соцсети</a>
+                            </div>
+                            <div ng-bind-html="moduleSmsConfirmation.settings.SocialLinks">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

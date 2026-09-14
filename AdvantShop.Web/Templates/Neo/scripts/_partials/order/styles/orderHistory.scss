@@ -1,0 +1,116 @@
+﻿.order-history-header-item {
+    background-color: var(--cs-11);
+    border-bottom: 0;
+}
+
+.order-history-count {
+    color: var(--cs-7);
+}
+
+.order-history-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    &__item {
+        padding: var(--adv-m-4);
+        border-radius: var(--adv-rounded-4);
+        margin: 0 0 var(--adv-m-4);
+        cursor: pointer;
+        background-color: var(--cs-11);
+
+        &:hover {
+            background-color: var(--cs-10);
+        }
+    }
+
+    &__item-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 0 var(--adv-m-2);
+    }
+
+
+    &__item-date,
+    &__item-cost-value {
+        font-size: var(--adv-text-1);
+        font-weight: 600;
+    }
+
+    &__item-date {
+        margin: 0;
+    }
+
+    &__item-cost-payed {
+        font-size: var(--adv-text-4);
+    }
+
+    &__item-data {
+        padding: var(--adv-m-4);
+        border-radius: var(--adv-rounded-4);
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__item-photo-list {
+        display: flex;
+        align-items: center;
+        gap: var(--adv-m-2);
+        overflow: auto;
+        scroll-snap-type: x mandatory;
+    }
+
+    &__item-photo-item {
+        max-width: 86px;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+
+    &__item-shipping-name {
+        font-size: var(--adv-text-1);
+        font-weight: 500;
+        margin-bottom: var(--adv-m-1);
+    }
+
+    &__item-shipping-data {
+        font-weight: 500;
+    }
+}
+
+.order-history-empty-text {
+    font-weight: 500;
+    font-size: var(--adv-h3);
+    margin-bottom: var(--adv-m-6);
+    text-align: center;
+}
+
+.order-history-details-info-block {
+    font-size: 1rem;
+}
+
+.order-history-details-products {
+    .cart-full-product{
+        border-radius: 0;
+    }
+    .cart-mini-list-mobile {
+        .cart-mini-item {
+            border-color: #e2e3e4;
+        }
+
+        .cart-mini-photo,
+        .cart-mini-info {
+            padding-block: 12px 0;
+        }
+
+        .cart-mini-item:last-child {
+            .cart-mini-photo,            .cart-mini-info {
+                padding-bottom: 12px;
+            }
+        }
+        .cart-mini-result-total-price{
+            font-size: var(--adv-h6);
+        }
+    }
+}
+

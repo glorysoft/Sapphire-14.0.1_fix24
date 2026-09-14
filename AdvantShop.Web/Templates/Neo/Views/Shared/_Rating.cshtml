@@ -1,0 +1,30 @@
+﻿@model RatingViewModel
+@if (Model.ReadOnly && Model.Rating > 0)
+{
+    <div class="details-rating" data-tabs-goto="tabReviews" 
+         @if (!string.IsNullOrEmpty(Model.Binding)) {
+              @:data-ng-init='@Model.Binding = @Model.Rating'
+         }>
+        <div class="rating rating-custom-block">
+            <span class="rating-count">@Model.Rating</span>
+            <span class="rating-item icon-star-before rating-item-selected"></span>
+        </div>
+    </div>
+}else{
+<ul class="rating"
+    data-rating
+    data-readonly="false"
+    data-current="@Model.Rating"
+    @if (!string.IsNullOrEmpty(Model.Binding)) {
+        @:data-ng-model='@Model.Binding'
+    } 
+    data-obj-id="@Model.ObjId"
+    data-url="@Model.Url">
+    @for (var i = 5; i > 0; --i)
+    {
+        <li class="rating-item icon-star-before"
+            data-ng-class="{'rating-item-selected': @i <= rating.current}">
+        </li>
+    }
+</ul>
+}

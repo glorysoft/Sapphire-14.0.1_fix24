@@ -1,0 +1,27 @@
+﻿@model AdvantShop.Core.Services.Catalog.ProductViewModel
+@if (Model != null && Model.Products.Count > 0)
+{
+    <div class="block">
+        <div class="block-head">
+            <div class="h2">@T("Core.RecentlyViewed.Title")</div>
+        </div>
+        <div class="block-content">
+            <div class="products-view products-view-tile">
+                <div class="product-view-carousel-list"
+                     data-carousel
+                     data-carousel-class="product-view-carousel"
+                     data-visible-max="4"
+                     data-visible-min="4"
+                     data-prev-class="@(Model.Products.Count > 4 ? "full-arrow-in-circle full-arrow-in-circle--prev" : "ng-hide")"
+                     data-next-class="@(Model.Products.Count > 4 ? "full-arrow-in-circle full-arrow-in-circle--next" : "ng-hide")"
+                     data-speed="300"
+                     data-stretch="false"
+                     data-nav-position="outside">
+                    @Html.Partial("_ProductView", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

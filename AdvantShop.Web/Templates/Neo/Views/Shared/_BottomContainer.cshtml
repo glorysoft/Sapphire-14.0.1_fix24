@@ -1,0 +1,25 @@
+﻿@{
+    var headerType = TemplateSettingsProvider.Items["Header"];
+    bool needRenderSidebarCatalog = headerType == "Type2";
+}
+<!--удаляем input после инициализации-->
+<div>
+    <input type="checkbox" id="sidebarState" class="sidebar-state-menu__input" hidden />
+    <sidebars-container class="sidebars-container">
+        @if(needRenderSidebarCatalog){
+            <sidebar-content-static class="sidebar-content-static" data-content-id="sidebarMenu">
+                <div class="sidebar cs-bg-4 cs-br-1 sidebar-animation--left sidebar-menu-items"
+                     data-sidebar-hook-close="sidebarContainer.setScrollSidebarContent(0, '.sidebar')">
+                    <button type="button" class="btn-link sidebar__close" data-sidebar-container-close>
+                        <svg viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="31" height="32">
+                            <rect x="18.7383" y="4.14697" width="2" height="19.855" rx="1" transform="rotate(45 18.7383 4.14697)" fill="currentColor"/>
+                            <rect x="20.3008" y="18.187" width="2" height="19.855" rx="1" transform="rotate(135 20.3008 18.187)" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    @Html.Partial("Sidebar")
+                </div>
+                <div class="sidebar_overlay" data-sidebar-container-close></div>
+            </sidebar-content-static>
+        }
+    </sidebars-container>
+</div>

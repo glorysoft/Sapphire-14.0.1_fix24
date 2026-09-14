@@ -1,0 +1,256 @@
+<div class="sticky-page-name m-b-sm" sticky sticky-top="0">
+    <div class="page-name-block sticky-page-name-inner">
+        <div class="page-name-block-item-main">
+            <h1 class="page-name-block-text sticky-page-name-text">
+                Снижение цен
+            </h1>
+        </div>
+        <div class="page-name-block-item-additional">
+            <button class="btn btn-sm btn-success" type="button" ng-click="$ctrl.saveChanges(moduleSettingsForm);">
+                <span class="fa fa-check"></span>
+                Сохранить
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <form name="moduleSettingsForm">
+        <div class="form-group row">
+            <div class="col-xs-4">
+                Активность
+            </div>
+            <div class="col-xs-8">
+                <label class="adv-checkbox-label control-checkbox">
+                    <label class="rad-switch">
+                        <input type="checkbox" ng-model="$ctrl.settings.Active" />
+                        <span class="rad-slider rad-round"></span>
+                    </label>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                <span class="text-required">
+                    Текст для вывода в карточке товара
+                </span>
+                <help-trigger class="ng-cloak word-spacing" data-title="Уведомить о снижении цены">
+                    Укажите текст, который будет выводиться в карточке товара.
+                    <br />
+                    Текст должен подсказывать и мотивировать оставить контактную информацию
+                </help-trigger>
+            </div>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" ng-model="$ctrl.settings.TextForUser" required />
+            </div>
+        </div>
+        <div class="row m-b-md">
+            <div class="col-sm-4" ng-show="$ctrl.settings.ImagePath != '' && $ctrl.settings.ImagePath != null">
+                Изображение
+                <br />
+                <a href="../pictures/modules/remindaboutreceipt/{{ $ctrl.settings.ImagePath }}" target="_blank" style="text-decoration: none;">
+                    <img src="../pictures/modules/remindaboutreceipt/{{ $ctrl.settings.ImagePath }}" style="max-width: 80px; max-height: 80px;" />
+                </a>
+                <a href="" ng-show="$ctrl.settings.ImagePath != ''" class="link-invert link-decoration-none fa fa-remove fa-times" ng-click="$ctrl.deleteImage();"></a>
+            </div>
+            <div class="col-sm-4">
+                <div for="file" class="btn btn-sm btn-success m-b-md" ngf-select="" ngf-change="$ctrl.selectImage($file);" ngf-accept="'.jpg,.jpeg,.png,.gif'" style="vertical-align: initial;">
+                    Выберите изображение
+                </div>
+            </div>
+        </div>
+        <div class="row m-b-md">
+            <div class="col-xs">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    Настройки для формы
+                </h1>
+            </div>
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                Выводить поле "Email"
+            </div>
+            <div class="col-xs-8">
+                <label class="adv-checkbox-label control-checkbox">
+                    <label class="rad-switch">
+                        <input type="checkbox" ng-model="$ctrl.settings.ShowEmailInForm">
+                        <span class="rad-slider rad-round"></span>
+                    </label>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                Выводить поле "Комментарий"
+                <help-trigger class="ng-cloak word-spacing" data-title="Выводить поле Комментарий">
+                    Данные будут записываться только при активности настройки "Создавать лид при создании заявки"
+                </help-trigger>
+            </div>
+            <div class="col-xs-8">
+                <label class="adv-checkbox-label control-checkbox">
+                    <label class="rad-switch">
+                        <input type="checkbox" ng-model="$ctrl.settings.ShowCommentInForm">
+                        <span class="rad-slider rad-round"></span>
+                    </label>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                Выводить поле "Имя"
+                <help-trigger class="ng-cloak word-spacing" data-title="Выводить поле Имя">
+                    Данные будут записываться только при активности настройки "Создавать лид при создании заявки"
+                </help-trigger>
+            </div>
+            <div class="col-xs-8">
+                <label class="adv-checkbox-label control-checkbox">
+                    <label class="rad-switch">
+                        <input type="checkbox" ng-model="$ctrl.settings.ShowNameInForm">
+                        <span class="rad-slider rad-round"></span>
+                    </label>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                Выводить поле "Фамилия"
+                <help-trigger class="ng-cloak word-spacing" data-title="Выводить поле Фамилия">
+                    Данные будут записываться только при активности настройки "Создавать лид при создании заявки"
+                </help-trigger>
+            </div>
+            <div class="col-xs-8">
+                <label class="adv-checkbox-label control-checkbox">
+                    <label class="rad-switch">
+                        <input type="checkbox" ng-model="$ctrl.settings.ShowSurnameInForm">
+                        <span class="rad-slider rad-round"></span>
+                    </label>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                Выводить поле "Номер телефона"
+                <help-trigger class="ng-cloak word-spacing" data-title="Выводить поле Номер телефона">
+                    Данные будут записываться только при активности настройки "Создавать лид при создании заявки"
+                </help-trigger>
+            </div>
+            <div class="col-xs-8">
+                <label class="adv-checkbox-label control-checkbox">
+                    <label class="rad-switch">
+                        <input type="checkbox" ng-model="$ctrl.settings.ShowPhoneNumberInForm">
+                        <span class="rad-slider rad-round"></span>
+                    </label>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                Создавать лид при создании заявки
+            </div>
+            <div class="col-xs-8">
+                <label class="adv-checkbox-label control-checkbox">
+                    <label class="rad-switch">
+                        <input type="checkbox" ng-model="$ctrl.settings.CreateLead" />
+                        <span class="rad-slider rad-round"></span>
+                    </label>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                Список, в который попадает лид
+            </div>
+            <div class="col-xs-8">
+                <select ng-options="salesFunnelId as salesFunnelId.Value for salesFunnelId in $ctrl.salesFunnelIds track by salesFunnelId.Id"
+                        ng-model="$ctrl.salesFunnelId"
+                        class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                <span class="text-required">
+                    Заголовок
+                </span>
+                <help-trigger class="ng-cloak word-spacing" data-title="Уведомить о снижении цены">
+                    Укажите текст заголовка на всплывающем окне в карточке товара.
+                </help-trigger>
+            </div>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" ng-model="$ctrl.settings.FormHeader" required />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                Текст после успешной отправки сообщения
+                <help-trigger class="ng-cloak word-spacing" data-title="Уведомить о снижении цены">
+                    Укажите текст, который увидит пользователь после успешной отправки данных в сплывающем окне.
+                </help-trigger>
+            </div>
+            <div class="col-xs-8">
+                <textarea class="form-control wysiwyg" ckeditor="{ height: 150 }" id="AfterFormTextForUser" required ng-model="$ctrl.settings.AfterFormTextForUser" ng-init="$ctrl.settings.AfterFormTextForUser"></textarea>
+            </div>
+        </div>
+        <div class="row m-b-md">
+            <div class="col-xs">
+                <h1 class="page-name-block-text sticky-page-name-text">
+                    Настройка уведомляющих писем для покупателей
+                </h1>
+            </div>
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                Учитывать наличие товара при отправлении уведомления
+                <help-trigger class="ng-cloak word-spacing" data-title="Уведомить о снижении цены">
+                    Если данная настройка активна, при условии снижения цены на товар, <br />
+                    уведомление пользователю по рассматриваемому товару "Не в наличии" не будет отправляться
+                </help-trigger>
+            </div>
+            <div class="col-xs-8">
+                <label class="adv-checkbox-label control-checkbox">
+                    <label class="rad-switch">
+                        <input type="checkbox" ng-model="$ctrl.settings.CheckAmount">
+                        <span class="rad-slider rad-round"></span>
+                    </label>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                <span class="text-required">
+                    Тема письма
+                </span>
+            </div>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" ng-model="$ctrl.settings.LetterSubject" required />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-4">
+                <span class="text-required">
+                    Текст письма
+                </span>
+            </div>
+            <div class="col-xs-8">
+                <textarea class="form-control wysiwyg" ckeditor="{ height: 300 }" id="LetterBoby" required ng-model="$ctrl.settings.LetterBody" ng-init="$ctrl.settings.LetterBody"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <button class="btn btn-sm btn-success" type="button" ng-click="$ctrl.saveChanges(moduleSettingsForm);">
+                    <span class="fa fa-check"></span>
+                    Сохранить
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+

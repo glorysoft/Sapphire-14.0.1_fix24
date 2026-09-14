@@ -1,0 +1,271 @@
+@using AdvantShop.Areas.Mobile.Models.Product
+@using AdvantShop.Orders
+@using AdvantShop.Core.Services.Catalog
+@using AdvantShop.Core.Services.Configuration.Settings
+@using AdvantShop.ViewCommon
+@using AdvantShop.ViewModel.Shared
+@model AdvantShop.Core.Services.Catalog.ProductViewModel
+@{
+    int indexProduct = 0;
+    string productCardBackground = TemplateSettingsProvider.Items["ProductCardBackground"];
+}
+
+@foreach (var product in Model.Products)
+{
+    int? color = Model.SelectedColorsList != null && product.ColorsList != null ? (int?)Model.SelectedColorsList.FirstOrDefault(x => product.ColorsList.Any(y => y.ColorId == x)) : product.ColorId;
+    var productUrl = Url.AbsoluteRouteUrl("Product", new { url = product.UrlPath });
+    var isNotPhoto = product.CountPhoto == 0;
+    var isUseScroll = product.CountPhoto > 1;
+    int limitPhotoCount = isNotPhoto ? 1 : 4;
+    var allowToBuy = Model.AllowBuyOutOfStockProducts || Model.AllowPreOrderOutOfStockProducts && product.AllowPreorder;
+    var amountBuy = product.GetMinAmount(product);
+    var quickViewTrigger = "data-quickview-trigger data-product-id=\"" + product.ProductId + "\" data-color-id=\"productViewItem.getSelectedColorId()\"";
+    var linkOrQuickViewTrigger = @Html.Raw(SettingsDesign.OnePageCatalog || Model.QuickViewAsProductPage ? quickViewTrigger : "data-ng-href=\"{{productViewItem.getUrl('" + productUrl + "')}}\" href=\"" + productUrl + "\"");
+
+    <div class="mobile-product-view-item cs-t-1 mobile-product-view__item js-products-view-block @(Model.WrapCssClass)"
+         data-product-view-item data-offer-id="@product.OfferId" data-product-id="@product.ProductId"
+         data-offer="{Amount: @product.Amount.ToInvariantString(), RoundedPrice: @product.RoundedPrice.ToInvariantString(), OfferId: @product.OfferId, ColorId: @color, AmountBuy : @amountBuy.ToInvariantString()}"
+         style="--products-view-name-line-count: @Model.CountLinesProductName"
+         data-ng-class="{'mobile-product-view--loading': productViewItem.getStateLoading()}">
+        <div class="mobile-product-view-item__inner products-view-item--fill-@(productCardBackground.ToLower())">
+            <div class="mobile-product-view-item-image-wrap">
+                <a @Html.Raw(linkOrQuickViewTrigger)
+                   class="mobile-product-view-item-image-block"
+                   data-product-view-image-list
+                   data-limit-photo-count="@(isUseScroll ? (limitPhotoCount + 1) : 1)"
+                   data-product-id="@product.ProductId"
+                   data-view-mode="@Model.ProductViewMode.ToString().ToLower()"
+                   data-block-product-photo-height="@(Model.ProductViewMode != ProductViewMode.Single ? Model.BlockProductPhotoHeight : Model.BlockProductPhotoMiddleHeight)"
+                   data-product-image-type="'@Model.ProductImageType'"
+                   data-photo-width="@Model.PhotoWidth"
+                   data-photo-height="@Model.PhotoHeight"
+                   data-color-initial-id="@color"
+                   data-rendered-photo-id="@product.Photo.PhotoId"
+                   data-is-product-photo-lazy="@(indexProduct > 4)"
+                   data-lozad-adv="productViewImageList.filterPhotos({isVisible, colorId: productViewImageList.currentColorId})"
+                   data-lozad-observer-mode="'observerAlways'"
+                   lozad-adv-debounce="false"
+                   @Html.Raw(isUseScroll ? "data-product-view-scroll-photos" : "")>
+                    @Html.Action("ProductViewPhoto", "Product", new { model = new ProductPhotoMobileViewModel(Model, product, limitPhotoCount, indexProduct > 4), area = "Mobile" })
+
+                    @if (isUseScroll)
+                    {
+                        for (var i = 0; i < limitPhotoCount; i++)
+                        {
+                            <span class="mobile-product-view-item-image-inner js-skeleton-photos"></span>
+                        }
+                    }
+                </a>
+                <div class="products-view-labels">
+                    @if (Model.ShowNotAvailableLabel && !allowToBuy && (product.AmountByMultiplicity < product.MinAmount || product.AmountByMultiplicity == 0))
+                    {
+                        <div class="products-view-label availability">
+                            <span class="products-view-label-inner not-available">@T("Product.NotAvailable")</span>
+                        </div>
+                    }
+                    @if (!Model.HideMarkers && (product.Recomend || product.Sales || product.Bestseller || product.New || product.TotalDiscount.HasValue))
+                    {
+                        @Html.RenderLabels(product.Recomend, product.Sales, product.Bestseller, product.New, product.TotalDiscount, customLabels: product.Labels)
+                    }
+                </div>
+                @if (product.Gifts)
+                {
+                    <div class="prod-gift-icon"></div>
+                }
+                <div class="mobile-product-view-item__controls">
+                    @if (Model.DisplayQuickView && !SettingsDesign.OnePageCatalog && !Model.QuickViewAsProductPage)
+                    {
+                        <button class="mobile-product-view-item__controls-icon mobile-product-view-trigger-quickview"
+                                @Html.Raw(quickViewTrigger)>
+                            <svg fill="currentColor" height="18px" width="18px" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path
+                                    d="m499.4,250.8c-51-86.3-143.6-140.4-243.4-140.4s-192.5,54.1-243.4,140.4c-2.1,3.1-2.1,7.3 5.32907e-15,10.4 51,86.3 143.6,140.4 243.4,140.4s192.5-54.1 243.4-140.4c2.1-3.1 2.1-7.3 0-10.4zm-243.4,130c-90.5,0-174.8-47.8-221.6-124.8 46.8-77 131.1-124.8 221.6-124.8s174.8,47.8 221.6,124.8c-46.8,77-131.1,124.8-221.6,124.8z"/>
+                                <path
+                                    d="m256,162.4c-52,0-93.6,41.6-93.6,93.6 0,52 41.6,93.6 93.6,93.6s93.6-41.6 93.6-93.6c0-52-41.6-93.6-93.6-93.6zm0,166.4c-40.6,0-72.8-32.3-72.8-72.8s32.3-72.8 72.8-72.8 72.8,32.3 72.8,72.8-32.2,72.8-72.8,72.8z"/>
+                                <path
+                                    d="m256,214.4v20.8c11.4,0 20.8,9.4 20.8,20.8s-9.4,20.8-20.8,20.8-20.8-9.4-20.8-20.8h-20.8c0,22.9 18.7,41.6 41.6,41.6 22.9,0 41.6-18.7 41.6-41.6s-18.7-41.6-41.6-41.6z"/>
+                            </svg>
+                        </button>
+                    }
+                </div>
+            </div>
+            <div class="mobile-prod-info-wrap mobile-product-view-item__wrap">
+                <div class="mobile-product-view-item__inner">
+                    <div class="mobile-product-view-item-price-data products-view-list-element-hidden">
+                        @if (!Model.HidePrice && Model.ShowAmountsTableInCatalog)
+                        {
+                            <div class="product-view-amount-table"
+                                 data-price-amount-list
+                                 data-lazy="true"
+                                 data-product-id="@product.ProductId"
+                                 data-start-offer-id="@product.OfferId"
+                                 data-offer-id="productViewItem.offer.OfferId"
+                                 data-init-fn="productViewItem.addPriceAmountList(priceAmountList)"
+                                 data-source="catalog">
+                                @Html.RenderAmountTable(product)
+                            </div>
+                        }
+                        @if (!Model.HidePrice)
+                        {
+                            if(product.AllowAddProductToCart){
+                                <div class="price cs-l-8" data-ng-if="productViewItem.offer.PreparedPrice == null">
+                                    @Html.Raw(product.PreparedPrice)
+                                </div>
+                                <div class="price cs-l-8 ng-cloak"
+                                     data-ng-if="productViewItem.offer.PreparedPrice != null"
+                                     data-ng-bind-html="productViewItem.offer.PreparedPrice"></div>
+                            }
+                            else
+                            {
+                                <div class="price cs-l-8">@Html.Raw(product.PreparedPrice)</div>
+
+                            }
+                        }
+                        else
+                        {
+                            <div class="text-instead-of-price cs-l-8">@Html.Raw(Model.TextInsteadOfPrice)</div>
+                        }
+                    </div>
+                    <div
+                        class="mobile-product-view-item__name @(Model.ShowBriefDescription ? "mobile-product-view-item__name--with-desc" : "")">
+                        <a class="prod-name text-floating"
+                           @Html.Raw(linkOrQuickViewTrigger)>@Html.Raw(product.Name)</a>
+                    </div>
+                    @if (Model.DisplayProductArtNo)
+                    {
+                        <div class="mobile-prod-artno cs-t-7">@product.ArtNo</div>
+                    }
+                    @if (Model.ShowBriefDescription)
+                    {
+                        <div class="mobile-products-view-description">
+                            @Html.Raw(product.BriefDescription)
+                        </div>
+                    }
+                    @if (Model.DisplayRating || (Model.DisplayReviewCount && product.Comments > 0))
+                    {
+                        <div class="products-view__meta">
+                            @if (Model.DisplayRating)
+                            {
+                                var ratioValue = product.ManualRatio ?? product.Ratio;
+                                if (ratioValue > 0)
+                                {
+                                    <div class="products-view-rating">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8.60373 1.2196C8.72846 0.835725 9.27154 0.835725 9.39627 1.2196L11.1516 6.62192C11.2074 6.7936 11.3674 6.90983 11.5479 6.90983H17.2282C17.6318 6.90983 17.7997 7.42634 17.4731 7.66359L12.8776 11.0024C12.7316 11.1085 12.6705 11.2966 12.7263 11.4682L14.4816 16.8706C14.6063 17.2544 14.1669 17.5737 13.8404 17.3364L9.24491 13.9976C9.09887 13.8915 8.90113 13.8915 8.75509 13.9976L4.15961 17.3364C3.83306 17.5737 3.39369 17.2544 3.51842 16.8706L5.27374 11.4682C5.32952 11.2966 5.26841 11.1085 5.12238 11.0024L0.526893 7.66359C0.200345 7.42634 0.368168 6.90983 0.771803 6.90983H6.45213C6.63264 6.90983 6.79263 6.7936 6.84841 6.62192L8.60373 1.2196Z"
+                                                fill="#FDC14E"/>
+                                        </svg>
+                                        <span>@ratioValue</span>
+                                    </div>                             
+                                }
+                            }
+                            @if (Model.DisplayReviewCount && product.Comments > 0)
+                            {
+                                <div
+                                    class="products-view__reviews">
+
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 11.2397 2.80078 12.4091 3.33333 13.4393L2.5 17.5L6.56066 16.6667C7.59086 17.1992 8.76031 17.5 10 17.5Z"
+                                            fill="#B9B9B9"/>
+                                        <rect x="6.25" y="10" width="0.00833333" height="0.00833333" stroke="white"
+                                              stroke-width="2.5" stroke-linejoin="round"/>
+                                        <rect x="10" y="10" width="0.00833333" height="0.00833333" stroke="white"
+                                              stroke-width="2.5" stroke-linejoin="round"/>
+                                        <rect x="13.75" y="10" width="0.00833333" height="0.00833333" stroke="white"
+                                              stroke-width="2.5" stroke-linejoin="round"/>
+                                    </svg>
+
+                                    @Html.Numerals(product.Comments, T("Shared.ProductView.Reviews0"), T("Shared.ProductView.Reviews1"), T("Shared.ProductView.Reviews2"), T("Shared.ProductView.Reviews5"))
+                                </div>
+                            }
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(product.Colors))
+                    {
+                        <div class="mobile-product-view-item__colors-wrap">
+                            <div class="mobile-product-view-item__colors-inner">
+                                @Html.Partial("_Colors", new ColorsViewModel()
+                                {
+                                    NgColors = product.Colors,
+                                    ColorWidth = Model.ColorImageWidth,
+                                    ColorHeight = Model.ColorImageHeight,
+                                    SelectedColors = Model.SelectedColors ?? (product.PreSelectedColorId != null ? "[" + product.PreSelectedColorId + "]" : null),
+                                    ColorsViewMode = SettingsCatalog.ColorsViewMode
+                                })
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="mobile-product-view-item-price-data">
+                    @if (!Model.HidePrice && Model.ShowAmountsTableInCatalog)
+                    {
+                        <div class="product-view-amount-table products-view-tile-element-hidden products-view-single-element-hidden"
+                             data-price-amount-list
+                             data-lazy="true"
+                             data-product-id="@product.ProductId"
+                             data-start-offer-id="@product.OfferId"
+                             data-offer-id="productViewItem.offer.OfferId"
+                             data-init-fn="productViewItem.addPriceAmountList(priceAmountList)">
+                            @Html.RenderAmountTable(product)
+                        </div>
+                    }
+                    @if (!Model.HidePrice)
+                    {
+                        if(product.AllowAddProductToCart){
+                            <div class="price cs-l-8 products-view-tile-element-hidden products-view-single-element-hidden" data-ng-if="productViewItem.offer.PreparedPrice == null">
+                                @Html.Raw(product.PreparedPrice)
+                            </div>
+                            <div class="price cs-l-8 ng-cloak products-view-tile-element-hidden products-view-single-element-hidden"
+                                 data-ng-if="productViewItem.offer.PreparedPrice != null"
+                                 data-ng-bind-html="productViewItem.offer.PreparedPrice"></div>
+                        }
+                        else
+                        {
+                            <div class="price cs-l-8 products-view-tile-element-hidden products-view-single-element-hidden">@Html.Raw(product.PreparedPrice)</div>
+
+                        }
+                    }
+                    else
+                    {
+                        <div class="text-instead-of-price cs-l-8 products-view-tile-element-hidden products-view-single-element-hidden">@Html.Raw(Model.TextInsteadOfPrice)</div>
+                    }
+                    @if (SettingsMobile.ShowAddButton && !Model.HidePrice)
+                    {
+                    var isAvailable = product.RoundedPrice > 0 && product.AmountByMultiplicity > 0;
+                    var showBuyButton = (isAvailable || allowToBuy);
+                    var showPreOrderButton = Model.DisplayPreOrderButton && !showBuyButton && !isAvailable && product.AllowPreorder && product.OfferId != 0 && !Model.AllowBuyOutOfStockProducts;
+
+                    <div class="mobile-product-view-item__btn-wrap">
+                        <div class="contents" data-product-buttons-container>
+                            <div class="contents" data-bind-html-compile="productButtonsContainer.content">
+                                @Html.Action("ProductViewButtons", "ProductExt", new
+                                {
+                                    model = new ProductViewButtonsViewModel
+                                    {
+                                        ShowBuyButton = showBuyButton,
+                                        ShowPreOrderButton = showPreOrderButton,
+                                        ChooseBtnContent = Model.ChooseBtnText,
+                                        ProductUrl = productUrl,
+                                        BtnContent = Model.BuyButtonText,
+                                        LinkOrQuickViewTrigger = linkOrQuickViewTrigger,
+                                        PreOrderButtonText = Model.PreOrderButtonText,
+                                        Product = product,
+                                        IsMobile = true
+                                    },
+                                    area = ""
+                                })
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            </div>
+        </div>
+    </div>
+
+    ++indexProduct;
+}

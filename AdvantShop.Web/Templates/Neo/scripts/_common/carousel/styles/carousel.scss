@@ -1,0 +1,110 @@
+﻿.feature\:carousel-change-mode--dynamic-cursor {
+    .carousel-main {
+        margin: 0;
+    }
+
+    .carousel-main-dots {
+        display: none;
+    }
+
+    .carousel-main.carousel-horizontal .carousel-nav-inside {
+        .carousel-nav-prev,
+        .carousel-nav-next {
+            width: 50%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            transform: none;
+            margin: 0;
+
+            &::after {
+                display: none;
+            }
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
+
+        .carousel-nav-prev {
+            left: 0;
+            cursor: none;
+        }
+
+        .carousel-nav-next {
+            right: 0;
+            cursor: none;
+        }
+    }
+}
+
+.carousel-nav-prev,
+.carousel-nav-next {
+    &::after {
+        content: "";
+        display: block;
+        mask-size: contain;
+        background-color: currentColor;
+        mask: url('../../../../images/icons/arrow-right.svg') center no-repeat;
+        width: var(--carousel-nav-width, 18px);
+        height: var(--carousel-nav-height, 18px);
+    }
+}
+
+.carousel-vertical {
+    .carousel-nav-next::after {
+        transform: rotate(90deg);
+        margin-top: 4px;
+    }
+
+    .carousel-nav-prev::after {
+        transform: rotate(-90deg);
+        margin-bottom: 4px;
+    }
+}
+
+.carousel-horizontal {
+    .carousel-nav-inside {
+        --carousel-nav-width: 32px;
+        --carousel-nav-height: 32px;
+    }
+
+    .carousel-nav-prev,
+    .carousel-nav-next {
+        opacity: 1;
+        padding: var(--adv-m-2);
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, .3);
+    }
+
+    .carousel-nav-prev::after {
+        transform: rotate(-180deg);
+    }
+}
+
+.feature\:carousel-change-mode--dynamic-cursor{
+    .carousel-horizontal{
+        .carousel-nav-prev,
+        .carousel-nav-next{
+            opacity: .3;
+            background-color: transparent;
+
+            &:hover {
+                opacity: 1;
+                background-color: rgba(255, 255, 255, .3);
+            }
+        }
+    }
+}
+
+
+.feature\:carousel--as-background {
+    .carousel-text-block-wrap {
+        padding-inline: var(--margin-inline--main);
+        max-width: var(--adv-site-width);
+        min-width: var(--adv-site-min-width);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+    }
+}

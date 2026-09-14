@@ -1,0 +1,161 @@
+@use 'sass:color';
+@use 'sass:meta';
+@use '../../../../../../design/colors/colorScheme';
+@use "../../colorsExtend";
+
+$colorValueChange: colorScheme.getDefaultColorValueChange() !default;
+
+$c1: #363636;
+$c2: #E5E2E0;
+$c3: #94969b;
+$c4: #fff;
+$c5: #2C2C2C;
+$c6: #3fc001;
+$c7: #B9B9B9;
+$c8: #595959;
+$c9: #3fc001;
+$c10: #f3f3f3;
+$c11: #f9f9f9;
+$c12: #f8b643;
+$c13: #000000;
+
+@include colorScheme.init-css-variables($c1, $c2, $c3, $c4, $c5, $c6, $c7, $c8, $c9, $c10, $c11, $c12, $c13);
+
+@include colorScheme.color-scheme-text('1', $c1);
+@include colorScheme.color-scheme-text('2', $c2);
+@include colorScheme.color-scheme-text('3', $c3);
+@include colorScheme.color-scheme-text('4', $c4);
+@include colorScheme.color-scheme-text('5', $c5);
+@include colorScheme.color-scheme-text('6', $c6);
+@include colorScheme.color-scheme-text('7', $c7);
+@include colorScheme.color-scheme-text('8', $c4);
+@include colorScheme.color-scheme-text('9', $c11);
+@include colorScheme.color-scheme-link('1', $c1, $c13, color.adjust($c1, $lightness: $colorValueChange), null, $isFirst: true);
+@include colorScheme.color-scheme-link('2', $c1, $c6, color.adjust($c6, $lightness: - $colorValueChange));
+@include colorScheme.color-scheme-link('3', $c3, $c6, color.adjust($c6, $lightness: - $colorValueChange));
+@include colorScheme.color-scheme-link('4', $c4, $c4, $c4, $c4);
+@include colorScheme.color-scheme-link(
+        '5',
+        $c9,
+        $c1,
+        color.adjust($c9, $lightness: $colorValueChange),
+        color.adjust($c9, $lightness: - $colorValueChange)
+);
+@include colorScheme.color-scheme-link('6', $c6, $c4, $c4, $c4);
+@include colorScheme.color-scheme-link('7', $c4, $c4, $c4, $c4);
+@include colorScheme.color-scheme-bg('1', $c6, color.adjust($c6, $lightness: $colorValueChange), color.adjust($c6, $lightness: - $colorValueChange));
+@include colorScheme.color-scheme-bg('2', $c1, color.adjust($c1, $lightness: $colorValueChange), color.adjust($c1, $lightness: - $colorValueChange));
+@include colorScheme.color-scheme-bg(
+        '3',
+        $c10,
+        color.adjust($c10, $lightness: $colorValueChange),
+        color.adjust($c10, $lightness: - $colorValueChange)
+);
+@include colorScheme.color-scheme-bg(
+        '4',
+        $c11,
+        color.adjust($c11, $lightness: $colorValueChange),
+        color.adjust($c11, $lightness: - $colorValueChange)
+);
+@include colorScheme.color-scheme-bg('5', color.adjust($c6, $lightness: $colorValueChange), color.adjust($c6, $lightness: $colorValueChange), $c6);
+@include colorScheme.color-scheme-bg('6', $c9, color.adjust($c9, $lightness: $colorValueChange), color.adjust($c9, $lightness: - $colorValueChange));
+@include colorScheme.color-scheme-bg('7', $c4, color.adjust($c4, $lightness: $colorValueChange), color.adjust($c4, $lightness: - $colorValueChange));
+@include colorScheme.color-scheme-bg('8', $c4, color.adjust($c3, $lightness: $colorValueChange), color.adjust($c3, $lightness: - $colorValueChange));
+@include colorScheme.color-scheme-bg('9', $c4, color.adjust($c4, $lightness: $colorValueChange), color.adjust($c4, $lightness: - $colorValueChange));
+@include colorScheme.color-scheme-bg(
+        '10',
+        $c12,
+        color.adjust($c12, $lightness: $colorValueChange),
+        color.adjust($c12, $lightness: - $colorValueChange)
+);
+@include colorScheme.color-scheme-bg('11', $c4, color.adjust($c6, $lightness: $colorValueChange), color.adjust($c6, $lightness: - $colorValueChange));
+@include colorScheme.color-scheme-gradient(
+        '1',
+        'to bottom',
+        meta.inspect((#{color.adjust($c6, $lightness: 5%)} 0%, #{$c6} 50%, #{color.adjust($c6, $lightness: - 5%)} 100%))
+);
+@include colorScheme.color-scheme-button(
+        'add',
+        $c6,
+        $c4,
+        color.adjust($c6, $lightness: $colorValueChange),
+        $c4,
+        color.adjust($c6, $lightness: - $colorValueChange),
+        $c4,
+        $c2,
+        $c3
+);
+@include colorScheme.color-scheme-button(
+        'action',
+        $c1,
+        $c4,
+        color.adjust($c1, $lightness: $colorValueChange),
+        $c4,
+        color.adjust($c1, $lightness: - $colorValueChange),
+        $c4,
+        $c2,
+        $c3
+);
+@include colorScheme.color-scheme-button(
+        'buy',
+        $c11,
+        $c1,
+        color.adjust($c6, $lightness: $colorValueChange),
+        $c4,
+        color.adjust($c6, $lightness: - $colorValueChange),
+        $c4,
+        $c2,
+        $c3
+);
+.feature\:site-background-fill,
+.products-view-item--fill-productcard {
+    @include colorScheme.color-scheme-button(
+            'buy',
+            $c4,
+            $c1,
+            color.adjust($c6, $lightness: $colorValueChange),
+            $c4,
+            color.adjust($c6, $lightness: - $colorValueChange),
+            $c4,
+            $c2,
+            $c3
+    );
+}
+
+@include colorScheme.color-scheme-button(
+        'confirm',
+        $c9,
+        $c4,
+        color.adjust($c9, $lightness: $colorValueChange),
+        $c4,
+        color.adjust($c9, $lightness: - $colorValueChange),
+        $c4,
+        $c2,
+        $c3
+);
+@include colorScheme.color-scheme-button(
+        'submit',
+        $c6,
+        $c4,
+        color.adjust($c6, $lightness: $colorValueChange),
+        $c4,
+        color.adjust($c6, $lightness: - $colorValueChange),
+        $c4,
+        $c2,
+        $c3
+);
+@include colorScheme.color-scheme-borders-color('1', $c2, $c2, $c2);
+@include colorScheme.color-scheme-borders-color('2', $c12, $c12, $c12);
+
+tr,
+td,
+th {
+    border-color: $c2;
+}
+
+select.cs-bg-2 {
+    color: #fff;
+}
+
+
+@include colorsExtend.colorSchemeCommon($c1, $c2, $c4, $c6, $c10, $c11);

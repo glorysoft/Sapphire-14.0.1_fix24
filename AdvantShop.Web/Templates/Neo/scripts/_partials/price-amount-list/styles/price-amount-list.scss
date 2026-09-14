@@ -1,0 +1,109 @@
+
+.details-row__amount-table,
+.mobile-product-main-info {
+    margin: 0;
+
+    .price-amount-list {
+        color: var(--price-amount-color, var(--cs-1));
+
+        &__row {
+            margin-bottom: var(--adv-m-1);
+            background-color: var(--price-amount-even-bg, var(--cs-11));
+
+            &:nth-child(odd) {
+                background-color: var(--price-amount-odd-bg, var(--cs-11));
+            }
+
+            &:first-child {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+            &:last-child {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+
+        &__col {
+            padding: var(--adv-m-2);
+            font-size: var(--adv-text-2);
+            line-height: 0.95;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+
+            &--amount {
+                order: 1;
+                text-align: right;
+            }
+
+            &:first-child {
+                border-top-right-radius: var(--adv-rounded-1);
+                border-bottom-right-radius: var(--adv-rounded-1);
+            }
+
+            &:last-child {
+                border-top-left-radius: var(--adv-rounded-1);
+                border-bottom-left-radius: var(--adv-rounded-1);
+
+
+            }
+        }
+    }
+}
+
+.details-row__amount-table {
+    --price-amount-even-bg: var(--cs-4);
+    --price-amount-odd-bg: var(--cs-4);
+}
+
+@media (min-width: 768px) {
+    .price-amount-list {
+        color: var(--price-amount-color, var(--cs-1));
+
+        &__row {
+            margin-bottom: var(--adv-m-1);
+            background-color: var(--price-amount-even-bg, var(--cs-11));
+
+            &:nth-child(odd) {
+                background-color: var(--price-amount-odd-bg, var(--cs-11));
+            }
+
+            &:first-child {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+            &:last-child {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+
+        &__col {
+            padding: var(--adv-m-2);
+            font-size: var(--adv-text-2);
+            line-height: 0.95;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+
+            &--amount {
+                order: 1;
+                text-align: right;
+            }
+
+            &:first-child {
+                border-top-right-radius: var(--adv-rounded-1);
+                border-bottom-right-radius: var(--adv-rounded-1);
+            }
+
+            &:last-child {
+                border-top-left-radius: var(--adv-rounded-1);
+                border-bottom-left-radius: var(--adv-rounded-1);
+
+
+            }
+        }
+    }
+
+}

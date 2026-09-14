@@ -1,0 +1,78 @@
+﻿@using AdvantShop.CMS;
+@using AdvantShop.Core.Services.Configuration.Settings
+@using AdvantShop.ViewModel.Home
+
+@{
+    bool showTextOnMain = StaticBlockService.GetPagePartByKeyWithCache("TextOnMain").Content.Contains("Это тег H1") == false || SettingsMain.EnableInplace;
+	var showRecentlyView = TemplateSettingsProvider.Items["RecentlyViewVisibility"].TryParseBool();
+    string categoryNamePosition = TemplateSettingsProvider.Items["CategoryNameModeOnMain"];
+    string categoryNamePositionCss = categoryNamePosition == "CategoryNameOverlay" ? "categories-specials-container-wrap--name-overlay-photo" : "categories-specials-container-wrap--name-under-photo";
+    bool categoriesBetweenCarouselAndProducts = TemplateSettingsProvider.Items["MainPageCategoriesPosition"] == "BetweenCarouselAndProducts";
+    bool isCarouselAsBackgroundOnMainPage = TemplateSettingsProvider.Items["CarouselAsBackgroundOnMainPage"].TryParseBool();
+    bool isCarouselSlidesChangeModeDynamicCursor = TemplateSettingsProvider.Items["CarouselSlidesChangeMode"] == "DynamicCursor";
+    Html.AddAsset("home");
+}
+
+@Html.RenderModules("before_body_content")
+
+<div class="row body-content">
+    <div class="col-xs-12 site-body-main">
+        @Html.Action("GeoMode", "Home", new { area = "" })
+        @Html.StaticBlock("mainpage_before_carousel")
+        <div class="slider-main-block @(isCarouselSlidesChangeModeDynamicCursor ? "carousel-main-wrap--change-mode-dynamic": "carousel-main-wrap--change-mode-default")">
+            @Html.Action("Carousel", "Home", new { options = new CarouselOptions()
+            {
+                Dots = false,
+                PrevClass = "carousel-main-prev icon-left-open-big-after",
+                NextClass = "carousel-main-next icon-right-open-big-after",
+                HeightAuto = true,
+                DragContainer = isCarouselSlidesChangeModeDynamicCursor ? ".carousel-nav":  null
+            }})
+            @if (!isCarouselAsBackgroundOnMainPage)
+            {
+                @Html.RenderModules("mainpage_after_carousel")
+            }
+        </div>
+        @Html.RenderModules("module_stories")
+        @if (showTextOnMain)
+        {
+            @Html.StaticBlock("TextOnMain")
+        }
+        @Html.RenderModules("mainpage_block")
+        @if (categoriesBetweenCarouselAndProducts)
+        {
+            <div class="categories-specials-container-wrap @categoryNamePositionCss">
+                @Html.Action("MainPageCategories", "Home")
+            </div>
+        }
+        @Html.Action("MainPageProducts", "Home")
+        @if (!categoriesBetweenCarouselAndProducts)
+        {
+            <div class="categories-specials-container-wrap @categoryNamePositionCss">
+                @Html.Action("MainPageCategories", "Home")
+            </div>
+        }
+        @Html.Action("BrandCarousel", "Brand", new { count = 20 })
+        @Html.StaticBlock("TextOnMain2")
+        @Html.StaticBlock("NeoTextOnMain2", "static-block-on-main-page")
+        @Html.RenderModules("store_reviews")
+        @Html.Action("NewsBlock", "News")
+        @Html.Action("ProductReviewsOnMain", "Product", new { count = 10 })
+
+        <div class="blocks-on-main-horizontals">
+            @Html.RenderModules("voting_block")
+            @Html.StaticBlock("Vk")
+            @* @Html.Action("GiftCertificateBlock", "GiftCertificate") *@
+            @Html.Partial("SocialWidget")
+        </div>
+
+        @if (showRecentlyView == true)
+        {
+            <div class="recently-viewed-block product-card">
+                <div class="container">
+                    @Html.Action("RecentlyViewedBlock", "RecentlyViews")
+                </div>
+            </div>
+        }
+    </div>
+</div>

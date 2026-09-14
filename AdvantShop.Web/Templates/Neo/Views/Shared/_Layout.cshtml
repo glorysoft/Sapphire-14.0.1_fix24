@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    bool isCarouselAsBackgroundOnMainPage = TemplateSettingsProvider.Items["CarouselAsBackgroundOnMainPage"].TryParseBool() && SettingsDesign.MainPageMode == SettingsDesign.eMainPageMode.Default;
+    bool isSiteBackgroundFill = TemplateSettingsProvider.Items["SiteBackgroundFill"].TryParseBool();
+    var currentController = Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+    bool isStickyBuyButton = true;
+    bool isHome = currentController == "home";
+    bool headerStickyEnabled = currentController != "compare";
+    bool isCarouselChangeModeDynamicCursor = TemplateSettingsProvider.Items["CarouselSlidesChangeMode"] == "DynamicCursor";
+}
+<div class="stretch-container 
+    @(isCarouselAsBackgroundOnMainPage && isHome && SettingsDesign.CarouselVisibility ? "feature:carousel--as-background" : "feature(off):carousel--as-background")
+    @(isStickyBuyButton ? "feature:sticky-buy-button" : "feature(off):sticky-buy-button") 
+    @(isSiteBackgroundFill ? "cs-bg-4 feature:site-background-fill" : "feature(off):site-background-fill") 
+    @(isCarouselChangeModeDynamicCursor ? "feature:carousel-change-mode--dynamic-cursor" :"feature(off):carousel-change-mode--dynamic-cursor")">
+    @Html.Action("TopPanel", "Common")
+    @Html.StaticBlock("TopHeader")
+    <div class="site-container">
+        <header class="site-head" @(headerStickyEnabled ? "data-sticky-element" : "")>
+            @Html.Partial("_Header")
+        </header>
+        <main class="stretch-middle site-body">
+            <div
+                class="container container-fluid site-body-inner js-site-body-inner @(!isSiteBackgroundFill ? "cs-bg-7" : "")">
+                @RenderBody()
+            </div>
+        </main>
+        <div class="site-footer-wrap">
+            @Html.Partial("_Footer")
+            @Html.Action("ToolBarBottom", "Common")
+            @Html.GetMiniProfiler()
+        </div>
+        <div class="scroll-to-top" data-scroll-to-top>
+            <div class="icon-up-open-before to-top-icon cs-t-1"></div>
+        </div>
+    </div>
+</div>
+@if (isCarouselChangeModeDynamicCursor)
+{
+    <div class="js-custom-cursor custom-cursor"></div>
+}

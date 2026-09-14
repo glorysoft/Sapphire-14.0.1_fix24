@@ -1,0 +1,14 @@
+﻿@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.YandexSearch
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>()
+    {
+        url + "modules/yandexsearch/content/scripts/admin/yandexSearchSettings.js",
+    };
+    var version = Html.GetModuleVersion(YandexProductSearch.ModuleId);
+}
+
+<div data-oc-lazy-load="[@(String.Join(", ", scripts.Select(x => "'" + x + "?v=" + version + "'")))]">
+    <yandex-search-settings />
+</div>

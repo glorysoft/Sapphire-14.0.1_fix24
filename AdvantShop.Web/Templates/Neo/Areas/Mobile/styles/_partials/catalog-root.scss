@@ -1,0 +1,13 @@
+﻿.categories-root  {
+    font-size: var(--adv-text-2);
+    font-weight: 500;
+    &__items{
+        scroll-snap-type: x mandatory;
+    }
+    &__item{
+        padding: var(--adv-m-3) var(--adv-m-7);
+        border-radius: var(--adv-rounded-2);
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+    }
+}

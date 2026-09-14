@@ -1,0 +1,382 @@
+﻿// Свойства, меняющиеся между обычным и pinned-состоянием шапки, должны
+// плавно анимироваться, иначе мгновенный скачок высоты (до ~117 px из-за
+// display:none и скачка max-height) через startHeightTracking → scrollBy
+// ломает активный smooth-скролл (якорные переходы, scroll-to-top).
+.sticky-element--initialized.sticky-element-animation-start {
+    &.site-head-inner,
+    .site-head-inner {
+        transition: padding 0.3s ease, grid-template-rows 0.3s ease, row-gap 0.3s ease;
+    }
+
+    .site-head-logo-picture {
+        transition: max-height 0.3s ease;
+    }
+
+    .hidden--on-pinned {
+        transition: max-height 0.3s ease, opacity 0.3s ease,
+        padding 0.3s ease, margin 0.3s ease;
+    }
+}
+
+.site-head-logo-picture {
+    max-height: var(--logo-max-height, 120px);
+    width: auto !important;
+    vertical-align: middle;
+}
+
+// Контент, скрываемый при pinned: вместо display:none сжимаем max-height
+// до нуля + гасим opacity. Верхняя граница max-height задаётся переменной,
+// чтобы можно было переопределить, если контент выше.
+.hidden--on-pinned {
+    max-height: var(--hidden-on-pinned-max, 1000px);
+    overflow: hidden;
+}
+
+.site-head.is-pinned {
+    box-shadow: 0 0 4px 0 var(--cs-7);
+    background-color: var(--cs-4);
+
+    .site-head-inner {
+        padding-block: var(--adv-m-4);
+        grid-template-rows: 1fr;
+        row-gap: 0;
+    }
+
+    .hidden--on-pinned {
+        max-height: 0;
+        opacity: 0;
+        padding-block: 0;
+        margin-block: 0;
+        pointer-events: none;
+    }
+
+    .site-head-logo-picture {
+        max-height: var(--logo-max-height--pinned, 80px);
+    }
+}
+
+.site-head-inner {
+    --site-head-margin-block: var(--adv-m-7);
+    display: grid;
+    row-gap: var(--site-head-margin-block);
+    column-gap: var(--adv-m-4);
+    padding: var(--site-head-margin-block) var(--margin-inline--main);
+    align-items: center;
+
+    .zone-dialog-trigger-link {
+        padding: 0;
+    }
+}
+
+.site-head__phone {
+    display: flex;
+    gap: var(--adv-m-4);
+    justify-content: end;
+    align-items: center;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.site-head-phone,
+.static-block-email-header {
+    font-size: var(--adv-text-2);
+    font-weight: normal;
+}
+
+.site-head-phone {
+    margin: 0;
+}
+
+.static-block-email-header .email {
+    margin-right: 0 !important;
+}
+
+.site-head__catalog {
+    grid-column: 2;
+    display: flex;
+    gap: var(--adv-m-4);
+}
+
+body:has(.site-head__catalog .menu-dropdown.active) {
+    .site-head ~ *, .stretch-container ~ * {
+        opacity: 0;
+        z-index: -10;
+    }
+}
+
+.search-block-topmenu {
+    .site-head-search-btn-wrap {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .site-head-search-btn-text {
+        display: none;
+    }
+
+    .site-head-search-btn {
+        background-color: transparent;
+        color: var(--cs-1);
+        align-items: center;
+
+        &:hover{
+            color: var(--cs-6);
+        }
+
+        .icon-search-block {
+            display: block;
+            width: 20px;
+            height: 20px;
+
+            &::before {
+                display: block;
+                content: "";
+                mask-image: url('../../images/icons/search.svg');
+                background: currentColor no-repeat;
+                background-size: contain;
+                width: 20px;
+                height: 20px;
+                margin-right: 0;
+                margin-top: -1px;
+            }
+        }
+    }
+
+    .site-head-search-input {
+        padding-left: 47px;
+        margin-bottom: 0;
+    }
+}
+
+.site-head__user-controls {
+    display: flex;
+    gap: var(--adv-m-4);
+    justify-content: end;
+
+    &:not(.site-head__user-controls--icons-without-text) > * {
+        min-width: 76px;
+        flex-shrink: 0;
+    }
+
+    &--icons-without-text {
+        padding-right: 26px;
+        gap: var(--adv-m-7);
+
+        .site-head-button__icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .site-head__myaccount,
+        .site-head__wishlist {
+            .site-head-button__icon {
+                margin-top: -1px;
+            }
+        }
+
+        .site-head__cart {
+            .site-head-button__icon {
+                margin-top: -3px;
+            }
+        }
+
+        .site-head__compare {
+            .site-head-button__icon svg {
+                width: 26px;
+                height: 26px;
+            }
+        }
+
+        .site-head__cart {
+            .site-head-button__icon svg {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        .site-head-button__text {
+            display: none;
+        }
+    }
+}
+
+.site-head-button {
+    background: transparent;
+    padding: 0;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--adv-m-1);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: normal;
+
+    &__icon {
+        min-height: 24px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__text {
+        font-size: var(--adv-text-4);
+    }
+
+    &__badge {
+        position: absolute;
+        border-radius: var(--adv-rounded-4);
+        min-width: 25px;
+        box-sizing: border-box;
+        height: 18px;
+        font-size: var(--adv-text-4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: -90%;
+        top: -20%;
+    }
+}
+
+.site-head-dropdown {
+    position: relative;
+
+    &__menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        gap: 10px;
+        padding: var(--adv-m-4);
+        flex-direction: column;
+        z-index: 50;
+        text-align: left;
+        border-radius: var(--adv-rounded-1);
+    }
+
+    &:hover {
+        .site-head-dropdown__menu {
+            display: flex;
+        }
+    }
+
+    .cs-l-3.toolbar-top-link-alt {
+        color: currentColor;
+        margin: 0;
+    }
+}
+
+.site-head-search-input-wrap {
+    flex-basis: 100%;
+    max-width: 100%;
+}
+
+.site-head__content--one-line {
+    display: flex;
+    align-items: center;
+    gap: var(--adv-m-7);
+}
+
+.site-head-site-head-search {
+    position: relative;
+}
+
+.site-head__col--left {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--adv-m-5);
+}
+
+.site-head__currency .top-panel-select {
+    width: initial;
+}
+
+.site-head__currency select {
+    height: initial;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.site-head__search {
+    &--collapsible {
+        .site-head-search-input-wrap {
+            position: absolute;
+            min-width: 350px;
+            // Тянем поле от левого края контента шапки (отступ такой же, как
+            // справа у блока иконок) до кнопки поиска. Ширина блока иконок
+            // приходит из --header-user-controls-width, т.к. зависит от
+            // набора иконок и наличия подписей.
+            width: calc(var(--viewport-width) - var(--margin-inline--main) - var(--margin-inline--main) - var(--header-user-controls-width, 0px) -  var(--header-user-controls-width, 0px) - 20px);
+            max-width: none;
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .site-head-search-input {
+            padding-left: var(--adv-m-3);
+        }
+
+        .site-head-search-btn-wrap {
+            position: static;
+            flex-basis: 100%;
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .site-head-search-btn {
+            padding: 0;
+            align-items: start;
+            min-height: 0;
+
+            .icon-search-block {
+                width: 18px;
+                height: 18px;
+
+                &::before {
+                    mask-size: contain;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+// В шапке 2 раскрытое поле поиска тянется на всю ширину шапки и наезжает на
+// логотип. Прячем логотип, пока поле открыто (visibility, а не display —
+// чтобы не менять высоту шапки).
+.site-head-inner--type2 {
+    .site-head__col--center:has(~ .site-head__col--right .site-head__search--collapsible .site-head-search-input-wrap:not(.ng-hide)) {
+        .site-head__logo {
+            visibility: hidden;
+        }
+    }
+}
+
+.site-head__user-controls--icons-without-text {
+    .site-head__search{
+        &--collapsible{
+            .site-head-search-btn{
+                .icon-search-block {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+    }
+}
+
+.site-head-userid {
+    font-size: var(--adv-text-2);
+    margin-bottom: var(--adv-m-2);
+    display: block;
+}

@@ -1,0 +1,47 @@
+﻿@using AdvantShop.Handlers.Menu
+@using AdvantShop.ViewModel.Common
+@{
+    var menuHandler = new MenuHandler();
+
+    var model = new MenuViewModel();
+
+    model.MenuItems = menuHandler.GetMenuItems();
+    model.isMainMenu = true;
+}
+<ul class="menu-header clear">
+    @foreach (var item in model.MenuItems)
+    {
+        if (item.NoFollow)
+        {
+            <!--noindex-->
+        }
+
+        <li class="menu-header-item @(item.Selected ? "menu-header-item--current" : null) @(item.HasChild ? "menu-header-item--parent" : "")">
+            @if (item.HasChild)
+            {
+                <div class="menu-header__submenu">
+                    <ul class="menu-header__submenu-inner">
+                        @foreach (var child in item.SubItems)
+                        {
+                            <li class="menu-header__submenu-item">
+                                <a class="cs-l-2 menu-header-link menu-header-link--child"
+                                   href="@child.UrlPath"
+                                   @Html.Raw(child.Blank ? "target=\"_blank\"" : "")
+                                   @Html.Raw(child.NoFollow ? "rel=\"nofollow\"" : "")>@child.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+            <a class="cs-l-2 menu-header-link "
+               href="@item.UrlPath"
+               @Html.Raw(item.Blank ? "target=\"_blank\"" : "")
+               @Html.Raw(item.NoFollow ? "rel=\"nofollow\"" : "")>@item.Name</a>
+        </li>
+        if (item.NoFollow)
+        {
+            <!--/noindex-->
+        }
+    }
+</ul>
+

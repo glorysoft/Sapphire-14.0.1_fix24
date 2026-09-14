@@ -1,0 +1,87 @@
+@using AdvantShop.Module.SmsConfirmation.Service
+@using AdvantShop.Core.Services.Configuration.Settings
+@using AdvantShop.Customers;
+
+@model string
+
+@{
+    var url = UrlService.GetUrl();
+    var scripts = new List<string>
+{
+        url + "modules/" + SmsConfirmationSettings.ModuleID + "/content/scripts/smsConfirmation/smsConfirmationCtrl.js",
+        url + "modules/" + SmsConfirmationSettings.ModuleID + "/content/scripts/smsConfirmation/smsConfirmation.directive.js",
+        url + "modules/" + SmsConfirmationSettings.ModuleID + "/content/scripts/smsConfirmation/smsConfirmation.service.js"
+    };
+
+    var isMobile = AdvantShop.Helpers.MobileHelper.IsMobileEnabled();
+    bool MenuVisible = SettingsMobile.ShowBottomPanel;
+    var isRegistred = CustomerContext.CurrentCustomer.RegistredUser;
+    
+    var pageToRedirect = UrlService.GetCanonicalUrl().Replace(UrlService.GetUrl(), "");
+    if (string.IsNullOrEmpty(pageToRedirect))
+    {
+        pageToRedirect = "login";
+    }
+}
+
+<div data-oc-lazy-load="[@String.Join(" ,", scripts.Select(x => "'" + x + "?" + SmsConfirmationSettings.Version + "'" ))]" style="display: none;"
+     id="smsConfirmationStart"
+     data-is-mobile="@isMobile.ToLowerString()">
+    <div data-module-sms-confirmation-start></div>
+
+    <div class="sms-confirmation-login-link" style="display: inline-block;">
+        @if (isMobile)
+        {
+            var svgHeight = "22";
+            var mobileLinkClass = "mobile -header__item mobile-header--hidden-on-search-active";
+            <a class="@mobileLinkClass cs-l-4" href="javascript:void(0);" data-module-sms-confirmation="true" data-page-type="login" data-is-mobile="@isMobile.ToLowerString()" data-page-to-redirect="@pageToRedirect">
+                @if (MenuVisible)
+                {
+                    <div class="bottom-panel__menu-icon color-gray @(!isRegistred ? "login" : "")">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15 5C9.48 5 5 9.48 5 15C5 20.52 9.48 25 15 25C20.52 25 25 20.52 25 15C25 9.48 20.52 5 15 5ZM10.07 21.28C10.5 20.38 13.12 19.5 15 19.5C16.88 19.5 19.51 20.38 19.93 21.28C18.57 22.36 16.86 23 15 23C13.14 23 11.43 22.36 10.07 21.28ZM15 17.5C16.46 17.5 19.93 18.09 21.36 19.83C22.38 18.49 23 16.82 23 15C23 10.59 19.41 7 15 7C10.59 7 7 10.59 7 15C7 16.82 7.62 18.49 8.64 19.83C10.07 18.09 13.54 17.5 15 17.5ZM15 9C13.06 9 11.5 10.56 11.5 12.5C11.5 14.44 13.06 16 15 16C16.94 16 18.5 14.44 18.5 12.5C18.5 10.56 16.94 9 15 9ZM13.5 12.5C13.5 13.33 14.17 14 15 14C15.83 14 16.5 13.33 16.5 12.5C16.5 11.67 15.83 11 15 11C14.17 11 13.5 11.67 13.5 12.5Z" fill="currentColor" fill-opacity="0.54" />
+                        </svg>
+                    </div>
+                    <div class="bottom-panel__menu-descr color-gray">@(isRegistred ? "Кабинет" : "Войти")</div>
+                }
+                else
+                {
+                    <div class="bottom-panel__menu-icon color-gray @(!isRegistred ? "login" : "")">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15 5C9.48 5 5 9.48 5 15C5 20.52 9.48 25 15 25C20.52 25 25 20.52 25 15C25 9.48 20.52 5 15 5ZM10.07 21.28C10.5 20.38 13.12 19.5 15 19.5C16.88 19.5 19.51 20.38 19.93 21.28C18.57 22.36 16.86 23 15 23C13.14 23 11.43 22.36 10.07 21.28ZM15 17.5C16.46 17.5 19.93 18.09 21.36 19.83C22.38 18.49 23 16.82 23 15C23 10.59 19.41 7 15 7C10.59 7 7 10.59 7 15C7 16.82 7.62 18.49 8.64 19.83C10.07 18.09 13.54 17.5 15 17.5ZM15 9C13.06 9 11.5 10.56 11.5 12.5C11.5 14.44 13.06 16 15 16C16.94 16 18.5 14.44 18.5 12.5C18.5 10.56 16.94 9 15 9ZM13.5 12.5C13.5 13.33 14.17 14 15 14C15.83 14 16.5 13.33 16.5 12.5C16.5 11.67 15.83 11 15 11C14.17 11 13.5 11.67 13.5 12.5Z" fill="currentColor" fill-opacity="0.54" />
+                        </svg>
+                    </div>
+                    <style>
+                        #layout > .mobile-header__item.mobile-header--hidden-on-search-active {
+                            display: none !important;
+                        }
+                    </style>
+                }
+            </a>
+        }
+        else
+        {
+            <a class="cs-l-3 toolbar-top-link-alt" href="javascript:void(0);" data-module-sms-confirmation="true" data-page-type="login" data-is-mobile="@isMobile.ToLowerString()" data-page-to-redirect="@pageToRedirect">Войти</a>
+        }
+    </div>
+
+    @if (Model == "checkout" || Model == "registration")
+    {
+        <div data-module-sms-confirmation-add-field data-page-type="@Model" data-is-mobile="@isMobile.ToLowerString()"></div>
+    }
+    @if (!isRegistred)
+    {
+        <script defer>
+            var menu = document.querySelector('.mobile-header__menu-trgger-block');
+            if (menu != null) {
+                menu.addEventListener('click', (e) => {
+                    document.querySelector('.menu__link--with-icon').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        $('.bottom-panel__menu-icon.login').click();
+                    })
+                })
+            }
+        </script>
+    }
+</div>
+

@@ -1,0 +1,208 @@
+﻿<form is-mobile ng-class="{'container-fluid' : !isMobile.value}" novalidate="novalidate" name="settingsform">
+
+    <div ng-if="$ctrl.ShowRegisterButtons === true" class="form-group middle-xs">
+        <div class="" ng-class="{'row col-xs-6 btn-group' : !isMobile.value, 'flex flex-nowrap middle-xs' : isMobile.value}">
+            <input type="button" name="Account"
+                   class="btn"
+                   ng-class="{'btn-success' : $ctrl.IsHaveAccount === false}"
+                   ng-model="$ctrl.IsHaveAccount"
+                   ng-click="$ctrl.IsHaveAccount = false"
+                   value="Зарегистрироваться" />
+
+            <input type="button" name="Account"
+                   class="btn"
+                   ng-class="{'btn-success' : $ctrl.IsHaveAccount === true}"
+                   ng-model="$ctrl.IsHaveAccount"
+                   ng-click="$ctrl.IsHaveAccount = true"
+                   value="Уже есть аккаунт" />
+        </div>
+    </div>
+
+    <!--#region Registration -->
+    <div ng-if="$ctrl.IsHaveAccount === false">
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+                Почтовый адрес
+            </div>
+            <div class="col-xs-12 col-md-8 relative">
+                <input class="form-control input-alt" type="text" ng-model="$ctrl.registration.Email" 
+                       required validation-input-text="Почтовый адрес"/>
+            </div>
+        </div>
+
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+                Телефон(11 знаков)
+            </div>
+            <div class="col-xs-12 col-md-8 relative">
+                <input class="form-control input-alt" type="text" ng-model="$ctrl.registration.Phone" 
+                       required validation-input-text="Телефон"/>
+            </div>
+        </div>
+
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+                Ваше имя
+            </div>
+            <div class="col-xs-12 col-md-8 relative">
+                <input class="form-control input-alt" type="text" ng-model="$ctrl.registration.FirstName" 
+                       required validation-input-text="Ваше имя"/>
+            </div>
+        </div>
+
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+                Ваша фамилия
+            </div>
+            <div class="col-xs-12 col-md-8 relative">
+                <input class="form-control input-alt" type="text" ng-model="$ctrl.registration.LastName" 
+                       required validation-input-text="Ваша фамилия"/>
+            </div>
+        </div>
+
+        <div class="form-group middle-xs" ng-class="{'row' : !isMobile.value, 'flex' : isMobile.value}">
+            <button type="button" class="btn btn-sm btn-success"
+                    button-validation-success="$ctrl.register(registrationform); $ctrl.btnRegister = true;"
+                    data-button-validation ladda="$ctrl.btnRegister">
+                Зарегистрироваться
+            </button>
+            <help-trigger class="ng-cloak p-l-sm">
+                Процесс регистрации займет около минуты, пожалуйста ожидайте
+            </help-trigger>
+        </div>
+    </div>
+    <!--#endregion -->
+    <!--#region HaveAccount -->
+    <div ng-if="$ctrl.IsHaveAccount === true">
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+                Код магазина в Rees46
+            </div>
+            <div class="col-xs-12 col-md-9 relative">
+                <input class="form-control input-alt" type="text" ng-model="$ctrl.settings.ShopKey"
+                       required validation-input-text="Код магазина в Rees46" />
+            </div>
+        </div>
+
+        <div class="form-group adv-panel-info" style="{{isMobile.value ? 'display:flex;' : ''}}" ng-class="{'row' : !isMobile.value}">
+            <div>
+                Чтобы активировать 'С этим товаром покупают' и 'Похожие товары' зайдите в
+                <a href="{{$ctrl.settings.SettingsUrl}}" target="_blank">Параметры магазина -> Карточка товара -> Перекрестный маркетинг</a>
+                и выберите в Источник товаров для перекрестного маркетинга "из модуля"
+            </div>
+        </div>
+
+        <div ng-if="!isMobile.value" class="form-group row middle-xs">
+            <strong class="col-xs-12 col-md-3">
+                Где выводится в магазине
+            </strong>
+            <strong class="col-xs-3">
+                Код блока из Rees46
+            </strong>
+        </div>
+
+
+        <div ng-if="isMobile.value" class="form-group row middle-xs">
+            <div class="col-xs-12 control-label">
+                Где выводится в магазине
+            </div>
+            <div class="col-xs-12">
+                Код блока из Rees46
+            </div>
+        </div>
+
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+                С этим товаром покупают
+            </div>
+            <div class="col-xs-12 col-md-9 relative">
+                <input class="form-control input-alt" type="text" ng-model="$ctrl.settings.RelatedProductCode" />
+            </div>
+        </div>
+
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+                Похожие товары
+            </div>
+            <div class="col-xs-12 col-md-9 relative">
+                <input class="form-control input-alt" type="text" ng-model="$ctrl.settings.AlternativeProductCode" />
+            </div>
+        </div>
+
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+                Главная страница
+            </div>
+            <div class="col-xs-12 col-md-9 relative">
+                <input class="form-control input-alt" type="text" ng-model="$ctrl.settings.MainPageCode" />
+            </div>
+        </div>
+
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+                Страница категории (сверху)
+            </div>
+            <div class="col-xs-12 col-md-9 relative">
+                <input class="form-control input-alt" type="text" ng-model="$ctrl.settings.CatalogTopCode" />
+            </div>
+        </div>
+
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+                Страница категории (снизу)
+            </div>
+            <div class="col-xs-12 col-md-9 relative">
+                <input class="form-control input-alt" type="text" ng-model="$ctrl.settings.CatalogBottomCode" />
+            </div>
+        </div>
+
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+                Страница корзины (блок 'не забудьте посмотреть')
+            </div>
+            <div class="col-xs-12 col-md-9 relative">
+                <input class="form-control input-alt" type="text" ng-model="$ctrl.settings.CartCode" />
+            </div>
+        </div>
+
+        <div class="form-group row middle-xs">
+            <div class="col-xs-12 col-md-3" ng-class="{'control-label' : isMobile.value}">
+                Максимальное кол-во товаров
+            </div>
+            <div class="col-xs-12 col-md-2 relative">
+                <input class="form-control input-alt" type="number" min="1" step="1" ng-model="$ctrl.settings.Limit"
+                       required validation-input-text="Максимальное кол-во товаров" />
+            </div>
+        </div>
+
+        <div class="form-group row middle-xs">
+            <div ng-if="!isMobile.value" class="col-xs-3">
+                Использовать подсказки в поиске
+            </div>
+            <div class="col-xs-12 col-md-2 relative">
+                <label class="adv-checkbox-label">
+                    <input type="checkbox" class="adv-checkbox-input control-checkbox" ng-model="$ctrl.settings.UseSuggestionsInSearch" />
+                    <span class="adv-checkbox-emul"></span>
+                    <span ng-if="isMobile.value">Использовать подсказки в поиске</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12 col-md-6">
+                <button type="button" class="btn btn-sm btn-success"
+                        button-validation-success="$ctrl.saveSettings(settingsform); $ctrl.btnLoading = true;"
+                        data-button-validation ladda="$ctrl.btnLoading">
+                    Сохранить
+                </button>
+
+                <button type="button" class="btn btn-sm btn-default"
+                        ng-if="$ctrl.ShowRegisterButtons === false"
+                        ng-click="$ctrl.createNewAccount()">
+                    Перейти на форму регистрации
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--#endregion -->
+</form>

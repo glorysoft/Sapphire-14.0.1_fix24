@@ -1,0 +1,11 @@
+﻿.staticpage-title {
+    & > h1 {
+        font-size: var(--adv-h1);
+        font-weight: 500;
+        letter-spacing: -1px;
+        padding-left: 0;
+    }
+}
+.root-staticPage-custom .breadcrumbs__item:first-child {
+    padding-left: 0;
+}

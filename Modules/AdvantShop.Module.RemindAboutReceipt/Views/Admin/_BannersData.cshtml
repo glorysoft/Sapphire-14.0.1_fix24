@@ -1,0 +1,92 @@
+@using AdvantShop.Core.UrlRewriter
+@using AdvantShop.Module.RemindAboutReceipt.Service
+
+@model AdvantShop.Module.RemindAboutReceipt.Models.BannersSettingsModel
+
+<style>
+    .promo-content-banners-data-item {
+        padding: 0;
+        flex: auto;
+    }
+
+        .promo-content-banners-data-item img {
+            width: 100%;
+        }
+
+    .promo-content-banners-data-items {
+        width: 100%;
+        display: flex;
+    }
+
+    @@media (max-width: 1366px) {
+        .promo-content-banners-data-item-hide {
+            display: none;
+        }
+    }
+</style>
+
+<div class="container-fluid promo-content-banners-data" style="padding-top: 20px; display: none;">
+    <div class="row" style="text-align: center;">
+        <div class="promo-content-banners-data-items">
+            @if (!string.IsNullOrEmpty(Model.FirstBannerImage))
+            {
+                <div class="promo-content-banners-data-item">
+                    @if (!string.IsNullOrEmpty(Model.FirstBannerUrl))
+                    {
+                        <a href="@Model.FirstBannerUrl" @(Model.FirstBannerTargetBlank ? " target=\" _blank\"" : string.Empty)>
+                            <img src="@Model.Host@Model.FirstBannerImage">
+                        </a>
+                    }
+                    else
+                    {
+                        <img src="@Model.Host@Model.FirstBannerImage">
+                    }
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.SecondBannerImage))
+            {
+                <div class="promo-content-banners-data-item">
+                    @if (!string.IsNullOrEmpty(Model.SecondBannerUrl))
+                    {
+                        <a href="@Model.SecondBannerUrl" @(Model.SecondBannerTargetBlank ? " target=\" _blank\"" : string.Empty)>
+                            <img src="@Model.Host@Model.SecondBannerImage">
+                        </a>
+                    }
+                    else
+                    {
+                        <img src="@Model.Host@Model.SecondBannerImage">
+                    }
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.ThirdBannerImage))
+            {
+                <div class="promo-content-banners-data-item promo-content-banners-data-item-hide">
+                    @if (!string.IsNullOrEmpty(Model.ThirdBannerUrl))
+                    {
+                        <a href="@Model.ThirdBannerUrl" @(Model.ThirdBannerTargetBlank ? " target=\" _blank\"" : string.Empty)>
+                            <img src="@Model.Host@Model.ThirdBannerImage">
+                        </a>
+                    }
+                    else
+                    {
+                        <img src="@Model.Host@Model.ThirdBannerImage">
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        var bannersDataBlock = document.querySelector('.promo-content-banners-data');
+        var container = document.querySelector('.ibox-content');
+
+        if (bannersDataBlock !== null && container !== null) {
+            container.parentNode.insertBefore(bannersDataBlock, container.nextSibling);
+            bannersDataBlock.style.display = 'block';
+        }
+    };
+</script>

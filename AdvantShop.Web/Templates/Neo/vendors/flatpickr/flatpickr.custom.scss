@@ -1,0 +1,18 @@
+﻿.flatpickr-custom__toggle {
+    border: 0;
+    border-radius: 0 var(--adv-rounded-2) var(--adv-rounded-2) 0;
+    outline: transparent 1px solid;
+
+    svg {
+        display: none;
+    }
+
+    &::before {
+        content: "";
+        width: 16px;
+        height: 18px;
+        mask: url('../../images/icons/calendar.svg') no-repeat center;
+        mask-size: contain;
+        background-color: currentColor;
+    }
+}

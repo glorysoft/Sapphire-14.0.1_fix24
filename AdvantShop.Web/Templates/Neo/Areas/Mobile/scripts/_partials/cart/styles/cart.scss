@@ -1,0 +1,18 @@
+﻿.cart-add--with-spinbox-theme-standart {
+    --cart-add-spinbox-color: currentColor;
+    --cart-add-spinbox-width: calc(var(--adv-text-4)  + var(--adv-m-2) * 2);
+}
+.cart-add--with-spinbox-theme-standart .cart-add__button-add,
+.cart-add--with-spinbox-theme-standart .cart-add__spinbox-input,
+.cart-add--with-spinbox-theme-standart .cart-add__button-loading{
+    box-sizing: border-box;
+}
+.cart-add__button-add::before,
+.cart-add::before{
+    display: none;
+}
+
+
+.price-amount-cart-mobile:not(:has(*)) {
+    display: none;
+}

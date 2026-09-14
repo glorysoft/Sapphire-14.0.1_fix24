@@ -1,0 +1,53 @@
+﻿body .check-order {
+    background-color: transparent;
+    padding: 0;
+
+    &__header {
+        color: var(--cs-4);
+        margin-bottom: var(--adv-m-4);
+    }
+
+    &__header-text {
+        font-size: var(--adv-h7);
+    }
+
+    &__body {
+        position: relative;
+    }
+
+    &__field {
+        margin: 0;
+    }
+    &__field-input::placeholder {
+        font-size: var(--adv-text-4);
+    }
+    &__btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: transparent;
+        padding: 0;
+        font-size: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: auto;
+        color: var(--cs-7);
+        &:hover {
+            background: transparent;
+        }
+
+        &::after {
+            content: "";
+            font-size: 16px;
+            display: block;
+            mask-image: url(../../../../images/icons/arrow-right.svg);
+            mask-repeat: no-repeat;
+            mask-position: center;
+            width: 16px;
+            height: 16px;
+            background-color: currentColor;
+        }
+    }
+}

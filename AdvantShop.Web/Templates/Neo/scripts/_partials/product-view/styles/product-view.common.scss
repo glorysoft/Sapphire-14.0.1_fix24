@@ -1,0 +1,207 @@
+﻿@use "../../../../../../styles/variables";
+
+.products-view-item:hover {
+    box-shadow: none;
+}
+
+.products-view-labels {
+    display: flex;
+    flex-direction: column;
+}
+
+.products-view-label:has(.products-view-label-discount) {
+    order: -1;
+}
+
+.products-view-label-new,
+.products-view-label-recommend,
+.products-view-label-best,
+.products-view-label-discount,
+.products-view-label-sales {
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: var(--adv-m-1) var(--adv-m-2);
+    line-height: normal;
+}
+
+.products-view-label-sales,
+.products-view-label-new,
+.products-view-label-recommend,
+.products-view-label-best {
+    background-color: var(--cs-1);
+}
+
+.products-view-picture-link img {
+    mix-blend-mode: darken;
+}
+
+.products-view-variants {
+    display: flex;
+    align-items: center;
+    gap: var(--adv-m-1);
+    padding-right: var(--adv-m-base-col);
+}
+
+
+.products-view-sort-select {
+    --cs-input-bg: var(--cs-4);
+    --choices-z-index: 5;
+    background-color: var(--cs-input-bg);
+    border-radius: var(--adv-rounded-2);
+}
+
+.products-view-sort-select select {
+    padding: 4px;
+    font-size: var(--adv-text-2);
+    border: none;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    height: initial;
+
+}
+
+.products-view-sort-result {
+    padding: 0;
+}
+
+.products-view-variants-item {
+    border: none;
+    padding: 0;
+    color: var(--cs-3)
+}
+
+
+.products-view-variants-selected {
+    color: var(--cs-1)
+}
+
+.products-view-variants-list:before,
+.products-view-variants-table:before,
+.products-view-variants-tile:before {
+    content: "";
+    display: block;
+    background-color: currentColor;
+    width: 24px;
+    height: 24px;
+    margin-right: 0;
+}
+
+.products-view-variants-list:before {
+    mask: url('../../../../images/icons/cards-list.svg') center no-repeat;
+    mask-size: contain;
+}
+
+.products-view-variants-table:before {
+    mask: url('../../../../images/icons/list.svg') center no-repeat;
+    mask-size: contain;
+}
+
+.products-view-variants-tile:before {
+    mask: url('../../../../images/icons/cards.svg') center no-repeat;
+    mask-size: contain;
+}
+
+.products-view-name-link {
+    line-height: 1.1;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.compare-control,
+.wishlist-control {
+    cursor: pointer;
+}
+
+.products-view-meta-item-sku-wrap {
+    margin-top: var(--adv-m-3);
+}
+
+
+.products-view-colors-container {
+    .carousel-colors-wrap {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+}
+
+.products-view-quickview {
+    opacity: 0.9;
+    position: absolute;
+    display: none;
+    gap: var(--adv-m-1);
+    border: 1px solid var(--cs-2);
+    width: 100%;
+    justify-content: center;
+    background-color: white;
+    color: var(--cs-1);
+
+
+    svg {
+        vertical-align: middle;
+    }
+
+    .svg {
+        line-height: 1;
+    }
+
+    &:hover {
+        color: var(--cs-1);
+        opacity: 1;
+        background-color: white;
+    }
+}
+
+.products-view-pictures:hover .products-view-quickview {
+    top: auto;
+    left: var(--adv-m-base-col);
+    right: var(--adv-m-base-col);
+    bottom: var(--adv-m-base-col);
+    transform: none;
+    width: auto;
+}
+
+.prod-gift-icon {
+    left: auto;
+    bottom: 60px;
+    right: 0;
+}
+.products-view-sort {
+    .products-view-sort-select--fill {
+        background-color: #f9f9f9;
+        .choices[data-type*=select-one] .choices__input {
+            background-color:inherit;
+        }
+    }
+
+    .form-select {
+        border: none;
+        min-height: auto;
+    }
+}
+
+.tags .tag-item,
+.tag-additional-block .tag-additional {
+    background-color: var(--cs-4);
+    font-size: var(--adv-text-2);
+    color: var(--cs-1);
+    padding: 0.625rem;
+    line-height: 1;
+    border-color: var(--cs-2);
+}
+
+.tag-additional-block .tag-additional {
+    margin: 0.1875rem 0.1875rem 0 0;
+}
+
+.tag-additional-header{
+    display: block;
+    margin-bottom: var(--adv-m-1);
+}
+.mobile-version .module-additional-tags-in-category{
+    padding-inline: 7px;
+}
+.products-view-sort, .products-view-sort-result, .products-view-variants{
+    margin-bottom: 0;
+}
